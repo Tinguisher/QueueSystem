@@ -2,6 +2,9 @@
 document.addEventListener('DOMContentLoaded', function(){
     console.log("HTML is done");
 
+    // variables
+    const logoutbutton = document.getElementById("logoutbutton");
+
     // check for session
     fetch ('../contexts/checksession.php')
     // get response as json 
@@ -16,8 +19,8 @@ document.addEventListener('DOMContentLoaded', function(){
     // error checker
     .catch (error => console.error(error));
 
-    // logout button
-    document.getElementById("logoutbutton").addEventListener("click", function(ev){
+    // logout on click
+    logoutbutton.addEventListener("click", () => {
         // prevent loading of website
         ev.preventDefault();
 
