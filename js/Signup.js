@@ -1,7 +1,9 @@
 // Load js if HTML is done
 document.addEventListener('DOMContentLoaded', function(){
-
     console.log("HTML is done");
+
+    // variables
+    const signupform = document.getElementById("signupForm");
 
     // check for session
     fetch ('../contexts/checksession.php')
@@ -11,32 +13,31 @@ document.addEventListener('DOMContentLoaded', function(){
         .then (data => {
             // if logged in, go to dashboard
             if (data.status == "logged in"){
-                // window.location.replace('../pages/Dashboard.html')
+                window.location.replace('../pages/Dashboard.html')
             }
         })
     // error checker
     .catch (error => console.error(error));
         
     // if there is submit on signupForm
-    document.getElementById("signupForm").addEventListener('submit', function(ev){
+    signupform.addEventListener('submit', (ev) => {
         // prevent loading of website
         ev.preventDefault();
 
-        // // get the data from the form
-        // const signup = new FormData(this);
+        // get the data from the form
+        const signup = new FormData(signupform);
 
-        // // convert formdata into object
-        // const signupobject = {};
-        // signup.forEach(function(value, key){
-        //     signupobject[key] = value;
-        // });
+        // create object for each data in signupform
+        const signupobject = {};
+        signup.forEach(function(value, key){
+            signupobject[key] = value;
+        });
 
-        const signupobject = {
-            input_name: document.querySelector('input[name=input_name]').value,
-            input_email: document.querySelector('input[name=input_email]').value,
-            input_password: document.querySelector('input[name=input_password]').value
-        };
-        console.log(signupobject);
+        // const signupobject = {
+        //     input_name: document.querySelector('input[name=input_name]').value,
+        //     input_email: document.querySelector('input[name=input_email]').value,
+        //     input_password: document.querySelector('input[name=input_password]').value
+        // };
 
         // make a request to SignupHandle.php
         fetch ('../contexts/Signup.php', {
@@ -54,6 +55,10 @@ document.addEventListener('DOMContentLoaded', function(){
             // get objects from fetch
             .then(data => {
                 console.log(data);
+                // redirect to dashboard if success
+                if (data.status == "success"){
+                    window.location.replace('../pages/Dashboard.html')
+                }
             })
         // error checker
         .catch (error => console.error(error));

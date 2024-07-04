@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function(){
     .catch (error => console.error(error));
 
     // logout on click
-    logoutbutton.addEventListener("click", () => {
+    logoutbutton.addEventListener("click", (ev) => {
         // prevent loading of website
         ev.preventDefault();
 
@@ -30,10 +30,13 @@ document.addEventListener('DOMContentLoaded', function(){
             // get objects from fetch
             .then (data => {
                 console.log(data);
+                if (data.status == "success"){
+                    window.location.replace('../pages/Login.html')
+                }
             })
         // error checker
         .catch (error => console.error(error));
 
-    })
+    });
 
 });

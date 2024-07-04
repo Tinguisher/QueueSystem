@@ -5,7 +5,7 @@ header('Content-Type: application/json; charset=utf-8');
 // if the file is accessed manually and not post
 if ($_SERVER["REQUEST_METHOD"] !== "POST"){
     header("Location: ../pages/NotFound.html");
-    exit;
+    exit();
 }
 
 // get raw input from the form instead of json
