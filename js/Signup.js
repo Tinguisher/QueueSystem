@@ -4,20 +4,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
     // variables
     const signupform = document.getElementById("signupForm");
-
-    // check for session
-    fetch ('../contexts/checksession.php')
-    // get response as json 
-    .then (response => response.json())
-        // get objects from fetch
-        .then (data => {
-            // if logged in, go to dashboard
-            if (data.status == "logged in"){
-                window.location.replace('../pages/Dashboard.html')
-            }
-        })
-    // error checker
-    .catch (error => console.error(error));
         
     // if there is submit on signupForm
     signupform.addEventListener('submit', (ev) => {
@@ -40,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function(){
         // };
 
         // make a request to SignupHandle.php
-        fetch ('../contexts/Signup.php', {
+        fetch ('../contexts/SignupProcess.php', {
             method: "POST",
             headers: {
                 // state as a json type
@@ -57,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 console.log(data);
                 // redirect to dashboard if success
                 if (data.status == "success"){
-                    window.location.replace('../pages/Dashboard.html')
+                    window.location.replace('../pages/Dashboard.php')
                 }
             })
         // error checker

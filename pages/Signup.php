@@ -1,5 +1,12 @@
 <?php
+// make a session variable
+session_start();
 
+// if there is session already, go to dashboard
+if ( isset($_SESSION['id']) ){
+    header('Location: ./Dashboard.php');
+    exit();
+}
 
 ?>
 
