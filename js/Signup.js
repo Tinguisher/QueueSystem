@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function(){
         //     input_password: document.querySelector('input[name=input_password]').value
         // };
 
-        // make a request to SignupHandle.php
+        // make a request to SignupProcess.php
         fetch ('../contexts/SignupProcess.php', {
             method: "POST",
             headers: {

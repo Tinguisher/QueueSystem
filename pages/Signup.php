@@ -26,6 +26,7 @@ if ( isset($_SESSION['id']) ){
             <br> <br>
             <input type="submit"></input>
         </form>
-    <script src="../js/Signup.js"></script>
+        <a href="./Login.php">Log in</a>
+        <script src="../js/Signup.js"></script>
     </body>
 </html>

@@ -3,6 +3,9 @@
 // create session
 session_start();
 
+// destroy each data in session
+session_unset();
+
 // destroy the sessions made
 session_destroy();
 

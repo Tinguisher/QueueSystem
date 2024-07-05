@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function(){
             .then (data => {
                 console.log(data);
                 if (data.status == "success"){
-                    window.location.replace('../pages/Login.html')
+                    window.location.replace('../pages/Login.php')
                 }
             })
         // error checker

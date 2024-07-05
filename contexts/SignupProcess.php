@@ -27,9 +27,9 @@ $mysqli = require "./database.php";
 // get post values with password as hashed
 $name = $data['input_name'];
 $email = $data['input_email'];
-$password = hash('sha256', $data['input_password']);
+$password = password_hash($data['input_password'], PASSWORD_BCRYPT);
 
-// sql query to create new user
+// make a string for sql to be used
 $sql = "INSERT INTO `user`(`email`, `password`, `name`) VALUES ('". $email ."','". $password ."','". $name ."');";
 
 try{
