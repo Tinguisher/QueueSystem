@@ -3,7 +3,7 @@
 header('Content-Type: application/json; charset=utf-8');
 
 // if the file is accessed manually and not post
-if ($_SERVER['REQUEST_METHOD'] !== "POST"){
+if ( $_SERVER['REQUEST_METHOD'] !== "POST" ){
     header('Location: ../pages/NotFound.html');
     exit();
 }
@@ -22,7 +22,7 @@ if ( empty($data['input_email']) || empty($data['input_password']) ){
 }
 
 // access database
-$mysqli = require './database.php';
+$mysqli = require_once './database.php';
 
 // get post values
 $email = $data['input_email'];

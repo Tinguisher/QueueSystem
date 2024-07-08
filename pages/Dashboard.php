@@ -8,10 +8,13 @@ if ( !isset($_SESSION['id']) ){
     exit();
 }
 
-$mysqli = require "../contexts/database.php";
+require_once '../contexts/allusers.php';
+
+$mysqli = require_once "../contexts/database.php";
 $sql = "SELECT * FROM `user` WHERE id=". $_SESSION['id'];
 $result = $mysqli->query($sql);
 $user = $result->fetch_assoc();
+
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +25,7 @@ $user = $result->fetch_assoc();
     <body>
         <h1>This is Dashboard <?php echo $user['name']?></h1>
         <input type="button" id="logoutbutton" value="Logout"/>
+        <?php echo getusers() ?>
     </body>
     <script src="../js/Dashboard.js"></script>
 </html>
