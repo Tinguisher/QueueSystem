@@ -24,10 +24,18 @@ $user = $result->fetch_assoc();
     </head>
     <body>
         <h1>Hello <?php echo $user['name']?></h1>
-        <h4>Add menu</h4>
+        <h2>Add Genre / Folder</h2>
+        <form id="addGenre">
+            <input type="text" name="input_genre" placeholder="Genre" />
+            <br> <br>
+            <input type="submit" />
+        </form>
+
+        <br> <br>
+        
+        <h2>Add menu</h2>
         <form id="addMenu" enctype="multipart/form-data">
-        <!-- <form method="POST" action="../contexts/addmenuprocess.php" enctype="multipart/form-data"> -->
-            <input type="file" accept="image/*" name="image_input"/>
+            <input type="file" accept="image/*" name="image_input" required />
             <br> <br>
             <input type="text" name="name_input" placeholder="Name" />
             <br> <br>

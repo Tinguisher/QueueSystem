@@ -4,6 +4,14 @@ document.addEventListener('DOMContentLoaded', function(){
 
     // variables
     const logoutbutton = document.getElementById("logoutbutton");
+    const addmenubutton = document.getElementById("addmenu");
+
+    // addmenu on click
+    addmenubutton.addEventListener('click', (ev) =>{
+        // prevent loading of website
+        ev.preventDefault();
+        window.location = '../pages/Addmenu.php';
+    })
 
     // logout on click
     logoutbutton.addEventListener("click", (ev) => {
@@ -17,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function(){
             .then (data => {
                 console.log(data);
                 if (data.status == "success"){
-                    window.location.replace('../pages/Login.php')
+                    window.location = '../pages/Login.php';
                 }
             })
         // error checker

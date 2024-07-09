@@ -25,6 +25,7 @@ $user = $result->fetch_assoc();
     <body>
         <h1>This is Dashboard <?php echo $user['name']?></h1>
         <input type="button" id="logoutbutton" value="Logout"/>
+        <input type="button" id="addmenu" value="Add Menu" />
         <?php echo getusers() ?>
     </body>
     <script src="../js/Dashboard.js"></script>

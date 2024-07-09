@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 console.log(data);
                 // redirect to dashboard if success
                 if (data.status == "success"){
-                    window.location.replace('../pages/Dashboard.php');
+                    window.location = '../pages/Dashboard.php';
                 }
             })
         
