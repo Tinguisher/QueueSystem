@@ -2,7 +2,7 @@
 
 // name of database and info
 $host = "localhost";
-$dbname = "queuesystem";
+$dbname = "handora";
 $username = "root";
 $password = "";
 
