@@ -18,11 +18,14 @@ if ( isset($_SESSION['id']) ){
     <body>
         <h1>This is Signup</h1>
         <form id="signupForm">
-            <input type="text" name="input_name" placeholder="Name"/>
+            <input type="text" name="input_firstname" placeholder="First Name"/>
+            <input type="text" name="input_lastname" placeholder="Last Name"/>
             <br> <br>
             <input type="email" name="input_email" placeholder="Email"/>
             <br> <br>
             <input type="password" name="input_password" placeholder="Password"/>
+            <br> <br>
+            <input type="password" name="input_confirmpassword" placeholder="Confirm Password"/>
             <br> <br>
             <input type="submit"></input>
         </form>

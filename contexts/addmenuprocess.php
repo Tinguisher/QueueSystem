@@ -35,18 +35,18 @@ $pathinfo = pathinfo($_FILES["image_input"]["name"]);
 // get the filename inside the information of file
 $base = $pathinfo["filename"];
 
-// replace special characters by _
-$base = preg_replace("/[^\w-]/", "_", $base);
+// // replace special characters by _
+// $base = preg_replace("/[^\w-]/", "_", $base);
 
-$i = 1;
+// $i = 1;
 
 
 
-while (file_exists($destination)){
-    $filename = $base . "($i)." . $pathinfo["extension"];
-    $destination = $directory . "/" . $filename;
-    $i++;
-}
+// while (file_exists($destination)){
+//     $filename = $base . "($i)." . $pathinfo["extension"];
+//     $destination = $directory . "/" . $filename;
+//     $i++;
+// }
 
 $response = [
     'status' => $_FILES,

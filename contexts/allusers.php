@@ -1,8 +1,16 @@
 <?php
 
+
+$response = [
+    'status' => "success",
+    'users' => getusers()
+];
+
+exit ( json_encode($response) );
+
 function getusers(){
     $mysqli = require "../contexts/database.php";
-    $sql = "SELECT * FROM `user`";
+    $sql = "SELECT * FROM `users`";
     $result = $mysqli->query($sql);
     $users = $result->fetch_all( MYSQLI_ASSOC );
 

@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function(){
     // variables
     const logoutbutton = document.getElementById("logoutbutton");
     const addmenubutton = document.getElementById("addmenu");
+    const getuser = document.getElementById("getuser");
 
     // addmenu on click
     addmenubutton.addEventListener('click', (ev) =>{
@@ -31,6 +32,21 @@ document.addEventListener('DOMContentLoaded', function(){
         // error checker
         .catch (error => console.error(error));
 
+    });
+
+    // if get user is clicked
+    getuser.addEventListener('click', (ev) =>{
+        // prevent the website to load
+        ev.preventDefault();
+
+        fetch ('../contexts/allusers.php')
+        .then (response => response.json())
+            .then (data => {
+                console.log(data.users);
+
+                document.getElementById('users').innerHTML = data.users;
+            })
+        
     });
 
 });

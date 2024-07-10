@@ -21,14 +21,16 @@ if ( empty($data['input_genre']) ){
     exit ( json_encode($response) );
 }
 
+$mysqli = require "./database.php";
+
 $qwerty = $data['input_genre'];
 
-$mysqli = require "./database.php";
+
 $sql ="SELECT * FROM user where id=184";
 
 $result = $mysqli->query($sql);
 
 $user = $result -> fetch_assoc();
 
-exit ( json_encode(['status' => $user]));
+exit ( json_encode(['foodimg' => $qwerty]));
 ?>

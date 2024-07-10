@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function(){
         .then (response => response.json())
             // get objects from fetch
             .then (data => {
-                console.log (data); 
+                console.log (data);
             })
 
         // error checker

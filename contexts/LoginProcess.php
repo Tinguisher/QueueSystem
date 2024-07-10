@@ -29,7 +29,7 @@ $email = $data['input_email'];
 $password = $data['input_password'];
 
 // make a string for sql to be used
-$sql = "SELECT * FROM `user` WHERE email = '". $email ."'";
+$sql = "SELECT * FROM `users` WHERE email = '". $email ."'";
 
 // apply the query to the database and get it
 $result = $mysqli -> query($sql);
@@ -45,10 +45,10 @@ if (!$user){
 }
 
 // if the password is not the same
-else if (!password_verify($password, $user['password'])){
+if (!password_verify($password, $user['password'])){
     $response = [
         'status' => "error",
-        'message' => "Incorrect password"
+        'message' => "Incorrect password",
     ];
     exit ( json_encode($response) );
 }
