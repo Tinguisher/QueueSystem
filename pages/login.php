@@ -2,11 +2,11 @@
 // make a session variable
 session_start();
 
-// // if there is session already, go to home
-// if ( isset($_SESSION['id']) ){
-//     header('Location: ./home.html');
-//     exit();
-// }
+// if there is session already, go to home
+if ( isset($_SESSION['id']) ){
+    header('Location: ./home.html');
+    exit();
+}
 
 ?>
 

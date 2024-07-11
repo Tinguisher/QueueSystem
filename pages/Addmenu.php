@@ -13,6 +13,11 @@ $sql = "SELECT * FROM `users` WHERE id=". $_SESSION['id'];
 $result = $mysqli->query($sql);
 $user = $result->fetch_assoc();
 
+$sql = "SELECT * FROM `food_categories`";
+$result = $mysqli->query($sql);
+$food_categories = $result->fetch_all( MYSQLI_ASSOC );
+
+
 ?>
 
 <!DOCTYPE html>
@@ -41,6 +46,13 @@ $user = $result->fetch_assoc();
             <br> <br>
             <input type="text" name="description_input" placeholder="Description" />
             <br> <br>
+            <select name="genre">
+                <?php
+                foreach($food_categories as $food_category){
+                    echo '<option>'. $food_category['name'] .'</option>';
+                }
+                ?>
+            </select>
             <input type="submit" />
         </form>
     </body>

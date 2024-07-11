@@ -5,6 +5,11 @@ let list = document.getElementById("list");
 let input = document.getElementById("search-input");
 let listItems = document.querySelectorAll(".dropdown-list-item");
 
+document.getElementById("men1").addEventListener('click', (ev) => {
+    ev.preventDefault();
+    console.log("tite")
+});
+
 var counter = 1;
 
 setInterval(function(){

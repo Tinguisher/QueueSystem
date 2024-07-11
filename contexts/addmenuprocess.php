@@ -35,24 +35,25 @@ $pathinfo = pathinfo($_FILES["image_input"]["name"]);
 // get the filename inside the information of file
 $base = $pathinfo["filename"];
 
-// // replace special characters by _
-// $base = preg_replace("/[^\w-]/", "_", $base);
+// replace special characters by _
+$base = preg_replace("/[^\w-]/", "_", $base);
 
+// // rename if has same file name
 // $i = 1;
-
-
-
 // while (file_exists($destination)){
 //     $filename = $base . "($i)." . $pathinfo["extension"];
 //     $destination = $directory . "/" . $filename;
 //     $i++;
 // }
 
+
+
 $response = [
     'status' => $_FILES,
     'description' => $_POST['description_input'],
     'test' => $base,
-    'test2' => $_FILES['image_input']['type']
+    'test2' => $_FILES['image_input']['type'],
+    'select' => $_POST['genre']
 ];
 
 exit ( json_encode($response) );
