@@ -24,16 +24,32 @@ if ( empty($data['input_email']) || empty($data['input_password']) ){
 // access database
 $mysqli = require_once './database.php';
 
+// make a string for sql to be used
+$sql = "SELECT * FROM `users` WHERE email = ?";
+
+// prepare the statement
+$stmt = $mysqli -> prepare ($sql);
+
+// bind the parameters to the statement
+$stmt -> bind_param ('s', $email);
+
 // get post values
 $email = $data['input_email'];
 $password = $data['input_password'];
 
-// make a string for sql to be used
-$sql = "SELECT * FROM `users` WHERE email = '". $email ."'";
+// execute the statement
+$stmt -> execute();
 
-// apply the query to the database and get it
-$result = $mysqli -> query($sql);
+// get the result from the statement
+$result = $stmt -> get_result();
+
+// get only one from the executed statement
 $user = $result -> fetch_assoc();
+
+// free data and close statement and database
+$result -> free();
+$stmt -> close();
+$mysqli -> close();
 
 // if there is no existing user in database
 if (!$user){

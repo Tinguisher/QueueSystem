@@ -44,17 +44,23 @@ $mysqli = require "./database.php";
 $password = password_hash($data['input_password'], PASSWORD_BCRYPT);
 
 // make a string for sql to be used
-$sql = "INSERT INTO `users`(`email`, `password`, `authtype`, `firstname`, `lastname`) VALUES ('". $email ."', '". $password ."', 'user', '". $firstname ."', '". $lastname ."');";
+$sql = "INSERT INTO `users`(`email`, `password`, `authtype`, `firstname`, `lastname`) VALUES (?, ?, 'user', ?, ?);";
+
+// prepare the statement
+$stmt = $mysqli -> prepare ($sql);
+
+// bind the parameters to the statement
+$stmt -> bind_param ('ssss', $email, $password, $firstname, $lastname);
 
 try{
-    // try the query for validation
-    $mysqli->query($sql);
+    // execute the statement
+    $stmt -> execute();
     
     session_start();                // create a session
     $last_id = $mysqli->insert_id;  // get the last inserted id
     $_SESSION['id'] = $last_id;     // use the last inserted id as session
     $_SESSION['authtype'] = "user"; // set the auth type as user
-    
+
     // make a success signup response
     $response = [
         'status' => "success",
@@ -64,11 +70,16 @@ try{
 
 // if there is error in query
 catch (Exception $e){
+    // make an error signup response
     $response = [
         'status' => "error",
         'message' => "Error No: ". $e->getCode() ." - ". $e->getMessage()    // get error code and message
     ];
 }
+
+// close statement and database
+$stmt -> close();
+$mysqli -> close();
 
 // output the response
 exit ( json_encode($response) );
