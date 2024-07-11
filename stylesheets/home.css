@@ -413,7 +413,7 @@ button {
 	transform: scale(1.1);
 }
 
-#menName {
+.menName {
     margin-top: 47px;
     margin-left: 235px;
     font-weight: 700;
@@ -453,7 +453,7 @@ button {
     color: #000;
     font-size: 21px;
 }
-#dollar{
+.dollar{
     position: absolute;
     margin-top: 174px;
     margin-left: 235px;
@@ -465,7 +465,7 @@ button {
     
 }
 
-#new{
+.new{
     position: absolute;
     width: 83px;
     height: 30px;

@@ -5,15 +5,24 @@ let list = document.getElementById("list");
 let input = document.getElementById("search-input");
 let listItems = document.querySelectorAll(".dropdown-list-item");
 
+var counter = 1;
+
+setInterval(function(){
+    document.getElementById('radio' + counter).checked = true;
+    counter++;
+    if(counter > 4){
+    counter = 1;
+    }
+    
+}, 5000);
+          
 dropdownBtnText.onclick = function () {
   list.classList.toggle("show");
 };
 
 var slideIndex = 1;
-console.log("good");
 showSlides(slideIndex);
 
-console.log("success");
 function plusSlides(n) {
     showSlides(slideIndex += n);
 }
@@ -37,16 +46,17 @@ function showSlides(n) {
     }
 }
 
-// var slideIndex = 0;
-// showSlides();
-// function showSlides() {
-// var i;
-//    var slides = document.getElementsByClassName("mySlides");
-//  for (i = 0; i < slides.length; i++) {
-//         slides[i].style.display = "none";
-//     }
-//     slideIndex++;
-//     if (slideIndex > slides.length) { slideIndex = 1 }
-//     slides[slideIndex - 1].style.display = "block";
-//     setTimeout(showSlides, 2000); 
-// }
+var slideIndex = 0;
+showSlides();
+function showSlides() {
+    var i;  
+
+    var slides = document.getElementsByClassName("mySlides");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+        
+    }
+    slideIndex++;
+    if (slideIndex > slides.length){ slideIndex = 1 }
+    setTimeout(showSlides, 2000); 
+}
