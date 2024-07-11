@@ -56,8 +56,9 @@ if (!password_verify($password, $user['password'])){
 // make a session
 session_start();
 
-// get the id as session identifier
+// get the id and authtype as session identifier
 $_SESSION['id'] = $user['id'];
+$_SESSION['authtype'] = $user['authtype'];
 
 // make a success signup response
 $response = [
