@@ -1,7 +1,7 @@
 CREATE DATABASE queuesystem;
 
 CREATE TABLE users(
-	id int (20) AUTO_INCREMENT NOT NULL,
+	id int AUTO_INCREMENT NOT NULL,
 	email varchar (50) UNIQUE NOT NULL,
 	password varchar (255) NOT NULL,
 	authtype varchar (30) NOT NULL,
@@ -12,31 +12,24 @@ CREATE TABLE users(
 );
 
 CREATE TABLE food_categories(
-	id int (20) AUTO_INCREMENT NOT NULL,
+	id int AUTO_INCREMENT NOT NULL,
 	name varchar (50) NOT NULL,
 	image varchar (50) NOT NULL,
 	CONSTRAINT PK_food_categories
 	PRIMARY KEY (id)
 );
 
-CREATE TABLE foods(
-	id int (20) AUTO_INCREMENT NOT NULL,
-	name varchar (50) NOT NULL,
-	description varchar (255) NOT NULL,
-	price double (20) NOT NULL,
-	FOREIGN KEY food_category_id int (20) REFERENCES food_category(id),
-	CONSTRAINT PK_menu
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE foods(
-	id int (20) AUTO_INCREMENT NOT NULL,
-	name varchar (50) NOT NULL,
-	description varchar (255) NOT NULL,
-	price double (20) NOT NULL
-	food_category_id int (20) NOT NULL FOREIGN KEY REFERENCES food_category (id),
-	CONSTRAINT PK_menu
-	PRIMARY KEY (id)
+CREATE TABLE foods (
+    id int AUTO_INCREMENT NOT NULL,
+    name varchar (50) NOT NULL,
+    description varchar (255) NOT NULL,
+    price double NOT NULL,
+    food_categories_id INT (20) NOT NULL,
+    FOREIGN KEY (food_categories_id) REFERENCES food_categories(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+    CONSTRAINT PK_foods
+    PRIMARY KEY (id)
 );
 
 

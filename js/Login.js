@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function(){
         const signupobject = Object.fromEntries(signup);
 
         // make a request to signupProcess.php
-        fetch ('../contexts/signupProcess.php', {
+        fetch ('../contexts/SignupProcess.php', {
             method: "POST",
             headers: {
                 // state as a json type
