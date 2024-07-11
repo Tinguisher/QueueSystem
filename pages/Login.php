@@ -2,11 +2,12 @@
 // make a session variable
 session_start();
 
-// // if there is session already, go to home.html
-// if ( isset($_SESSION['id']) ){
-//     header ('Location: ./home.html');
-//     exit();
-// }
+// if there is session already, go to home
+if ( isset($_SESSION['id']) ){
+    header('Location: ./home.html');
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -18,11 +19,28 @@ session_start();
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <link rel="stylesheet" href="../stylesheets/login.css">
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
         
-        <title>Modern Login Page</title>
+        <title>Snap Serve</title>
     </head>
-
     <body>
+        <div>
+            <p style="  position: absolute; margin-left: 763px; margin-top: 15px; width: 1128px;height: 110px; border-top: 4px solid #000; border-bottom: 4px solid #000;"></p>
+            <img src="../images/log.png" id="log">
+            <p id="snap">Snap Serve</p>
+            <p id="bite">Precision in Every Bite</p>
+            
+            <table style="margin-top: 38px; margin-left: 1118px; position: absolute;">
+                <tr>
+                <td style="width: 138px;"><a href="home.html" target="_top">Home</a></td>
+                <td style="width: 133px;" id="menn"><a href="menu.html" target="_top">Menu</a></td>
+                <td style="width: 155px;"><a href="aboutus.html" target="_top">About Us</a></td>
+                </tr>
+            </table>
+
+            <p id="copy">Copyrights © 2024 <br> SnapServe by ARC System Solutions.<br>All Rights Reserved</p>
+        </div>
+
         <div class="container" id="container">
             <div class="form-container sign-up">
                 <form id="signupform">
@@ -30,7 +48,7 @@ session_start();
                     <span class="swc">Discover a world of delicious foods.</span><br><br>
                     <input type="text" name="input_firstname" placeholder="First Name" required>
                     <input type="text" name="input_lastname" placeholder="Last Name" required>
-                    <input type="text" name="input_email" placeholder="Email" required>
+                    <input type="email" name="input_email" placeholder="Email" required>
                     <input type="password" name="input_password" placeholder="Password" required>
                     <input type="password" name="input_confirmpassword" placeholder="Confirm Password" required>
                     <button class="button-signlogin">Sign Up</button>
@@ -41,10 +59,10 @@ session_start();
                     <h1 class="h1wc">Welcome back!</h1>
                     <span class="swc">Welcome back. Please enter your details.</span><br><br>
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="input_email" placeholder="Email" required>
+                    <input type="email" name="input_email" id="email" placeholder="Email">
                     <label for="pass">Password</label>
-                    <input type="password" id="pass" name="input_password" placeholder="Password" required>
-                    <br><br><button type='submit'class="button-signlogin">Sign In</button>
+                    <input type="password" name="input_password" id="pass" placeholder="Password">
+                    <br><br><button class="button-signlogin">Sign In</button>
                 </form>
             </div>
             <div class="toggle-container">
