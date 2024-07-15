@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 console.log(data);
                 // redirect to dashboard if success
                 if (data.status == "success"){
-                    window.location = '../pages/home.html';
+                    window.location = '../pages/home.php';
                 }
             })
         

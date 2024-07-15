@@ -17,9 +17,10 @@ document.addEventListener('DOMContentLoaded', function(){
         .then (response => response.json())
             // get objects from fetch
             .then (data => {
-                console.log(data);
+                // if the status is success
                 if (data.status == "success"){
-                    window.location = '../pages/home.php';
+                    // reload the website
+                    window.location.reload();
                 }
             })
         // error checker
