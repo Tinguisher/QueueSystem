@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST"){
 }
 
 // check if there is input of data
-if ( empty($_FILES['image_input']['name']) || empty($_POST['price_input'])  || empty($_POST['description_input']) ){
+if ( empty($_FILES['input_image']['name']) || empty($_POST['input_name'])  || empty($_POST['input_price'])  || empty($_POST['input_description']) || empty($_POST['input_category']) ){
     $response = [
         'status' => "error",
         'message' => "All fields are required"
@@ -21,7 +21,7 @@ if ( empty($_FILES['image_input']['name']) || empty($_POST['price_input'])  || e
 $filetype = ["image/jpg", "image/png", "image/jpeg"];
 
 // check if image uploaded is acceptable filetype
-if (!in_array($_FILES['image_input']['type'], $filetype)){
+if (!in_array($_FILES['input_image']['type'], $filetype)){
     $response = [
         'status' => "error",
         'message' => "Input jpg, png or jpeg extensions only"
@@ -30,32 +30,76 @@ if (!in_array($_FILES['image_input']['type'], $filetype)){
 }
 
 // get information of file
-$pathinfo = pathinfo($_FILES["image_input"]["name"]);
+$pathinfo = pathinfo($_FILES['input_image']['name']);
 
 // get the filename inside the information of file
-$base = $pathinfo["filename"];
+$base = $pathinfo['filename'];
 
 // replace special characters by _
 $base = preg_replace("/[^\w-]/", "_", $base);
 
-// // rename if has same file name
-// $i = 1;
-// while (file_exists($destination)){
-//     $filename = $base . "($i)." . $pathinfo["extension"];
-//     $destination = $directory . "/" . $filename;
-//     $i++;
-// }
+// get the name with extension
+$filename = $base . "." . $pathinfo['extension'];
 
+// get the directory folder to be saved
+$destination = "../images/foods/". $_POST['input_category'] ."/". $filename;
 
+// rename if has same image name
+$i = 1;
+while (file_exists($destination)){
+    $filename = $base . "($i)." . $pathinfo['extension'];
+    $destination = "../images/foods/". $_POST['input_category'] ."/". $filename;
+    $i++;
+}
 
-$response = [
-    'status' => $_FILES,
-    'description' => $_POST['description_input'],
-    'test' => $base,
-    'test2' => $_FILES['image_input']['type'],
-    'select' => $_POST['genre']
-];
+// access database
+$mysqli = require "./database.php";
 
+// get the values from post
+$name = $_POST['input_name'];
+$price = $_POST['input_price'];
+$description = $_POST['input_description'];
+$category = $_POST['input_category'];
+
+// make a string for sql to be used
+$subsql = "SELECT id FROM `food_categories` WHERE name = ?";
+$sql = "INSERT INTO `foods`(`name`, `description`, `price`, `image`, `food_categories_id`) VALUES (?, ?, ?, ?, (". $subsql ."));";
+
+// prepare the statement
+$stmt = $mysqli -> prepare ($sql);
+
+// bind the parameters to the statement
+$stmt -> bind_param ('ssdss', $name, $description, $price, $filename, $category);
+
+try{
+    // insert the image to their destination
+    move_uploaded_file($_FILES['input_image']['tmp_name'], $destination);
+
+    // execute the statement
+    $stmt -> execute();
+
+    // make a success signup response
+    $response = [
+        'status' => "success",
+        'message' => "food menu created"
+    ];
+
+}
+
+// if there is error in query
+catch (Exception $e){
+    // make an error signup response
+    $response = [
+        'status' => "error",
+        'message' => "Error No: ". $e->getCode() ." - ". $e->getMessage()    // get error code and message
+    ];
+}
+
+// close statement and database
+$stmt -> close();
+$mysqli -> close();
+
+// output the response
 exit ( json_encode($response) );
 
 ?>

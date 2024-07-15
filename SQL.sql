@@ -24,6 +24,7 @@ CREATE TABLE foods (
     name varchar (50) NOT NULL,
     description varchar (255) NOT NULL,
     price double NOT NULL,
+	image varchar (50) NOT NULL,
     food_categories_id INT (20) NOT NULL,
     FOREIGN KEY (food_categories_id) REFERENCES food_categories(id)
     ON DELETE CASCADE
