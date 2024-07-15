@@ -62,8 +62,8 @@ $description = $_POST['input_description'];
 $category = $_POST['input_category'];
 
 // make a string for sql to be used
-$subsql = "SELECT id FROM `food_categories` WHERE name = ?";
-$sql = "INSERT INTO `foods`(`name`, `description`, `price`, `image`, `food_categories_id`) VALUES (?, ?, ?, ?, (". $subsql ."));";
+$food_categories_id = "SELECT id FROM `food_categories` WHERE name = ?";
+$sql = "INSERT INTO `foods`(`name`, `description`, `price`, `image`, `food_categories_id`) VALUES (?, ?, ?, ?, (". $food_categories_id ."));";
 
 // prepare the statement
 $stmt = $mysqli -> prepare ($sql);
@@ -78,7 +78,7 @@ try{
     // execute the statement
     $stmt -> execute();
 
-    // make a success signup response
+    // make a success response
     $response = [
         'status' => "success",
         'message' => "food menu created"
@@ -88,7 +88,7 @@ try{
 
 // if there is error in query
 catch (Exception $e){
-    // make an error signup response
+    // make an error response
     $response = [
         'status' => "error",
         'message' => "Error No: ". $e->getCode() ." - ". $e->getMessage()    // get error code and message
