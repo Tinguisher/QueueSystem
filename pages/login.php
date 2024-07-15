@@ -2,11 +2,11 @@
 // make a session variable
 session_start();
 
-// // if there is session already, go to home
-// if ( isset($_SESSION['id']) ){
-//     header('Location: ./home.html');
-//     exit();
-// }
+// if there is session already, go to home
+if ( isset($_SESSION['id']) ){
+    header('Location: ./home.php');
+    exit();
+}
 
 ?>
 
@@ -32,7 +32,7 @@ session_start();
             
             <table style="margin-top: 38px; margin-left: 1118px; position: absolute;">
                 <tr>
-                <td style="width: 138px;"><a href="home.html" target="_top">Home</a></td>
+                <td style="width: 138px;"><a href="./home.php" target="_top">Home</a></td>
                 <td style="width: 133px;" id="menn"><a href="menu.html" target="_top">Menu</a></td>
                 <td style="width: 155px;"><a href="aboutus.html" target="_top">About Us</a></td>
                 </tr>
