@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function(){
     });
 
     // if login sign in is clicked
-    loginform.addEventListener('submit', (ev) =>{
+    loginform.addEventListener('submit', (ev) => {
         // prevent website from loading
         ev.preventDefault();
 
