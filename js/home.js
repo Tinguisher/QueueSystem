@@ -1,6 +1,28 @@
 // Load js if HTML is done
 document.addEventListener('DOMContentLoaded', function(){
 
+    // fetch ('../contexts/emanuel.php')
+    // .then (response => response.json())
+    //     .then (data => {
+    //         console.log (data);
+    //         const sessiontext = document.getElementById("sessiontext");
+
+    //         if (data.loggedin){
+                
+                
+    //             // change the value of text
+    //             sessiontext.textContent = "Logout";
+    //         }
+
+    //         else{
+    //             // change the value of text
+    //             sessiontext.textContent = "Sign in";
+    //         }
+    //     })
+
+    
+    
+
     // variables
     const sessionbutton = document.getElementById("sessionbutton");
     const sessiontext = document.getElementById("sessiontext");
