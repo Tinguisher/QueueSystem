@@ -53,6 +53,15 @@ document.addEventListener('DOMContentLoaded', function(){
         });
     }
 
+    // get the menu for the popular
+    fetch ('../contexts/HomePopularMenu.php')
+    // get response as json
+    .then (response => response.json())
+        // get objects from fetch
+        .then (data => {
+            console.log (data);
+            
+        })
     // document.getElementById("men1").addEventListener('click', (ev) => {
     //     ev.preventDefault();
     //     console.log("tite")

@@ -31,6 +31,9 @@ if ( isset($_SESSION['id']) ){
     // get only one from the executed statement
     $user = $result -> fetch_assoc();
 
+    // get the full name
+    $name = $user['firstname'] ." ". $user['lastname'];
+
     // free data and close statement and database
     $result -> free();
     $stmt -> close();
@@ -70,7 +73,7 @@ if ( isset($_SESSION['id']) ){
                 <tr>
                   <td style="width: 138px;"><a href="./home.php" target="_top" style="color:#2ac09a;"><b>Home</b></a></td>
                   <td style="width: 133px;" id="menn"><a href="menu.html" target="_top">Menu</a></td>
-                  <td style="width: 155px;"><a href="aboutus.html" target="_top">About Us <?php echo $user['firstname'] ." ". $user['lastname'];?></a></td>
+                  <td style="width: 155px;"><a href="aboutus.html" target="_top">About Us <?= $name ?? "";?></a></td>
                 </tr>
             </table>
             <a href="menu.html" id="navcrcl" style="margin-top: 37.5px; margin-left: 1746px;">
@@ -274,7 +277,10 @@ if ( isset($_SESSION['id']) ){
                 </button>
             </div>
 
-            <div>
+            <div id="popularmenu">
+                
+                <h1> LOADING... </h1>
+
                 <!-- <div id="men1" style="position: absolute; margin-top: 526px; margin-left: 220px;">
                     <img src="../images/orange.png" style="position: absolute;">
                     <input type="text" class="menName" value="Orange Chicken" readonly>
