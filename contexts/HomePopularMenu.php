@@ -6,7 +6,14 @@ header('Content-Type: application/json; charset=utf-8');
 $mysqli = require_once "./database.php";
 
 // make a string for sql to be used
-$sql = "SELECT * FROM `foods` LIMIT 8";
+$sql = "SELECT foods.id, foods.image,
+        food_categories.name AS categoryName,
+        foods.name AS foodName,
+        foods.description,
+        foods.price
+    FROM `foods`, `food_categories`
+    WHERE foods.food_categories_id = food_categories.id
+    LIMIT 8";
 
 // prepare the statement
 $stmt = $mysqli -> prepare ($sql);

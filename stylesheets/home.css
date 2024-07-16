@@ -423,7 +423,7 @@ button {
     font-family: "Roboto Slab"; 
 }
 
-#men1{
+.menucard{
     color: #000;
     font-family: "Roboto Slab";
     border-radius: 13px;
