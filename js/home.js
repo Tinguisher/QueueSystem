@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function(){
     dropdownBtnText.onclick = function () {
         list.classList.toggle("show");
     };
-
+    
     // if the user is logged in
     if (loggedin){
         // change the text to logout

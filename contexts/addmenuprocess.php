@@ -53,7 +53,7 @@ while (file_exists($destination)){
 }
 
 // access database
-$mysqli = require "./database.php";
+$mysqli = require_once "./database.php";
 
 // get the values from post
 $name = $_POST['input_name'];

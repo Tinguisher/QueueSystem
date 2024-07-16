@@ -2,12 +2,42 @@
 // make a session variable
 session_start();
 
+// make a variable logged in for js
 $loggedin = false;
 
 // if there is session
 if ( isset($_SESSION['id']) ){
+    // make loggedin as true to be passed in js
     $loggedin = true;
+
+    // access database
+    $mysqli = require_once "../contexts/database.php";
+
+    // make a string for sql to be used
+    $sql = "SELECT * FROM `users` WHERE id = ?";
+
+    // prepare the statement
+    $stmt = $mysqli -> prepare ($sql);
+
+    // bind the parameters to the statement
+    $stmt -> bind_param ('s', $_SESSION['id']);
+
+    // execute the statement
+    $stmt -> execute();
+
+    // get the result from the statement
+    $result = $stmt -> get_result();
+
+    // get only one from the executed statement
+    $user = $result -> fetch_assoc();
+
+    // free data and close statement and database
+    $result -> free();
+    $stmt -> close();
+    $mysqli -> close();
 }
+
+
 
 ?>
 
@@ -40,7 +70,7 @@ if ( isset($_SESSION['id']) ){
                 <tr>
                   <td style="width: 138px;"><a href="./home.php" target="_top" style="color:#2ac09a;"><b>Home</b></a></td>
                   <td style="width: 133px;" id="menn"><a href="menu.html" target="_top">Menu</a></td>
-                  <td style="width: 155px;"><a href="aboutus.html" target="_top">About Us</a></td>
+                  <td style="width: 155px;"><a href="aboutus.html" target="_top">About Us <?php echo $user['firstname'] ." ". $user['lastname'];?></a></td>
                 </tr>
             </table>
             <a href="menu.html" id="navcrcl" style="margin-top: 37.5px; margin-left: 1746px;">
