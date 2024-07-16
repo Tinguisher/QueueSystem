@@ -47,19 +47,19 @@ if ( isset($_SESSION['id']) ){
 <!DOCTYPE html>
 <html>
     <head>
-            <meta charset="utf-8" />
-            <title>Snap Serve</title>
-            <link rel="stylesheet" href="../stylesheets/home.css">
-            <link href='https://fonts.googleapis.com/css?family=Averia Serif Libre' rel='stylesheet'>
-            <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
-            <link href='https://fonts.googleapis.com/css?family=Rhodium Libre' rel='stylesheet'>
-            <link href='https://fonts.googleapis.com/css?family=Roboto Slab' rel='stylesheet'>
+        <meta charset="utf-8" />
+        <title>Snap Serve</title>
+        <link rel="stylesheet" href="../stylesheets/home.css">
+        <link href='https://fonts.googleapis.com/css?family=Averia Serif Libre' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+        <link href='https://fonts.googleapis.com/css?family=Rhodium Libre' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Roboto Slab' rel='stylesheet'>
 
-            <!-- icon at tab -->
-            <link rel="icon" type="image/png" href="../images/bacon.png">
+        <!-- icon at tab -->
+        <link rel="icon" type="image/png" href="../images/bacon.png">
 
-        </head>
+    </head>
     <body>
         <div style="margin-left: 60px; margin-top: 30px; width: 1800px; height: 126px; border-top: 4px solid #000; border-bottom: 4px solid #000; position: absolute">
             <h1 style="font-family: 'Averia Serif Libre'; font-size: 49px; position: absolute; margin-top: 33px;">Snap Serve</h1>
@@ -213,7 +213,7 @@ if ( isset($_SESSION['id']) ){
             <p id="foods">Foods that are HOT right now!</p>
             <p id="pop">Popular Menu</p>
             <p id="dishes">Dishes that are  perfectly cooked to cater <br> your taste buds, craves and needs.</p>
-        <div>
+            <div>
                 <button style="margin-left: 375px; margin-top:392px;"  id="all1">
                         <div style="position: absolute; margin-top: -15px ; margin-left: 75px;">
                         <svg id="bur" style="position: absolute; margin-left: -35px" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
@@ -279,7 +279,7 @@ if ( isset($_SESSION['id']) ){
 
             <div id="popularmenu">
                 
-                <h1> LOADING... </h1>
+                <!-- <h1> LOADING... </h1> -->
 
                 <!-- <div id="men1" style="position: absolute; margin-top: 526px; margin-left: 220px;">
                     <img src="../images/orange.png" style="position: absolute;">
