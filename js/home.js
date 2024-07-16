@@ -1,28 +1,6 @@
 // Load js if HTML is done
 document.addEventListener('DOMContentLoaded', function(){
 
-    // fetch ('../contexts/emanuel.php')
-    // .then (response => response.json())
-    //     .then (data => {
-    //         console.log (data);
-    //         const sessiontext = document.getElementById("sessiontext");
-
-    //         if (data.loggedin){
-                
-                
-    //             // change the value of text
-    //             sessiontext.textContent = "Logout";
-    //         }
-
-    //         else{
-    //             // change the value of text
-    //             sessiontext.textContent = "Sign in";
-    //         }
-    //     })
-
-    
-    
-
     // variables
     const sessionbutton = document.getElementById("sessionbutton");
     const sessiontext = document.getElementById("sessiontext");
@@ -36,15 +14,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
     // if the user is logged in
     if (loggedin){
-        // change the list to logout
-        sessionbutton.id = "logoutbutton";
+        // change the text to logout
         sessiontext.textContent = "Logout";
 
-        // get the new button id
-        const logoutbutton = document.getElementById("logoutbutton");
-
         // if there is click on logoutbutton
-        logoutbutton.addEventListener('click', (ev) => {
+        sessionbutton.addEventListener('click', (ev) => {
             // prevent loading of website
             ev.preventDefault();
 
@@ -66,15 +40,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
     // if there is no logged in
     else {
-        // change the id of button to sign in
-        sessionbutton.id = "signinbutton";
+        // change the text to sign in
         sessiontext.textContent = "Sign in";
 
-        // get the new button id
-        const signinbutton = document.getElementById("signinbutton");
-
         // if there is click on logoutbutton
-        signinbutton.addEventListener('click', (ev) => {
+        sessionbutton.addEventListener('click', (ev) => {
             // prevent loading of website
             ev.preventDefault();
 
