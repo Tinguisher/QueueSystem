@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function(){
             // create a div element
             const div = document.createElement('div');
             div.className = "menucard";
-            div.style = "margin-left: 220px;";
+            div.style = "margin-top: 90px; margin-left: 150px; display: inline-block";
             
             // put the div inside popularmenu id
             popularmenu.appendChild(div);
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function(){
             // create an image element
             const img = document.createElement('img');
             img.src = `../images/foods/${menu.categoryName}/${menu.image}`;
-            img.style = "position: absolute;";
+            img.style = "position: absolute; height:251px; width:251px";
 
             // put the image inside div
             div.appendChild(img);
@@ -168,7 +168,9 @@ document.addEventListener('DOMContentLoaded', function(){
     function menuOnClick(menu){
         console.log(menu.id);
 
-        
+
+
+
 
     }
 
