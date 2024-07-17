@@ -279,7 +279,7 @@ if ( isset($_SESSION['id']) ){
 
             <div id="popularmenu">
                 
-                <!-- <h1> LOADING... </h1> -->
+                <h1> LOADING... </h1>
 
                 <!-- <div id="men1" style="position: absolute; margin-top: 526px; margin-left: 220px;">
                     <img src="../images/orange.png" style="position: absolute;">
@@ -401,10 +401,12 @@ if ( isset($_SESSION['id']) ){
 
             </div>
         </div>
+
         <script>
-            // convert to json to read the boolean
+            // convert to json to read the boolean, pass if logged in or not
             const loggedin = <?php echo json_encode($loggedin);?>;
         </script>
+        
         <script src="../js/home.js"> </script>
     </body>
 </html> 
