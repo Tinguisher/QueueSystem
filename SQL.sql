@@ -11,7 +11,7 @@ CREATE TABLE users(
 	PRIMARY KEY (id)
 );
 
-CREATE TABLE 
+CREATE TABLE dddddd
 
 /* Create Table for Locations */
 CREATE TABLE [ONLINE SOS SYSTEM].[dbo].[Locations](
