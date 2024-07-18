@@ -373,7 +373,7 @@ button {
     line-height: normal;
 }
 
-#all1{
+.all1{
     position: absolute;
 	font-family: "Roboto Slab";
 	font-size: 25px;
@@ -393,7 +393,7 @@ button {
 	transition-property: box-shadow, transform;
 }
 
-#all1:hover div svg path {
+.all1:hover div svg path {
     fill: #FFFFFF;
    
 }
@@ -405,7 +405,7 @@ button {
 
 
 
-#all1:hover, .btn:focus, .btn:active{
+.all1:hover, .btn:focus, .btn:active{
     background-color: #094C3B;
     color: #FFFDF1;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -564,13 +564,13 @@ button {
     overflow: hidden;
   }
   
-  .slides{
+  #slides{
     width: 500%;
     height: 500px;
     display: flex;
   }
   
-  .slides input{
+  #slides input{
     display: none;
   }
   
@@ -585,7 +585,7 @@ button {
   }
   
   
-  .navigation-manual{
+  #navigation-manual{
     position: absolute;
     width: 800px;
     bottom: 33px;
@@ -626,7 +626,7 @@ button {
     margin-left: -60%;
   }
   
-  .navigation-auto{
+  #navigation-auto{
     position: absolute;
     display: flex;
     width: 800px;
@@ -635,30 +635,30 @@ button {
     margin-left: 50px;
   }
   
-  .navigation-auto div{
+  #navigation-auto div{
     border: 2px solid #867F7F;
     padding: 5px;
     border-radius: 10px;
     transition: 1s;
   }
   
-  .navigation-auto div:not(:last-child){
+  #navigation-auto div:not(:last-child){
     margin-right: 40px;
   }
   
-  #radio1:checked ~ .navigation-auto .auto-btn1{
+  #radio1:checked ~ #navigation-auto .auto-btn1{
     background: #FFFFFF;
   }
   
-  #radio2:checked ~ .navigation-auto .auto-btn2{
+  #radio2:checked ~ #navigation-auto .auto-btn2{
     background: #FFFFFF;
   }
   
-  #radio3:checked ~ .navigation-auto .auto-btn3{
+  #radio3:checked ~ #navigation-auto .auto-btn3{
     background: #FFFFFF;
   }
   
-  #radio4:checked ~ .navigation-auto .auto-btn4{
+  #radio4:checked ~ #navigation-auto .auto-btn4{
     background: #FFFFFF;
   }
 
