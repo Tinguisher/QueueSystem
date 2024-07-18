@@ -1,0 +1,105 @@
+body{
+    background: #FFFDF1;
+    width: 1920px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#title1{
+    position: absolute;
+    margin-top: 260px;
+    margin-left: 883px;
+    color: #000;
+    text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+    font-family: "Roboto Slab";
+    font-size: 150px;
+    font-weight: 400;   
+}
+
+#title2{
+    position: absolute;
+    margin-top: 450px;
+    margin-left: 1154px;
+    color: #000;
+    text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+    font-family: "Roboto Slab";
+    font-size: 50px;
+    font-weight: 400;
+}
+
+#sign{
+    position: absolute;
+    margin-left: 1336px;
+    margin-top: 650px;
+    color: #000;
+    font-family: "Roboto Slab";
+    font-size: 30px;
+    font-weight: 400;
+}
+
+#up{
+    color: #094C3B;
+    font-family: "Roboto Slab";
+    font-size: 30px;
+    font-weight: 400;
+    background: none;
+    border: none;  
+} 
+
+#up:hover{
+    color:#029A3A;
+    cursor: pointer;
+}
+
+#logbtn{
+    position: absolute;
+    margin-top: 535px;
+    margin-left: 1384px;
+    color: #FFF;
+    font-family: "Roboto Slab";
+    font-size: 50px;
+    font-weight: 400; 
+    width: 336px;
+    height: 92px;
+    border-radius: 30px;
+    background: #094C3B;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+    border: 0;
+	cursor: pointer;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-transition-property: box-shadow, transform;
+	transition-property: box-shadow, transform;
+}
+
+#logbtn:hover, .btn:focus, .btn:active{
+    background-color: #094C3B;
+    color: #FFFDF1;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
+
+#copyrights{
+    position: absolute;
+    margin-top: 850px;
+    margin-left: 763px;
+    color: #000;
+    text-align: right;
+    text-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
+    font-family: Roboto;
+    font-size: 23px;
+    font-weight: 400;
+    border-top: 4px solid #000;
+    border-bottom: 4px solid #000;
+    background: #FFFDF1;
+    width: 1128px;
+    height: 85px;
+    flex-shrink: 0;
+    padding: 14px 0 14px 0;
+}
+
+
