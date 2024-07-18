@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
         // create an img element
         const img = document.createElement('img');
-        img.src = `../images/foods/${menu.categoryName}/${menu.image}`;
+        img.src = `../images/foodCategories/${menu.categoryName}/${menu.image}`;
 
         // put the img inside div
         divslide.appendChild(img);
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
         // create an image element
         const img = document.createElement('img');
-        img.src = `../images/foods/${menu.categoryName}/${menu.image}`;
+        img.src = `../images/foodCategories/${menu.categoryName}/${menu.image}`;
         img.style = "position: absolute; height:251px; width:251px";
 
         // put the image inside div
