@@ -7,8 +7,8 @@ let input = document.getElementById("search-input");
 let listItems = document.querySelectorAll(".dropdown-list-item");
 
 dropdownBtnText.onclick = function () {
-    list.classList.toggle("show");
-    icon.style.rotate = "-180deg";
+  list.classList.toggle("show");
+  icon.style.rotate = "-180deg";
 };
 
 var slideIndex = 1;
@@ -50,3 +50,11 @@ var i;
 }
 
 
+var counter = 1;
+setInterval(function(){
+  document.getElementById('radio' + counter).checked = true;
+  counter++;
+  if(counter > 4){
+    counter = 1;
+  }
+}, 5000);

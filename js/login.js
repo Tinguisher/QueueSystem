@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function(){
     });
 
     // if login sign in is clicked
-    loginform.addEventListener('submit', (ev) =>{
+    loginform.addEventListener('submit', (ev) => {
         // prevent website from loading
         ev.preventDefault();
 
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 console.log(data);
                 // redirect to dashboard if success
                 if (data.status == "success"){
-                    window.location = '../pages/home.html';
+                    window.location = '../pages/home.php';
                 }
             })
         
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function(){
         const signupobject = Object.fromEntries(signup);
 
         // make a request to signupProcess.php
-        fetch ('../contexts/signupProcess.php', {
+        fetch ('../contexts/SignupProcess.php', {
             method: "POST",
             headers: {
                 // state as a json type
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 console.log(data);
                 // redirect to dashboard if success
                 if (data.status == "success"){
-                    window.location = '../pages/home.html';
+                    window.location = '../pages/home.php';
                 }
             })
         
