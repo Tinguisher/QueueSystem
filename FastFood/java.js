@@ -6,6 +6,8 @@ let list = document.getElementById("list");
 let input = document.getElementById("search-input");
 let listItems = document.querySelectorAll(".dropdown-list-item");
 
+console.log(span);
+
 dropdownBtnText.onclick = function () {
   list.classList.toggle("show");
   icon.style.rotate = "-180deg";
