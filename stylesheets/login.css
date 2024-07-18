@@ -1,105 +1,290 @@
-body{
-    background: #FFFDF1;
-    width: 1920px;
-    height: 100%;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+*{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: Roboto Slab;
+}
+
+.h1wc{
+    text-align: center;
+    justify-content: center;
+}
+
+.swc{
+    text-align: center;
+    justify-content: center;
+    color: #909090;
+}
+
+body{
+    background-color: #FFFDF1;
+    width: 1920px;
+    height: 1080px;
     overflow: hidden;
 }
 
-#title1{
+.container{
+    margin-top: 220px;
+    margin-left: 887px;
+    background-color: #FFFDF1;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
     position: absolute;
-    margin-top: 260px;
-    margin-left: 883px;
-    color: #000;
-    text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
-    font-family: "Roboto Slab";
-    font-size: 150px;
-    font-weight: 400;   
+    overflow: hidden;
+    width: 860px;
+    max-width: 100%;
+    min-height: 577px; 
 }
 
-#title2{
-    position: absolute;
-    margin-top: 450px;
-    margin-left: 1154px;
-    color: #000;
-    text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
-    font-family: "Roboto Slab";
-    font-size: 50px;
-    font-weight: 400;
+.container p{
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    margin: 20px 0;
 }
 
-#sign{
-    position: absolute;
-    margin-left: 1336px;
-    margin-top: 650px;
-    color: #000;
-    font-family: "Roboto Slab";
-    font-size: 30px;
-    font-weight: 400;
+.container span{
+    font-size: 12px;
 }
 
-#up{
-    color: #094C3B;
-    font-family: "Roboto Slab";
-    font-size: 30px;
-    font-weight: 400;
-    background: none;
-    border: none;  
-} 
+.container a{
+    color: #333;
+    font-size: 13px;
+    text-decoration: none;
+    margin: 15px 0 10px;
+}
 
-#up:hover{
-    color:#029A3A;
+.container button{
+    background-color: #094C3B;
+    color: #FFFDF1;
+    font-size: 12px;
+    padding: 10px 45px;
+    border: 1px solid transparent;
+    border-radius: 30px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
     cursor: pointer;
 }
 
-#logbtn{
-    position: absolute;
-    margin-top: 535px;
-    margin-left: 1384px;
-    color: #FFF;
-    font-family: "Roboto Slab";
-    font-size: 50px;
-    font-weight: 400; 
-    width: 336px;
-    height: 92px;
+.container button.hidden{
+    background-color: transparent;
+    border-color: #FFFDF1;
     border-radius: 30px;
-    background: #094C3B;
-    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
-    border: 0;
-	cursor: pointer;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	-webkit-transition-duration: 0.3s;
-	transition-duration: 0.3s;
-	-webkit-transition-property: box-shadow, transform;
-	transition-property: box-shadow, transform;
 }
 
-#logbtn:hover, .btn:focus, .btn:active{
-    background-color: #094C3B;
-    color: #FFFDF1;
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-	-webkit-transform: scale(1.1);
-	transform: scale(1.1);
+.container form{
+    background-color: #FFFDF1;
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    height: 100%;
 }
 
-#copyrights{
+.container input{
+    background-color: #FFFDF1;
+    border: 2px solid #909090;
+    margin: 8px 0;
+    padding: 10px 15px;
+    font-size: 13px;
+    border-radius: 8px;
+    width: 100%;
+    transition: ease-in-out .3s;
+    outline: none;
+}
+
+.container  input:focus{
+    border-color: #2ac09a;
+    color: #2ac09a;
+}
+
+.form-container{
     position: absolute;
-    margin-top: 850px;
-    margin-left: 763px;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+}
+
+.sign-in{
+    left: 0;
+    width: 50%;
+    z-index: 2;
+}
+
+.container.active .sign-in{
+    transform: translateX(100%);
+
+}
+
+.sign-up{
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+}
+
+.container.active .sign-up{
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: move 0.6s;
+}
+
+@keyframes move{
+    0%, 49.99%{
+        opacity: 0;
+        z-index: 1;
+    }
+    50%, 100%{
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+.toggle-container{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%; 
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.6s ease-in-out;
+    border-radius: 0px 30px 30px 0px;
+    z-index: 1000;
+}
+
+.container.active .toggle-container{
+    transform: translateX(-100%);
+    border-radius: 30px 0px 0px 30px
+    
+}
+
+.toggle{
+    background-color: #094C3B;
+    height: 100%;
+    background: #094C3B;
+    color: #FFFDF1;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.container.active .toggle{
+    transform: translateX(50%);
+}
+
+.toggle-panel{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 30px;
+    text-align: center;
+    top: 0;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.toggle-left{
+    transform: translateX(-200%);
+}
+
+.container.active .toggle-left{
+    transform: translateX(0);
+}
+
+.toggle-right{
+    right: 0;
+    transform: translateX(0);
+}
+
+.container.active .toggle-right{
+    transform: translateX(200%);
+}
+
+.button-signlogin:hover{
+    background-color: #FFFDF1;
+    border: 1px solid #094C3B;
+    color: #094C3B;
+}
+
+#register:hover{
+    background-color: #FFFDF1;
+    border: 1px solid #094C3B;
+    color: #094C3B;
+}
+
+#login:hover{
+    background-color: #FFFDF1;
+    border: 1px solid #094C3B;
+    color: #094C3B;
+}
+
+#log{
+    position: absolute;
+    width: 720.36px ;
+    height:1080px;
+}
+
+#snap{
+    position: absolute;
+    margin-top: 414px;
+    margin-left: 52px;
+    color: #FFFDF1;
+    background-color: none;
+    text-shadow: 10px 10px 0px rgba(0, 0, 0, 0.25);
+    font-family: "Roboto Slab";
+    font-size: 114px;
+    font-weight: 400;
+}
+
+#bite{
+    position: absolute;
+    margin-top: 558px;
+    margin-left: 258px;
+    color: #FFFDF1;
+    text-shadow: 10px 10px 0px rgba(0, 0, 0, 0.25);
+    font-family: "Roboto Slab";
+    font-size: 38.104px;
+    font-weight: 400;
+}
+a{
+    font-family: 'Roboto';
+    font-size: 25px;
+    text-decoration: none;
+    color: black;
+}
+
+table, tr, td {
+    border-left: 3px solid #094C3B;
+    border-right: 3px solid #094C3B;
+    border-collapse: collapse;
+    text-align: center;
+    padding: 15px 0px;
+}
+
+td a:hover {color: #2ac09a;}
+
+#copy{
+    position: absolute;
+    margin-top: 890px;
+    margin-left: 1485px;
+    width: 406px;
     color: #000;
     text-align: right;
     text-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
     font-family: Roboto;
     font-size: 23px;
     font-weight: 400;
-    border-top: 4px solid #000;
-    border-bottom: 4px solid #000;
-    background: #FFFDF1;
-    width: 1128px;
-    height: 85px;
-    flex-shrink: 0;
-    padding: 14px 0 14px 0;
 }
-
 
