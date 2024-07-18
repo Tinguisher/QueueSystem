@@ -42,13 +42,13 @@ $base = preg_replace("/[^\w-]/", "_", $base);
 $filename = $base . "." . $pathinfo['extension'];
 
 // get the directory folder to be saved
-$destination = "../images/foods/". $_POST['input_category'] ."/". $filename;
+$destination = "../images/foodCategories/". $_POST['input_category'] ."/". $filename;
 
 // rename if has same image name
 $i = 1;
 while (file_exists($destination)){
     $filename = $base . "($i)." . $pathinfo['extension'];
-    $destination = "../images/foods/". $_POST['input_category'] ."/". $filename;
+    $destination = "../images/foodCategories/". $_POST['input_category'] ."/". $filename;
     $i++;
 }
 
