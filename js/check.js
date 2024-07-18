@@ -14,22 +14,6 @@ document.addEventListener('DOMContentLoaded', function(){
     const list = document.getElementById("list");
     const input = document.getElementById("search-input");
     const listItems = document.querySelectorAll(".dropdown-list-item");
-
-    document.getElementById("men1").addEventListener('click', (ev) => {
-        ev.preventDefault();
-        console.log("tite")
-    });
-
-    var counter = 1;
-
-    setInterval(function(){
-        document.getElementById('radio' + counter).checked = true;
-        counter++;
-        if(counter > 4){
-        counter = 1;
-        }
-        
-    }, 5000);
             
 
     var slideIndex = 1;
