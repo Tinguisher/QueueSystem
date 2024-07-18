@@ -1,4 +1,12 @@
-// Load js if HTML is done
+
+
+const dropdownBtnText = document.getElementById("drop-text");
+const list = document.getElementById("list");
+
+dropdownBtnText.onclick = function () {
+    list.classList.toggle("show");
+    };// Load js if HTML is done
+
 document.addEventListener('DOMContentLoaded', function(){
     const dropdownBtnText = document.getElementById("drop-text");
     const span = document.getElementById("span");
@@ -23,9 +31,6 @@ document.addEventListener('DOMContentLoaded', function(){
         
     }, 5000);
             
-    dropdownBtnText.onclick = function () {
-    list.classList.toggle("show");
-    };
 
     var slideIndex = 1;
     showSlides(slideIndex);
