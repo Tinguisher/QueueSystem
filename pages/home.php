@@ -73,7 +73,7 @@ if ( isset($_SESSION['id']) ){
                 <tr>
                   <td style="width: 138px;"><a href="home.html" target="_top" style="color:#2ac09a;"><b>Home</b></a></td>
                   <td style="width: 133px;" id="menn"><a href="menu.html" target="_top">Menu</a></td>
-                  <td style="width: 155px;"><a href="aboutus.html" target="_top">About Us</a></td>
+                  <td style="width: 155px;"><a href="aboutus.html" target="_top">About Us <?= $name ?? "";?></a></td>
                 </tr>
             </table>
             <a href="menu.html" class="navcrcl" style="margin-top: 37.5px; margin-left: 1746px;">
