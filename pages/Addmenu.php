@@ -13,6 +13,11 @@ $sql = "SELECT * FROM `users` WHERE id=". $_SESSION['id'];
 $result = $mysqli->query($sql);
 $user = $result->fetch_assoc();
 
+$sql = "SELECT * FROM `food_categories`";
+$result = $mysqli->query($sql);
+$food_categories = $result->fetch_all( MYSQLI_ASSOC );
+
+
 ?>
 
 <!DOCTYPE html>
@@ -33,14 +38,21 @@ $user = $result->fetch_assoc();
         
         <h2>Add menu</h2>
         <form id="addMenu" enctype="multipart/form-data">
-            <input type="file" accept="image/*" name="image_input" required />
+            <input type="file" accept="image/*" name="input_image" required />
             <br> <br>
-            <input type="text" name="name_input" placeholder="Name" />
+            <input type="text" name="input_name" placeholder="Name" />
             <br> <br>
-            <input type="text" name="price_input" placeholder="Price" />
+            <input type="text" name="input_price" placeholder="Price" />
             <br> <br>
-            <input type="text" name="description_input" placeholder="Description" />
+            <input type="text" name="input_description" placeholder="Description" />
             <br> <br>
+            <select name="input_category">
+                <?php
+                foreach($food_categories as $food_category){
+                    echo '<option>'. $food_category['name'] .'</option>';
+                }
+                ?>
+            </select>
             <input type="submit" />
         </form>
     </body>
