@@ -32,7 +32,7 @@ table, tr, td {
 
 td a:hover {color: #FF5622;}
 
-#navcrcl{
+.navcrcl{
   width: 50px;
   height: 50px;
   border-radius: 25px;
@@ -394,7 +394,7 @@ box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 
-#menName {
+.menName {
   margin-top: 46px;
   margin-left: 180px;
   font-weight: 700;
@@ -404,7 +404,7 @@ box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   font-family: "Roboto Slab"; 
 }
 
-#men1{
+.men1{
   color: #000;
   font-family: "Roboto Slab";
   border-radius: 10px;
@@ -419,13 +419,13 @@ box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition-property: box-shadow, transform;
 }
 
-#men1:hover{
+.men1:hover{
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
 
-#men2{
+.men2{
   position: absolute;
   width: 319px;
   margin-top: 98.72px;
@@ -433,7 +433,7 @@ box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   color: #000;
   font-size: 18px;
 }
-#dollar{
+.dollar{
   position: absolute;
   margin-top: 150px;
   margin-left: 180px;
@@ -445,7 +445,7 @@ box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   
 }
 
-#new{
+.new{
   position: absolute;
   width: 50px;
   height: 16px;
