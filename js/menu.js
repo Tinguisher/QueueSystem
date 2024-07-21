@@ -184,6 +184,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 menuOnClick(menu);
 
             });
+            
+            a.addEventListener('click', (ev) => {
+            //     const papapapoppop = document.querySelector('.papapapoppop')
+            // if (papapapoppop.style.opacity == '1') {
+            //     papapapoppop.style.opacity = '0';
+            //     papapapoppop.style.visibility = 'hidden';
+            //     return;
+            // }
+            // papapapoppop.style.opacity = '1';
+            // papapapoppop.style.visibility = 'visible';
+                    })
         });
     }
 

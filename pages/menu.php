@@ -533,7 +533,7 @@ if (isset($_SESSION['id'])) {
             <p class="part" style="margin-top: 49.5px; margin-left: 82px;">© Copyrights by ARC System Solutions. All Rights Reserved.</p>z
         </div>
     </div>
-
+    
     <div class="papapapoppop" style="background: rgba(0, 0, 0, 0.40); width: 100%; height: 3033px; position: absolute; top: 0; left: 0; z-index: 9999; opacity: 0; visibility: hidden; transition: 0.5s ease;">
 
         <div style=" position: absolute; margin-top: 1011px; margin-left: 622px; width: 676px; height: 925px; border-radius: 25.799px;background: #FFFDF1;">
