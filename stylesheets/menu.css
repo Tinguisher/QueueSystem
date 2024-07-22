@@ -355,7 +355,7 @@ li p {
 }
 
 
-#all1 {
+.all1 {
     position: absolute;
     font-family: "Roboto Slab";
     font-size: 25px;
@@ -375,7 +375,7 @@ li p {
     transition-property: box-shadow, transform;
 }
 
-#all2 {
+/* .all2 {
     position: absolute;
     font-family: "Roboto Slab";
     font-size: 25px;
@@ -389,11 +389,11 @@ li p {
     border: 0;
     cursor: pointer;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+} */
 
 
 
-#all1:hover div svg path {
+.all1:hover div svg path {
     fill: #FFFFFF;
 
 }
@@ -405,7 +405,7 @@ li p {
 
 
 
-#all1:hover,
+.all1:hover,
 .btn:focus,
 .btn:active {
     background-color: #FF5622;
