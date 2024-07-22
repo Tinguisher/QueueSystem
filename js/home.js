@@ -125,8 +125,8 @@ document.addEventListener('DOMContentLoaded', function(){
     createPopularMenuCards = (menu) => {
         // create a div element
         const div = document.createElement('div');
-        div.className = "menucard";
-        div.style = "margin-top: 90px; margin-left: 150px; display: inline-block";
+        div.className = "men1";
+        div.style = "margin-top: 70px; margin-left: 180px; display: inline-block";
         
         // put the div inside popularmenu id
         popularmenu.appendChild(div);

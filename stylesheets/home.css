@@ -21,13 +21,13 @@ table, tr, td {
     padding: 15px 0px;
 }
 
-td a:hover {color: #2ac09a;}
+td a:hover {color: #FF5622;}
 
 .navcrcl{
     width: 50px;
     height: 50px;
     border-radius: 25px;
-    background-color: #094C3B;
+    background-color: #FF5622;
     position: absolute;
 }
 
@@ -57,7 +57,7 @@ input:focus{
     margin-left: 60px; 
     position: absolute; 
     border: 4px solid #000; 
-    background: #094C3B; 
+    background: #FF5622; 
     color: white; 
     font-size: 32px; 
     font-family: Rhodium Libre; 
@@ -128,7 +128,7 @@ input:focus{
 
 #free{
     position: absolute;
-    color: #029A3A;
+    color: #FF5622;
     font-family: "Roboto Slab";
     font-size: 25px;
     font-style: normal;
@@ -296,7 +296,7 @@ button {
   
     --background-color: #FFFDF1;
     --border-size: 2px;
-    --accent-color: #094C3B;
+    --accent-color: #FF5622;
   }
 .btn.btn-background-slide::before {
     content: '';
@@ -338,7 +338,7 @@ button {
     margin-top: 123px;
     margin-left: 780px;
     position: absolute;
-    color: #094C3B;
+    color: #FF5622;
     text-align: center;
     font-family: "Roboto Slab";
     font-size: 25px;
@@ -382,7 +382,7 @@ button {
 	width: 171px;
 	height: 84px;
 	text-align: center;
-	color: #094C3B;
+	color: #FF5622;
 	border-radius: 0px;
     border: 0;
 	cursor: pointer;
@@ -398,7 +398,7 @@ button {
    
 }
 
-.burger:hover div svg path {
+#burger:hover div svg path {
     fill: #FFFFFF;
     stroke: #FFF;
 }
@@ -406,7 +406,7 @@ button {
 
 
 .all1:hover, .btn:focus, .btn:active{
-    background-color: #094C3B;
+    background-color: #FF5622;
     color: #FFFDF1;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 	-webkit-transform: scale(1.1);
@@ -423,7 +423,7 @@ button {
     font-family: "Roboto Slab"; 
 }
 
-.menucard{
+/* .menucard{
   color: #000;
   font-family: "Roboto Slab";
   border-radius: 13px;
@@ -437,13 +437,13 @@ button {
   transition-duration: 0.3s;
   -webkit-transition-property: box-shadow, transform;
   transition-property: box-shadow, transform;
-}
+} */
 
 .men1{
     color: #000;
     font-family: "Roboto Slab";
     border-radius: 13px;
-    border: 3px solid #094C3B;
+    border: 3px solid #FF5622;
     background: #FFF;
     width: 687px;
     height: 251px;
@@ -473,7 +473,7 @@ button {
     position: absolute;
     margin-top: 174px;
     margin-left: 235px;
-    color: #094C3B;
+    color: #FF5622;
     font-family: "Roboto Slab";
     font-size: 40px;
     font-weight: 700;
@@ -491,13 +491,13 @@ button {
     font-size: 20px;
     font-weight: 400;
     border-radius: 10px;
-    background: #094C3B;  
+    background: #FF5622;  
     padding: 0;    
 }
 
 #show{
     position: absolute;
-    margin-top: 1764px;
+    margin-top: 450px;
     margin-left: 818px;
     width: 281px;
     height: 98px;
@@ -520,7 +520,7 @@ button {
 }
 
 #show:hover{
-    background-color: #094C3B;
+    background-color: #FF5622;
     color: #FFFDF1;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 	-webkit-transform: scale(1.1);
@@ -531,7 +531,7 @@ button {
     position: absolute;
     margin-top: 2005px;
     margin-left: 758px;
-    color: #094C3B;
+    color: #FF5622;
     font-family: "Roboto Slab";
     font-size: 25px;
     font-style: normal;
@@ -690,7 +690,7 @@ button {
       width: 72px;
       height: 50px;
       border-radius: 25px;
-      background-color: #094C3B;
+      background-color: #FF5622;
       position: absolute;
   
   }
@@ -704,7 +704,7 @@ button {
     border-radius: 15px;
     max-height: 0;
     overflow: hidden;
-    background-color: #094C3B;
+    background-color: #FF5622;
     transition: max-height 0.5s;
     z-index: 1;
     border: 2px solid #FFFDF1;
