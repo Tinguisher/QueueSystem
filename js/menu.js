@@ -2,59 +2,16 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     // variables
-    const sessionbutton = document.getElementById("sessionbutton");
-    const sessiontext = document.getElementById("sessiontext");
     const dropdownBtnText = document.getElementById("drop-text");
     const list = document.getElementById("list");
     const regularMenuCards = document.getElementById("regularMenuCards");
+    const papapapoppop = document.getElementById('papapapoppop');
     var menuArray = [{}];
 
     // if dropdown is clicked
     dropdownBtnText.onclick = function () {
         list.classList.toggle("show");
     };
-
-    // if the user is logged in
-    if (loggedin) {
-        // change the text to logout
-        sessiontext.textContent = "Logout";
-
-        // if there is click on logoutbutton
-        sessionbutton.addEventListener('click', (ev) => {
-            // prevent loading of website
-            ev.preventDefault();
-
-            // go to logout
-            fetch('../contexts/logout.php')
-                .then(response => response.json())
-                // get objects from fetch
-                .then(data => {
-                    // if the status is success
-                    if (data.status == "success") {
-                        // reload the website
-                        window.location.reload();
-                    }
-                })
-                // error checker
-                .catch(error => console.error(error));
-        });
-    }
-
-    // if there is no logged in
-    else {
-        // change the text to sign in
-        sessiontext.textContent = "Sign in";
-
-        // if there is click on logoutbutton
-        sessionbutton.addEventListener('click', (ev) => {
-            // prevent loading of website
-            ev.preventDefault();
-
-            // change the location to login
-            window.location = '../pages/login.php';
-        });
-    }
-
 
     // get all the menu
     fetch('../contexts/GetMenuProcess.php')
@@ -148,12 +105,12 @@ document.addEventListener('DOMContentLoaded', function () {
             div.appendChild(foodPrice);
 
             // create an a element
-            const a = document.createElement('a');
-            a.className = "navcrcl";
-            a.style = "margin-top: 160px; margin-left:480px";
+            const cart = document.createElement('a');
+            cart.className = "navcrcl";
+            cart.style = "margin-top: 160px; margin-left:480px";
 
-            // put a inside div
-            div.appendChild(a);
+            // put cart inside div
+            div.appendChild(cart);
 
             // create a svg element
             const svg = document.createElementNS("http://www.w3.org/2000/svg", 'svg');
@@ -164,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
             svg.setAttribute('fill', "none");
 
             // put the svg inside a
-            a.appendChild(svg);
+            cart.appendChild(svg);
 
             // create a path element
             const path = document.createElementNS("http://www.w3.org/2000/svg", 'path');
@@ -176,25 +133,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
             // create on click listener for each div
-            div.addEventListener('click', (ev) => {
-                // prevent loading of website
-                ev.preventDefault();
+            div.addEventListener('click', () => {
+                // popup the cart for ordering
+                popupCart();
 
-                // create function to process the click
-                menuOnClick(menu);
-
+                // create ordering form in popup
+                createCartForm(menu);
             });
-            
-            a.addEventListener('click', (ev) => {
-            //     const papapapoppop = document.querySelector('.papapapoppop')
-            // if (papapapoppop.style.opacity == '1') {
-            //     papapapoppop.style.opacity = '0';
-            //     papapapoppop.style.visibility = 'hidden';
-            //     return;
-            // }
-            // papapapoppop.style.opacity = '1';
-            // papapapoppop.style.visibility = 'visible';
-                    })
         });
     }
 
@@ -203,38 +148,266 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(menu.id);
 
     }
-});
 
+    // pop out when ordering
+    popupCart = () => {
+        // clear the papapapoppop innerHTML
+        papapapoppop.innerHTML = "";
 
-// pop out after clicking cart in cards
-function pop() {
-    const papapapoppop = document.querySelector('.papapapoppop')
-    if (papapapoppop.style.opacity == '1') {
-        papapapoppop.style.opacity = '0';
-        papapapoppop.style.visibility = 'hidden';
-        return;
+        // toggle hidden
+        if (papapapoppop.style.opacity == '1') {
+            papapapoppop.style.opacity = '0';
+            papapapoppop.style.visibility = 'hidden';
+            return;
+        }
+        // toggle visible
+        papapapoppop.style.opacity = '1';
+        papapapoppop.style.visibility = 'visible';
     }
-    papapapoppop.style.opacity = '1';
-    papapapoppop.style.visibility = 'visible';
-}
+
+    // create popup Cart form
+    createCartForm = (menu) => {
+        // create a form element inside papapapoppop
+        const form = document.createElement('form');
+        form.style = "position: absolute; margin-top: 1011px; margin-left: 622px; width: 676px; height: 925px; border-radius: 25.799px;background: #FFFDF1;";
+        papapapoppop.appendChild(form);
+
+        // create an a element inside form
+        const xbtn = document.createElement('a');
+        xbtn.className = "xbtn";
+        form.appendChild(xbtn);
+
+        // create a svg element inside xbtn
+        const svg = document.createElementNS("http://www.w3.org/2000/svg", 'svg');
+        svg.style = "position: absolute; margin: 12px;";
+        svg.setAttribute('width', "16");
+        svg.setAttribute('height', "16");
+        svg.setAttribute('viewBox', "0 0 16 16");
+        svg.setAttribute('fill', "none");
+        xbtn.appendChild(svg);
+
+        // create a path element inside svg
+        const path = document.createElementNS("http://www.w3.org/2000/svg", 'path');
+        path.setAttribute('d', "M15.5844 14.479C15.657 14.5515 15.7146 14.6377 15.7539 14.7325C15.7932 14.8274 15.8134 14.929 15.8134 15.0317C15.8134 15.1343 15.7932 15.236 15.7539 15.3308C15.7146 15.4257 15.657 15.5118 15.5844 15.5844C15.5118 15.657 15.4257 15.7146 15.3308 15.7539C15.236 15.7932 15.1343 15.8134 15.0317 15.8134C14.929 15.8134 14.8274 15.7932 14.7325 15.7539C14.6377 15.7146 14.5515 15.657 14.479 15.5844L8.00043 9.10493L1.52192 15.5844C1.37532 15.731 1.1765 15.8134 0.969184 15.8134C0.761869 15.8134 0.563044 15.731 0.41645 15.5844C0.269856 15.4378 0.1875 15.239 0.1875 15.0317C0.1875 14.8244 0.269856 14.6255 0.41645 14.479L6.89594 8.00043L0.41645 1.52192C0.269856 1.37532 0.1875 1.1765 0.1875 0.969184C0.1875 0.761869 0.269856 0.563044 0.41645 0.41645C0.563044 0.269856 0.761869 0.1875 0.969184 0.1875C1.1765 0.1875 1.37532 0.269856 1.52192 0.41645L8.00043 6.89594L14.479 0.41645C14.6255 0.269856 14.8244 0.1875 15.0317 0.1875C15.239 0.1875 15.4378 0.269856 15.5844 0.41645C15.731 0.563044 15.8134 0.761869 15.8134 0.969184C15.8134 1.1765 15.731 1.37532 15.5844 1.52192L9.10493 8.00043L15.5844 14.479Z");
+        path.setAttribute('fill', "#FFFDF1");
+        svg.appendChild(path);
+
+        // create an img element inside from
+        const img = document.createElement('img');
+        img.src = `../images/foodCategories/${menu.categoryName}/${menu.image}`
+        img.style = "position: absolute; margin-top: 19px; margin-left: 20px; width: 636px; height: 306px";
+        form.appendChild(img);
+
+        // create a p element inside form
+        const foodName = document.createElement('p');
+        foodName.className = "mentitle";
+        foodName.textContent = menu.foodName;
+        form.appendChild(foodName);
+
+        // create a p element inside form
+        const foodDescription = document.createElement('p');
+        foodDescription.className = "mendesc";
+        foodDescription.textContent = menu.description;
+        form.appendChild(foodDescription);
+
+        // create a p element inside form
+        const foodPrice = document.createElement('p');
+        foodPrice.className = "prc";
+        foodPrice.textContent = `Php ${(Math.round(menu.price * 100) / 100).toFixed(2)}`; // convert into two decimal
+        form.appendChild(foodPrice);
+
+        // create a div element inside form
+        const drinks = document.createElement('div');
+        drinks.style = "position: absolute; margin-top: 519px; width: 676px; height: 406px;border-radius: 0px 0px 25.8px 25.8px; background: #D9D9D9;";
+        form.appendChild(drinks);
+
+        // create a p element inside drinks
+        const addDrinksText = document.createElement('p');
+        addDrinksText.className = "addrin";
+        addDrinksText.textContent = "Add Drinks";
+        drinks.appendChild(addDrinksText);
+
+        // create a label element inside drinks
+        const label1 = document.createElement('label');
+        label1.className = "container";
+        label1.style = "margin-top: 104px;";
+        drinks.appendChild(label1);
+
+        // create an input element inside label1
+        const input1 = document.createElement('input');
+        input1.type = "radio";
+        input1.name = "radio";
+        input1.value = "Drink One";
+        input1.required = true;
+        label1.appendChild(input1);
+
+        // create a span element inside label1
+        const span1 = document.createElement('span');
+        span1.className = "checkmark";
+        label1.appendChild(span1);
+
+        // put a text inside label1
+        label1.append("Drink One");
+
+        // create a label element inside drinks
+        const label2 = document.createElement('label');
+        label2.className = "container";
+        drinks.appendChild(label2);
+
+        // create an input element inside label2
+        const input2 = document.createElement('input');
+        input2.type = "radio";
+        input2.name = "radio";
+        input2.value = "Drink Two";
+        input2.required = true;
+        label2.appendChild(input2);
+
+        // create a span element inside label2
+        const span2 = document.createElement('span');
+        span2.className = "checkmark";
+        label2.appendChild(span2);
+
+        // put a text inside label2
+        label2.append("Drink Two");
+
+        // create a label element inside drinks
+        const label3 = document.createElement('label');
+        label3.className = "container";
+        drinks.appendChild(label3);
+
+        // create an input element inside label3
+        const input3 = document.createElement('input');
+        input3.type = "radio";
+        input3.name = "radio";
+        input3.value = "Drink Three";
+        input3.required = true;
+        label3.appendChild(input3);
+
+        // create a span element inside label3
+        const span3 = document.createElement('span');
+        span3.className = "checkmark";
+        label3.appendChild(span3);
+
+        // put a text inside label3
+        label3.append("Drink Three");
+
+        // create a label element inside drinks
+        const label4 = document.createElement('label');
+        label4.className = "container";
+        drinks.appendChild(label4);
+
+        // create an input element inside label4
+        const input4 = document.createElement('input');
+        input4.type = "radio";
+        input4.name = "radio";
+        input4.value = "No";
+        input4.required = true;
+        label4.appendChild(input4);
+
+        // create a span element inside label4
+        const span4 = document.createElement('span');
+        span4.className = "checkmark";
+        label4.appendChild(span4);
+
+        // put a text inside label4
+        label4.append("No");
+
+        // create a div element inside form
+        const drinkFees = document.createElement('div');
+        form.appendChild(drinkFees);
+
+        // create a first drink fee inside drinkFees
+        const drinkFee1 = document.createElement('p');
+        drinkFee1.className = "addpri";
+        drinkFee1.style = "margin-top: 622px;";
+        drinkFee1.textContent = "Free";
+        drinkFees.appendChild(drinkFee1);
+
+        // create a second drink fee inside drinkFees
+        const drinkFee2 = document.createElement('p');
+        drinkFee2.className = "addpri";
+        drinkFee2.style = "margin-top: 675px;";
+        drinkFee2.textContent = "Php 20.00";
+        drinkFees.appendChild(drinkFee2);
+
+        // create a third drink fee inside drinkFees
+        const drinkFee3 = document.createElement('p');
+        drinkFee3.className = "addpri";
+        drinkFee3.style = "margin-top: 725px;";
+        drinkFee3.textContent = "Php 40.00";
+        drinkFees.appendChild(drinkFee3);
+
+        // create a submit button inside drinkFees
+        const addToCart = document.createElement('button');
+        addToCart.type = "submit";
+        addToCart.className = "crtbtn";
+        addToCart.textContent = "Add to Cart";
+        drinkFees.appendChild(addToCart);
+
+        // create a div inside drinkFees
+        const quantityManipulate = document.createElement('div');
+        quantityManipulate.className = "productQuantity";
+        drinkFees.appendChild(quantityManipulate);
+
+        // create a button inside quantityManipulate
+        const decrement = document.createElement('button');
+        decrement.type = "button";
+        decrement.className = "pqBox";
+        quantityManipulate.appendChild(decrement);
+
+        // create a p element inside decrement
+        const minusText = document.createElement('p');
+        minusText.textContent = "-";
+        decrement.appendChild(minusText);
+
+        // create a p element inside quantityManipulate
+        const quantity = document.createElement('p');
+        quantity.textContent = "1";
+        quantityManipulate.appendChild(quantity);
+
+        // create a button inside quantityManipulate
+        const increment = document.createElement('button');
+        increment.type = "button";
+        increment.className = "pqBox";
+        increment.style = "left: 130px";
+        quantityManipulate.appendChild(increment);
+
+        // create a p element inside increment
+        const plusText = document.createElement('p');
+        plusText.textContent = "+";
+        increment.appendChild(plusText);
+
+        // if x button is clicked, remove the popup
+        xbtn.addEventListener('click', () => {
+            popupCart();
+        });
+
+        // if "+" button is clicked, increment, but not if it is 99
+        increment.addEventListener('click', () => {
+            if (quantity.textContent > 98) return;
+            quantity.textContent++;
+        });
+
+        // if "-" button is clicked, decrement, but not if it is 0
+        decrement.addEventListener('click', () => {
+            if (quantity.textContent < 2) return;
+            quantity.textContent--;
+        });
+
+        // if there is submit in form
+        form.addEventListener('submit', (ev) => {
+            // prevent the website from loading
+            ev.preventDefault();
+
+            console.log(menu.id);
+            console.log(document.querySelector('input[name="radio"]:checked').value);
+        });
 
 
-var number1 = 0;
-const numberDisplay1 = document.getElementById('numberDisplay1');
+    }
 
-// increment number during carts
-function increment1() {
-    if (number1 > 98) return;
-    number1++;
-    numberDisplay1.textContent = number1;
-}
-// decrement number during carts
-function decrement1() {
-    if (number1 < 1) return;
-    number1--;
-    numberDisplay1.textContent = number1;
-}
 
+});
 
 const wrapper = document.querySelector(".wrapper");
 const carousel = document.querySelector(".carousel");
