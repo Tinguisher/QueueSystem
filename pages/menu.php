@@ -243,17 +243,16 @@ if (isset($_SESSION['id'])) {
     </div>
 
     <div>
-
         <!--search box-->
-        <form style="margin-top: 1025px; margin-left: 97px; position: absolute;">
-            <input type="text" name="" placeholder="Search" style="width: 311px; height: 84px;">
-            <button id="search" type="submit"><i class="fa-solid fa-magnifying-glass fa-2xl" style="position:absolute; margin-top: 24px;"></i></button>
-        </form>
+        <div style="margin-top: 1025px; margin-left: 97px; position: absolute;">
+            <input id="filterInput" type="text" placeholder="Search" style="width: 311px; height: 84px;">
+            <button id="search"><i class="fa-solid fa-magnifying-glass fa-2xl" style="position:absolute; margin-top: 24px;"></i></button>
+        </div>
 
         <div>
-            <button value="All" style="margin-left: 429px; margin-top:1025px;" class="all1">
+            <button style="margin-left: 429px; margin-top:1025px;" class="all1">
                 <div style="position: absolute; margin-top: -15px ; margin-left: 75px;">
-                    <svg id="bur" style="position: absolute; margin-left: -35px" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                    <svg style="position: absolute; margin-left: -35px" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
                         <path d="M1.25 27.5C1.25 28.175 1.8125 28.75 2.5 28.75H18.75C19.45 28.75 20 28.175 20 27.5V26.25H1.25V27.5ZM10.625 11.25C5.9375 11.25 1.25 13.75 1.25 18.75H20C20 13.75 15.3125 11.25 10.625 11.25ZM4.525 16.25C5.9125 14.3125 8.8625 13.75 10.625 13.75C12.3875 13.75 15.3375 14.3125 16.725 16.25H4.525ZM1.25 21.25H20V23.75H1.25V21.25ZM22.5 6.25V1.25H20V6.25H13.75L14.0375 8.75H25.9875L24.2375 26.25H22.5V28.75H24.65C25.7 28.75 26.5625 27.9375 26.6875 26.9125L28.75 6.25H22.5Z" fill="#FF5622" />
                     </svg>
                     All
@@ -261,7 +260,7 @@ if (isset($_SESSION['id'])) {
             </button>
             <button value="Popular" style="margin-left: 633px; margin-top:1025px;" class="all1">
                 <div style="position: absolute; margin-top: -15px ; margin-left: 55px;">
-                    <svg id="bur" style="position: absolute; margin-left: -35px" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                    <svg style="position: absolute; margin-left: -35px" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
                         <path d="M21.5496 17.9693C21.3065 19.3272 20.6532 20.578 19.6777 21.5533C18.7022 22.5286 17.4513 23.1816 16.0934 23.4244C16.0418 23.4326 15.9897 23.4369 15.9375 23.4373C15.7023 23.4373 15.4758 23.3488 15.3028 23.1895C15.1298 23.0303 15.0229 22.8118 15.0035 22.5774C14.984 22.3431 15.0533 22.11 15.1977 21.9243C15.342 21.7387 15.5509 21.6141 15.7828 21.5752C17.7246 21.2482 19.3723 19.6006 19.7016 17.6553C19.7432 17.4101 19.8806 17.1914 20.0834 17.0475C20.2863 16.9035 20.538 16.8461 20.7832 16.8877C21.0284 16.9293 21.2471 17.0667 21.391 17.2696C21.535 17.4724 21.5924 17.7241 21.5508 17.9693H21.5496ZM25.3125 16.8748C25.3125 19.6099 24.226 22.2329 22.292 24.1668C20.3581 26.1008 17.735 27.1873 15 27.1873C12.265 27.1873 9.64193 26.1008 7.70796 24.1668C5.77399 22.2329 4.6875 19.6099 4.6875 16.8748C4.6875 13.6029 5.97656 10.2572 8.51484 6.93145C8.59519 6.82614 8.69694 6.73906 8.81339 6.67593C8.92984 6.6128 9.05834 6.57507 9.19044 6.56521C9.32253 6.55536 9.45521 6.57361 9.57974 6.61876C9.70426 6.66391 9.81781 6.73493 9.91289 6.82715L12.7395 9.57051L15.3176 2.49122C15.3691 2.35002 15.4538 2.22328 15.5645 2.12168C15.6753 2.02007 15.8088 1.94658 15.9539 1.90741C16.099 1.86823 16.2514 1.86452 16.3983 1.89657C16.5451 1.92863 16.6821 1.99552 16.7977 2.09161C19.3605 4.21856 25.3125 9.90801 25.3125 16.8748ZM23.4375 16.8748C23.4375 11.4736 19.2434 6.80606 16.616 4.41426L14.0062 11.5709C13.9527 11.7179 13.8632 11.8491 13.7459 11.9527C13.6286 12.0562 13.4873 12.1288 13.3348 12.1637C13.1823 12.1987 13.0235 12.1949 12.8729 12.1528C12.7222 12.1106 12.5845 12.0315 12.4723 11.9225L9.38203 8.92481C7.51055 11.626 6.5625 14.2967 6.5625 16.8748C6.5625 19.1126 7.45145 21.2587 9.03379 22.841C10.6161 24.4234 12.7622 25.3123 15 25.3123C17.2378 25.3123 19.3839 24.4234 20.9662 22.841C22.5486 21.2587 23.4375 19.1126 23.4375 16.8748Z" fill="#FF5622" />
                     </svg>
                     Popular
@@ -322,36 +321,25 @@ if (isset($_SESSION['id'])) {
         </div>
     </div>
 
-    <div id="regularMenuCards" style="position: absolute; margin-left: 61px; width: 1200px; margin-top: 1133px;">
+    <div style="position: absolute; margin-left: 61px; width: 1200px; margin-top: 1133px;" data-regular-menu-container>
         <h4>Loading Menu Cards...</h4>
-        <!-- <div class="men1" style="margin-left: 97px; position: absolute; margin-top: 1177px;">
-            <img src="../images/lemon.png" style="position: absolute;">
-            <input type="text" class="new" value="" readonly style="margin-top: 19px; margin-left: 214px;">
-            <input type="text" class="menName" value="Lemon Grilled Chicken" readonly>
-            <p class="men2">Tender grilled chicken with zesty lemon sauce.</p>
-            <input type="text" class="dollar" value="Php 450.00" readonly>
-            <a class="navcrcl" style="margin-top: 160px; margin-left:480px;" onclick="pop()">
-                <svg style="margin-top: 10px; margin-left:10px" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
-                    <path d="M0 2.8125C0 2.56386 0.0987721 2.3254 0.274587 2.14959C0.450403 1.97377 0.68886 1.875 0.9375 1.875H3.75C3.95912 1.87506 4.16222 1.94503 4.327 2.0738C4.49177 2.20256 4.60877 2.38272 4.65937 2.58562L5.41875 5.625H27.1875C27.3252 5.62513 27.4611 5.65557 27.5857 5.71416C27.7102 5.77275 27.8204 5.85805 27.9082 5.96401C27.9961 6.06996 28.0596 6.19397 28.0941 6.32722C28.1287 6.46047 28.1335 6.59969 28.1081 6.735L25.2956 21.735C25.2554 21.9498 25.1414 22.1439 24.9733 22.2836C24.8052 22.4232 24.5936 22.4998 24.375 22.5H7.5C7.28144 22.4998 7.06981 22.4232 6.90171 22.2836C6.7336 22.1439 6.61959 21.9498 6.57938 21.735L3.76875 6.76313L3.01875 3.75H0.9375C0.68886 3.75 0.450403 3.65123 0.274587 3.47541C0.0987721 3.2996 0 3.06114 0 2.8125ZM5.81625 7.5L8.27812 20.625H23.5969L26.0588 7.5H5.81625ZM9.375 22.5C8.38044 22.5 7.42661 22.8951 6.72335 23.5984C6.02009 24.3016 5.625 25.2554 5.625 26.25C5.625 27.2446 6.02009 28.1984 6.72335 28.9016C7.42661 29.6049 8.38044 30 9.375 30C10.3696 30 11.3234 29.6049 12.0267 28.9016C12.7299 28.1984 13.125 27.2446 13.125 26.25C13.125 25.2554 12.7299 24.3016 12.0267 23.5984C11.3234 22.8951 10.3696 22.5 9.375 22.5ZM22.5 22.5C21.5054 22.5 20.5516 22.8951 19.8484 23.5984C19.1451 24.3016 18.75 25.2554 18.75 26.25C18.75 27.2446 19.1451 28.1984 19.8484 28.9016C20.5516 29.6049 21.5054 30 22.5 30C23.4946 30 24.4484 29.6049 25.1516 28.9016C25.8549 28.1984 26.25 27.2446 26.25 26.25C26.25 25.2554 25.8549 24.3016 25.1516 23.5984C24.4484 22.8951 23.4946 22.5 22.5 22.5ZM9.375 24.375C9.87228 24.375 10.3492 24.5725 10.7008 24.9242C11.0525 25.2758 11.25 25.7527 11.25 26.25C11.25 26.7473 11.0525 27.2242 10.7008 27.5758C10.3492 27.9275 9.87228 28.125 9.375 28.125C8.87772 28.125 8.40081 27.9275 8.04918 27.5758C7.69754 27.2242 7.5 26.7473 7.5 26.25C7.5 25.7527 7.69754 25.2758 8.04918 24.9242C8.40081 24.5725 8.87772 24.375 9.375 24.375ZM22.5 24.375C22.9973 24.375 23.4742 24.5725 23.8258 24.9242C24.1775 25.2758 24.375 25.7527 24.375 26.25C24.375 26.7473 24.1775 27.2242 23.8258 27.5758C23.4742 27.9275 22.9973 28.125 22.5 28.125C22.0027 28.125 21.5258 27.9275 21.1742 27.5758C20.8225 27.2242 20.625 26.7473 20.625 26.25C20.625 25.7527 20.8225 25.2758 21.1742 24.9242C21.5258 24.5725 22.0027 24.375 22.5 24.375Z" fill="#FFFFFF" />
-                </svg>
-            </a>
-        </div> -->
-        <!-- <div class="men1" style="margin-left: 97px; position: absolute; margin-top: 1177px;">
-            <img src="../images/lemon.png" style="position: absolute;">
-            <input type="text" class="new" value="" readonly style="margin-top: 19px; margin-left: 214px;">
-            <input type="text" class="menName" value="Lemon Grilled Chicken" readonly>
-            <p class="men2">Tender grilled chicken with zesty lemon sauce.</p>
-            <input type="text" class="dollar" value="Php 450.00" readonly>
-            <a class="navcrcl" style="margin-top: 160px; margin-left:480px;" onclick="pop()">
-                <svg style="margin-top: 10px; margin-left:10px" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
-                    <path d="M0 2.8125C0 2.56386 0.0987721 2.3254 0.274587 2.14959C0.450403 1.97377 0.68886 1.875 0.9375 1.875H3.75C3.95912 1.87506 4.16222 1.94503 4.327 2.0738C4.49177 2.20256 4.60877 2.38272 4.65937 2.58562L5.41875 5.625H27.1875C27.3252 5.62513 27.4611 5.65557 27.5857 5.71416C27.7102 5.77275 27.8204 5.85805 27.9082 5.96401C27.9961 6.06996 28.0596 6.19397 28.0941 6.32722C28.1287 6.46047 28.1335 6.59969 28.1081 6.735L25.2956 21.735C25.2554 21.9498 25.1414 22.1439 24.9733 22.2836C24.8052 22.4232 24.5936 22.4998 24.375 22.5H7.5C7.28144 22.4998 7.06981 22.4232 6.90171 22.2836C6.7336 22.1439 6.61959 21.9498 6.57938 21.735L3.76875 6.76313L3.01875 3.75H0.9375C0.68886 3.75 0.450403 3.65123 0.274587 3.47541C0.0987721 3.2996 0 3.06114 0 2.8125ZM5.81625 7.5L8.27812 20.625H23.5969L26.0588 7.5H5.81625ZM9.375 22.5C8.38044 22.5 7.42661 22.8951 6.72335 23.5984C6.02009 24.3016 5.625 25.2554 5.625 26.25C5.625 27.2446 6.02009 28.1984 6.72335 28.9016C7.42661 29.6049 8.38044 30 9.375 30C10.3696 30 11.3234 29.6049 12.0267 28.9016C12.7299 28.1984 13.125 27.2446 13.125 26.25C13.125 25.2554 12.7299 24.3016 12.0267 23.5984C11.3234 22.8951 10.3696 22.5 9.375 22.5ZM22.5 22.5C21.5054 22.5 20.5516 22.8951 19.8484 23.5984C19.1451 24.3016 18.75 25.2554 18.75 26.25C18.75 27.2446 19.1451 28.1984 19.8484 28.9016C20.5516 29.6049 21.5054 30 22.5 30C23.4946 30 24.4484 29.6049 25.1516 28.9016C25.8549 28.1984 26.25 27.2446 26.25 26.25C26.25 25.2554 25.8549 24.3016 25.1516 23.5984C24.4484 22.8951 23.4946 22.5 22.5 22.5ZM9.375 24.375C9.87228 24.375 10.3492 24.5725 10.7008 24.9242C11.0525 25.2758 11.25 25.7527 11.25 26.25C11.25 26.7473 11.0525 27.2242 10.7008 27.5758C10.3492 27.9275 9.87228 28.125 9.375 28.125C8.87772 28.125 8.40081 27.9275 8.04918 27.5758C7.69754 27.2242 7.5 26.7473 7.5 26.25C7.5 25.7527 7.69754 25.2758 8.04918 24.9242C8.40081 24.5725 8.87772 24.375 9.375 24.375ZM22.5 24.375C22.9973 24.375 23.4742 24.5725 23.8258 24.9242C24.1775 25.2758 24.375 25.7527 24.375 26.25C24.375 26.7473 24.1775 27.2242 23.8258 27.5758C23.4742 27.9275 22.9973 28.125 22.5 28.125C22.0027 28.125 21.5258 27.9275 21.1742 27.5758C20.8225 27.2242 20.625 26.7473 20.625 26.25C20.625 25.7527 20.8225 25.2758 21.1742 24.9242C21.5258 24.5725 22.0027 24.375 22.5 24.375Z" fill="#FFFFFF" />
-                </svg>
-            </a>
-        </div> -->
-
-        
     </div>
-
+    <!-- Template for each food card -->
+    <template data-regular-menu-template>
+        <div class="foodCard">
+            <img style="position: absolute; width: 200px; height: 221px" data-food-image>
+            <input type="text" class="new" value="" readonly style="margin-top: 19px; margin-left: 214px;">
+            <input type="text" class="menName" data-food-name readonly>
+            <p class="men2" data-food-description></p>
+            <input type="text" class="dollar" data-food-price readonly>
+            <a class="navcrcl" style="margin-top: 160px; margin-left:480px;">
+                <svg style="margin-top: 10px; margin-left:10px" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                    <path d="M0 2.8125C0 2.56386 0.0987721 2.3254 0.274587 2.14959C0.450403 1.97377 0.68886 1.875 0.9375 1.875H3.75C3.95912 1.87506 4.16222 1.94503 4.327 2.0738C4.49177 2.20256 4.60877 2.38272 4.65937 2.58562L5.41875 5.625H27.1875C27.3252 5.62513 27.4611 5.65557 27.5857 5.71416C27.7102 5.77275 27.8204 5.85805 27.9082 5.96401C27.9961 6.06996 28.0596 6.19397 28.0941 6.32722C28.1287 6.46047 28.1335 6.59969 28.1081 6.735L25.2956 21.735C25.2554 21.9498 25.1414 22.1439 24.9733 22.2836C24.8052 22.4232 24.5936 22.4998 24.375 22.5H7.5C7.28144 22.4998 7.06981 22.4232 6.90171 22.2836C6.7336 22.1439 6.61959 21.9498 6.57938 21.735L3.76875 6.76313L3.01875 3.75H0.9375C0.68886 3.75 0.450403 3.65123 0.274587 3.47541C0.0987721 3.2996 0 3.06114 0 2.8125ZM5.81625 7.5L8.27812 20.625H23.5969L26.0588 7.5H5.81625ZM9.375 22.5C8.38044 22.5 7.42661 22.8951 6.72335 23.5984C6.02009 24.3016 5.625 25.2554 5.625 26.25C5.625 27.2446 6.02009 28.1984 6.72335 28.9016C7.42661 29.6049 8.38044 30 9.375 30C10.3696 30 11.3234 29.6049 12.0267 28.9016C12.7299 28.1984 13.125 27.2446 13.125 26.25C13.125 25.2554 12.7299 24.3016 12.0267 23.5984C11.3234 22.8951 10.3696 22.5 9.375 22.5ZM22.5 22.5C21.5054 22.5 20.5516 22.8951 19.8484 23.5984C19.1451 24.3016 18.75 25.2554 18.75 26.25C18.75 27.2446 19.1451 28.1984 19.8484 28.9016C20.5516 29.6049 21.5054 30 22.5 30C23.4946 30 24.4484 29.6049 25.1516 28.9016C25.8549 28.1984 26.25 27.2446 26.25 26.25C26.25 25.2554 25.8549 24.3016 25.1516 23.5984C24.4484 22.8951 23.4946 22.5 22.5 22.5ZM9.375 24.375C9.87228 24.375 10.3492 24.5725 10.7008 24.9242C11.0525 25.2758 11.25 25.7527 11.25 26.25C11.25 26.7473 11.0525 27.2242 10.7008 27.5758C10.3492 27.9275 9.87228 28.125 9.375 28.125C8.87772 28.125 8.40081 27.9275 8.04918 27.5758C7.69754 27.2242 7.5 26.7473 7.5 26.25C7.5 25.7527 7.69754 25.2758 8.04918 24.9242C8.40081 24.5725 8.87772 24.375 9.375 24.375ZM22.5 24.375C22.9973 24.375 23.4742 24.5725 23.8258 24.9242C24.1775 25.2758 24.375 25.7527 24.375 26.25C24.375 26.7473 24.1775 27.2242 23.8258 27.5758C23.4742 27.9275 22.9973 28.125 22.5 28.125C22.0027 28.125 21.5258 27.9275 21.1742 27.5758C20.8225 27.2242 20.625 26.7473 20.625 26.25C20.625 25.7527 20.8225 25.2758 21.1742 24.9242C21.5258 24.5725 22.0027 24.375 22.5 24.375Z" fill="#FFFFFF" />
+                </svg>
+            </a>
+        </div>
+    </template>
+    
     <div class="cart">
         <p id="items">Your Items</p>
         <div style="margin-top: 64px; height: 900px; width: 554px; position: absolute; overflow-y: auto; overflow-x: hidden;">
@@ -492,6 +480,61 @@ if (isset($_SESSION['id'])) {
     <!-- Here lies the add cart form -->
     <div id="papapapoppop" style="background: rgba(0, 0, 0, 0.40); width: 100%; height: 3033px; position: absolute; top: 0; left: 0; z-index: 9999; opacity: 0; visibility: hidden; transition: 0.5s ease;"></div>
 
+    <!-- Template for popup -->
+    <template data-menu-popout>
+        <div>
+            <form style="position: absolute; margin-top: 1011px; margin-left: 622px; width: 676px; height: 925px; border-radius: 25.799px;background: #FFFDF1;" data-order-form>
+                <a class="xbtn" data-close-form>
+                    <svg style="position: absolute; margin: 12px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M15.5844 14.479C15.657 14.5515 15.7146 14.6377 15.7539 14.7325C15.7932 14.8274 15.8134 14.929 15.8134 15.0317C15.8134 15.1343 15.7932 15.236 15.7539 15.3308C15.7146 15.4257 15.657 15.5118 15.5844 15.5844C15.5118 15.657 15.4257 15.7146 15.3308 15.7539C15.236 15.7932 15.1343 15.8134 15.0317 15.8134C14.929 15.8134 14.8274 15.7932 14.7325 15.7539C14.6377 15.7146 14.5515 15.657 14.479 15.5844L8.00043 9.10493L1.52192 15.5844C1.37532 15.731 1.1765 15.8134 0.969184 15.8134C0.761869 15.8134 0.563044 15.731 0.41645 15.5844C0.269856 15.4378 0.1875 15.239 0.1875 15.0317C0.1875 14.8244 0.269856 14.6255 0.41645 14.479L6.89594 8.00043L0.41645 1.52192C0.269856 1.37532 0.1875 1.1765 0.1875 0.969184C0.1875 0.761869 0.269856 0.563044 0.41645 0.41645C0.563044 0.269856 0.761869 0.1875 0.969184 0.1875C1.1765 0.1875 1.37532 0.269856 1.52192 0.41645L8.00043 6.89594L14.479 0.41645C14.6255 0.269856 14.8244 0.1875 15.0317 0.1875C15.239 0.1875 15.4378 0.269856 15.5844 0.41645C15.731 0.563044 15.8134 0.761869 15.8134 0.969184C15.8134 1.1765 15.731 1.37532 15.5844 1.52192L9.10493 8.00043L15.5844 14.479Z" fill="#FFFDF1" />
+                    </svg>
+                </a>
+                <img style="position: absolute; margin-top: 19px; margin-left: 20px; width: 636px; height: 306px" data-food-image>
+                <p class="mentitle" data-food-name></p>
+                <p class="mendesc" data-food-description></p>
+                <p class="prc" data-food-price></p>
+                <div style="position: absolute; margin-top: 519px; width: 676px; height: 406px;border-radius: 0px 0px 25.8px 25.8px; background: #D9D9D9;">
+                    <p class="addrin">Add Drinks</p>
+                    <label class="container" style="margin-top: 104px;">
+                        <input type="radio" name="radio" value="Drink One" required>
+                        <span class="checkmark"></span>
+                        Drink One
+                    </label>
+                    <label class="container">
+                        <input type="radio" name="radio" value="Drink Two">
+                        <span class="checkmark"></span>
+                        Drink Two
+                    </label>
+                    <label class="container">
+                        <input type="radio" name="radio" value="Drink Three">
+                        <span class="checkmark"></span>
+                        Drink Three
+                    </label>
+                    <label class="container">
+                        <input type="radio" name="radio" value="No">
+                        <span class="checkmark"></span>
+                        No
+                    </label>
+                </div>
+                <div>
+                    <p class="addpri" style="margin-top: 622px;">Free</p>
+                    <p class="addpri" style="margin-top: 675px;">Php 20.00</p>
+                    <p class="addpri" style="margin-top: 725px;">Php 40.00</p>
+                    <button type="submit" class="crtbtn">Add to Cart</button>
+                    <div class="productQuantity">
+                        <button type="button" class="pqBox" data-order-decrement>
+                            <p>-</p>
+                        </button>
+                        <p data-order-quantity>1</p>
+                        <button type="button" class="pqBox" style="left: 130px;" data-order-increment>
+                            <p>+</p>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </template>
+
     <script>
         // variables
         const sessionbutton = document.getElementById("sessionbutton");
@@ -504,7 +547,7 @@ if (isset($_SESSION['id'])) {
         // if the user is logged in
         if (loggedin) {
             // get the session['id']
-            userID = <?php echo json_encode($_SESSION['id']); ?>;
+            userID = <?php echo json_encode($_SESSION['id'] ?? ""); ?>;
 
             // change the text to logout
             sessiontext.textContent = "Logout";

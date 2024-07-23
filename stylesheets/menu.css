@@ -427,7 +427,10 @@ li p {
     cursor: pointer;
 }
 
-.men1 {
+.foodCard {
+    margin-left: 36px;
+    margin-top: 44px;
+    display: inline-block;
     color: #000;
     font-family: "Roboto Slab";
     border-radius: 10px;
@@ -442,7 +445,7 @@ li p {
     transition-property: box-shadow, transform;
 }
 
-.men1:hover {
+.foodCard:hover {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     -webkit-transform: scale(1.1);
     transform: scale(1.1);

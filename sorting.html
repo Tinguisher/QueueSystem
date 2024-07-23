@@ -8,30 +8,46 @@
 </head>
 
 <body>
+
+    <template data-menu-popout>
+        <form data-name="orderForm">
+
+        </form>
+
+    </template>
+
+
     <script>
 
-        var menu = [{}];
+document.addEventListener("DOMContentLoaded", function() {
+    const menuPopoutTemplate = document.querySelector('template[data-menu-popout]');
+    const menuForm = menuPopoutTemplate.content.cloneNode(true).children[0];
+    const orderForm = menuForm.querySelector('[data-name="orderForm"]');
+    console.log(orderForm);
+})
 
-        fetch('./contexts/HomePopularMenu.php')
-            // get response as json
-            .then(response => response.json())
-            // get objects from fetch
-            .then(data => {
-                menu = data.menu;
-                console.log(menu);
+        // var menu = [{}];
 
-                const ages = data.menu.slice(0);
-                const result = ages.filter(checkAdult);
+        // fetch('./contexts/HomePopularMenu.php')
+        //     // get response as json
+        //     .then(response => response.json())
+        //     // get objects from fetch
+        //     .then(data => {
+        //         menu = data.menu;
+        //         console.log(menu);
 
-                function checkAdult(age) {
-                    return age.categoryName == "pizza";
-                }
-                console.log(result);
-            })
-            // error checker
-            .catch(error => {
-                console.log(error);
-            });
+        //         const ages = data.menu.slice(0);
+        //         const result = ages.filter(checkAdult);
+
+        //         function checkAdult(age) {
+        //             return age.categoryName == "pizza";
+        //         }
+        //         console.log(result);
+        //     })
+        //     // error checker
+        //     .catch(error => {
+        //         console.log(error);
+        //     });
 
 
     </script>
