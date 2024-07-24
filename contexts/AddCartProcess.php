@@ -52,6 +52,7 @@ try{
         'message' => "Added to Cart"
     ];
 }
+
 // if there is error in query
 catch (Exception $e){
     // make an error response
@@ -61,13 +62,13 @@ catch (Exception $e){
     ];
 }
 
+// close statement and database
+$stmt -> close();
+$mysqli -> close();
+
 
 
 // !isset($_SESSION['id']) 
-
-
-
-
 
 exit(json_encode($response));
 

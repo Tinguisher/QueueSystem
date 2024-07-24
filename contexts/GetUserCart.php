@@ -5,18 +5,23 @@ header('Content-Type: application/json; charset=utf-8');
 // access database
 $mysqli = require_once "./database.php";
 
+// start the session to check if there is any
+session_start();
+
 // make a string for sql to be used
-$sql = "SELECT foods.id,
+$sql = "SELECT user_carts.id,
         foods.image,
         food_categories.name AS categoryName,
         foods.name AS foodName,
         foods.description,
-        foods.price
-    FROM `foods`, `food_categories`
-    WHERE foods.food_categories_id = food_categories.id
-    ORDER BY foodName";
+        (foods.price * user_carts.quantity) AS price,
+        user_carts.quantity
+    FROM `user_carts`, `foods`, `food_categories`
+    WHERE user_carts.foods_id = foods.id AND foods.food_categories_id = food_categories.id
+    ORDER BY user_carts.id;";
 
-try{
+// try to create and catch if there is error
+try {
     // prepare the statement
     $stmt = $mysqli -> prepare ($sql);
 
@@ -27,15 +32,16 @@ try{
     $result = $stmt -> get_result();
 
     // get only one from the executed statement
-    $menu = $result -> fetch_all( MYSQLI_ASSOC );
+    $userCart = $result -> fetch_all( MYSQLI_ASSOC );
 
-    // pass the menu to response
+    // pass the user's cart to response
     $response = [
         'status' => "success",
-        'message' => "Passed All of the Menu",
-        'menu' => $menu
+        'message' => "Passed All of User's Cart",
+        'userCart' => $userCart
     ];
 }
+
 // if there is error in query
 catch (Exception $e){
     // make an error response
@@ -50,7 +56,6 @@ $result -> free();
 $stmt -> close();
 $mysqli -> close();
 
-// output the response
 exit ( json_encode($response) );
 
 ?>

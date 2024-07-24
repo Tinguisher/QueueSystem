@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const papapapoppop = document.getElementById('papapapoppop');
     const filterInput = document.getElementById("filterInput");
     const filterButtons = document.querySelectorAll('.all1');
+    const foodCartContainer = document.querySelector("[data-user-cart-container]");
     var menuArray = [];
     var filterButtonValue = "";
 
@@ -72,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // get objects from fetch
         .then(data => {
-            // clear the values from regularMenuCards;
+            // clear the values from regularMenuContainer
             regularMenuContainer.innerHTML = "";
 
             // create a card for each menus fetched from database
@@ -271,6 +272,53 @@ document.addEventListener('DOMContentLoaded', function () {
             // error checker
             .catch(error => console.error(error));
     }
+
+    // get the user's cart
+    fetch('../contexts/GetUserCart.php')
+        // get response as json
+        .then(response => response.json())
+
+        // get objects from fetch
+        .then(data => {
+            // create a card for each user carts
+            createFoodCartCards(data.userCart);
+
+
+
+
+            console.log(data.userCart);
+            
+        
+        })
+        // error checker
+        .catch(error => console.error(error));
+
+    createFoodCartCards = (userCart) => {
+        // loop for every cart by the user
+        userCart.forEach(cart => {
+            // get the element template from menu.php
+            const foodCartTemplate = document.querySelector("[data-user-cart-template]");
+            const card = foodCartTemplate.content.cloneNode(true).children[0];
+
+            // get the template child that needs value to be displayed
+            const foodImage = card.querySelector("[data-food-image]");
+            const foodName = card.querySelector("[data-food-name]");
+            const foodDescription = card.querySelector("[data-food-description]");
+            const foodPrice = card.querySelector("[data-food-price]");
+            const foodQuantity = card.querySelector("[data-food-cart-quantity]");
+            
+            // place the variables got from fetch to the card
+            foodImage.src = `../images/foodCategories/${cart.categoryName}/${cart.image}`;
+            foodName.textContent = cart.foodName;
+            foodDescription.textContent = cart.description;
+            foodPrice.textContent = `Php ${(Math.round(cart.price * 100) / 100).toFixed(2)}`; // convert into two decimal
+            foodQuantity.textContent = cart.quantity;
+
+            // put each made card inside foodCartContainer
+            foodCartContainer.appendChild(card);
+        });
+    }
+
 });
 
 const wrapper = document.querySelector(".wrapper");

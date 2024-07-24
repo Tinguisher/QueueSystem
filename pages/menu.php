@@ -342,112 +342,25 @@ if (isset($_SESSION['id'])) {
 
     <div class="cart">
         <p id="items">Your Items</p>
-        <div style="margin-top: 64px; height: 900px; width: 554px; position: absolute; overflow-y: auto; overflow-x: hidden;">
-            <!-- <div class="prod">
-                <img src="../images/temp.png">
-                <p class="titlecart">Crispy Seafood Tempura </p>
-                <p class="desc">Deep-fried shrimp, squid, and vegetables served with a savory dipping sauce.</p>
-                <p class="price">Php 300.00</p>
+        <div style="margin-top: 64px; height: 900px; width: 554px; position: absolute; overflow-y: auto; overflow-x: hidden;" data-user-cart-container></div>
+
+        <!-- Template for each user's cart -->
+        <template data-user-cart-template>
+            <div class="prod">
+                <img style="width: 90px; height: 90px" data-food-image>
+                <p class="titlecart" data-food-name></p>
+                <p class="desc" data-food-description></p>
+                <p class="price" data-food-price></p>
                 <div class="flakes1">
                     <div class="quan" style="margin-left: 20px; margin-top: 5px;">
                         <span class="minus" style="margin-left: 0; margin-top: 0;">—</span>
-                        <span class="num" style="margin-left: 20px; margin-right: 20px; margin-top: 0;">00</span>
+                        <span class="num" style="margin-left: 20px; margin-right: 20px; margin-top: 0;" data-food-cart-quantity></span>
                         <span class="plus" style="margin-left: 0; margin-top: 0;">+</span>
                     </div>
                 </div>
             </div>
-            <div class="prod">
-                <img src="../images/temp.png">
-                <p class="titlecart">Crispy Seafood Tempura </p>
-                <p class="desc">Deep-fried shrimp, squid, and vegetables served with a savory dipping sauce.</p>
-                <p class="price">Php 300.00</p>
-                <div class="flakes1">
-                    <div class="quan" style="margin-left: 20px; margin-top: 5px;">
-                        <span class="minus" style="margin-left: 0; margin-top: 0;">—</span>
-                        <span class="num" style="margin-left: 20px; margin-right: 20px; margin-top: 0;">00</span>
-                        <span class="plus" style="margin-left: 0; margin-top: 0;">+</span>
-                    </div>
-                </div>
-            </div>
-            <div class="prod">
-                <img src="../images/temp.png">
-                <p class="titlecart">Crispy Seafood Tempura </p>
-                <p class="desc">Deep-fried shrimp, squid, and vegetables served with a savory dipping sauce.</p>
-                <p class="price">Php 300.00</p>
-                <div class="flakes1">
-                    <div class="quan" style="margin-left: 20px; margin-top: 5px;">
-                        <span class="minus" style="margin-left: 0; margin-top: 0;">—</span>
-                        <span class="num" style="margin-left: 20px; margin-right: 20px; margin-top: 0;">00</span>
-                        <span class="plus" style="margin-left: 0; margin-top: 0;">+</span>
-                    </div>
-                </div>
-            </div>
-            <div class="prod">
-                <img src="../images/temp.png">
-                <p class="titlecart">Crispy Seafood Tempura </p>
-                <p class="desc">Deep-fried shrimp, squid, and vegetables served with a savory dipping sauce.</p>
-                <p class="price">Php 300.00</p>
-                <div class="flakes1">
-                    <div class="quan" style="margin-left: 20px; margin-top: 5px;">
-                        <span class="minus" style="margin-left: 0; margin-top: 0;">—</span>
-                        <span class="num" style="margin-left: 20px; margin-right: 20px; margin-top: 0;">00</span>
-                        <span class="plus" style="margin-left: 0; margin-top: 0;">+</span>
-                    </div>
-                </div>
-            </div>
-            <div class="prod">
-                <img src="../images/temp.png">
-                <p class="titlecart">Crispy Seafood Tempura </p>
-                <p class="desc">Deep-fried shrimp, squid, and vegetables served with a savory dipping sauce.</p>
-                <p class="price">Php 300.00</p>
-                <div class="flakes1">
-                    <div class="quan" style="margin-left: 20px; margin-top: 5px;">
-                        <span class="minus" style="margin-left: 0; margin-top: 0;">—</span>
-                        <span class="num" style="margin-left: 20px; margin-right: 20px; margin-top: 0;">00</span>
-                        <span class="plus" style="margin-left: 0; margin-top: 0;">+</span>
-                    </div>
-                </div>
-            </div>
-            <div class="prod">
-                <img src="../images/temp.png">
-                <p class="titlecart">Crispy Seafood Tempura </p>
-                <p class="desc">Deep-fried shrimp, squid, and vegetables served with a savory dipping sauce.</p>
-                <p class="price">Php 300.00</p>
-                <div class="flakes1">
-                    <div class="quan" style="margin-left: 20px; margin-top: 5px;">
-                        <span class="minus" style="margin-left: 0; margin-top: 0;">—</span>
-                        <span class="num" style="margin-left: 20px; margin-right: 20px; margin-top: 0;">00</span>
-                        <span class="plus" style="margin-left: 0; margin-top: 0;">+</span>
-                    </div>
-                </div>
-            </div>
-            <div class="prod">
-                <img src="../images/temp.png">
-                <p class="titlecart">Crispy Seafood Tempura </p>
-                <p class="desc">Deep-fried shrimp, squid, and vegetables served with a savory dipping sauce.</p>
-                <p class="price">Php 300.00</p>
-                <div class="flakes1">
-                    <div class="quan" style="margin-left: 20px; margin-top: 5px;">
-                        <span class="minus" style="margin-left: 0; margin-top: 0;">—</span>
-                        <span class="num" style="margin-left: 20px; margin-right: 20px; margin-top: 0;">00</span>
-                        <span class="plus" style="margin-left: 0; margin-top: 0;">+</span>
-                    </div>
-                </div>
-            </div>
-            <div class="prod">
-                <img src="../images/temp.png">
-                <p class="titlecart">Crispy Seafood Tempura </p>
-                <p class="desc">Deep-fried shrimp, squid, and vegetables served with a savory dipping sauce.</p>
-                <p class="price">Php 300.00</p>
-                <div class="flakes1">
-                    <div class="quan" style="margin-left: 20px; margin-top: 5px;">
-                        <span class="minus" style="margin-left: 0; margin-top: 0;">—</span>
-                        <span class="num" style="margin-left: 20px; margin-right: 20px; margin-top: 0;">00</span>
-                        <span class="plus" style="margin-left: 0; margin-top: 0;">+</span>
-                    </div>
-                </div>
-            </div> -->
-        </div>
+        </template>
+
         <div style="bottom: 0px; width: 554px; height: 242px; position: absolute;  border-radius: 10px; ">
             <p class="sub" style="margin-top: 16px;">Subtotal</p>
             <p class="sub" style="margin-top: 50px;">Standard Delivery</p>
