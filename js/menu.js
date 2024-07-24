@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // get all id, class for global variable
     const dropdownBtnText = document.getElementById("drop-text");
+    const sessionbutton = document.getElementById("sessionbutton");
+    const sessiontext = document.getElementById("sessiontext");
     const regularMenuContainer = document.querySelector("[data-regular-menu-container]");
     const papapapoppop = document.getElementById('papapapoppop');
     const filterInput = document.getElementById("filterInput");
@@ -15,6 +17,53 @@ document.addEventListener('DOMContentLoaded', function () {
         const list = document.getElementById("list");
         list.classList.toggle("show");
     };
+
+    // if the user is logged in
+    if (loggedin) {
+        // change the text to logout
+        sessiontext.textContent = "Logout";
+
+        // if there is click on logoutbutton
+        sessionbutton.addEventListener('click', (ev) => {
+            // prevent loading of website
+            ev.preventDefault();
+
+            // logout the user
+            logout();
+        });
+    }
+
+    // if there is no logged in
+    else {
+        // change the text to sign in
+        sessiontext.textContent = "Sign in";
+
+        // if there is click on logoutbutton
+        sessionbutton.addEventListener('click', (ev) => {
+            // prevent loading of website
+            ev.preventDefault();
+
+            // change the location to login
+            window.location = '../pages/login.php';
+        });
+    }
+
+    // logout process
+    logout = () => {
+        // go to logout.php
+        fetch('../contexts/logout.php')
+            .then(response => response.json())
+            // get objects from fetch
+            .then(data => {
+                // if the status is success
+                if (data.status == "success") {
+                    // reload the website
+                    window.location.reload();
+                }
+            })
+            // error checker
+            .catch(error => console.error(error));
+    }
 
     // get all the menu
     fetch('../contexts/GetMenuProcess.php')
@@ -181,57 +230,46 @@ document.addEventListener('DOMContentLoaded', function () {
             // prevent the website from loading
             ev.preventDefault();
 
-            // create a request payload to the database
+            // get all the values from the form to variable payload
             const payload = {
-                menuID: menu.id,
-                userID: userID,
-                foodQuantity: quantity.textContent
+                input_food_id: menu.id,
+                input_quantity: quantity.textContent,
+                // console.log(document.querySelector('input[name="radio"]:checked').value);
             };
 
-            // make a process when adding a cart
-            fetch('../contexts/AddCartProcess.php', {
-                method: "POST",
-                headers: {
-                    // state as a json type
-                    'Content-Type': 'application/json; charset=utf-8'
-                },
-                // convert js object to json
-                body: JSON.stringify(payload)
-            })
-                // get response as json
-                .then(response => response.json())
+            // add the payload to the user's cart
+            addToCart(payload);
 
-                // get objects from fetch
-                .then(data => {
-                    console.log(data);
-                })
-                
-                // error checker
-                .catch(error => console.error(error));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            console.log(`menu id:${menu.id}`);
-
-            console.log(document.querySelector('input[name="radio"]:checked').value);
-            console.log(quantity.textContent);
         });
+
+    }
+
+    // add to the cart process
+    addToCart = (payload) => {
+        // make a fetch to process when adding a cart
+        fetch('../contexts/AddCartProcess.php', {
+            method: "POST",
+            headers: {
+                // state as a json type
+                'Content-Type': 'application/json; charset=utf-8'
+            },
+            // convert js object to json
+            body: JSON.stringify(payload)
+        })
+            // get response as json
+            .then(response => response.json())
+
+            // get objects from fetch
+            .then(data => {
+                // if adding cart is success
+                if (data.status == "success") {
+                    // close popup
+                    popupCart();
+                }
+            })
+
+            // error checker
+            .catch(error => console.error(error));
     }
 });
 

@@ -536,57 +536,8 @@ if (isset($_SESSION['id'])) {
     </template>
 
     <script>
-        // variables
-        const sessionbutton = document.getElementById("sessionbutton");
-        const sessiontext = document.getElementById("sessiontext");
-
         // convert to json to read the boolean, pass if logged in or not
-        const loggedin = <?php echo json_encode(isset($_SESSION['id'])); ?>;
-        var userID = "";
-
-        // if the user is logged in
-        if (loggedin) {
-            // get the userID session
-            userID = <?php echo json_encode($_SESSION['id'] ?? ""); ?>;
-
-            // change the text to logout
-            sessiontext.textContent = "Logout";
-
-            // if there is click on logoutbutton
-            sessionbutton.addEventListener('click', (ev) => {
-                // prevent loading of website
-                ev.preventDefault();
-
-                // go to logout
-                fetch('../contexts/logout.php')
-                    .then(response => response.json())
-                    // get objects from fetch
-                    .then(data => {
-                        // if the status is success
-                        if (data.status == "success") {
-                            // reload the website
-                            window.location.reload();
-                        }
-                    })
-                    // error checker
-                    .catch(error => console.error(error));
-            });
-        }
-
-        // if there is no logged in
-        else {
-            // change the text to sign in
-            sessiontext.textContent = "Sign in";
-
-            // if there is click on logoutbutton
-            sessionbutton.addEventListener('click', (ev) => {
-                // prevent loading of website
-                ev.preventDefault();
-
-                // change the location to login
-                window.location = '../pages/login.php';
-            });
-        }
+        var loggedin = <?php echo json_encode(isset($_SESSION['id'])); ?>;
     </script>
     <script src="../js/menu.js"> </script>
 </body>
