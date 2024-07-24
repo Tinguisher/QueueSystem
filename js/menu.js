@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
     fetch('../contexts/GetMenuProcess.php')
         // get response as json
         .then(response => response.json())
+
         // get objects from fetch
         .then(data => {
             // clear the values from regularMenuCards;
@@ -28,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // create a card for each menus fetched from database
             createMenuCards(data.menu);
         })
+
         // error checker
         .catch(error => {
             // output the error in console
@@ -150,11 +152,11 @@ document.addEventListener('DOMContentLoaded', function () {
         papapapoppop.appendChild(menuForm);
 
         // get the clickable buttons, form and changeable order quantity
-        const xbtn = menuForm.querySelector("[data-close-form]");
-        const decrement = menuForm.querySelector("[data-order-decrement]");
-        const increment = menuForm.querySelector("[data-order-increment]");
-        const quantity = menuForm.querySelector("[data-order-quantity]");
-        const orderForm = menuForm.querySelector("[data-order-form");
+        const xbtn = menuForm.querySelector("[data-cart-close-form]");
+        const decrement = menuForm.querySelector("[data-food-cart-decrement]");
+        const increment = menuForm.querySelector("[data-food-cart-increment]");
+        const quantity = menuForm.querySelector("[data-food-cart-quantity]");
+        const cartForm = menuForm.querySelector("[data-cart-form");
 
         // if x button is clicked
         xbtn.addEventListener('click', () => {
@@ -175,12 +177,58 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         // if there is submit in form
-        orderForm.addEventListener('submit', (ev) => {
+        cartForm.addEventListener('submit', (ev) => {
             // prevent the website from loading
             ev.preventDefault();
 
+            // create a request payload to the database
+            const payload = {
+                menuID: menu.id,
+                userID: userID,
+                foodQuantity: quantity.textContent
+            };
+
+            // make a process when adding a cart
+            fetch('../contexts/AddCartProcess.php', {
+                method: "POST",
+                headers: {
+                    // state as a json type
+                    'Content-Type': 'application/json; charset=utf-8'
+                },
+                // convert js object to json
+                body: JSON.stringify(payload)
+            })
+                // get response as json
+                .then(response => response.json())
+
+                // get objects from fetch
+                .then(data => {
+                    console.log(data);
+                })
+                
+                // error checker
+                .catch(error => console.error(error));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             console.log(`menu id:${menu.id}`);
-            
+
             console.log(document.querySelector('input[name="radio"]:checked').value);
             console.log(quantity.textContent);
         });

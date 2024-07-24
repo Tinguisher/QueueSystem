@@ -33,6 +33,43 @@ CREATE TABLE foods (
     PRIMARY KEY (id)
 );
 
+CREATE TABLE user_carts (
+    id int AUTO_INCREMENT NOT NULL,
+	users_id int NOT NULL,
+	foods_id int NOT NULL,
+	status varchar (30) NOT NULL,
+	FOREIGN KEY (users_id) REFERENCES users(id),
+	FOREIGN KEY (foods_id) REFERENCES foods(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+    CONSTRAINT PK_user_carts
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE receipts (
+    id int AUTO_INCREMENT NOT NULL,
+    users_id int NOT NULL,
+	status varchar (30) NOT NULL,
+	orderDate date NOT NULL,
+	FOREIGN KEY (users_id) REFERENCES users(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+    CONSTRAINT PK_receipts
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE food_orders (
+    id int AUTO_INCREMENT NOT NULL,
+	foods_id int NOT NULL,
+	receipts_id int NOT NULL,
+	status varchar (30) NOT NULL,
+	FOREIGN KEY (foods_id) REFERENCES foods(id),
+    FOREIGN KEY (receipts_id) REFERENCES receipts(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+    CONSTRAINT PK_food_orders
+    PRIMARY KEY (id)
+);
 
 /* Create Table for Locations */
 CREATE TABLE [ONLINE SOS SYSTEM].[dbo].[Locations](

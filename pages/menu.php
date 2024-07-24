@@ -339,7 +339,7 @@ if (isset($_SESSION['id'])) {
             </a>
         </div>
     </template>
-    
+
     <div class="cart">
         <p id="items">Your Items</p>
         <div style="margin-top: 64px; height: 900px; width: 554px; position: absolute; overflow-y: auto; overflow-x: hidden;">
@@ -483,8 +483,8 @@ if (isset($_SESSION['id'])) {
     <!-- Template for popup -->
     <template data-menu-popout>
         <div>
-            <form style="position: absolute; margin-top: 1011px; margin-left: 622px; width: 676px; height: 925px; border-radius: 25.799px;background: #FFFDF1;" data-order-form>
-                <a class="xbtn" data-close-form>
+            <form style="position: absolute; margin-top: 1011px; margin-left: 622px; width: 676px; height: 925px; border-radius: 25.799px;background: #FFFDF1;" data-cart-form>
+                <a class="xbtn" data-cart-close-form>
                     <svg style="position: absolute; margin: 12px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M15.5844 14.479C15.657 14.5515 15.7146 14.6377 15.7539 14.7325C15.7932 14.8274 15.8134 14.929 15.8134 15.0317C15.8134 15.1343 15.7932 15.236 15.7539 15.3308C15.7146 15.4257 15.657 15.5118 15.5844 15.5844C15.5118 15.657 15.4257 15.7146 15.3308 15.7539C15.236 15.7932 15.1343 15.8134 15.0317 15.8134C14.929 15.8134 14.8274 15.7932 14.7325 15.7539C14.6377 15.7146 14.5515 15.657 14.479 15.5844L8.00043 9.10493L1.52192 15.5844C1.37532 15.731 1.1765 15.8134 0.969184 15.8134C0.761869 15.8134 0.563044 15.731 0.41645 15.5844C0.269856 15.4378 0.1875 15.239 0.1875 15.0317C0.1875 14.8244 0.269856 14.6255 0.41645 14.479L6.89594 8.00043L0.41645 1.52192C0.269856 1.37532 0.1875 1.1765 0.1875 0.969184C0.1875 0.761869 0.269856 0.563044 0.41645 0.41645C0.563044 0.269856 0.761869 0.1875 0.969184 0.1875C1.1765 0.1875 1.37532 0.269856 1.52192 0.41645L8.00043 6.89594L14.479 0.41645C14.6255 0.269856 14.8244 0.1875 15.0317 0.1875C15.239 0.1875 15.4378 0.269856 15.5844 0.41645C15.731 0.563044 15.8134 0.761869 15.8134 0.969184C15.8134 1.1765 15.731 1.37532 15.5844 1.52192L9.10493 8.00043L15.5844 14.479Z" fill="#FFFDF1" />
                     </svg>
@@ -522,11 +522,11 @@ if (isset($_SESSION['id'])) {
                     <p class="addpri" style="margin-top: 725px;">Php 40.00</p>
                     <button type="submit" class="crtbtn">Add to Cart</button>
                     <div class="productQuantity">
-                        <button type="button" class="pqBox" data-order-decrement>
+                        <button type="button" class="pqBox" data-food-cart-decrement>
                             <p>-</p>
                         </button>
-                        <p data-order-quantity>1</p>
-                        <button type="button" class="pqBox" style="left: 130px;" data-order-increment>
+                        <p data-food-cart-quantity>1</p>
+                        <button type="button" class="pqBox" style="left: 130px;" data-food-cart-increment>
                             <p>+</p>
                         </button>
                     </div>
@@ -546,7 +546,7 @@ if (isset($_SESSION['id'])) {
 
         // if the user is logged in
         if (loggedin) {
-            // get the session['id']
+            // get the userID session
             userID = <?php echo json_encode($_SESSION['id'] ?? ""); ?>;
 
             // change the text to logout
