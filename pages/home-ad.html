@@ -1,10 +1,21 @@
 <html>
 <head>
+
+    <style>
+        @keyframes anim {
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+        
+            </style>
+
     <link rel="stylesheet" href="../stylesheets/home-ad.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Roboto Slab' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Rhodium Libre' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Averia Serif Libre' rel='stylesheet'>
+    <script defer src="../js/home-ad.js"></script>
 
 </head>
 <body>
@@ -32,7 +43,30 @@
                             <div class="ongoingdeliveriestop">12</div>
                             <div class="ongoingdeliveriesbottom">Ongoing Deliveries</div>
                         </div>
-                        <div class="dailyquota"></div>
+                        <div class="dailyquota">
+
+                            <!-- Circular Progress Bar Start -->
+                            <div class="progress-bar-container">
+                                <div class="skill">
+                                    <div class="outer">
+                                        <div class="inner">
+                                            <div id="number"></div> <!-- Example text inside the circular bar -->
+                                        </div>
+                                    </div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 160 160">
+                                        <defs>
+                                            <linearGradient id="GradientColor">
+                                                <stop offset="0%" stop-color="#BD4141" />
+                                                <stop offset="100%" stop-color="#BD4141" />
+                                            </linearGradient>
+                                        </defs>
+                                        <circle cx="80" cy="80" r="70" stroke-linecap="round" />
+                                    </svg>    
+                                </div>
+                            </div>
+                            <!-- Circular Progress Bar End -->
+
+                        </div>
                     </div>
                     <div class="urgentleftbottom">
                         <div class="currentvip">
