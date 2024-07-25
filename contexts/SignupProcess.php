@@ -46,13 +46,13 @@ $password = password_hash($data['input_password'], PASSWORD_BCRYPT);
 // make a string for sql to be used
 $sql = "INSERT INTO `users`(`email`, `password`, `authtype`, `firstname`, `lastname`) VALUES (?, ?, 'user', ?, ?);";
 
-// prepare the statement
-$stmt = $mysqli -> prepare ($sql);
-
-// bind the parameters to the statement
-$stmt -> bind_param ('ssss', $email, $password, $firstname, $lastname);
-
 try{
+    // prepare the statement
+    $stmt = $mysqli -> prepare ($sql);
+
+    // bind the parameters to the statement
+    $stmt -> bind_param ('ssss', $email, $password, $firstname, $lastname);
+    
     // execute the statement
     $stmt -> execute();
     

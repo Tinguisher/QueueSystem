@@ -12,7 +12,7 @@ if ( $_SERVER['REQUEST_METHOD'] !== "POST" ){
 $json = file_get_contents('php://input');
 $data = json_decode($json, true);
 
-// check if there is input of dat
+// check if there is input of data
 if ( empty($data['input_email']) || empty($data['input_password']) ){
     $response = [
         'status' => "error",
