@@ -166,16 +166,41 @@ li p {
     font-weight: 400;
 }
 
-.time{
-    position: absolute;
-    margin-top: 1219px;
-    margin-left: 321px;
-    color: #8E8E8E;
-    text-align: center;
-    font-family: "Roboto Slab";
-    font-size: 40px;
-    font-weight: 400;
-}
+.wavy { 
+  position: absolute; 
+  margin-top: 1219px;
+  margin-left: 280px;
+  color: #8E8E8E;
+  text-align: center;
+  font-weight: 400;
+  background: none;
+  
+} 
+
+.wavy span { 
+  position: relative; 
+  display: inline-block; 
+  color: black; 
+  font-size: 40px; 
+  font-family: "Roboto Slab";
+  animation: animate 2s ease-in-out infinite; 
+  animation-delay: calc(0.1s * var(--i)); 
+} 
+
+@keyframes animate { 
+  0% { 
+      transform: translateY(0px); 
+  } 
+
+  20% { 
+      transform: translateY(-20px); 
+  } 
+
+  40%, 
+  100% { 
+      transform: translateY(0px); 
+  } 
+} 
 
 .quantity span{
   font-size: 5px;
@@ -430,6 +455,3 @@ li p {
   font-size: 20px;
   font-weight: 400;
 }
-
-
-
