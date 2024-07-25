@@ -353,9 +353,9 @@ if (isset($_SESSION['id'])) {
                 <p class="price" data-food-price></p>
                 <div class="flakes1">
                     <div class="quan" style="margin-left: 20px; margin-top: 5px;">
-                        <span class="minus" style="margin-left: 0; margin-top: 0;">—</span>
+                        <span class="minus" style="margin-left: 0; margin-top: 0;" data-food-cart-decrement>—</span>
                         <span class="num" style="margin-left: 20px; margin-right: 20px; margin-top: 0;" data-food-cart-quantity></span>
-                        <span class="plus" style="margin-left: 0; margin-top: 0;">+</span>
+                        <span class="plus" style="margin-left: 0; margin-top: 0;" data-food-cart-increment>+</span>
                     </div>
                 </div>
             </div>
@@ -365,10 +365,10 @@ if (isset($_SESSION['id'])) {
             <p class="sub" style="margin-top: 16px;">Subtotal</p>
             <p class="sub" style="margin-top: 50px;">Standard Delivery</p>
             <p class="sub" style="margin-top: 132px; font-weight: 700;">TOTAL</p>
-            <p class="total" style="margin-top: 16px;">Php 1,300.00</p>
-            <p class="total" style="margin-top: 50px;">Php 50.00</p>
-            <p class="total" style="margin-top: 132px;">Php 1,350.00</p>
-            <button class="pay" onclick="location.href='check.html'">Review Payment and Address</button>
+            <p id="subTotal" class="total" style="margin-top: 16px;">Loading SubTotal...</p>
+            <p id="deliveryFee" class="total" style="margin-top: 50px;">Loading Delivery Fee...</p>
+            <p id="totalPrice" class="total" style="margin-top: 132px;">Loading Total Price...</p>
+            <button id="payment" class="pay">Review Payment and Address</button>
         </div>
     </div>
 

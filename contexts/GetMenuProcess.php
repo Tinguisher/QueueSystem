@@ -16,6 +16,7 @@ $sql = "SELECT foods.id,
     WHERE foods.food_categories_id = food_categories.id
     ORDER BY foodName";
 
+// try to create and catch if there is error
 try{
     // prepare the statement
     $stmt = $mysqli -> prepare ($sql);

@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const filterInput = document.getElementById("filterInput");
     const filterButtons = document.querySelectorAll('.all1');
     const foodCartContainer = document.querySelector("[data-user-cart-container]");
+    const payment = document.getElementById("payment");
     var menuArray = [];
     var filterButtonValue = "";
 
@@ -140,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function () {
             foodImage.src = `../images/foodCategories/${menu.categoryName}/${menu.image}`;
             foodName.value = menu.foodName;
             foodDescription.textContent = menu.description;
-            foodPrice.value = `Php ${(Math.round(menu.price * 100) / 100).toFixed(2)}`; // convert into two decimal
+            foodPrice.value = `Php ${Number(menu.price).toLocaleString()}`; // add comma to the cart.price
 
             // put each made card inside regularMenuContainer
             regularMenuContainer.appendChild(card);
@@ -196,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function () {
         foodImage.src = `../images/foodCategories/${menu.categoryName}/${menu.image}`;
         foodName.textContent = menu.foodName;
         foodDescription.textContent = menu.description;
-        foodPrice.value = `Php ${(Math.round(menu.price * 100) / 100).toFixed(2)}`; // convert into two decimal
+        foodPrice.value = `Php ${Number(menu.price).toLocaleString()}`; // add comma to the cart.price
 
         // put each made card inside regularMenuContainer
         papapapoppop.appendChild(menuForm);
@@ -287,13 +288,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
             console.log(data.userCart);
-            
-        
+
+
         })
         // error checker
         .catch(error => console.error(error));
 
     createFoodCartCards = (userCart) => {
+        // create a subTotal variable
+        let addedSubTotal = 0;
+        let calculatedDeliveryFee = 50;
+
         // loop for every cart by the user
         userCart.forEach(cart => {
             // get the element template from menu.php
@@ -305,21 +310,92 @@ document.addEventListener('DOMContentLoaded', function () {
             const foodName = card.querySelector("[data-food-name]");
             const foodDescription = card.querySelector("[data-food-description]");
             const foodPrice = card.querySelector("[data-food-price]");
-            const foodQuantity = card.querySelector("[data-food-cart-quantity]");
-            
+            const decrement = card.querySelector("[data-food-cart-decrement]");
+            const increment = card.querySelector("[data-food-cart-increment]");
+            const quantity = card.querySelector("[data-food-cart-quantity]");
+
             // place the variables got from fetch to the card
             foodImage.src = `../images/foodCategories/${cart.categoryName}/${cart.image}`;
             foodName.textContent = cart.foodName;
             foodDescription.textContent = cart.description;
-            foodPrice.textContent = `Php ${(Math.round(cart.price * 100) / 100).toFixed(2)}`; // convert into two decimal
-            foodQuantity.textContent = cart.quantity;
+            foodPrice.textContent = `Php ${Number(cart.price).toLocaleString()}`;   // add comma to the cart.price
+            quantity.textContent = cart.quantity;
+
+            // if "-" button is clicked, decrement, but not if it is 0
+            decrement.addEventListener('click', () => {
+                if (quantity.textContent < 1) return;
+                quantity.textContent--;
+            });
+
+            // if "+" button is clicked, increment, but not if it is 99
+            increment.addEventListener('click', () => {
+                if (quantity.textContent > 98) return;
+                quantity.textContent++;
+            });
 
             // put each made card inside foodCartContainer
             foodCartContainer.appendChild(card);
+
+            // get the cart price for subtotal
+            addedSubTotal = addedSubTotal + cart.price;
         });
+
+        // get html element to display totals
+        const subTotal = document.getElementById("subTotal");
+        const deliveryFee = document.getElementById("deliveryFee");
+        const totalPrice = document.getElementById("totalPrice");
+
+        // display the calculated values with commas
+        subTotal.textContent = `Php ${Number(addedSubTotal).toLocaleString()}`;
+        deliveryFee.textContent = `Php ${Number(calculatedDeliveryFee).toLocaleString()}`;
+        totalPrice.textContent = `Php ${Number(addedSubTotal + calculatedDeliveryFee).toLocaleString()}`;
+
+
     }
 
+    // if there is click on payment
+    payment.addEventListener('click', (ev) => {
+        // prevent the website from loading
+        ev.preventDefault();
+
+        // proceed to creating receipts
+        fetch('../contexts/CreateUserReceipt.php')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+
+            })
+            // error checker
+            .catch(error => console.error(error));
+
+
+
+        console.log("tite");
+
+
+
+        // window.location.href = './check.html';
+    });
+
+
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const wrapper = document.querySelector(".wrapper");
 const carousel = document.querySelector(".carousel");
