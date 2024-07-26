@@ -1,0 +1,267 @@
+body{
+  background: #FFFDF1;
+  width: 1920px;
+  height: 2245px;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+a{
+  font-family: 'Roboto';
+  font-size: 25px;
+  text-decoration: none;
+  color: black;
+}
+
+.navTable,
+.navTable tr,
+.navTable td {
+  border-left: 3px solid #D9D3D3;
+  border-right: 3px solid #D9D3D3;
+  border-collapse: collapse;
+  text-align: center;
+  padding: 15px 0px;  
+}
+
+.navTable td a:hover {color: #BD4141;}
+
+#navcrcl{
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #BD4141;
+  position: absolute;
+}
+
+form{
+  border-radius: 25px;
+  position: absolute;
+  
+}
+
+input{
+  width: 264px;
+  height: 53px;
+  display: block;
+  border-radius: 10px;
+  border: none;
+  font-size: 25px;
+  background: rgba(0, 0, 0, 0.10);
+  padding-left: 40px;
+  padding-right: 45px;
+}
+input:focus{
+  outline: none;
+}
+
+#aboutus{
+  width: 1718px; 
+  margin-top: 201px; 
+  margin-left: 60px; 
+  position: absolute; 
+  border: 4px solid #000; 
+  background: #BD4141; 
+  color: black; 
+  font-size: 32px; 
+  font-family: Rhodium Libre; 
+  padding: 16.5px 37px;
+}
+
+.aboutSnap {
+  top: 289px;
+  left: 55px;
+  width: 100%; 
+  height: 100%; 
+  background: url(images/Aboutus2.png) no-repeat;
+  position: absolute;
+  color: #FFFDF1;
+  font-size: 100px;
+  font-family: Rhodium Libre;
+  font-weight: 400;
+  text-align: center;
+  justify-content: center;
+}
+
+#abouttext{
+  top: 744px;
+  left: 54px;
+  width: 100%; 
+  height: 100%; 
+  position: absolute;
+  color: black;
+  font-size: 27px;
+  font-family: Roboto;
+  font-weight: 400;
+  text-align: center;
+  justify-content: center;
+}
+
+#search {
+  background: none;
+  border: 0px;
+  top: 20px;
+  left:310px;
+  position: absolute;
+}
+
+/*DROP DOWN PROFILE*/
+.dropdown{
+  position: absolute;
+  width: 280px;
+  border-radius: 50px;
+  cursor: pointer;
+  
+}
+
+.dropdown-text {
+    width: 72px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: #BD4141;
+    position: absolute;
+
+}
+
+.dropdown-list {
+  display: block;
+  position: absolute;
+  top: 40px;
+  left: -250px;
+  width: 100%;
+  border-radius: 15px;
+  max-height: 0;
+  overflow: hidden;
+  background-color: #BD4141;
+  transition: max-height 0.5s;
+  z-index: 1;
+  border: 2px solid #FFFDF1;
+}
+
+#icons{
+  width: 30px;
+  height: 30px;
+  
+}
+
+.dropdown-list-item {
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 15px;
+  padding: 1rem 0 1rem 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.3s ease, margin-left 0.2s ease;
+  box-sizing: border-box;
+  list-style-type: none;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  margin-left: -15px;
+}
+
+.dropdown-list-item:hover {
+  margin-left: 0.5rem;
+  color: white;
+
+}
+
+#list.show {
+  max-height: 300px;
+}
+
+li p {
+  position: absolute;
+  margin-top: -27px;  
+  margin-left: 40px;
+}
+#headerhistory{
+  position: absolute; 
+  width: 1720px; 
+  margin-top: 150px; 
+  margin-left: 0px; 
+  border: 4px solid white; 
+  background: #BD4141; 
+  color: white; 
+  font-size: 32px; 
+  font-family: Rhodium Libre; 
+  padding: 16.5px 37px;
+}
+
+#borderline{
+  position: absolute;
+  margin-top: 280px;
+  width: 1800px;
+  height: 718px;
+  border-radius: 10px;
+  border: 1px solid #000;
+}
+
+#allord{
+  position: absolute;
+  margin-top: 34px;
+  margin-left: 49px;
+  color: #BD4141;
+  font-family: "Roboto Slab";
+  font-size: 25px;
+  font-weight: 400;
+}
+
+#thisweek{
+  position: absolute;
+  margin-top: 34px;
+  margin-left: 221px;
+  color: #000;
+  font-family: "Roboto Slab";
+  font-size: 25px;
+  font-weight: 400;
+}
+
+#thismon{
+  position: absolute;
+  margin-top: 34px;
+  margin-left: 398px;
+  color: #000;
+  font-family: "Roboto Slab";
+  font-size: 25px;  
+  font-weight: 400;
+}
+
+.table2,
+.table2 tr,
+.table2 th {
+  width: 1724px; 
+  height: 90px;
+  border-left: none;
+  border-right: none;
+  color: #000;
+  font-family: "Roboto Slab";
+  font-size: 25px;
+  font-weight: 400;
+  /* border-top:1px solid #000 ;
+  border-bottom:1px solid #000;
+  border-radius: 15px 0px 0px 15px; */
+}
+
+.tableDiv{
+  top: 103px;
+  left: 38px;
+  width: 1724px; 
+  height: 72px;
+  border: 1px solid #000;
+  border-radius: 15px;
+  padding: 5px;
+  position: absolute;
+  gap: 10px;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.25);
+}
+
+.table2 td {
+  text-align: center;
+}
+
+
+.table2 th {
+  position: relative;
+  top: -8px;
+}
+
+
