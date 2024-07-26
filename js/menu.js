@@ -69,6 +69,9 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(error => console.error(error));
     }
 
+    // ==================================================== //
+    //          CREATE A WEBSOCKET FOR THIS???              //
+    // ==================================================== //
     // get all the menu
     fetch('../contexts/GetMenuProcess.php')
         // get response as json
@@ -76,9 +79,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // get objects from fetch
         .then(data => {
-            // clear the values from regularMenuContainer
-            regularMenuContainer.innerHTML = "";
-
             // create a card for each menus fetched from database
             createMenuCards(data.menu);
         })
@@ -127,6 +127,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // create cards for div regularMenuContainer 
     createMenuCards = (menus) => {
+        // clear the values from regularMenuContainer
+        regularMenuContainer.innerHTML = "";
+        
         // get the menus for filtering
         menuArray = menus.map(menu => {
             // get the element template from menu.php
@@ -143,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function () {
             foodImage.src = `../images/foodCategories/${menu.categoryName}/${menu.image}`;
             foodName.value = menu.foodName;
             foodDescription.textContent = menu.description;
-            foodPrice.value = `Php ${Number(menu.price).toLocaleString()}`; // add comma to the cart.price
+            foodPrice.value = `Php ${Number(menu.price).toLocaleString()}`; // add comma to the menu.price
 
             // put each made card inside regularMenuContainer
             regularMenuContainer.appendChild(card);
@@ -165,6 +168,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 element: card
             };
         });
+
+        // go to filtering
+        filtering();
     }
 
     // pop out when ordering
@@ -281,6 +287,9 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(error => console.error(error));
     }
 
+    // ==================================================== //
+    //          CREATE A WEBSOCKET FOR THIS???              //
+    // ==================================================== //
     // get the user cart process
     getUserCart = () => {
         fetch('../contexts/GetUserCart.php')
