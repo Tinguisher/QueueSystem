@@ -342,7 +342,9 @@ if (isset($_SESSION['id'])) {
 
     <div class="cart">
         <p id="items">Your Items</p>
-        <div style="margin-top: 64px; height: 900px; width: 554px; position: absolute; overflow-y: auto; overflow-x: hidden;" data-user-cart-container></div>
+        <div style="margin-top: 64px; height: 900px; width: 554px; position: absolute; overflow-y: auto; overflow-x: hidden;" data-user-cart-container>
+            <h4>Loading Cart...</h4>
+        </div>
 
         <!-- Template for each user's cart -->
         <template data-user-cart-template>

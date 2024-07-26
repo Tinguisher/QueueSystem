@@ -13,7 +13,6 @@ $user_id = $_SESSION['id'];
 
 // try to create and catch if there is error
 try{
-
     // make a string for sql to create a receipt
     $sql_receipts = "INSERT INTO `receipts`(`users_id`, `status`) VALUES (?, 'Pending');";
 
@@ -44,6 +43,27 @@ try{
     $result = $stmt -> get_result();
     $userCart = $result -> fetch_all( MYSQLI_ASSOC );
 
+    // if there is no cart from the user
+    if (!$userCart) {
+        // rollback the database
+        $mysqli -> rollback();
+
+        // free data and close statement and database
+        $result -> free();
+        $stmt -> close();
+        $mysqli -> close();
+
+        // make a response that there should be atleast one order
+        $response = [
+            'status' => "error",
+            'message' => "Order at least one before payment",
+        ];
+
+        // output the response
+        exit ( json_encode($response) );
+    }
+
+    // loop for each cart of the user
     foreach ($userCart as $cart) {
         // create sql for every food in the cart
         $sql_foodOrders = "INSERT INTO `food_orders`(`receipts_id`, `foods_id`, `quantity`, `price`, `status`) VALUES (?, ?, ?, ?, 'Pending');";
@@ -57,6 +77,12 @@ try{
         // execute the statement
         $stmt -> execute();
     }
+
+    // make a string for sql to delete user's cart
+    $sql_deleteUserCart = "DELETE FROM `user_carts` WHERE users_id = ?";
+    $stmt = $mysqli -> prepare ($sql_deleteUserCart);
+    $stmt -> bind_param ('i', $user_id);
+    $stmt -> execute();
 
     // commit all inserts if successful
     $mysqli -> commit();
@@ -84,6 +110,7 @@ $result -> free();
 $stmt -> close();
 $mysqli -> close();
 
+// output the response
 exit ( json_encode($response) );
 
 ?>

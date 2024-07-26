@@ -78,71 +78,6 @@ li a:hover {
 
 }
 
-/* .navbar1{
-    background-color: #FFFDF1;
-    border-right: 2px solid black;
-    border-left: 2px solid black;
-    height: 12%;
-    width: 4%;
-    padding: 2%;
-    align-items: center;
-    font-size: 25;
-    font-weight: bold;
-
-}
-
-.navbar2{
-    background-color: #FFFDF1;
-    border-right: 2px solid black;
-    border-left: 2px solid black;
-    height: 12%;
-    width: 4%;
-    padding: 2%;
-    align-items: center;
-    font-size: 25;
-    font-weight: bold;
-
-}
-
-.navbar3{
-    background-color: #FFFDF1;
-    border-right: 2px solid black;
-    border-left: 2px solid black;
-    height: 12%;
-    width: 11%;
-    padding: 2%;
-    align-items: center;
-    font-size: 25;
-    font-weight: bold;
-
-}
-
-.navbar4{
-    background-color: #FFFDF1;
-    border-right: 2px solid black;
-    border-left: 2px solid black;
-    height: 12%;
-    width: 13%;
-    padding: 2%;
-    align-items: center;
-    font-size: 25;
-    font-weight: bold;
-
-}
-
-.navbar5{
-    background-color: #FFFDF1;
-    border-right: 2px solid black;
-    border-left: 2px solid black;
-    height: 12%;
-    width: 5.5%;
-    padding: 2%;
-    align-items: center;
-    font-size: 25;
-    font-weight: bold;
-
-} */
-
 .subnavbar3{
     align-content: right;
     justify-content: center;
@@ -251,7 +186,7 @@ li a:hover {
     align-items: center;
     justify-content: center;
     border-radius: 2.0vh;
-    box-shadow: 6px 6px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: 0.6vh 0.6vh 0.5vh rgba(0, 0, 0, 0.25);
 }
 
 .vip{
@@ -519,7 +454,7 @@ body {
     width: 94%;
     height: 94%;
     padding: 10%;
-    box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15), -6px -6px 10px -1px rgba(255,255,255,0.7);
+    /* box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15), -6px -6px 10px -1px rgba(255,255,255,0.7); */
     border-radius: 50%;
     display: flex;
     align-items: center;

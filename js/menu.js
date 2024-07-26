@@ -54,7 +54,9 @@ document.addEventListener('DOMContentLoaded', function () {
     logout = () => {
         // go to logout.php
         fetch('../contexts/logout.php')
+            // get response as json
             .then(response => response.json())
+
             // get objects from fetch
             .then(data => {
                 // if the status is success
@@ -197,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
         foodImage.src = `../images/foodCategories/${menu.categoryName}/${menu.image}`;
         foodName.textContent = menu.foodName;
         foodDescription.textContent = menu.description;
-        foodPrice.value = `Php ${Number(menu.price).toLocaleString()}`; // add comma to the cart.price
+        foodPrice.textContent = `Php ${Number(menu.price).toLocaleString()}`; // add comma to the cart.price
 
         // put each made card inside regularMenuContainer
         papapapoppop.appendChild(menuForm);
@@ -267,6 +269,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (data.status == "success") {
                     // close popup
                     popupCart();
+                    
+                    // get the fresh user's cart
+                    getUserCart();
                 }
             })
 
@@ -274,26 +279,28 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(error => console.error(error));
     }
 
+    // get the user cart process
+    getUserCart = () => {
+        fetch('../contexts/GetUserCart.php')
+            // get response as json
+            .then(response => response.json())
+
+            // get objects from fetch
+            .then(data => {
+                // clear the cart container
+                foodCartContainer.innerHTML = "";
+
+                // create a card for each user carts
+                createFoodCartCards(data.userCart);
+            })
+            // error checker
+            .catch(error => console.error(error));
+    }
+
     // get the user's cart
-    fetch('../contexts/GetUserCart.php')
-        // get response as json
-        .then(response => response.json())
+    getUserCart();
 
-        // get objects from fetch
-        .then(data => {
-            // create a card for each user carts
-            createFoodCartCards(data.userCart);
-
-
-
-
-            console.log(data.userCart);
-
-
-        })
-        // error checker
-        .catch(error => console.error(error));
-
+    // create user's cart
     createFoodCartCards = (userCart) => {
         // create a subTotal variable
         let addedSubTotal = 0;
@@ -324,13 +331,17 @@ document.addEventListener('DOMContentLoaded', function () {
             // if "-" button is clicked, decrement, but not if it is 0
             decrement.addEventListener('click', () => {
                 if (quantity.textContent < 1) return;
-                quantity.textContent--;
+
+                // go to update the user's database cart quantity
+                updateFoodQuantity(cart.id, cart.quantity);
             });
 
             // if "+" button is clicked, increment, but not if it is 99
             increment.addEventListener('click', () => {
                 if (quantity.textContent > 98) return;
-                quantity.textContent++;
+
+                // go to update the user's database cart quantity
+                updateFoodQuantity(cart.id, cart.quantity);
             });
 
             // put each made card inside foodCartContainer
@@ -349,9 +360,47 @@ document.addEventListener('DOMContentLoaded', function () {
         subTotal.textContent = `Php ${Number(addedSubTotal).toLocaleString()}`;
         deliveryFee.textContent = `Php ${Number(calculatedDeliveryFee).toLocaleString()}`;
         totalPrice.textContent = `Php ${Number(addedSubTotal + calculatedDeliveryFee).toLocaleString()}`;
-
-
     }
+
+    // update the food quantity in database
+    updateFoodQuantity = (cart_id, cart_quantity) => {
+        // create a payload to be passed in database
+        const payload = {
+            input_food_id: cart_id,
+            input_quantity: cart_quantity
+        };
+
+        // update the quantity in the database
+        fetch('../contexts/UpdateUserCartQuantity.php', {
+            method: "POST",
+            headers: {
+                // state as a json type
+                'Content-Type': 'application/json; charset=utf-8'
+            },
+            // convert js object to json
+            body: JSON.stringify(payload)
+        })
+            // get response as json
+            .then(response => response.json())
+
+            // get objects from fetch
+            .then(data => {
+                // if adding cart is success
+                if (data.status == "success") {
+                    // get the fresh user's cart
+                    getUserCart();
+                }
+
+
+
+                console.log(data);
+            })
+
+            // error checker
+            .catch(error => console.error(error));
+    }
+
+
 
     // if there is click on payment
     payment.addEventListener('click', (ev) => {
@@ -360,19 +409,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // proceed to creating receipts
         fetch('../contexts/CreateUserReceipt.php')
+            // get response as json
             .then(response => response.json())
+
+            // get objects from fetch
             .then(data => {
-                console.log(data);
+                // get the fresh user's cart
+                getUserCart();
+
+                if (data.status == "error"){
+                    console.log(data);
+                }
 
             })
             // error checker
             .catch(error => console.error(error));
-
-
-
-        console.log("tite");
-
-
 
         // window.location.href = './check.html';
     });

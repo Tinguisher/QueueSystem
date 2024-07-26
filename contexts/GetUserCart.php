@@ -12,7 +12,9 @@ session_start();
 $user_id = $_SESSION['id'];
 
 // make a string for sql to be used
-$sql = "SELECT foods.image,
+$sql = "SELECT 
+        user_carts.id,
+        foods.image,
         food_categories.name AS categoryName,
         foods.name AS foodName,
         foods.description,
