@@ -221,12 +221,14 @@ document.addEventListener('DOMContentLoaded', function () {
         decrement.addEventListener('click', () => {
             if (quantity.textContent < 2) return;
             quantity.textContent--;
+            foodPrice.textContent = `Php ${Number(menu.price * quantity.textContent).toLocaleString()}`; // add comma to the menu.price
         });
 
         // if "+" button is clicked, increment, but not if it is 99
         increment.addEventListener('click', () => {
             if (quantity.textContent > 98) return;
             quantity.textContent++;
+            foodPrice.textContent = `Php ${Number(menu.price * quantity.textContent).toLocaleString()}`; // add comma to the menu.price
         });
 
         // if there is submit in form
@@ -330,18 +332,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // if "-" button is clicked, decrement, but not if it is 0
             decrement.addEventListener('click', () => {
-                if (quantity.textContent < 1) return;
+                if (cart.quantity < 1) return;
+
+                // get the requested decrement quantity
+                let requestQuantity = cart.quantity - 1;
 
                 // go to update the user's database cart quantity
-                updateFoodQuantity(cart.id, cart.quantity);
+                updateFoodQuantity(cart.id, requestQuantity);
             });
 
             // if "+" button is clicked, increment, but not if it is 99
             increment.addEventListener('click', () => {
-                if (quantity.textContent > 98) return;
+                if (cart.quantity > 98) return;
+
+                // get the requested increment quantity
+                let requestQuantity = cart.quantity + 1;
 
                 // go to update the user's database cart quantity
-                updateFoodQuantity(cart.id, cart.quantity);
+                updateFoodQuantity(cart.id, requestQuantity);
             });
 
             // put each made card inside foodCartContainer
@@ -363,11 +371,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // update the food quantity in database
-    updateFoodQuantity = (cart_id, cart_quantity) => {
+    updateFoodQuantity = (cart_id, request_quantity) => {
         // create a payload to be passed in database
         const payload = {
             input_food_id: cart_id,
-            input_quantity: cart_quantity
+            input_quantity: request_quantity
         };
 
         // update the quantity in the database
@@ -389,11 +397,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (data.status == "success") {
                     // get the fresh user's cart
                     getUserCart();
+
+                    console.log(data);
                 }
 
-
-
-                console.log(data);
             })
 
             // error checker
