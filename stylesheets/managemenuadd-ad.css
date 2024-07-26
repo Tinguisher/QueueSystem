@@ -276,7 +276,7 @@ li a:hover {
     margin-right: 38%;
 }
 
-.backbox button{
+.backbox input{
     text-align: center;
     width: 100%;
     height: 70%;
@@ -291,7 +291,7 @@ li a:hover {
 
 }
 
-.backbox button:hover{
+.backbox input:hover{
     background-color: #BD4141;
     color: #FFFDF1;
 }

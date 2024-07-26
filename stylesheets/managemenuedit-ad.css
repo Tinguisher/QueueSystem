@@ -47,6 +47,7 @@ body{
     height: 100%;
 
 }
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -112,11 +113,57 @@ li a:hover {
 }
 
 .innerbox{
+  border: 1px solid black;
   display: flex;
   flex-direction: column;
   width: 95%;
   height: 90%;
-  gap: 7%;
   justify-content: center;
 
+}
+
+.upperbox{
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 30%;
+  gap: 3%;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.lowerbox{
+  border: 1px solid black;
+  width: 100%;
+  height: 70%;
+
+}
+
+.burgerbox{
+  border: 1px solid black;
+  width: 10%;
+  height: 45%;
+}
+
+.pizzabox{
+  border: 1px solid black;
+  width: 10%;
+  height: 45%;
+}
+.chickenbox{
+  border: 1px solid black;
+  width: 10%;
+  height: 45%;
+}
+.beefbox{
+  border: 1px solid black;
+  width: 10%;
+  height: 45%;
+}
+.seafoodbox{
+  border: 1px solid black;
+  width: 10%;
+  height: 45%;
 }
