@@ -30,21 +30,24 @@ session_start();
 // get the current logged in user
 $user_id = $_SESSION['id'];
 
+// get the data requests
+$cart_id = $data['input_cart_id'];
+$quantity = $data['input_quantity'];
+
 // try to create and catch if there is error
 try{
+
+    if ($quantity == 0){
+        $sql = "DELETE `user_carts` WHERE id = ? AND `user_id` = ?;"; 
+    }
+    // make a string for sql to update the cart quantity
+    $sql = "UPDATE `user_carts` SET `quantity`= ? WHERE id = ? AND `users_id`= ?;";
+    
     // prepare the statement
     $stmt = $mysqli -> prepare ($sql);
 
     // bind the parameters to the statement
-    $stmt -> bind_param ('ssss', $email, $password, $firstname, $lastname);
-    
-    // execute the statement
-    $stmt -> execute();
-    
-    session_start();                // create a session
-    $last_id = $mysqli->insert_id;  // get the last inserted id
-    $_SESSION['id'] = $last_id;     // use the last inserted id as session
-    $_SESSION['authtype'] = "user"; // set the auth type as user
+    $stmt -> bind_param ('iii', $quantity, $cart_id, $user_id);
 
     // make a success signup response
     $response = [
@@ -63,8 +66,7 @@ catch (Exception $e){
 }
 
 
-// make a string for sql to update the cart quantity
-$sql = "UPDATE `user_carts` SET `quantity`= ? WHERE id = ? AND `users_id`= ?;";
+
 
 
 
