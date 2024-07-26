@@ -36,45 +36,55 @@ $quantity = $data['input_quantity'];
 
 // try to create and catch if there is error
 try{
-
+    // if requested is to have 0, delete
     if ($quantity == 0){
-        $sql = "DELETE `user_carts` WHERE id = ? AND `user_id` = ?;"; 
+        // make a string for sql to delete the cart
+        $sql = "DELETE FROM `user_carts`
+            WHERE id = ? AND `users_id` = ?;"; 
+
+        // prepare the statement
+        $stmt = $mysqli -> prepare ($sql);
+
+        // bind the parameters to the statement
+        $stmt -> bind_param ('ii', $cart_id, $user_id);
     }
-    // make a string for sql to update the cart quantity
-    $sql = "UPDATE `user_carts` SET `quantity`= ? WHERE id = ? AND `users_id`= ?;";
-    
-    // prepare the statement
-    $stmt = $mysqli -> prepare ($sql);
 
-    // bind the parameters to the statement
-    $stmt -> bind_param ('iii', $quantity, $cart_id, $user_id);
+    // if requested is not 0, update
+    else{
+        // make a string for sql to update the cart quantity
+        $sql = "UPDATE `user_carts`
+            SET `quantity`= ?
+            WHERE id = ? AND `users_id`= ?;";
+        
+        // prepare the statement
+        $stmt = $mysqli -> prepare ($sql);
 
-    // make a success signup response
+        // bind the parameters to the statement
+        $stmt -> bind_param ('iii', $quantity, $cart_id, $user_id);
+    }
+
+    // execute the statement
+    $stmt->execute();
+
+    // make a success response
     $response = [
         'status' => "success",
-        'message' => "Signup Successful"
+        'message' => "Update Quantity Successful"
     ];
 }
 
 // if there is error in query
 catch (Exception $e){
-    // make an error signup response
+    // make an error response
     $response = [
         'status' => "error",
         'message' => "Error No: ". $e->getCode() ." - ". $e->getMessage()    // get error code and message
     ];
 }
 
-
-
-
-
-
-$response = [
-    'status' => "success",
-    'message' => "Successfully updated the amount",
-    'message2' => $data
-];
+// close statement and database
+$stmt -> close();
+$mysqli -> close();
 
 exit ( json_encode ($response) );
 

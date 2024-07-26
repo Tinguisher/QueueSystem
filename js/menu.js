@@ -333,6 +333,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // if "-" button is clicked, decrement, but not if it is 0
             decrement.addEventListener('click', () => {
                 if (cart.quantity < 1) return;
+                quantity.textContent--;
 
                 // get the requested decrement quantity
                 let requestQuantity = cart.quantity - 1;
@@ -344,6 +345,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // if "+" button is clicked, increment, but not if it is 99
             increment.addEventListener('click', () => {
                 if (cart.quantity > 98) return;
+                quantity.textContent++;
 
                 // get the requested increment quantity
                 let requestQuantity = cart.quantity + 1;
@@ -393,21 +395,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // get objects from fetch
             .then(data => {
-                // if adding cart is success
-                if (data.status == "success") {
-                    // get the fresh user's cart
-                    getUserCart();
-
+                // if update quantity is success
+                if (data.status != "success") {
+                    console.error(data.message);
                 }
-                console.log(data);
 
+                // get the fresh user's cart
+                getUserCart();
             })
 
             // error checker
             .catch(error => console.error(error));
     }
-
-
 
     // if there is click on payment
     payment.addEventListener('click', (ev) => {
