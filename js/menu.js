@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
         foodImage.src = `../images/foodCategories/${menu.categoryName}/${menu.image}`;
         foodName.textContent = menu.foodName;
         foodDescription.textContent = menu.description;
-        foodPrice.value = `Php ${Number(menu.price).toLocaleString()}`; // add comma to the cart.price
+        foodPrice.textContent = `Php ${Number(menu.price).toLocaleString()}`; // add comma to the cart.price
 
         // put each made card inside regularMenuContainer
         papapapoppop.appendChild(menuForm);
