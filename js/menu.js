@@ -374,7 +374,7 @@ document.addEventListener('DOMContentLoaded', function () {
     updateFoodQuantity = (cart_id, request_quantity) => {
         // create a payload to be passed in database
         const payload = {
-            input_food_id: cart_id,
+            input_cart_id: cart_id,
             input_quantity: request_quantity
         };
 
@@ -398,8 +398,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     // get the fresh user's cart
                     getUserCart();
 
-                    console.log(data);
                 }
+                console.log(data);
 
             })
 
