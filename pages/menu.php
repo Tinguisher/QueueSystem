@@ -370,7 +370,7 @@ if (isset($_SESSION['id'])) {
             <p id="subTotal" class="total" style="margin-top: 16px;">Loading SubTotal...</p>
             <p id="deliveryFee" class="total" style="margin-top: 50px;">Loading Delivery Fee...</p>
             <p id="totalPrice" class="total" style="margin-top: 132px;">Loading Total Price...</p>
-            <button id="payment" class="pay">Review Payment and Address</button>
+            <button id="payment" class="pay">Loading Payment...</button>
         </div>
     </div>
 

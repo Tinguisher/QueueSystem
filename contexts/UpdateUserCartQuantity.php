@@ -36,8 +36,8 @@ $quantity = $data['input_quantity'];
 
 // try to create and catch if there is error
 try{
-    // if requested is to have 0, delete
-    if ($quantity == 0){
+    // if requested is 0 or lower, delete
+    if ($quantity <= 0){
         // make a string for sql to delete the cart
         $sql = "DELETE FROM `user_carts`
             WHERE id = ? AND `users_id` = ?;"; 

@@ -25,13 +25,23 @@ document.addEventListener('DOMContentLoaded', function () {
         // change the text to logout
         sessiontext.textContent = "Logout";
 
-        // if there is click on logoutbutton
-        sessionbutton.addEventListener('click', (ev) => {
-            // prevent loading of website
-            ev.preventDefault();
+        // change the payment text as Review Payment and Address
+        payment.textContent = "Review Payment and Address";
 
+        // if there is click on logoutbutton
+        sessionbutton.addEventListener('click', () => {
             // logout the user
             logout();
+        });
+
+        // if there is click on payment
+        payment.addEventListener('click', () => {
+            // proceed to creating receipts
+            createReceipt();
+
+            // ===========================================================
+            // window.location.href = './check.html';
+            // ===========================================================
         });
     }
 
@@ -40,11 +50,17 @@ document.addEventListener('DOMContentLoaded', function () {
         // change the text to sign in
         sessiontext.textContent = "Sign in";
 
-        // if there is click on logoutbutton
-        sessionbutton.addEventListener('click', (ev) => {
-            // prevent loading of website
-            ev.preventDefault();
+        // change the payment text as Sign in to Review Payment
+        payment.textContent = "Sign in to Review Payment";
 
+        // if there is click on Sign in button
+        sessionbutton.addEventListener('click', (ev) => {
+            // change the location to login
+            window.location = '../pages/login.php';
+        });
+
+        // if there is click on payment
+        payment.addEventListener('click', (ev) => {
             // change the location to login
             window.location = '../pages/login.php';
         });
@@ -64,6 +80,28 @@ document.addEventListener('DOMContentLoaded', function () {
                     // reload the website
                     window.location.reload();
                 }
+            })
+            // error checker
+            .catch(error => console.error(error));
+    }
+
+    // process of creating Receipt after clicking payment
+    createReceipt = () => {
+        // go to CreateUserReceipt.php
+        fetch('../contexts/CreateUserReceipt.php')
+            // get response as json
+            .then(response => response.json())
+
+            // get objects from fetch
+            .then(data => {
+                // get the fresh user's cart
+                getUserCart();
+
+                // if update quantity is not success
+                if (data.status == "error") {
+                    console.error(data.message);
+                }
+
             })
             // error checker
             .catch(error => console.error(error));
@@ -129,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function () {
     createMenuCards = (menus) => {
         // clear the values from regularMenuContainer
         regularMenuContainer.innerHTML = "";
-        
+
         // get the menus for filtering
         menuArray = menus.map(menu => {
             // get the element template from menu.php
@@ -277,7 +315,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (data.status == "success") {
                     // close popup
                     popupCart();
-                    
+
                     // get the fresh user's cart
                     getUserCart();
                 }
@@ -292,33 +330,50 @@ document.addEventListener('DOMContentLoaded', function () {
     // ==================================================== //
     // get the user cart process
     getUserCart = () => {
-        fetch('../contexts/GetUserCart.php')
+        fetch('../contexts/GetCartProcess.php')
             // get response as json
             .then(response => response.json())
 
             // get objects from fetch
             .then(data => {
-                // clear the cart container
-                foodCartContainer.innerHTML = "";
+                // if getting the data is success
+                if (data.status == "success") {
+                    // clear the cart container
+                    foodCartContainer.innerHTML = "";
 
-                // create a card for each user carts
-                createFoodCartCards(data.userCart);
+                    // create a card for each user carts
+                    createFoodCartCards(data.carts);
+                }
+
+                
+
+                console.log (data);
+
+
+
+
+
+
+
             })
             // error checker
-            .catch(error => console.error(error));
+            .catch(error => {
+                console.error(error);
+                foodCartContainer.innerHTML = error;
+            });
     }
 
     // get the user's cart
     getUserCart();
 
     // create user's cart
-    createFoodCartCards = (userCart) => {
+    createFoodCartCards = (carts) => {
         // create a subTotal variable
         let addedSubTotal = 0;
         let calculatedDeliveryFee = 50;
 
         // loop for every cart by the user
-        userCart.forEach(cart => {
+        carts.forEach(cart => {
             // get the element template from menu.php
             const foodCartTemplate = document.querySelector("[data-user-cart-template]");
             const card = foodCartTemplate.content.cloneNode(true).children[0];
@@ -339,9 +394,12 @@ document.addEventListener('DOMContentLoaded', function () {
             foodPrice.textContent = `Php ${Number(cart.price).toLocaleString()}`;   // add comma to the cart.price
             quantity.textContent = cart.quantity;
 
-            // if "-" button is clicked, decrement, but not if it is 0
+            // if "-" button is clicked, decrement
             decrement.addEventListener('click', () => {
-                if (cart.quantity < 1) return;
+                // remove the element card if current value is 1 and to be decremented
+                if (cart.quantity <= 1) card.remove();
+
+                // decrement the textContent
                 quantity.textContent--;
 
                 // get the requested decrement quantity
@@ -404,44 +462,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // get objects from fetch
             .then(data => {
-                // if update quantity is success
+                // get the fresh user's cart
+                getUserCart();
+
+                // if update quantity is not success
                 if (data.status != "success") {
                     console.error(data.message);
                 }
-
-                // get the fresh user's cart
-                getUserCart();
             })
 
             // error checker
-            .catch(error => console.error(error));
+            .catch(error => {
+                console.error(error);
+                foodCartContainer.innerHTML = error
+            });
     }
 
-    // if there is click on payment
-    payment.addEventListener('click', (ev) => {
-        // prevent the website from loading
-        ev.preventDefault();
 
-        // proceed to creating receipts
-        fetch('../contexts/CreateUserReceipt.php')
-            // get response as json
-            .then(response => response.json())
-
-            // get objects from fetch
-            .then(data => {
-                // get the fresh user's cart
-                getUserCart();
-
-                if (data.status == "error"){
-                    console.log(data);
-                }
-
-            })
-            // error checker
-            .catch(error => console.error(error));
-
-        // window.location.href = './check.html';
-    });
 
 
 });
