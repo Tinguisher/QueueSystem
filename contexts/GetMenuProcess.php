@@ -27,7 +27,7 @@ try{
     // get the result from the statement
     $result = $stmt -> get_result();
 
-    // get only one from the executed statement
+    // get all values from the executed statement
     $menu = $result -> fetch_all( MYSQLI_ASSOC );
 
     // pass the menu to response
