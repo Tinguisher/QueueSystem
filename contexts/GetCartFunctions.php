@@ -7,7 +7,7 @@ function getUserCart() {
     // get the current logged in user
     $user_id = $_SESSION['id'];
 
-    // make a string for sql to be used
+    // make a string sql to get information of cart
     $sql = "SELECT 
             user_carts.id,
             foods.image,
@@ -65,6 +65,42 @@ function getUserCart() {
 
 // if it is guest or the user is not logged in, get session's cart
 function getGuestCart() {
+    // access database
+    $mysqli = require_once "./database.php";
+
+    // foreach ($_SESSION['carts'] as $guestCart) {
+    //     // make a string sql to get information of cart
+    //     $sql = "SELECT 
+    //         foods.image,
+    //         food_categories.name AS categoryName,
+    //         foods.name AS foodName,
+    //         foods.description,
+    //         (foods.price * ". $guestCart['quantity'] .") AS price,
+    //     FROM `foods`, `food_categories`
+    //     WHERE foods.food_categories_id = food_categories.id AND foods.id =". $guestCart['id'] .";";
+
+    // }
+    
+
+    // try to create and catch if there is error
+    try{
+        // prepare the statement
+        $stmt = $mysqli -> prepare ($sql);
+
+        // bind the parameters to the statement
+        $stmt -> bind_param ('i', $_SESSION['quantity']);
+    }
+
+    // if there is error in query
+    catch (Exception $e){
+        // make an error response
+        $response = [
+            'status' => "error",
+            'message' => "Error No: ". $e->getCode() ." - ". $e->getMessage()    // get error code and message
+        ];
+    }
+
+
     // make a success response
     $response = [
         'status' => "success",
@@ -72,22 +108,22 @@ function getGuestCart() {
         'carts' => $_SESSION['carts']
     ];
 
-    // $response['carts'][0]['id'] = "2";
-    // $response['carts'][0]['image'] = "pep.png";
-    // $response['carts'][0]['categoryName'] = "Pizza";
-    // $response['carts'][0]['foodName'] = "Pepperoni Pizza";
-    // $response['carts'][0]['description'] = "This is pepperoni Pizza hehe";
-    // $response['carts'][0]['price'] = "200";
-    // $response['carts'][0]['quantity'] = "4";
+    $_SESSION['carts'][0]['id'] = "2";
+    // $_SESSION['carts'][0]['image'] = "pep.png";
+    // $_SESSION['carts'][0]['categoryName'] = "Pizza";
+    // $_SESSION['carts'][0]['foodName'] = "Pepperoni Pizza";
+    // $_SESSION['carts'][0]['description'] = "This is pepperoni Pizza hehe";
+    // $_SESSION['carts'][0]['price'] = "200";
+    $_SESSION['carts'][0]['quantity'] = "4";
     
     
-    // $response['carts'][1]['id'] = "3";
-    // $response['carts'][1]['image'] = "bacon.png";
-    // $response['carts'][1]['categoryName'] = "Burger";
-    // $response['carts'][1]['foodName'] = "Big Burger";
-    // $response['carts'][1]['description'] = "This is a BEEG Burger";
-    // $response['carts'][1]['price'] = "201.12";
-    // $response['carts'][1]['quantity'] = "5";
+    $_SESSION['carts'][1]['id'] = "3";
+    // $_SESSION['carts'][1]['image'] = "bacon.png";
+    // $_SESSION['carts'][1]['categoryName'] = "Burger";
+    // $_SESSION['carts'][1]['foodName'] = "Big Burger";
+    // $_SESSION['carts'][1]['description'] = "This is a BEEG Burger";
+    // $_SESSION['carts'][1]['price'] = "201.12";
+    $_SESSION['carts'][1]['quantity'] = "5";
 
     
     
