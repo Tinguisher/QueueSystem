@@ -344,17 +344,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     // create a card for each user carts
                     createFoodCartCards(data.carts);
                 }
-
-                
-
-                console.log (data);
-
-
-
-
-
-
-
             })
             // error checker
             .catch(error => {
