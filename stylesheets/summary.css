@@ -186,140 +186,18 @@ li p {
   padding: 16.5px 37px;
 }
 
-#borderline{
+.picture{
   position: absolute;
-  margin-top: 280px;
-  width: 1800px;
-  height: 718px;
-  border-radius: 10px;
-  border: 1px solid #000;
+  width: 200.23px;
+  height: 220.74px;
+  border-radius: 10px 0px 0px 10px;
 }
 
-#allord{
+.desc{
   position: absolute;
-  margin-top: 34px;
-  margin-left: 49px;
-  color: #BD4141;
-  font-family: "Roboto Slab";
+  margin-left: 261px;
+  color: #000;
+  font-family: "Rhodium Libre";
   font-size: 25px;
   font-weight: 400;
-}
-
-#thisweek{
-  position: absolute;
-  margin-top: 34px;
-  margin-left: 221px;
-  color: #000;
-  font-family: "Roboto Slab";
-  font-size: 25px;
-  font-weight: 400;
-}
-
-#thismon{
-  position: absolute;
-  margin-top: 34px;
-  margin-left: 398px;
-  color: #000;
-  font-family: "Roboto Slab";
-  font-size: 25px;  
-  font-weight: 400;
-}
-
-.table2,
-.table2 tr,
-.table2 th {
-  width: 1724px; 
-  height: 90px;
-  border-left: none;
-  border-right: none;
-  color: #000;
-  font-family: "Roboto Slab";
-  font-size: 25px;
-  font-weight: 400;
-  /* border-top:1px solid #000 ;
-  border-bottom:1px solid #000;
-  border-radius: 15px 0px 0px 15px; */
-}
-
-.table2 th{
-  width: 286px;
-}
-
-.tableDiv{
-  top: 103px;
-  left: 38px;
-  width: 1724px; 
-  height: 72px;
-  border: 1px solid #000;
-  border-radius: 15px;
-  padding: 5px;
-  position: absolute;
-  gap: 10px;
-  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.25);
-}
-
-.table2 td {
-  text-align: center;
-}
-
-
-.table2 th {
-  position: relative;
-  top: -8px;
-}
-
-/* #threebtn{
-  position:absolute;
-  margin-top:2px; 
-  margin-left:20px;
- 
-}
-
-#threebtn:hover div svg path {color: white;} */
-
-
-.dropbtn {
-  background: none;
-  margin-top: 10px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-
-.dropdown {
-  background: none;
-  position: relative;
-  display: inline-block;
-  position: relative; 
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  right: 0;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  border-radius: 20px;
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {
-  background-color: white;
-  border-radius: 20px;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.dropdown:hover .dropbtn {
-  background-color: #FFFDF1;
 }
