@@ -20,18 +20,37 @@
                         <li><a href="history-ad.html">History</a></li>
                       </ul>
                 </div>
+                <!--Profile and notif-->
                 <div class="subnavbar3">
-                    Profile and notif
+                    <button class="dropbtn" onclick="myFunction()">
+                        <div class="profile">
+                            <div class="profileleft">
+                                <img src="../images/weui_arrow-filled.svg">
+                            </div>
+                            <div class="profileright">
+                                <img src="../images/iconamoon_profile.svg">
+                            </div>
+                        </div>
+                        <div id="myDropdown" class="dropdown-content">
+                            <a href="../pages/profile-ad.html">Profile</a>
+                            <a href="#logout">Logout</a>
+                          </div>
+                    </button>
                 </div>
+                <!--Profile and notif end-->
             </div>
             <div class="managemenu-line"><a>Manage Menu</a></div>
             <div class="manageoptions">
                 <div class="editmenu">
                     <div class="editup">
-                        <div class="pencil"></div>  
+                        <div class="pencil">
+                          <img src="../images/pencil.svg">
+                        </div>  
                     </div>
                     <div class="mid">
-                        <div class="cook-booK"></div>
+                        <div class="cook-booK">
+                            <img src="../images/cookbook.svg">
+                        </div>
                     </div>
                     <div class="editbottom">
                         <div class="editbutton"><a href="managemenuedit-ad.html"><button>Edit Menu</button></a></div>
@@ -39,10 +58,14 @@
                 </div>
                 <div class="addmenu">
                     <div class="addup">
-                        <div class="plus"></div>
+                        <div class="plus">
+                            <img src="../images/plus.svg">
+                        </div>
                     </div>
                     <div class="mid">
-                        <div class="cook-booK"></div>
+                        <div class="cook-booK">
+                            <img src="../images/cookbook.svg">
+                        </div>
                     </div>
                     <div class="addbottom">
                         <div class="addbutton"><a href="managemenuadd-ad.html"><button>Add Menu</button></a></div>
@@ -50,5 +73,6 @@
                 </div>
             </div>
         </div>
+    <script src="../js/navbar-ad.js"></script>    
     </body>
 </html>

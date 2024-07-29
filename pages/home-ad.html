@@ -4,7 +4,8 @@
     <style>
         @keyframes anim {
             100% {
-                stroke-dashoffset: 0;
+                /* 440 divide by half since 50% */
+                stroke-dashoffset:220;
             }
         }
         
@@ -32,7 +33,22 @@
                       </ul>
                 </div>
                 <div class="subnavbar3">
-                    Profile and notif 
+                    <div class="subnavbar3">
+                        <button class="dropbtn" onclick="myFunction()">
+                            <div class="profile">
+                                <div class="profileleft">
+                                    <img src="../images/weui_arrow-filled.svg">
+                                </div>
+                                <div class="profileright">
+                                    <img src="../images/iconamoon_profile.svg">
+                                </div>
+                            </div>
+                            <div id="myDropdown" class="dropdown-content">
+                                <a href="../pages/profile-ad.html">Profile</a>
+                                <a href="#logout">Logout</a>
+                              </div>
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="home-line"><a>Home</a></div><br>
@@ -40,6 +56,7 @@
                 <div class="urgentleft">
                     <div class="urgentlefttop">
                         <div class="ongoingdeliveries">
+                            <!--Ongoing deliveriestoP will take the number of "Ongoing deliveries"-->
                             <div class="ongoingdeliveriestop">12</div>
                             <div class="ongoingdeliveriesbottom">Ongoing Deliveries</div>
                         </div>
@@ -65,7 +82,10 @@
                                 </div>
                             </div>
                             <!-- Circular Progress Bar End -->
-
+                            <div class="dailytxt">
+                                <div class="dailynum">50/100</div>
+                                <div class="dailyword">Daily Quota</div>
+                            </div>
                         </div>
                     </div>
                     <div class="urgentleftbottom">
@@ -99,5 +119,6 @@
                 </div>
             </div>
         </div>
+        <script src="../js/navbar-ad.js"></script>
 </body>
 </html>
