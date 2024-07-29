@@ -66,6 +66,7 @@ catch (Exception $e){
 // close the database
 $mysqli -> close();
 
+// return the response as json back to queueorder-ad.js
 exit ( json_encode($response) );
 
 ?>
