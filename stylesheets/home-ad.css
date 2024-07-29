@@ -247,11 +247,32 @@ li a:hover {
 }
 
 .dailyquota{
+    display: flex;
+    flex-direction: row;
     border: 0.4vh solid #BD4141;
     width: 50%;
     height: 80%;
     border-radius: 2.0vh;
     box-shadow: 0.6vh 0.6vh 0.5vh rgba(0, 0, 0, 0.25);
+}
+
+.dailytxt{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 4vh;
+    justify-content: center;
+    font-size: 3vh;
+    font-family: Roboto Slab;
+    font-weight: bold;
+    color: #BD4141;
+
+}
+
+.dailynum{
+    font-size: 6vh;
+    
+
 }
 
 .urgentleftbottom{
