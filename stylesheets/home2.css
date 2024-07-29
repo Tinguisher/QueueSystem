@@ -21,13 +21,13 @@ table, tr, td {
     padding: 15px 0px;
 }
 
-td a:hover {color: #FF5622;}
+td a:hover {color: #2ac09a;}
 
-.navcrcl{
+#navcrcl{
     width: 50px;
     height: 50px;
     border-radius: 25px;
-    background-color: #FF5622;
+    background-color: #094C3B;
     position: absolute;
 }
 
@@ -57,7 +57,7 @@ input:focus{
     margin-left: 60px; 
     position: absolute; 
     border: 4px solid #000; 
-    background: #FF5622; 
+    background: #094C3B; 
     color: white; 
     font-size: 32px; 
     font-family: Rhodium Libre; 
@@ -128,7 +128,7 @@ input:focus{
 
 #free{
     position: absolute;
-    color: #FF5622;
+    color: #029A3A;
     font-family: "Roboto Slab";
     font-size: 25px;
     font-style: normal;
@@ -296,7 +296,7 @@ button {
   
     --background-color: #FFFDF1;
     --border-size: 2px;
-    --accent-color: #FF5622;
+    --accent-color: #094C3B;
   }
 .btn.btn-background-slide::before {
     content: '';
@@ -338,7 +338,7 @@ button {
     margin-top: 123px;
     margin-left: 780px;
     position: absolute;
-    color: #FF5622;
+    color: #094C3B;
     text-align: center;
     font-family: "Roboto Slab";
     font-size: 25px;
@@ -373,7 +373,7 @@ button {
     line-height: normal;
 }
 
-.all1{
+#all1{
     position: absolute;
 	font-family: "Roboto Slab";
 	font-size: 25px;
@@ -382,7 +382,7 @@ button {
 	width: 171px;
 	height: 84px;
 	text-align: center;
-	color: #FF5622;
+	color: #094C3B;
 	border-radius: 0px;
     border: 0;
 	cursor: pointer;
@@ -393,27 +393,27 @@ button {
 	transition-property: box-shadow, transform;
 }
 
-.all1:hover div svg path {
+#all1:hover div svg path {
     fill: #FFFFFF;
    
 }
 
-#burger:hover div svg path {
+.burger:hover div svg path {
     fill: #FFFFFF;
     stroke: #FFF;
 }
 
 
 
-.all1:hover, .btn:focus, .btn:active{
-    background-color: #FF5622;
+#all1:hover, .btn:focus, .btn:active{
+    background-color: #094C3B;
     color: #FFFDF1;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 	-webkit-transform: scale(1.1);
 	transform: scale(1.1);
 }
 
-.menName {
+#menName {
     margin-top: 47px;
     margin-left: 235px;
     font-weight: 700;
@@ -423,27 +423,11 @@ button {
     font-family: "Roboto Slab"; 
 }
 
-/* .menucard{
-  color: #000;
-  font-family: "Roboto Slab";
-  border-radius: 13px;
-  border: 3px solid #094C3B;
-  background: #FFF;
-  width: 687px;
-  height: 251px;
-  cursor: pointer;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: box-shadow, transform;
-  transition-property: box-shadow, transform;
-} */
-
-.men1{
+#men1{
     color: #000;
     font-family: "Roboto Slab";
     border-radius: 13px;
-    border: 3px solid #FF5622;
+    border: 3px solid #094C3B;
     background: #FFF;
     width: 687px;
     height: 251px;
@@ -455,13 +439,13 @@ button {
 	  transition-property: box-shadow, transform;
 }
 
-.men1:hover{
+#men1:hover{
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 	  -webkit-transform: scale(1.1);
 	  transform: scale(1.1);
 }
 
-.men2{
+#men2{
     position: absolute;
     width: 400px;
     margin-top: 98.72px;
@@ -469,11 +453,11 @@ button {
     color: #000;
     font-size: 21px;
 }
-.dollar{
+#dollar{
     position: absolute;
     margin-top: 174px;
     margin-left: 235px;
-    color: #FF5622;
+    color: #094C3B;
     font-family: "Roboto Slab";
     font-size: 40px;
     font-weight: 700;
@@ -491,13 +475,13 @@ button {
     font-size: 20px;
     font-weight: 400;
     border-radius: 10px;
-    background: #FF5622;  
+    background: #094C3B;  
     padding: 0;    
 }
 
 #show{
     position: absolute;
-    margin-top: 450px;
+    margin-top: 1764px;
     margin-left: 818px;
     width: 281px;
     height: 98px;
@@ -520,7 +504,7 @@ button {
 }
 
 #show:hover{
-    background-color: #FF5622;
+    background-color: #094C3B;
     color: #FFFDF1;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 	-webkit-transform: scale(1.1);
@@ -531,7 +515,7 @@ button {
     position: absolute;
     margin-top: 2005px;
     margin-left: 758px;
-    color: #FF5622;
+    color: #094C3B;
     font-family: "Roboto Slab";
     font-size: 25px;
     font-style: normal;
@@ -580,13 +564,13 @@ button {
     overflow: hidden;
   }
   
-  #slides{
+  .slides{
     width: 500%;
     height: 500px;
     display: flex;
   }
   
-  #slides input{
+  .slides input{
     display: none;
   }
   
@@ -601,10 +585,10 @@ button {
   }
   
   
-  #navigation-manual{
+  .navigation-manual{
     position: absolute;
     width: 800px;
-    bottom: 33px;
+    margin-top: 65.5px;
     margin-left: 50px;
     display: flex;
     justify-content: center;
@@ -642,7 +626,7 @@ button {
     margin-left: -60%;
   }
   
-  #navigation-auto{
+  .navigation-auto{
     position: absolute;
     display: flex;
     width: 800px;
@@ -651,30 +635,30 @@ button {
     margin-left: 50px;
   }
   
-  #navigation-auto div{
+  .navigation-auto div{
     border: 2px solid #867F7F;
     padding: 5px;
     border-radius: 10px;
     transition: 1s;
   }
   
-  #navigation-auto div:not(:last-child){
+  .navigation-auto div:not(:last-child){
     margin-right: 40px;
   }
   
-  #radio1:checked ~ #navigation-auto .auto-btn1{
+  #radio1:checked ~ .navigation-auto .auto-btn1{
     background: #FFFFFF;
   }
   
-  #radio2:checked ~ #navigation-auto .auto-btn2{
+  #radio2:checked ~ .navigation-auto .auto-btn2{
     background: #FFFFFF;
   }
   
-  #radio3:checked ~ #navigation-auto .auto-btn3{
+  #radio3:checked ~ .navigation-auto .auto-btn3{
     background: #FFFFFF;
   }
   
-  #radio4:checked ~ #navigation-auto .auto-btn4{
+  #radio4:checked ~ .navigation-auto .auto-btn4{
     background: #FFFFFF;
   }
 
@@ -690,7 +674,7 @@ button {
       width: 72px;
       height: 50px;
       border-radius: 25px;
-      background-color: #FF5622;
+      background-color: #094C3B;
       position: absolute;
   
   }
@@ -704,15 +688,16 @@ button {
     border-radius: 15px;
     max-height: 0;
     overflow: hidden;
-    background-color: #FF5622;
+    background-color: #094C3B;
     transition: max-height 0.5s;
     z-index: 1;
     border: 2px solid #FFFDF1;
   }
   
-  .icons{
+  #icons{
     width: 30px;
     height: 30px;
+    
   }
   
   .dropdown-list-item {
@@ -743,4 +728,3 @@ button {
     margin-top: -27px;  
     margin-left: 40px;
   }
-

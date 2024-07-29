@@ -198,7 +198,7 @@ li p {
 .verad{
   color: #000;
   position: absolute;
-  margin-top: 34px;
+  margin-top: 40px;
   margin-left: 93px;
   font-family: "Roboto Slab";
   font-size: 32px;
@@ -234,8 +234,21 @@ li p {
   border-radius: 10px;
   border: 1px solid #999;
   background: #FF5622;
-}
-
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow, transform;
+  transition-property: box-shadow, transform;
+  }
+  
+  
+  .sub:hover, .btn:focus, .btn:active{
+    background-color: #FF5622;
+    color: #FFFDF1;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+   
 .deladd input:focus{
   border-color: #D93602;
   color: #D93602;
@@ -370,6 +383,19 @@ li p {
   border-radius: 10px;
   border: 1px solid #999;
   background: #FFF;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow, transform;
+  transition-property: box-shadow, transform;
+  }
+  
+  
+  .btnorder:hover, .btn:focus, .btn:active{
+    background-color: none;
+    color: black;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 .person{
@@ -470,6 +496,19 @@ flex-shrink: 0;
 border-radius: 10px;
 border: 1px solid #999;
 background: #FF5622;
+-webkit-transition-duration: 0.3s;
+transition-duration: 0.3s;
+-webkit-transition-property: box-shadow, transform;
+transition-property: box-shadow, transform;
+}
+
+
+.savebtn:hover, .btn:focus, .btn:active{
+  background-color: #FF5622;
+  color: #FFFDF1;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .person input:focus{
@@ -549,4 +588,25 @@ background: #FF5622;
   font-family: "Roboto Slab";
   font-size: 20px;
   font-weight: 400;
+}
+
+.wavy {
+  animation-name: wavy;
+  animation-duration: 2.3s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+@keyframes wavy {
+  0% {
+    top: 0px;
+  }
+  50% {
+    top: -15px;
+  }
+  100% {
+    top: 0px;
+  }
 }
