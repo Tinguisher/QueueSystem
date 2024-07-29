@@ -104,9 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(data => {
                 // get the fresh user's cart
                 getQueue();
-
-                console.log(data);
-
+                
                 // if update status is not success
                 if (data.status != "success") {
                     console.error(data.message);

@@ -5,6 +5,7 @@ header('Content-Type: application/json; charset=utf-8');
 // access database
 $mysqli = require_once "./database.php";
 
+// create a sql to get orders to be shown in queue
 $sql = "SELECT food_orders.id AS orderID,
         receipts.id AS receiptID,
         food_categories.name AS categoryName,
@@ -19,6 +20,7 @@ $sql = "SELECT food_orders.id AS orderID,
     WHERE food_orders.foods_id = foods.id
         AND foods.food_categories_id = food_categories.id
         AND food_orders.receipts_id = receipts.id
+        AND food_orders.status IN ('In Progress', 'Pending')
     ORDER BY receipts.orderDate;";
 
 // try to create and catch if there is error
