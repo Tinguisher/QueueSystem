@@ -12,9 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] !== "POST") {
 $json = file_get_contents('php://input');
 $data = json_decode($json, true);
 
-// start the session to check if there is any
-session_start();
-
 // check if there is input of dat
 if (empty($data['input_food_id']) || empty($data['input_quantity'])) {
     $response = [
@@ -23,6 +20,12 @@ if (empty($data['input_food_id']) || empty($data['input_quantity'])) {
     ];
     exit(json_encode($response));
 }
+
+// start the session to check if there is any
+session_start();
+
+// if there is session id, add user's cart and if not, add guest's cart
+$response = ( isset($_SESSION['id']) ) ? getUserCart() : getGuestCart();
 
 // access database
 $mysqli = require_once './database.php';
