@@ -52,28 +52,28 @@
                 <div class="redchoose">Choose Station:</div>
                 <div class="choosecat">
                     <div class="catpad">
-                        <input type="radio" name="categoryName" checked="checked">
-                        <label class="radlabel">All</label>
+                        <input type="radio" name="category" id="all" checked="checked">
+                        <label class="radlabel" for="all">All</label>
                     </div>
                     <div class="catpad">
-                        <input type="radio" name="categoryName">
-                        <label class="radlabel">Burger</label>
+                        <input type="radio" id="burger" name="category">
+                        <label class="radlabel" for="burger">Burger</label>
                     </div>
                     <div class="catpad">
-                        <input type="radio" name="categoryName">
-                        <label class="radlabel">Pizza</label>
+                        <input type="radio" id="pizza" name="category">
+                        <label class="radlabel" for="pizza">Pizza</label>
                     </div>
                     <div class="catpad">
-                        <input type="radio" name="categoryName">
-                        <label class="radlabel">Chicken</label>
+                        <input type="radio" id="chicken" name="category">
+                        <label class="radlabel" for="chicken">Chicken</label>
                     </div>
                     <div class="catpad">
-                        <input type="radio" name="categoryName">
-                        <label class="radlabel">Beef</label>
+                        <input type="radio" id="beef" name="category">
+                        <label class="radlabel" for="beef">Beef</label>
                     </div>
                     <div>
-                        <input type="radio" name="categoryName">
-                        <label class="radlabel">Seafood</label>
+                        <input type="radio" id="seafood" name="category">
+                        <label class="radlabel" for="seafood">Seafood</label>
                     </div>
                 </div>
             </div>

@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     // get all the id, class for global variable
     const QueueOrderContainer = document.querySelector("[data-queue-order-container]");
+    const filterButtons = document.querySelectorAll("input[name='category']");
     var queueArray = [];
 
     // process to get the queue in database
@@ -29,6 +30,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // call the method to get the queues in databases
     getQueue();
+
+    // loop for every named as category
+    filterButtons.forEach(filterButton => {
+        filterButton.addEventListener('click', () => {
+            console.log("TITE");
+        });
+    });
 
     // create table processes
     createTable = (queues) => {
@@ -104,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(data => {
                 // get the fresh user's cart
                 getQueue();
-                
+
                 // if update status is not success
                 if (data.status != "success") {
                     console.error(data.message);
