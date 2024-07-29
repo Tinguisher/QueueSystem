@@ -21,6 +21,11 @@ if ( empty($data['input_cart_id']) || !isset($data['input_quantity']) ){
     exit ( json_encode($response) );
 }
 
+// start the session to check if there is any
+session_start();
+
+
+
 // access database
 $mysqli = require_once "./database.php";
 

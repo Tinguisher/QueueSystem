@@ -21,11 +21,11 @@ if (empty($data['input_food_id']) || empty($data['input_quantity'])) {
     exit(json_encode($response));
 }
 
-// start the session to check if there is any
-session_start();
-
 // include the functions to be used
 require_once './AddCartFunctions.php';
+
+// start the session to check if there is any
+session_start();
 
 // if there is session id, add user's cart and if not, add guest's cart
 $response = ( isset($_SESSION['id']) ) ? addUserCart($data) : addGuestCart($data);

@@ -319,8 +319,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     // get the fresh user's cart
                     getUserCart();
                 }
-
-                console.log(data);
             })
 
             // error checker
@@ -439,7 +437,7 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         // update the quantity in the database
-        fetch('../contexts/UpdateUserCartQuantity.php', {
+        fetch('../contexts/UpdateCartQuantity.php', {
             method: "POST",
             headers: {
                 // state as a json type
