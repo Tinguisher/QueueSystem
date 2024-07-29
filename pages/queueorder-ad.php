@@ -51,29 +51,28 @@
             <div class="choosestation">
                 <div class="redchoose">Choose Station:</div>
                 <div class="choosecat">
-
                     <div class="catpad">
-                        <input type="radio" checked="checked">
+                        <input type="radio" name="categoryName" checked="checked">
                         <label class="radlabel">All</label>
                     </div>
                     <div class="catpad">
-                        <input type="radio">
+                        <input type="radio" name="categoryName">
                         <label class="radlabel">Burger</label>
                     </div>
                     <div class="catpad">
-                        <input type="radio">
+                        <input type="radio" name="categoryName">
                         <label class="radlabel">Pizza</label>
                     </div>
                     <div class="catpad">
-                        <input type="radio">
+                        <input type="radio" name="categoryName">
                         <label class="radlabel">Chicken</label>
                     </div>
                     <div class="catpad">
-                        <input type="radio">
+                        <input type="radio" name="categoryName">
                         <label class="radlabel">Beef</label>
                     </div>
                     <div>
-                        <input type="radio">
+                        <input type="radio" name="categoryName">
                         <label class="radlabel">Seafood</label>
                     </div>
                 </div>
@@ -97,19 +96,18 @@
                                 <td>Loading...</td>
                                 <td>Loading...</td>
                                 <td>Loading...</td>
-                                <td>Loading...</td>
+                                <td><input type="button" value="Loading..."></td>
                             </tr>
                         </tbody>
                         <!-- Template for each queueing orders -->
                         <template data-queue-order-template>
-                            
-                                <tr>
-                                    <td data-receipt-id></td>
-                                    <td data-food-name></td>
-                                    <td data-quantity></td>
-                                    <td data-price></td>
-                                    <td data-status></td>
-                                </tr>
+                            <tr>
+                                <td data-receipt-id></td>
+                                <td data-food-name></td>
+                                <td data-quantity></td>
+                                <td data-price></td>
+                                <td><input type="button" data-status></td>
+                            </tr>
                         </template>
                     </table>
                 </div>

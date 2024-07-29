@@ -46,7 +46,7 @@ function updateUserCart($data) {
         // make a success response
         $response = [
             'status' => "success",
-            'message' => "Update Quantity Successful"
+            'message' => "Quantity updated successfully"
         ];
     }
 

@@ -5,8 +5,8 @@ header('Content-Type: application/json; charset=utf-8');
 // access database
 $mysqli = require_once "./database.php";
 
-$sql = "SELECT food_orders.id,
-        receipts.id,
+$sql = "SELECT food_orders.id AS orderID,
+        receipts.id AS receiptID,
         food_categories.name AS categoryName,
         foods.name AS foodName,
         food_orders.quantity,
