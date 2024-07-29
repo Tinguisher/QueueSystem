@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" href="../stylesheets/profile-ad.css">
@@ -13,11 +14,11 @@
                 <div class="subnavbar1">SnapServe</div>
                 <div class="subnavbar2">
                     <ul>
-                        <li><a href="home-ad.html">Home</a></li>
-                        <li><a href="team-ad.html">Team</a></li>
-                        <li><a href="queueorder-ad.html">Queue Order</a></li>
-                        <li><a href="managemenu-ad.html">Manage Menu</a></li>
-                        <li><a href="history-ad.html">History</a></li>
+                        <li><a href="./home-ad.html">Home</a></li>
+                        <li><a href="./team-ad.html">Team</a></li>
+                        <li><a href="./queueorder-ad.html">Queue Order</a></li>
+                        <li><a href="./managemenu-ad.html">Manage Menu</a></li>
+                        <li><a href="./history-ad.html">History</a></li>
                       </ul>
                 </div>
                 <!--Profile and notif-->
