@@ -65,7 +65,7 @@ if (isset($_SESSION['id'])) {
             <tr>
                 <td style="width: 138px;"><a href="./home.php" target="_top">Home</a></td>
                 <td style="width: 133px;" id="menn"><a href="./menu.php" target="_top" style="color:#FF5622;"><b>Menu</b></a></td>
-                <td style="width: 155px;"><a href="aboutus.html" target="_top">About Us <?= $name ?? ""; ?></a></td>
+                <td style="width: 155px;"><a href="aboutus.html" target="_top">About Us <?= $name ?? "Guest"; ?></a></td>
             </tr>
         </table>
         <!--Logo for cart-->

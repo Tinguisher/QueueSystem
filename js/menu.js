@@ -319,6 +319,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     // get the fresh user's cart
                     getUserCart();
                 }
+
+                console.log(data);
             })
 
             // error checker
@@ -466,9 +468,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 foodCartContainer.innerHTML = error
             });
     }
-
-
-
 
 });
 
