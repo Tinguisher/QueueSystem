@@ -283,7 +283,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // get all the values from the form to variable payload
             const payload = {
                 input_food_id: menu.id,
-                input_quantity: quantity.textContent,
+                input_quantity: Number(quantity.textContent),
                 // console.log(document.querySelector('input[name="radio"]:checked').value);
             };
 
@@ -432,12 +432,12 @@ document.addEventListener('DOMContentLoaded', function () {
     updateFoodQuantity = (cart_id, request_quantity) => {
         // create a payload to be passed in database
         const payload = {
-            input_cart_id: cart_id,
-            input_quantity: request_quantity
+            input_cart_id: Number(cart_id),
+            input_quantity: Number(request_quantity)
         };
 
         // update the quantity in the database
-        fetch('../contexts/UpdateCartQuantity.php', {
+        fetch('../contexts/UpdateCartQuantityProcess.php', {
             method: "POST",
             headers: {
                 // state as a json type

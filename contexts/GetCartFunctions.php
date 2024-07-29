@@ -71,7 +71,7 @@ function getGuestCart() {
     $mysqli = require_once "./database.php";
 
     // if there are no carts from the guest
-    if ( !isset($_SESSION['carts']) ){
+    if ( empty($_SESSION['carts']) ){
         // make a success response with no carts
         $response = [
             'status' => "success",
@@ -117,7 +117,7 @@ function getGuestCart() {
             $stmt -> close();
 
             // get all the remaining values from the session that is not available in database
-            $guestCart['carts'][$index]['id'] = $sessionCart['id'];
+            $guestCart['carts'][$index]['id'] = $index;
             $guestCart['carts'][$index]['food_id'] = $sessionCart['food_id'];
             $guestCart['carts'][$index]['quantity'] = $sessionCart['quantity'];
         }

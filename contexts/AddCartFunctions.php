@@ -49,26 +49,12 @@ function addUserCart($data) {
 
 // if it is guest or the user is not logged in, add session's cart
 function addGuestCart($data) {
-    // if there are still no cart
-    if ( !isset($_SESSION['carts']) ){
-        // manually create the cart
-        $_SESSION['carts'][0] = [
-            'id' => 0,
-            'food_id' => $data['input_food_id'],
-            'quantity' => $data['input_quantity']
-        ];
-    }
+    // create the cart
+    $_SESSION['carts'][] = [
+        'food_id' => $data['input_food_id'],
+        'quantity' => $data['input_quantity']
+    ];
     
-    // if there is a cart already
-    else {
-        // create the additional cart to the last array
-        $_SESSION['carts'][] = [
-            'id' => count($_SESSION['carts']),
-            'food_id' => $data['input_food_id'],
-            'quantity' => $data['input_quantity']
-        ];
-    }
-
     // make a success response
     $response = [
         'status' => "success",
