@@ -1,4 +1,9 @@
 
+::selection {
+  color: #FFFDF1;
+  background: #C17272;
+}
+
 body{
     background-color: #FFFDF1; 
     
@@ -78,12 +83,101 @@ li a:hover {
 
 }
 
+/*profile*/
 .subnavbar3{
-    align-content: right;
-    justify-content: center;
-    text-align: right;
-    width: 30%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+  width: 30%;
+  height: 100%;
+  position: relative;
+  
 }
+
+.dropbtn{
+  width: 7.5vh;
+  height: 5vh;
+  border-radius: 2vh;
+  background-color: #BD4141;
+  background-color: #FFFDF1;
+  border: none;
+  cursor: pointer;
+
+}
+
+.profile{
+  width: 7.5vh;
+  height: 5vh;
+  border-radius: 2vh;
+  background-color: #BD4141;
+  display: flex;
+  flex-direction: row;
+
+}
+
+/**/
+.dropdown-content {
+  display: none;
+  position: relative;
+  left: -8vh;
+  background-color: #BD4141;
+  min-width: 12vh;
+  overflow: auto;
+  border-radius: 1vh;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #FFFDF1;
+  padding: 12px 16px;
+  text-decoration: none;
+  font-size: 1.75vh;
+  text-align: left;
+  font-family: Roboto Slab;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #8C2828;
+}
+
+.show{
+  display: block;
+}
+
+/**/
+
+.profileleft{
+  width: 40%;
+  height: 100%;
+
+}
+
+.profileleft img{
+  display: block;
+  margin-left: auto;
+  margin-right: 0.1vh;
+  padding-top: 1.8vh;
+
+}
+
+.profileright{
+  width: 60%;
+  height: 100%;
+
+}
+
+.profileright img{
+  display: block;
+  margin-left: 0.3vh;
+  margin-right: auto;
+  padding-top: 0.8vh;
+
+}
+
+/*Profile and notif end*/
 
 .managemenu-line{
     display: flex;
@@ -195,13 +289,13 @@ li a:hover {
   border: 0.1vh solid #BD4141;
 }
  
-.editbutton button:hover{
+/* .editbutton button:hover{
   background-color: #BD4141;
   color: #FFFDF1;
   border: 0;
   transition: 0.3s;
 
-}
+} */
 
 .mid{
   width: 70%;
@@ -277,13 +371,13 @@ li a:hover {
 
 }
 
-.addbutton button:hover{
+/* .addbutton button:hover{
   background-color: #BD4141;
   color: #FFFDF1;
   border: 0;
   transition: 0.3s;
 
-}
+} */
 
 .pencil {
   display: inline-block;
