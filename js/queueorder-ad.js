@@ -33,8 +33,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // loop for every named as category
     filterButtons.forEach(filterButton => {
+        // if there is click on filterButtons
         filterButton.addEventListener('click', () => {
-            console.log("TITE");
+            // make the row visible or not
+            queueArray.forEach(queue => {
+                // check if row should be visible or not from the filter
+                const rowVisibility = queue.foodCategory.includes(filterButton.value);
+                
+                // display: "" if visible and display: none if not visible
+                queue.element.style.display = rowVisibility ? "" : "none";
+            });
         });
     });
 

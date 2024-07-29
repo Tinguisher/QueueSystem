@@ -52,27 +52,27 @@
                 <div class="redchoose">Choose Station:</div>
                 <div class="choosecat">
                     <div class="catpad">
-                        <input type="radio" name="category" id="all" checked="checked">
+                        <input type="radio" name="category" id="all" value="" checked>
                         <label class="radlabel" for="all">All</label>
                     </div>
                     <div class="catpad">
-                        <input type="radio" id="burger" name="category">
+                        <input type="radio" id="burger" name="category" value="Burger">
                         <label class="radlabel" for="burger">Burger</label>
                     </div>
                     <div class="catpad">
-                        <input type="radio" id="pizza" name="category">
+                        <input type="radio" id="pizza" name="category" value="Pizza">
                         <label class="radlabel" for="pizza">Pizza</label>
                     </div>
                     <div class="catpad">
-                        <input type="radio" id="chicken" name="category">
+                        <input type="radio" id="chicken" name="category" value="Chicken">
                         <label class="radlabel" for="chicken">Chicken</label>
                     </div>
                     <div class="catpad">
-                        <input type="radio" id="beef" name="category">
+                        <input type="radio" id="beef" name="category" value="Beef">
                         <label class="radlabel" for="beef">Beef</label>
                     </div>
                     <div>
-                        <input type="radio" id="seafood" name="category">
+                        <input type="radio" id="seafood" name="category" value="Seafood">
                         <label class="radlabel" for="seafood">Seafood</label>
                     </div>
                 </div>
