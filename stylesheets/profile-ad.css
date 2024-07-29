@@ -222,9 +222,15 @@ li a:hover {
 
 }
 
-.inputs{
+.input{
     padding-left: 10vh;
     padding-bottom: 5vh;
+
+}
+
+.botinputs{
+    padding-left: 10vh;
+    padding-bottom: -4vh;
 
 }
 
@@ -249,15 +255,17 @@ li a:hover {
     align-items: center;
     justify-content: center;
     width: 20%;
-    height: 70%;
+    height: 20%;
+    margin-top: 6vh;
+    padding-left: 12ch;
 
 }
 
 .submission{
     border: 0.1vh solid #BD4141;
     background-color: #FFFDF1;
-    width: 100%;
-    height: 100%;
+    width: 34.5vh;
+    height: 6.4vh;
     border-radius: 1vh;
     color: #BD4141;
     font-size: 2vh;
