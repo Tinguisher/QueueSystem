@@ -1,6 +1,6 @@
 <html>
 <head>
-    <link rel="stylesheet" href="../stylesheets/team-ad.css">
+    <link rel="stylesheet" href="../stylesheets/profile-ad.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Roboto Slab' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Rhodium Libre' rel='stylesheet'>
@@ -14,7 +14,7 @@
                 <div class="subnavbar2">
                     <ul>
                         <li><a href="home-ad.html">Home</a></li>
-                        <li><a href="team-ad.html"><span class="teamtext">Team</span></a></li>
+                        <li><a href="team-ad.html">Team</a></li>
                         <li><a href="queueorder-ad.html">Queue Order</a></li>
                         <li><a href="managemenu-ad.html">Manage Menu</a></li>
                         <li><a href="history-ad.html">History</a></li>
@@ -32,23 +32,40 @@
                             </div>
                         </div>
                         <div id="myDropdown" class="dropdown-content">
-                            <a href="../pages/profile-ad.html">Profile</a>
+                            <a href="#profile">Profile</a>
                             <a href="#logout">Logout</a>
                           </div>
                     </button>
                 </div>
                 <!--Profile and notif end-->
             </div>
-            <div class="team-line"><a>Team</a></div>
-            <div class="innerbox">
-                <div class="tablebox">
-                    <div class="redbox"></div>
-                </div>
-                <div class="filterbox">
-                    <div class="redbox"></div>
-                </div>
+            <div class="profile-line"><a>Profile</a></div>
+            <div class="personalinfo">
+                <form>
+                    <div class="topinputs">
+                        <label class="protext" for="fname">First Name</label><br>
+                        <input class="probox" type="text" id="fname"  name="fname" placeholder="Kenneth" required>
+                    </div>
+                
+                    <br>
+                
+                    <div class="input">
+                        <label class="protext" for="lname">Last Name</label><br>
+                        <input class="probox" type="text" id="lname"  name="lname" placeholder="Binay" required>
+                    </div>
+                    
+                    <br>
+                    
+                    <div class="botinputs">
+                        <label class="protext" for="email">Email</label><br>
+                        <input class="probox" type="email" id="email" name="email" placeholder="kenneth@gmail.com">
+                    </div>
+
+                    <div class="subbox">
+                        <input class="submission" type="submit">
+                    </div>
+                </form>
             </div>
         </div>
-        <script src="../js/navbar-ad.js"></script>
     </body>
 </html>
