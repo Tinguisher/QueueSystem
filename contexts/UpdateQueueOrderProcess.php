@@ -33,7 +33,7 @@ try{
     // create sql to update the status
     $sql = "UPDATE `food_orders`
         SET `status` = ?
-        WHERE food_orders = ?;";
+        WHERE id = ?;";
     
     // prepare the statement
     $stmt = $mysqli -> prepare ($sql);
@@ -44,8 +44,16 @@ try{
     // execute the statement
     $stmt->execute();
 
+    // close the statement
+    $stmt -> close();
 
+    // make a success response
+    $response = [
+        'status' => "success",
+        'message' => "Status updated successfully"
+    ];
 }
+
 // if there is error in query
 catch (Exception $e){
     // make an error response
@@ -54,6 +62,9 @@ catch (Exception $e){
         'message' => "Error No: ". $e->getCode() ." - ". $e->getMessage()    // get error code and message
     ];
 }
+
+// close the database
+$mysqli -> close();
 
 exit ( json_encode($response) );
 

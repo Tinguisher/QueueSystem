@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
     updateQueueStatus = (order_id, request_status) => {
         // create a payload to be passed in database
         const payload = {
-            input_order_id: 0,
+            input_order_id: order_id,
             input_status: request_status
         }
 
@@ -104,6 +104,8 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(data => {
                 // get the fresh user's cart
                 getQueue();
+
+                console.log(data);
 
                 // if update status is not success
                 if (data.status != "success") {
