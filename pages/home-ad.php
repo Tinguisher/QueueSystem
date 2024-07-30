@@ -20,16 +20,16 @@
 
 </head>
 <body>
-        <div class="pagead">
+        <div class="pageadd">
             <div class="navbar">
                 <div class="subnavbar1">SnapServe</div>
                 <div class="subnavbar2">
                     <ul>
-                        <li><a href="home-ad.html"><span class="hometext">Home</span></a></li>
-                        <li><a href="team-ad.html">Team</a></li>
-                        <li><a href="queueorder-ad.html">Queue Order</a></li>
-                        <li><a href="managemenu-ad.html">Manage Menu</a></li>
-                        <li><a href="history-ad.html">History</a></li>
+                        <li><a href="./home-ad.php"><span class="hometext">Home</span></a></li>
+                        <li><a href="./team-ad.php">Team</a></li>
+                        <li><a href="./queueorder-ad.php">Queue Order</a></li>
+                        <li><a href="./managemenu-ad.php">Manage Menu</a></li>
+                        <li><a href="./history-ad.php">History</a></li>
                       </ul>
                 </div>
                 <div class="subnavbar3">
@@ -44,7 +44,7 @@
                                 </div>
                             </div>
                             <div id="myDropdown" class="dropdown-content">
-                                <a href="../pages/profile-ad.html">Profile</a>
+                                <a href="./profile-ad.php">Profile</a>
                                 <a href="#logout">Logout</a>
                               </div>
                         </button>

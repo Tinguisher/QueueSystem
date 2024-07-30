@@ -14,11 +14,11 @@
                 <div class="subnavbar1">SnapServe</div>
                 <div class="subnavbar2">
                     <ul>
-                        <li><a href="home-ad.html">Home</a></li>
-                        <li><a href="team-ad.html">Team</a></li>
-                        <li><a href="queueorder-ad.html">Queue Order</a></li>
-                        <li><a href="managemenu-ad.html">Manage Menu</a></li>
-                        <li><a href="history-ad.html"><span class="historytext">History</span></a></li>
+                        <li><a href="./home-ad.php">Home</a></li>
+                        <li><a href="./team-ad.php">Team</a></li>
+                        <li><a href="./queueorder-ad.php">Queue Order</a></li>
+                        <li><a href="./managemenu-ad.php">Manage Menu</a></li>
+                        <li><a href="./history-ad.php"><span class="historytext">History</span></a></li>
                       </ul>
                 </div>
                 <div class="subnavbar3">

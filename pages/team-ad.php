@@ -15,11 +15,11 @@
             <div class="subnavbar1">SnapServe</div>
             <div class="subnavbar2">
                 <ul>
-                    <li><a href="home-ad.html">Home</a></li>
-                    <li><a href="team-ad.html"><span class="teamtext">Team</span></a></li>
-                    <li><a href="queueorder-ad.html">Queue Order</a></li>
-                    <li><a href="managemenu-ad.html">Manage Menu</a></li>
-                    <li><a href="history-ad.html">History</a></li>
+                    <li><a href="./home-ad.php">Home</a></li>
+                    <li><a href="./team-ad.php"><span class="teamtext">Team</span></a></li>
+                    <li><a href="./queueorder-ad.php">Queue Order</a></li>
+                    <li><a href="./managemenu-ad.php">Manage Menu</a></li>
+                    <li><a href="./history-ad.php">History</a></li>
                 </ul>
             </div>
             <!--Profile and notif-->
@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div id="myDropdown" class="dropdown-content">
-                        <a href="../pages/profile-ad.html">Profile</a>
+                        <a href="./profile-ad.php">Profile</a>
                         <a href="#logout">Logout</a>
                     </div>
                 </button>

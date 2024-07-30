@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div id="myDropdown" class="dropdown-content">
-                        <a href="../pages/profile-ad.html">Profile</a>
+                        <a href="./profile-ad.php">Profile</a>
                         <a href="#logout">Logout</a>
                     </div>
                 </button>
@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div class="editbottom">
-                    <div class="editbutton"><a href="managemenuedit-ad.html"><button>Edit Menu</button></a></div>
+                    <div class="editbutton"><a href="./managemenuedit-ad.php"><button>Edit Menu</button></a></div>
                 </div>
             </div>
             <div class="addmenu">
