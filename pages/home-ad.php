@@ -1,3 +1,12 @@
+
+<?php
+// check if session is admin
+include '../contexts/AdminSession.php'
+
+
+
+?>
+
 <html>
 <head>
 
