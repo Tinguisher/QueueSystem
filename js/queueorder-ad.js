@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(data => {
                 // create table for the queues
                 createTable(data.queue);
+
+                // go to filtering
+                filtering();
             })
 
             // error checker
@@ -35,16 +38,25 @@ document.addEventListener('DOMContentLoaded', function () {
     filterButtons.forEach(filterButton => {
         // if there is click on filterButtons
         filterButton.addEventListener('click', () => {
-            // make the row visible or not
-            queueArray.forEach(queue => {
-                // check if row should be visible or not from the filter
-                const rowVisibility = queue.foodCategory.includes(filterButton.value);
-                
-                // display: "" if visible and display: none if not visible
-                queue.element.style.display = rowVisibility ? "" : "none";
-            });
+            // go to filtering
+            filtering();
         });
     });
+
+    // filtering process
+    filtering = () => {
+        // get the value of the filter button
+        const filterButtonValue = document.querySelector('input[name="category"]:checked').value;
+
+        // make the row visible or not
+        queueArray.forEach(queue => {
+            // check if row should be visible or not from the filter
+            const rowVisibility = queue.foodCategory.includes(filterButtonValue);
+
+            // display: "" if visible and display: none if not visible
+            queue.element.style.display = rowVisibility ? "" : "none";
+        });
+    }
 
     // create table processes
     createTable = (queues) => {
@@ -92,7 +104,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 element: row
             };
         });
-
     }
 
     // process to update queue status
@@ -133,5 +144,4 @@ document.addEventListener('DOMContentLoaded', function () {
                 QueueOrderContainer.innerHTML = error
             });
     }
-
 });
