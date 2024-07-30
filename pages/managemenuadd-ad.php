@@ -1,6 +1,6 @@
 <?php
-// access database
-$mysqli = require_once "../contexts/database.php";
+// check if session is admin
+include '../contexts/AdminSession.php';
 
 // create sql to get food categories
 $sql = "SELECT * FROM `food_categories`";
@@ -26,6 +26,9 @@ try {
 
 // if there is error in query
 catch (Exception $e) {
+    // close the database
+    $mysqli->close();
+
     // make an error response
     $response = [
         'status' => "error",
@@ -57,11 +60,11 @@ $mysqli->close();
             <div class="subnavbar1">SnapServe</div>
             <div class="subnavbar2">
                 <ul>
-                    <li><a href="./home-ad.html">Home</a></li>
-                    <li><a href="./team-ad.html">Team</a></li>
+                    <li><a href="./home-ad.php">Home</a></li>
+                    <li><a href="./team-ad.php">Team</a></li>
                     <li><a href="./queueorder-ad.php">Queue Order</a></li>
-                    <li><a href="./managemenu-ad.html"><span class="redtext">Manage Menu</span></a></li>
-                    <li><a href="./history-ad.html">History</a></li>
+                    <li><a href="./managemenu-ad.php"><span class="redtext">Manage Menu</span></a></li>
+                    <li><a href="./history-ad.php">History</a></li>
                 </ul>
             </div>
             <!--Profile and notif-->
@@ -76,14 +79,14 @@ $mysqli->close();
                         </div>
                     </div>
                     <div id="myDropdown" class="dropdown-content">
-                        <a href="../pages/profile-ad.html">Profile</a>
+                        <a href="./profile-ad.php">Profile</a>
                         <a href="#logout">Logout</a>
                     </div>
                 </button>
             </div>
             <!--Profile and notif end-->
         </div>
-        <div class="managemenu-line"><a class="mm-line" href="managemenu-ad.html">Manage Menu</a>> Add Menu</div>
+        <div class="managemenu-line"><a class="mm-line" href="./managemenu-ad.php">Manage Menu</a>> Add Menu</div>
         <form id="addMenuForm" class="forms">
             <div class="innerupperbox">
                 <div class="upperboxone">
@@ -123,7 +126,7 @@ $mysqli->close();
             </div>
             <div class="innerlowerbox">
                 <div class="backbox">
-                    <a href="managemenu-ad.html">
+                    <a href="./managemenu-ad.php">
                         <input type="button" value="Back">
                     </a>
                 </div>

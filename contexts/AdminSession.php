@@ -31,11 +31,9 @@ try{
     // get only one from the executed statement
     $user = $result->fetch_assoc();
 
-    // free data and close statement and database
+    // free data and close statement
     $result->free();
     $stmt->close();
-    $mysqli->close();
-
 }
 
 // if there is error in query
@@ -50,12 +48,15 @@ catch (Exception $e){
 
 // if there is no user found, go to not found
 if (!$user) {
+    // close the database
+    $mysqli->close();
+
     // go to not found
     header('Location: ./NotFound.html');
     exit();
 }
 
 // get the full name
-$name = $user['firstname'] . " " . $user['lastname'];
+$name = $user['firstname'] ." ". $user['lastname'];
 
 ?>

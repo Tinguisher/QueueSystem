@@ -113,7 +113,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
     // create Popular Menu Cards called after getting from fetch
     createPopularMenuCards = (menu) => {
-
         // get the element template from home.php
         const popularMenuTemplate = document.querySelector("[data-popular-menu-template]");
         const card = popularMenuTemplate.content.cloneNode(true).children[0];
