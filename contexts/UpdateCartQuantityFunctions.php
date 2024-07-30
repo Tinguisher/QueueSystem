@@ -43,10 +43,13 @@ function updateUserCart($data) {
         // execute the statement
         $stmt->execute();
 
+        // close the statement
+        $stmt -> close();
+
         // make a success response
         $response = [
             'status' => "success",
-            'message' => "Update Quantity Successful"
+            'message' => "Quantity updated successfully"
         ];
     }
 
@@ -59,8 +62,7 @@ function updateUserCart($data) {
         ];
     }
 
-    // close statement and database
-    $stmt -> close();
+    // close the database
     $mysqli -> close();
 
     // return the response back to the UpdateCartProcess.php
@@ -84,6 +86,7 @@ function updateGuestCart($data) {
         $_SESSION['carts'][$cart_id]['quantity'] = $quantity;
     }
 
+    // create a success response
     $response = [
         'status' => "success",
         'message' => "Update Quantity Successful"

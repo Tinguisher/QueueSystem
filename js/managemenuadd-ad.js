@@ -1,29 +1,31 @@
-var selDiv = "";
-    var storedFiles = [];
-    $(document).ready(function () {
-      $("#img").on("change", handleFileSelect);
-      selDiv = $("#upperpic");
+// Load js if HTML is done
+document.addEventListener('DOMContentLoaded', function () {
+
+    // get the form
+    const addMenuForm = document.getElementById("addMenuForm");
+
+    // if there is submit on addmenuform
+    addMenuForm.addEventListener('submit', (ev) =>{
+        // prevent the site from loading
+        ev.preventDefault();
+        
+        // get the value from the form
+        const addmenu = new FormData(addMenuForm);
+
+        fetch ('../contexts/AddMenuProcess.php', {
+            method: "POST",
+            body: addmenu
+        })
+
+        // get response as json
+        .then ( response => response.json() )
+            // get objects from fetch
+            .then (data => {
+
+                console.log(data);
+            })
+        
+        // error checker
+        .catch ( error => console.error(error) );
     });
-
-    function handleFileSelect(e) {
-      var files = e.target.files;
-      var filesArr = Array.prototype.slice.call(files);
-      filesArr.forEach(function (f) {
-        if (!f.type.match("image.*")) {
-          return;
-        }
-        storedFiles.push(f);
-
-        var reader = new FileReader();
-        reader.onload = function (e) {
-          var html =
-            '<img src="' +
-            e.target.result +
-            "\" data-file='" +
-            f.name +
-            "alt='Category Image' height='100%' width='100%'>";
-          selDiv.html(html);
-        };
-        reader.readAsDataURL(f);
-      });
-    }
+});

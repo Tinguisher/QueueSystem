@@ -23,6 +23,9 @@ function addUserCart($data) {
         // execute the statement
         $stmt -> execute();
 
+        // close the statement
+        $stmt -> close();
+
         // make a response of success
         $response = [
             'status' => "success",
@@ -39,8 +42,7 @@ function addUserCart($data) {
         ];
     }
 
-    // close statement and database
-    $stmt -> close();
+    // close the database
     $mysqli -> close();
 
     // return the response back to the AddCartProcess.php
