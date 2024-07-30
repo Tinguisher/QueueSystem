@@ -1,21 +1,20 @@
+body {
+    background-color: #FFFDF1;
 
-body{
-    background-color: #FFFDF1; 
-    
 }
 
-.pagead{
-    display: flex; 
-    flex-direction: column; 
-    background-color: #FFFDF1; 
-    height: 100%; 
+.pageadd {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFDF1;
+    height: 100%;
     width: 100%;
     align-items: center;
     justify-content: center;
-    
-  }
 
-.navbar{
+}
+
+.navbar {
     display: flex;
     flex-direction: row;
     background-color: #FFFDF1;
@@ -28,7 +27,7 @@ body{
     justify-content: left;
 }
 
-.subnavbar1{
+.subnavbar1 {
     align-content: center;
     font-size: 4.9vh;
     width: 30%;
@@ -37,7 +36,7 @@ body{
 
 }
 
-.subnavbar2{
+.subnavbar2 {
     display: flex;
     align-items: center;
     align-content: center;
@@ -47,57 +46,58 @@ body{
     height: 100%;
 
 }
+
 ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 
 }
 
 li {
-  float: left;
+    float: left;
 }
 
 li a {
-  display: block;
-  padding: 1.4vh 1.6vh;
-  color: black;
-  text-align: center;
-  text-decoration: none;
-  font-size: 2.5vh;
-  font-family: Roboto;
+    display: block;
+    padding: 1.4vh 1.6vh;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    font-size: 2.5vh;
+    font-family: Roboto;
 }
 
 li a:hover {
-  color: #BD4141;
+    color: #BD4141;
 }
 
-.historytext{
+.historytext {
     color: #BD4141;
 
 }
 
-.subnavbar3{
+.subnavbar3 {
     align-content: right;
     justify-content: center;
     text-align: right;
     width: 30%;
 }
 
-.history-line{
+.history-line {
     display: flex;
     border: 0.4vh solid black;
     height: 13%;
     width: 95%;
     margin-top: 1%;
     align-items: center;
-    font-family: Rhodium Libre; 
+    font-family: Rhodium Libre;
     font-size: 3.2vh;
     background-color: #BD4141;
 }
 
-.history-line  a{
+.history-line a {
     width: 41vh;
     height: auto;
     margin-left: 4.5vh;
