@@ -65,9 +65,13 @@ if (isset($_SESSION['id'])) {
             <tr>
                 <td style="width: 138px;"><a href="./home.php" target="_top">Home</a></td>
                 <td style="width: 133px;" id="menn"><a href="./menu.php" target="_top" style="color:#FF5622;"><b>Menu</b></a></td>
-                <td style="width: 155px;"><a href="aboutus.html" target="_top">About Us <?= $name ?? "Guest"; ?></a></td>
+                <td style="width: 155px;"><a href="aboutus.html" target="_top">About Us</a></td>
+                
             </tr>
         </table>
+
+        <p id="profilename"><?= $name ?? "Guest"; ?></p>
+
         <!--Logo for cart-->
         <a href="./menu.php" class="navcrcl" style="margin-top: 37.5px; margin-left: 1746px;">
             <svg style="margin-top: 10px; margin-left:10px" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">

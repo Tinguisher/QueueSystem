@@ -157,7 +157,15 @@ input:focus{
 	transform: scale(1.1);
 }
 
-
+#profilename{
+  position: absolute;
+  margin-top: 48px;
+  margin-left: 1385px;
+  color: #000;
+  font-family: Roboto;
+  font-size: 25px;
+  font-weight: 400;
+}
 
 #piz2{
     position: absolute;
