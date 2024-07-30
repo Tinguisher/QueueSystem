@@ -119,6 +119,9 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
             // create a card for each menus fetched from database
             createMenuCards(data.menu);
+
+            // go to filtering
+            filtering();
         })
 
         // error checker
@@ -206,9 +209,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 element: card
             };
         });
-
-        // go to filtering
-        filtering();
     }
 
     // pop out when ordering
