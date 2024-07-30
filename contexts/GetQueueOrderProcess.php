@@ -23,7 +23,7 @@ $sql = "SELECT food_orders.id AS orderID,
         AND food_orders.status IN ('In Progress', 'Pending')
     ORDER BY receipts.orderDate;";
 
-// try to create and catch if there is error
+// try to get and catch if there is error
 try{
     // prepare the statement
     $stmt = $mysqli -> prepare ($sql);
@@ -36,6 +36,10 @@ try{
 
     // get all the values from the queue
     $queue = $result -> fetch_all( MYSQLI_ASSOC );
+
+    // free data and close statement
+    $result -> free();
+    $stmt -> close();
 
     // create a success reponse
     $response = [
@@ -53,6 +57,9 @@ catch (Exception $e){
         'message' => "Error No: ". $e->getCode() ." - ". $e->getMessage()    // get error code and message
     ];
 }
+
+// close the database
+$mysqli -> close();
 
 // return the response as json
 exit ( json_encode($response) );

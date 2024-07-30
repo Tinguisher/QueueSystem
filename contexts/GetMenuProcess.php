@@ -30,6 +30,10 @@ try{
     // get all values from the executed statement
     $menu = $result -> fetch_all( MYSQLI_ASSOC );
 
+    // free data and close statement
+    $result -> free();
+    $stmt -> close();
+
     // pass the menu to response
     $response = [
         'status' => "success",
@@ -46,9 +50,7 @@ catch (Exception $e){
     ];
 }
 
-// free data and close statement and database
-$result -> free();
-$stmt -> close();
+// close the database
 $mysqli -> close();
 
 // output the response
