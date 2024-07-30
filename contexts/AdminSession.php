@@ -3,7 +3,7 @@
 session_start();
 
 // if the session id is not set and auth type is not admin, go to not found
-if ( !isset($_SESSION['id']) && $_SESSION['authtype'] != "admin" ) {
+if ( !isset($_SESSION['id']) || $_SESSION['authtype'] != "admin" ) {
     header('Location: ./NotFound.html');
     exit();
 }
