@@ -24,63 +24,78 @@ if ( empty($data['input_email']) || empty($data['input_password']) ){
 // access database
 $mysqli = require_once './database.php';
 
-// make a string for sql to be used
-$sql = "SELECT * FROM `users` WHERE email = ?";
+// try to create and catch if there is error
+try{
+    // make a string for sql to be used
+    $sql = "SELECT * FROM `users` WHERE email = ?";
 
-// prepare the statement
-$stmt = $mysqli -> prepare ($sql);
+    // prepare the statement
+    $stmt = $mysqli -> prepare ($sql);
 
-// bind the parameters to the statement
-$stmt -> bind_param ('s', $email);
+    // bind the parameters to the statement
+    $stmt -> bind_param ('s', $email);
 
-// get post values
-$email = $data['input_email'];
-$password = $data['input_password'];
+    // get post values
+    $email = $data['input_email'];
+    $password = $data['input_password'];
 
-// execute the statement
-$stmt -> execute();
+    // execute the statement
+    $stmt -> execute();
 
-// get the result from the statement
-$result = $stmt -> get_result();
+    // get the result from the statement
+    $result = $stmt -> get_result();
 
-// get only one from the executed statement
-$user = $result -> fetch_assoc();
+    // get only one from the executed statement
+    $user = $result -> fetch_assoc();
 
-// free data and close statement and database
-$result -> free();
-$stmt -> close();
-$mysqli -> close();
+    // free data, close the statement and database
+    $result -> free();
+    $stmt -> close();
+    $mysqli -> close();
 
-// if there is no existing user in database
-if (!$user){
+    // if there is no existing user in database
+    if (!$user){
+        $response = [
+            'status' => "error",
+            'message' => "No existing user, Signup?"
+        ];
+        exit ( json_encode($response) );
+    }
+
+    // if the password is not the same
+    if (!password_verify($password, $user['password'])){
+        $response = [
+            'status' => "error",
+            'message' => "Incorrect password",
+        ];
+        exit ( json_encode($response) );
+    }
+
+    // make a session
+    session_start();
+
+    // get the id and authtype as session identifier
+    $_SESSION['id'] = $user['id'];
+    $_SESSION['authtype'] = $user['authtype'];
+
+    // make a success signup response
     $response = [
-        'status' => "error",
-        'message' => "No existing user, Signup?"
+        'status' => "success",
+        'message' => "Login Successful"
     ];
-    exit ( json_encode($response) );
 }
 
-// if the password is not the same
-if (!password_verify($password, $user['password'])){
+// if there is error in query
+catch (Exception $e){
+    // close the database
+    $mysqli -> close();
+
+    // make an error response
     $response = [
         'status' => "error",
-        'message' => "Incorrect password",
+        'message' => "Error No: ". $e->getCode() ." - ". $e->getMessage()    // get error code and message
     ];
-    exit ( json_encode($response) );
 }
-
-// make a session
-session_start();
-
-// get the id and authtype as session identifier
-$_SESSION['id'] = $user['id'];
-$_SESSION['authtype'] = $user['authtype'];
-
-// make a success signup response
-$response = [
-    'status' => "success",
-    'message' => "Login Successful"
-];
 
 // output the response
 exit ( json_encode($response) );

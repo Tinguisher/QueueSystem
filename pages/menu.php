@@ -65,9 +65,13 @@ if (isset($_SESSION['id'])) {
             <tr>
                 <td style="width: 138px;"><a href="./home.php" target="_top">Home</a></td>
                 <td style="width: 133px;" id="menn"><a href="./menu.php" target="_top" style="color:#FF5622;"><b>Menu</b></a></td>
-                <td style="width: 155px;"><a href="aboutus.html" target="_top">About Us <?= $name ?? ""; ?></a></td>
+                <td style="width: 155px;"><a href="aboutus.html" target="_top">About Us</a></td>
+                
             </tr>
         </table>
+
+        <p id="profilename"><?= $name ?? "Guest"; ?></p>
+
         <!--Logo for cart-->
         <a href="./menu.php" class="navcrcl" style="margin-top: 37.5px; margin-left: 1746px;">
             <svg style="margin-top: 10px; margin-left:10px" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
@@ -370,7 +374,7 @@ if (isset($_SESSION['id'])) {
             <p id="subTotal" class="total" style="margin-top: 16px;">Loading SubTotal...</p>
             <p id="deliveryFee" class="total" style="margin-top: 50px;">Loading Delivery Fee...</p>
             <p id="totalPrice" class="total" style="margin-top: 132px;">Loading Total Price...</p>
-            <button id="payment" class="pay">Review Payment and Address</button>
+            <button id="payment" class="pay">Loading Payment...</button>
         </div>
     </div>
 

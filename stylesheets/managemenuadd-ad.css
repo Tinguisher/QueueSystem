@@ -1,26 +1,25 @@
-
 ::selection {
     color: #FFFDF1;
     background: #C17272;
-  }
-
-body{
-    background-color: #FFFDF1; 
-    
 }
 
-.pagead{
-    display: flex; 
-    flex-direction: column; 
-    background-color: #FFFDF1; 
-    height: 100%; 
+body {
+    background-color: #FFFDF1;
+
+}
+
+.pageadd {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFDF1;
+    height: 100%;
     width: 100%;
     align-items: center;
     justify-content: center;
-    
-  }
 
-.navbar{
+}
+
+.navbar {
     display: flex;
     flex-direction: row;
     background-color: #FFFDF1;
@@ -33,7 +32,7 @@ body{
     justify-content: left;
 }
 
-.subnavbar1{
+.subnavbar1 {
     align-content: center;
     font-size: 4.9vh;
     width: 30%;
@@ -42,7 +41,7 @@ body{
 
 }
 
-.subnavbar2{
+.subnavbar2 {
     display: flex;
     align-items: center;
     align-content: center;
@@ -52,70 +51,161 @@ body{
     height: 100%;
 
 }
+
 ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 
 }
 
 li {
-  float: left;
+    float: left;
 }
 
 li a {
-  display: block;
-  padding: 1.4vh 1.6vh;
-  color: black;
-  text-align: center;
-  text-decoration: none;
-  font-size: 2.5vh;
-  font-family: Roboto;
+    display: block;
+    padding: 1.4vh 1.6vh;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    font-size: 2.5vh;
+    font-family: Roboto;
 }
 
 li a:hover {
-  color: #BD4141;
+    color: #BD4141;
 }
 
-.redtext{
+.redtext {
     color: #BD4141;
 
 }
 
-.subnavbar3{
-    align-content: right;
-    justify-content: center;
-    text-align: right;
+/*profile*/
+.subnavbar3 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
     width: 30%;
+    height: 100%;
+    position: relative;
+
 }
 
-.managemenu-line{
+.dropbtn {
+    width: 7.5vh;
+    height: 5vh;
+    border-radius: 2vh;
+    background-color: #BD4141;
+    background-color: #FFFDF1;
+    border: none;
+    cursor: pointer;
+
+}
+
+.profile {
+    width: 7.5vh;
+    height: 5vh;
+    border-radius: 2vh;
+    background-color: #BD4141;
+    display: flex;
+    flex-direction: row;
+
+}
+
+/**/
+.dropdown-content {
+    display: none;
+    position: relative;
+    left: -8vh;
+    background-color: #BD4141;
+    min-width: 12vh;
+    overflow: auto;
+    border-radius: 1vh;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #FFFDF1;
+    padding: 12px 16px;
+    text-decoration: none;
+    font-size: 1.75vh;
+    text-align: left;
+    font-family: Roboto Slab;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #8C2828;
+}
+
+.show {
+    display: block;
+}
+
+/**/
+
+.profileleft {
+    width: 40%;
+    height: 100%;
+
+}
+
+.profileleft img {
+    display: block;
+    margin-left: auto;
+    margin-right: 0.1vh;
+    padding-top: 1.8vh;
+
+}
+
+.profileright {
+    width: 60%;
+    height: 100%;
+
+}
+
+.profileright img {
+    display: block;
+    margin-left: 0.3vh;
+    margin-right: auto;
+    padding-top: 0.8vh;
+
+}
+
+/*Profile and notif end*/
+
+.managemenu-line {
     display: flex;
     border: 0.4vh solid black;
     height: 13%;
     width: 95%;
     margin-top: 1%;
     align-items: center;
-    font-family: Rhodium Libre; 
+    font-family: Rhodium Libre;
     font-size: 3.2vh;
     background-color: #BD4141;
     white-space: nowrap;
 }
 
-.mm-line:hover{
-  color: #FFFDF1;
+.mm-line:hover {
+    color: #FFFDF1;
 
 }
 
-.managemenu-line  a{
+.managemenu-line a {
     width: 24vh;
     height: auto;
     margin-left: 4.5vh;
     text-decoration: none;
     color: black;
 }
-.innerupperbox{
+
+.innerupperbox {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -123,7 +213,7 @@ li a:hover {
 
 }
 
-.upperboxone{
+.upperboxone {
     display: flex;
     flex-direction: column;
     width: 30%;
@@ -133,17 +223,17 @@ li a:hover {
     justify-content: center;
 }
 
-#upperpic{
+#upperpic {
     background-color: #C17272;
     border-radius: 1vh;
     width: 40vh;
     height: 40vh;
     align-items: center;
     justify-content: center;
-    
+
 }
 
-.upperchoosefile{
+.upperchoosefile {
     background-color: #FFFDF1;
     border: 0.1vh solid #BD4141;
     border-radius: 1vh;
@@ -158,53 +248,53 @@ li a:hover {
 
 }
 
-.upperchoosefile:hover{
+.upperchoosefile:hover {
     background-color: #BD4141;
     border: 0.1vh solid #FFFDF1;
     color: #FFFDF1;
 
 }
 
-.upperboxone button{
+.upperboxone button {
     line-height: 3vh;
 
 }
 
-#img:hover{
+#img:hover {
     background-color: #BD4141;
     border: 0.1vh solid #FFFDF1;
     color: #FFFDF1;
 
 }
 
-.invi{
+.invi {
     opacity: 0;
     width: 0;
     height: 0;
 }
 
-.forms{
+.forms {
     width: 95%;
     height: 90%;
     margin: 0;
- 
+
 }
 
-.text{
+.text {
     font-size: 2.5vh;
     font-family: Roboto Slab;
     color: #BD4141;
 
 }
 
-.upperboxtwo{
+.upperboxtwo {
     height: 84%;
     width: 33%;
     margin: 0;
     padding-top: 5%;
 }
 
-.upperboxtwo .textbox{
+.upperboxtwo .textbox {
     border: 0.1vh solid #BD4141;
     background-color: #FFFDF1;
     width: 63.4%;
@@ -215,7 +305,7 @@ li a:hover {
 
 }
 
-.upperboxtwo select{
+.upperboxtwo select {
     border: 0.1vh solid #BD4141;
     background-color: #FFFDF1;
     width: 63.4%;
@@ -226,13 +316,13 @@ li a:hover {
 
 }
 
-.upperboxtwo select option{
+.upperboxtwo select option {
     color: #BD4141;
     font-size: 2vh;
 
 }
 
-.save input{
+.save input {
     display: flex;
     background-color: #FFFDF1;
     border: 0.1vh solid #BD4141;
@@ -246,14 +336,14 @@ li a:hover {
     align-items: center;
 }
 
-.upperboxthree{
+.upperboxthree {
     width: 33%;
     height: 84%;
     margin: 0;
     padding-top: 5%;
 }
 
-.textboxdesc{
+.textboxdesc {
     border: 0.1vh solid #BD4141;
     background-color: #FFFDF1;
     width: 63.4%;
@@ -264,7 +354,7 @@ li a:hover {
     padding: 1vh;
 }
 
-.innerlowerbox{
+.innerlowerbox {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -272,11 +362,11 @@ li a:hover {
 
 }
 
-.backbox{
+.backbox {
     margin-right: 38%;
 }
 
-.backbox button{
+.backbox input {
     text-align: center;
     width: 100%;
     height: 70%;
@@ -285,18 +375,18 @@ li a:hover {
     font-size: 2vh;
     background-color: #FFFDF1;
     color: #BD4141;
-    border: 0; 
+    border: 0;
     border: 0.05vh solid #BD4141;
     border-radius: 1vh;
 
 }
 
-.backbox button:hover{
+.backbox input:hover {
     background-color: #BD4141;
     color: #FFFDF1;
 }
 
-.subbox{
+.subbox {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -305,7 +395,7 @@ li a:hover {
 
 }
 
-.submission{
+.submission {
     border: 0.1vh solid #BD4141;
     background-color: #FFFDF1;
     width: 100%;
@@ -317,7 +407,7 @@ li a:hover {
 
 }
 
-.submission:hover{
+.submission:hover {
     background-color: #BD4141;
     color: #FFFDF1;
 }
