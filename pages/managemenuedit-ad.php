@@ -9,16 +9,16 @@
 </head>
 <body>
     <div id="wholepage">
-        <div class="pagead">
+        <div class="pageadd">
             <div class="navbar">
                 <div class="subnavbar1">SnapServe</div>
                 <div class="subnavbar2">
                     <ul>
-                        <li><a href="home-ad.html">Home</a></li>
-                        <li><a href="team-ad.html">Team</a></li>
-                        <li><a href="queueorder-ad.html">Queue Order</a></li>
-                        <li><a href="managemenu-ad.html"><span class="redtext">Manage Menu</span></a></li>
-                        <li><a href="history-ad.html">History</a></li>
+                        <li><a href="./home-ad.php">Home</a></li>
+                        <li><a href="./team-ad.php">Team</a></li>
+                        <li><a href="./queueorder-ad.php">Queue Order</a></li>
+                        <li><a href="./managemenu-ad.php"><span class="redtext">Manage Menu</span></a></li>
+                        <li><a href="./history-ad.php">History</a></li>
                       </ul>
                 </div>
                 <!--Profile and notif-->
