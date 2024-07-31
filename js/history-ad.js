@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const thismon = document.getElementById("thismon");
     var receiptArray = [];
     var filterDate = new Date();
+    filterDate.setTime(0);
 
     // if dropdown is clicked
     dropdownBtnText.onclick = function () {

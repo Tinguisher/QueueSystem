@@ -197,6 +197,7 @@ li p {
 }
 
 #borderline{
+  /* overflow-y: auto; */
   position: absolute;
   margin-top: 280px;
   width: 1800px;
@@ -238,10 +239,9 @@ li p {
 .table2,
 .table2 tr,
 .table2 th {
+  position: relative;
   width: 1724px; 
   height: 90px;
-  border-left: none;
-  border-right: none;
   color: #000;
   font-family: "Roboto Slab";
   font-size: 25px;
@@ -251,31 +251,62 @@ li p {
   border-radius: 15px 0px 0px 15px; */
 }
 
-.table2 th{
-  width: 286px;
+.tableDiv1{
+  top: 115px;
+  width: 1800px;
+  height: 600px;
+  overflow-y: auto;
+  position: absolute;
 }
 
-.tableDiv{
-  top: 103px;
-  left: 38px;
+.tableDiv1 thead{
+  position: sticky;
+  top: 0px;
+  width: 1724px;
+  z-index: 1;
+}
+
+.tableDiv1::-webkit-scrollbar {
+  width: 0;
+}
+
+
+.tableDiv1 tr{
+  background-color: #FFFDF1;
+  top: 0px;
   width: 1724px; 
   height: 72px;
-  border: 1px solid #000;
   border-radius: 15px;
-  padding: 5px;
-  position: absolute;
-  gap: 10px;
+  position: relative;
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.25);
-}
-
-.table2 td {
   text-align: center;
 }
 
+.tableDiv1 th, 
+.tableDiv1 td {
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+  width: 287px;
+}
 
-.table2 th {
-  position: relative;
-  top: -8px;
+.tdsideL {
+  border-radius: 15px 0px 0px 15px;
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+  border-left: 2px solid #000;
+}
+
+.tdsideR {
+  border-radius: 0px 15px 15px 0px;
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+  border-right: 2px solid #000;
+}
+
+.tableDiv1 tbody {
+  table-layout: fixed;
+  width: 100%;
+  border-spacing: 0px 10px;
 }
 
 /* #threebtn{
@@ -290,10 +321,12 @@ li p {
 
 .dropbtn {
   background: none;
-  margin-top: 10px;
+  margin-top: 3px;
+  right: 0;
   font-size: 16px;
   border: none;
   cursor: pointer;
+  position: absolute;
 }
 
 .dropdown {

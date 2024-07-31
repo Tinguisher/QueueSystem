@@ -104,29 +104,31 @@ $mysqli->close();
                     <button id="search"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
-            <div class="tableDiv"></div>
-            <div class="tableDiv" style="top:205px"> </div>
-            <div>
-                <table class="table2" style="position: relative; margin-top: 103px; margin-left: 38px; width: 1724px; height: 72px;">
+            <!-- <div class="tableDiv"></div> -->
+            <!-- <div class="tableDiv1" style="top:100px"> </div> -->
+            
+            <div  class="tableDiv1"  >
+                <table class="table2" style="position: relative; margin-top: 20px; margin-left: 38px; width: 1724px; height: 72px; border-spacing: 0 20px;">
+                    
                     <thead>
-                        <tr>
-                            <th>Order ID</th>
+                        <tr class="spaceUnder">
+                            <th class="tdsideL">Order ID</th>
                             <th>Name</th>
                             <th>Time to Cook</th>
                             <th>Total</th>
                             <th>Date</th>
-                            <th>Items</th>
-
+                            <th class="tdsideR">Items</th>
                         </tr>
                     </thead>
+            
                     <tbody data-history-container>
-                        <tr>
-                            <td style="border-left: none;">Loading...</td>
+                        <tr class="spaceUnder">
+                            <td class="tdsideL">Loading...</td>
                             <td>Loading...</td>
                             <td>Loading...</td>
                             <td>Loading...</td>
                             <td>Loading...</td>
-                            <td style="border-right: none">
+                            <td class="tdsideR">
                                 <div class="dropdown"> Loading...
                                     <button class="dropbtn"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
                                             <path d="M13.5938 4.6875C13.5938 5.46415 14.2233 6.09375 15 6.09375C15.7767 6.09375 16.4062 5.46415 16.4062 4.6875C16.4062 3.91085 15.7767 3.28125 15 3.28125C14.2233 3.28125 13.5938 3.91085 13.5938 4.6875Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -139,18 +141,18 @@ $mysqli->close();
                                     </div>
                                 </div>
                             </td>
-                        </tr>
+                        </tr>   
                     </tbody>
 
                     <!-- Template for each history -->
                     <template data-history-template>
-                        <tr>
-                            <td style="border-left: none;" data-receipt-id></td>
+                        <tr class="spaceUnder">
+                            <td class="tdsideL" data-receipt-id></td>
                             <td data-user-name></td>
                             <td data-cook-time></td>
                             <td data-price></td>
                             <td data-date></td>
-                            <td style="border-right: none">
+                            <td class="tdsideR">
                                 <div class="dropdown" data-items>
                                     <button class="dropbtn"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
                                             <path d="M13.5938 4.6875C13.5938 5.46415 14.2233 6.09375 15 6.09375C15.7767 6.09375 16.4062 5.46415 16.4062 4.6875C16.4062 3.91085 15.7767 3.28125 15 3.28125C14.2233 3.28125 13.5938 3.91085 13.5938 4.6875Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />

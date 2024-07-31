@@ -252,7 +252,6 @@ li a:hover {
 .radlabel {
     font-size: 2.5vh;
     font-family: Roboto Slab;
-
 }
 
 .tablebox {
@@ -285,7 +284,8 @@ table {
 
 td,
 th {
-    text-align: left;
+    text-align: center;
+    width: 35vh;
     padding: 0.8vh;
     font-size: 2.5vh;
     font-family: Roboto Slab;
