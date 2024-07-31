@@ -14,7 +14,7 @@ $mysqli = require_once "../contexts/database.php";
 // try to get user information in database and catch if there is error
 try{
     // make a string for sql to be used
-    $sql = "SELECT * FROM `users` WHERE id = ? AND authtype = ?";
+    $sql = "SELECT CONCAT(users.firstname,' ', users.lastname) AS name FROM `users` WHERE id = ? AND authtype = ?";
 
     // prepare the statement
     $stmt = $mysqli->prepare($sql);
@@ -55,8 +55,5 @@ if (!$user) {
     header('Location: ./NotFound.html');
     exit();
 }
-
-// get the full name
-$name = $user['firstname'] ." ". $user['lastname'];
 
 ?>

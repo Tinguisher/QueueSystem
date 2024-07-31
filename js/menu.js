@@ -1,6 +1,5 @@
 // Load js if HTML is done
 document.addEventListener('DOMContentLoaded', function () {
-
     // get all id, class for global variable
     const dropdownBtnText = document.getElementById("drop-text");
     const sessionbutton = document.getElementById("sessionbutton");
