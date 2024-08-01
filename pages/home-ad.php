@@ -115,7 +115,7 @@ $mysqli->close();
                         <div class="dashtext">DASHBOARD</div>
                         <div class="dashgreet">
                             <span class="hello">Hello </span>
-                            <span class="name"><?= $name ?></span>
+                            <span class="name"><?= $user['name'] ?></span>
                         </div>
                     </div>
                 </div>
