@@ -211,9 +211,9 @@ if (isset($_SESSION['id'])) {
                 </svg></p>
             <p id="free" style="margin-top: 92px;margin-left: 187px;">FREE</p>
         </button>
-
-        <button class="btn btn-background-slide" style="margin-top: 1198px; margin-left: 135px;">See all Promotions</button>
-
+        <a href="./menu.php" target="_top">
+            <button class="btn btn-background-slide" style="margin-top: 1198px; margin-left: 135px;">See all Promotions</button>
+        </a>
     </div>
 
     <div>
@@ -246,7 +246,9 @@ if (isset($_SESSION['id'])) {
                     <path d="M26.6671 3.33325L22.8338 7.16659C21.9176 8.10123 21.4045 9.35782 21.4045 10.6666C21.4045 11.9753 21.9176 13.2319 22.8338 14.1666L25.8338 17.1666C26.7684 18.0827 28.025 18.5959 29.3338 18.5959C30.6425 18.5959 31.8991 18.0827 32.8338 17.1666L36.6671 13.3333M25.0004 24.9999L5.50043 5.49992C4.83524 6.15168 4.30678 6.92961 3.94601 7.78817C3.58524 8.64673 3.39941 9.56864 3.39941 10.4999C3.39941 11.4312 3.58524 12.3531 3.94601 13.2117C4.30678 14.0702 4.83524 14.8482 5.50043 15.4999L17.6671 27.6666C18.8338 28.8333 21.0004 28.8333 22.3338 27.6666L25.0004 24.9999ZM25.0004 24.9999L36.6671 36.6666M3.50043 36.3332L14.1671 25.8333M31.6671 8.33325L20.0004 19.9999" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
 
-                <a href="./menu.php" target="_top"><button id="show">Show All</button></a>
+                <a href="./menu.php" target="_top">
+                    <button id="show">Show All</button>
+                </a>
 
                 <p style="position: absolute; width: 289px; height: 4px; background: #000; margin-top: 500px; margin-left: 1211px;"></p>
                 <p style="position: absolute; width: 289px; height: 4px; background: #000; margin-top: 500px; margin-left: 1575px;"></p>

@@ -14,10 +14,16 @@ function getUserCart() {
             food_categories.name AS categoryName,
             foods.name AS foodName,
             foods.description,
-            (foods.price * user_carts.quantity) AS price,
+            ((foods.price * user_carts.quantity) + drinks.price) AS price,
             user_carts.quantity
-        FROM `user_carts`, `foods`, `food_categories`
-        WHERE user_carts.foods_id = foods.id AND foods.food_categories_id = food_categories.id AND user_carts.users_id = ?
+        FROM `user_carts`,
+            `foods`,
+            `food_categories`,
+            `drinks`
+        WHERE user_carts.foods_id = foods.id
+            AND foods.food_categories_id = food_categories.id
+            AND user_carts.drinks_id = drinks.id
+            AND user_carts.users_id = ?
         ORDER BY user_carts.id;";
 
     // try to create and catch if there is error

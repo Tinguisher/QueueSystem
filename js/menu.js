@@ -253,6 +253,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const increment = menuForm.querySelector("[data-food-cart-increment]");
         const quantity = menuForm.querySelector("[data-food-cart-quantity]");
         const cartForm = menuForm.querySelector("[data-cart-form");
+        const drinkRadioButtons = document.querySelectorAll('input[name="radio"]');
 
         // if x button is clicked
         xbtn.addEventListener('click', () => {
@@ -274,6 +275,15 @@ document.addEventListener('DOMContentLoaded', function () {
             foodPrice.textContent = `Php ${Number(menu.price * quantity.textContent).toLocaleString()}`; // add comma to the menu.price
         });
 
+        // get all radio button from drinks
+        drinkRadioButtons.forEach(radioButton => {
+            // if there is change on any radioButton
+            radioButton.addEventListener('change', () => {
+                
+                foodPrice.textContent = `Php ${Number(menu.price * quantity.textContent).toLocaleString()}`; // add comma to the menu.price
+            })
+        });
+
         // if there is submit in form
         cartForm.addEventListener('submit', (ev) => {
             // prevent the website from loading
@@ -283,7 +293,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const payload = {
                 input_food_id: menu.id,
                 input_quantity: Number(quantity.textContent),
-                // console.log(document.querySelector('input[name="radio"]:checked').value);
+                input_drink_id: Number(document.querySelector('input[name="radio"]:checked').value)
             };
 
             // add the payload to the user's cart
