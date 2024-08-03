@@ -414,36 +414,15 @@ if (isset($_SESSION['id'])) {
                 <p class="prc" data-food-price></p>
                 <div style="position: absolute; margin-top: 519px; width: 676px; height: 406px;border-radius: 0px 0px 25.8px 25.8px; background: #D9D9D9;">
                     <p class="addrin">Add Drinks</p>
-                    <div style="margin-top: 104px;"> </div>
+                    <div id="menuDrinksContainer" style="margin-top: 104px;"> </div>
 
-                    <template>
-                        
-                            <label class="container">
-                                <input type="radio" name="radio" value="1" required>
-                                <span class="checkmark"></span>
-                                Drink One
-                            </label>
-                            <label class="container">
-                                <input type="radio" name="radio" value="2">
-                                <span class="checkmark"></span>
-                                Drink Two
-                            </label>
-                            <label class="container">
-                                <input type="radio" name="radio" value="3">
-                                <span class="checkmark"></span>
-                                Drink Three
-                            </label>
-                            <label class="container">
-                                <input type="radio" name="radio" value="4">
-                                <span class="checkmark"></span>
-                                No
-                            </label>
-                        
+                    <template data-menu-drinks>
+                        <label class="container" data-drink-label>
+                            <input type="radio" name="radio" value="1" data-drink-price required>
+                            <span class="checkmark"></span>
+                        </label>
+                        <p class="addpri" style="margin-top: 622px;">Free</p>
                     </template>
-
-
-
-
                 </div>
                 <div>
                     <p class="addpri" style="margin-top: 622px;">Free</p>

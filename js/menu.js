@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // get objects from fetch
         .then(data => {
             // create a card for each menus fetched from database
-            createMenuCards(data.menu);
+            createMenuCards(data.menu, data.drink);
 
             // go to filtering
             filtering();
@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // create cards for div regularMenuContainer 
-    createMenuCards = (menus) => {
+    createMenuCards = (menus, drinks) => {
         // clear the values from regularMenuContainer
         regularMenuContainer.innerHTML = "";
 
@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 popupCart();
 
                 // create ordering form in popup
-                createCartForm(menu);
+                createCartForm(menu, drinks);
             });
 
             // get the name, description, category and card itself for filtering
@@ -227,7 +227,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // create popup Cart form
-    createCartForm = (menu) => {
+    createCartForm = (menu, drinks) => {
         // get the element template from menu.php
         const menuPopoutTemplate = document.querySelector("[data-menu-popout]");
         const menuForm = menuPopoutTemplate.content.cloneNode(true).children[0];
@@ -253,7 +253,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const increment = menuForm.querySelector("[data-food-cart-increment]");
         const quantity = menuForm.querySelector("[data-food-cart-quantity]");
         const cartForm = menuForm.querySelector("[data-cart-form");
-        const drinkRadioButtons = document.querySelectorAll('input[name="radio"]');
 
         // if x button is clicked
         xbtn.addEventListener('click', () => {
@@ -261,27 +260,57 @@ document.addEventListener('DOMContentLoaded', function () {
             popupCart();
         });
 
+        // create drinks for each menu popout
+        drinks.forEach(drink => {
+            // get the element template from menu.php
+            const menuDrinks = document.querySelector("[data-menu-drinks]");
+            const drinkRow = menuDrinks.content.cloneNode(true);
+
+            // get the template child that needs value
+            const drinkRadio = drinkRow.querySelector('input[name="radio"]');
+            const drinkLabel = drinkRow.querySelector('[data-drink-label]');
+
+            // place the variables got from fetch to the drinks
+            drinkRadio.value = drink.id;
+            drinkRadio.dataset.drinkPrice = drink.price;
+            drinkLabel.append(drink.name);
+
+            // get the div container for the drink
+            const menuDrinksContainer = document.getElementById("menuDrinksContainer");
+
+            menuDrinksContainer.appendChild(drinkRow);
+
+
+        });
+
+        // get all the radio buttons made
+        const drinkRadioButtons = document.querySelectorAll('input[name="radio"]');
+
+        // for every buttons made
+        drinkRadioButtons.forEach(radioButton => {
+            // if there is change on any radioButton
+            radioButton.addEventListener('change', () => {
+                // change the foodPrice
+                foodPrice.textContent = `Php ${Number(Number(menu.price * quantity.textContent) + Number(document.querySelector('input[name="radio"]:checked').dataset.drinkPrice)).toLocaleString()}`; // add comma to the menu.price;
+            });
+        });
+
         // if "-" button is clicked, decrement, but not if it is 0
         decrement.addEventListener('click', () => {
             if (quantity.textContent < 2) return;
             quantity.textContent--;
-            foodPrice.textContent = `Php ${Number(menu.price * quantity.textContent).toLocaleString()}`; // add comma to the menu.price
+
+            // change the foodPrice
+            foodPrice.textContent = (document.querySelector('input[name="radio"]:checked')) ? `Php ${Number(Number(menu.price * quantity.textContent) + Number(document.querySelector('input[name="radio"]:checked').dataset.drinkPrice)).toLocaleString()}` : `Php ${Number(menu.price * quantity.textContent).toLocaleString()}`; // add comma to the menu.price;
         });
 
         // if "+" button is clicked, increment, but not if it is 99
         increment.addEventListener('click', () => {
             if (quantity.textContent > 98) return;
             quantity.textContent++;
-            foodPrice.textContent = `Php ${Number(menu.price * quantity.textContent).toLocaleString()}`; // add comma to the menu.price
-        });
 
-        // get all radio button from drinks
-        drinkRadioButtons.forEach(radioButton => {
-            // if there is change on any radioButton
-            radioButton.addEventListener('change', () => {
-                
-                foodPrice.textContent = `Php ${Number(menu.price * quantity.textContent).toLocaleString()}`; // add comma to the menu.price
-            })
+            // change the foodPrice
+            foodPrice.textContent = (document.querySelector('input[name="radio"]:checked')) ? `Php ${Number(Number(menu.price * quantity.textContent) + Number(document.querySelector('input[name="radio"]:checked').dataset.drinkPrice)).toLocaleString()}` : `Php ${Number(menu.price * quantity.textContent).toLocaleString()}`; // add comma to the menu.price;
         });
 
         // if there is submit in form
