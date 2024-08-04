@@ -332,7 +332,7 @@ if (isset($_SESSION['id'])) {
     <template data-regular-menu-template>
         <div class="foodCard">
             <img style="position: absolute; width: 200px; height: 221px" data-food-image>
-            <input type="text" class="new" value="" readonly style="margin-top: 19px; margin-left: 214px;">
+            <div class="new" style="margin-top: 19px; margin-left: 214px;"> </div>
             <input type="text" class="menName" data-food-name readonly>
             <p class="men2" data-food-description></p>
             <input type="text" class="dollar" data-food-price readonly>
