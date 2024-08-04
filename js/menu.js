@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const foodCartContainer = document.querySelector("[data-user-cart-container]");
     const payment = document.getElementById("payment");
     var menuArray = [];
+    var drinkArray = [];
     var filterButtonValue = "";
 
     // if dropdown is clicked
@@ -116,8 +117,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // get objects from fetch
         .then(data => {
-            // create a card for each menus fetched from database
-            createMenuCards(data.menu, data.drink);
+            // set as global variable to be used many times
+            menuArray = data.menu;
+            drinkArray = data.drink;
 
             // go to filtering
             filtering();
@@ -137,27 +139,66 @@ document.addEventListener('DOMContentLoaded', function () {
         return urlParams.get(name);
     }
 
-    filtering = () => {
-        // convert the filter to lowercase
-        const filterInputValue = filterInput.value.toLowerCase();
+    // create cards for div regularMenuContainer 
+    createMenuCards = () => {
+        // clear the values from regularMenuContainer
+        regularMenuContainer.innerHTML = "";
 
-        // make the card visible or not
+        // get the menus for filtering
         menuArray.forEach(menu => {
+            // get the element template from menu.php
+            const regularMenuTemplate = document.querySelector("[data-regular-menu-template]");
+            const card = regularMenuTemplate.content.cloneNode(true).children[0];
+
+            // get the template child that needs value to be displayed
+            const foodImage = card.querySelector("[data-food-image]");
+            const foodName = card.querySelector("[data-food-name]");
+            const foodDescription = card.querySelector("[data-food-description]");
+            const foodPrice = card.querySelector("[data-food-price]");
+
+            // place the variables got from fetch to the card
+            foodImage.src = `../images/foodCategories/${menu.categoryName}/${menu.image}`;
+            foodName.value = menu.foodName;
+            foodDescription.textContent = menu.description;
+            foodPrice.value = `Php ${Number(menu.price).toLocaleString()}`; // add comma to the menu.price
+
+            // convert the filter to lowercase
+            const filterInputValue = filterInput.value.toLowerCase();
+
             // check if card should be visible or not from the filter
-            const cardVisibility = (
+            const cardVisibility = (filterButtonValue == "Popular") ? (
                 menu.foodName.toLowerCase().includes(filterInputValue) ||
-                menu.foodDescription.toLowerCase().includes(filterInputValue)
-            ) && menu.foodCategory.includes(filterButtonValue);
-            // display: inline-block if visible and display: none if not visible
-            menu.element.style.display = cardVisibility ? "inline-block" : "none";
+                menu.description.toLowerCase().includes(filterInputValue))
+                : (
+                    menu.foodName.toLowerCase().includes(filterInputValue) ||
+                    menu.description.toLowerCase().includes(filterInputValue)
+                ) && menu.categoryName.includes(filterButtonValue);
+
+            // if card must be visible
+            if (cardVisibility) {
+                // put each made card inside regularMenuContainer
+                regularMenuContainer.appendChild(card);
+            }
+
+            // create on click listener for each card
+            card.addEventListener('click', () => {
+                // popup the cart for ordering
+                popupCart();
+
+                // create ordering form in popup
+                createCartForm(menu);
+            });
+
+            // get the value of menuID in the url
+            const menuID = getParameters("menuID");
+
+            // if menuID is equal to menu.id
+            if (menu.id == menuID) {
+                // click the card automatically
+                card.click();
+            }
         });
     }
-
-    // if there is input or change in filter
-    filterInput.addEventListener('input', () => {
-        // go to filtering
-        filtering();
-    });
 
     // loop for every class that has all1
     filterButtons.forEach(filterButton => {
@@ -176,63 +217,24 @@ document.addEventListener('DOMContentLoaded', function () {
         // if there is popular in url and the filterbutton value is popular
         if (filterButton.value == "Popular" && popular == "true") {
             // click the filterbutton automatically
-            filterButton.click();
+            filterButtonValue = "Popular";
         }
     });
 
-    // create cards for div regularMenuContainer 
-    createMenuCards = (menus, drinks) => {
-        // clear the values from regularMenuContainer
-        regularMenuContainer.innerHTML = "";
-
-        // get the menus for filtering
-        menuArray = menus.map(menu => {
-            // get the element template from menu.php
-            const regularMenuTemplate = document.querySelector("[data-regular-menu-template]");
-            const card = regularMenuTemplate.content.cloneNode(true).children[0];
-
-            // get the template child that needs value to be displayed
-            const foodImage = card.querySelector("[data-food-image]");
-            const foodName = card.querySelector("[data-food-name]");
-            const foodDescription = card.querySelector("[data-food-description]");
-            const foodPrice = card.querySelector("[data-food-price]");
-
-            // place the variables got from fetch to the card
-            foodImage.src = `../images/foodCategories/${menu.categoryName}/${menu.image}`;
-            foodName.value = menu.foodName;
-            foodDescription.textContent = menu.description;
-            foodPrice.value = `Php ${Number(menu.price).toLocaleString()}`; // add comma to the menu.price
-
-            // put each made card inside regularMenuContainer
-            regularMenuContainer.appendChild(card);
-
-            // create on click listener for each card
-            card.addEventListener('click', () => {
-                // popup the cart for ordering
-                popupCart();
-
-                // create ordering form in popup
-                createCartForm(menu, drinks);
-            });
-
-            // get the value of menuID in the url
-            const menuID = getParameters("menuID");
-
-            // if menuID is equal to menu.id
-            if (menu.id == menuID) {
-                // click the card automatically
-                card.click();
-            }
-
-            // get the name, description, category and card itself for filtering
-            return {
-                foodName: menu.foodName,
-                foodDescription: menu.description,
-                foodCategory: menu.categoryName,
-                element: card
-            };
-        });
+    // filtering process
+    filtering = () => {
+        // if the filter category is popular, sort by popularity, else sort by foodName
+        filterButtonValue == "Popular" ? menuArray.sort((a, b) => b.popularity - a.popularity) : menuArray.sort((a, b) => a.foodName.localeCompare(b.foodName));
+        
+        // create cards for the menu
+        createMenuCards();
     }
+
+    // if there is input or change in filter
+    filterInput.addEventListener('input', () => {
+        // go to filtering
+        filtering();
+    });
 
     // pop out when ordering
     popupCart = () => {
@@ -251,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // create popup Cart form
-    createCartForm = (menu, drinks) => {
+    createCartForm = (menu) => {
         // get the element template from menu.php
         const menuPopoutTemplate = document.querySelector("[data-menu-popout]");
         const menuForm = menuPopoutTemplate.content.cloneNode(true).children[0];
@@ -285,7 +287,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         // create drinks for each menu popout
-        drinks.forEach(drink => {
+        drinkArray.forEach(drink => {
             // get the element template from menu.php
             const menuDrinks = document.querySelector("[data-menu-drinks]");
             const drinkRow = menuDrinks.content.cloneNode(true);

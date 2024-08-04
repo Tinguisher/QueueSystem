@@ -9,14 +9,19 @@ $mysqli = require_once "./database.php";
 try{
     // make a string to get menu
     $sql_menu = "SELECT foods.id,
-    foods.image,
-    food_categories.name AS categoryName,
-    foods.name AS foodName,
-    foods.description,
-    foods.price
-    FROM `foods`, `food_categories`
-    WHERE foods.food_categories_id = food_categories.id
-    ORDER BY foodName";
+        foods.image,
+        food_categories.name AS categoryName,
+        foods.name AS foodName,
+        foods.description,
+        foods.price,
+        COUNT(food_orders.foods_id) AS popularity
+    FROM `foods`
+    LEFT JOIN food_categories ON foods.food_categories_id = food_categories.id
+    LEFT JOIN food_orders ON food_orders.foods_id = foods.id
+    LEFT JOIN receipts ON food_orders.receipts_id = receipts.id
+        AND receipts.orderDate >= DATE_SUB(NOW(), INTERVAL 1 MONTH)
+        AND receipts.orderDate <= NOW()
+    GROUP BY foods.id;";
 
     // prepare the statement
     $stmt = $mysqli -> prepare ($sql_menu);
