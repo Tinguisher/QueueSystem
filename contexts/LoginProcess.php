@@ -48,9 +48,10 @@ try{
     // get only one from the executed statement
     $user = $result -> fetch_assoc();
 
-    // free data, close the statement
+    // free data, close the statement and database
     $result -> free();
     $stmt -> close();
+    $mysqli -> close();
 
     // if there is no existing user in database
     if (!$user){
@@ -65,7 +66,7 @@ try{
     if (!password_verify($password, $user['password'])){
         $response = [
             'status' => "error",
-            'message' => "Incorrect password",
+            'message' => "Incorrect email or password",
         ];
         exit ( json_encode($response) );
     }
@@ -92,9 +93,6 @@ catch (Exception $e){
         'message' => "Error No: ". $e->getCode() ." - ". $e->getMessage()    // get error code and message
     ];
 }
-
-// close the database
-$mysqli -> close();
 
 // output the response
 exit ( json_encode($response) );

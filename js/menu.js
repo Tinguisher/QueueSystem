@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const payment = document.getElementById("payment");
     var menuArray = [];
     var drinkArray = [];
+    var firstLoad = true;
     var filterButtonValue = "";
 
     // if dropdown is clicked
@@ -145,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function () {
         regularMenuContainer.innerHTML = "";
 
         // get the menus for filtering
-        menuArray.forEach(menu => {
+        menuArray.forEach((menu, index) => {
             // get the element template from menu.php
             const regularMenuTemplate = document.querySelector("[data-regular-menu-template]");
             const card = regularMenuTemplate.content.cloneNode(true).children[0];
@@ -166,9 +167,10 @@ document.addEventListener('DOMContentLoaded', function () {
             const filterInputValue = filterInput.value.toLowerCase();
 
             // check if card should be visible or not from the filter
-            const cardVisibility = (filterButtonValue == "Popular") ? (
+            const cardVisibility = (filterButtonValue == "Popular") ? ((
                 menu.foodName.toLowerCase().includes(filterInputValue) ||
-                menu.description.toLowerCase().includes(filterInputValue))
+                menu.description.toLowerCase().includes(filterInputValue)
+                ) && index < 8)
                 : (
                     menu.foodName.toLowerCase().includes(filterInputValue) ||
                     menu.description.toLowerCase().includes(filterInputValue)
@@ -193,9 +195,12 @@ document.addEventListener('DOMContentLoaded', function () {
             const menuID = getParameters("menuID");
 
             // if menuID is equal to menu.id
-            if (menu.id == menuID) {
+            if (menu.id == menuID && firstLoad == true) {
                 // click the card automatically
                 card.click();
+
+                // set the first load as false to avoid repeating opening of the menu
+                firstLoad = false;
             }
         });
     }

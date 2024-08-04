@@ -59,9 +59,10 @@ if ( isset($_SESSION['id']) ){
                     <h1 class="h1wc">Welcome back!</h1>
                     <span class="swc">Welcome back. Please enter your details.</span><br><br>
                     <label for="email">Email</label>
-                    <input type="email" name="input_email" id="email" placeholder="Email">
+                    <input type="email" name="input_email" id="email" placeholder="Email" required>
                     <label for="pass">Password</label>
-                    <input type="password" name="input_password" id="pass" placeholder="Password">
+                    <input type="password" name="input_password" id="pass" placeholder="Password" required>
+                    <!-- <p id="verification"></p> -->
                     <br><br><button class="button-signlogin">Sign In</button>
                 </form>
             </div>
