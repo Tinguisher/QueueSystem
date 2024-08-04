@@ -370,7 +370,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // add to the cart process
     addToCart = (payload) => {
         // make a fetch to process when adding a cart
-        fetch('../contexts/AddCartProcess.php', {
+        fetch('../contexts/CreateCartProcess.php', {
             method: "POST",
             headers: {
                 // state as a json type
