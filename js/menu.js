@@ -131,23 +131,11 @@ document.addEventListener('DOMContentLoaded', function () {
             regularMenuContainer.innerHTML = error;
         });
 
-    // if there is input or change in filter
-    filterInput.addEventListener('input', () => {
-        // go to filtering
-        filtering();
-    });
-
-    // loop for every class that has all1
-    filterButtons.forEach(filterButton => {
-        // if there is click on filterButtons
-        filterButton.addEventListener('click', () => {
-            // make the filter universal for filtering
-            filterButtonValue = filterButton.value;
-
-            // go to filtering
-            filtering();
-        });
-    });
+    // Process on getting the parameters in the URL
+    getParameters = (name) => {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
 
     filtering = () => {
         // convert the filter to lowercase
@@ -164,6 +152,33 @@ document.addEventListener('DOMContentLoaded', function () {
             menu.element.style.display = cardVisibility ? "inline-block" : "none";
         });
     }
+
+    // if there is input or change in filter
+    filterInput.addEventListener('input', () => {
+        // go to filtering
+        filtering();
+    });
+
+    // loop for every class that has all1
+    filterButtons.forEach(filterButton => {
+        // if there is click on filterButtons
+        filterButton.addEventListener('click', () => {
+            // make the filter universal for filtering
+            filterButtonValue = filterButton.value;
+
+            // go to filtering
+            filtering();
+        });
+
+        // get the value of popular in the url
+        const popular = getParameters("popular");
+
+        // if there is popular in url and the filterbutton value is popular
+        if (filterButton.value == "Popular" && popular == "true") {
+            // click the filterbutton automatically
+            filterButton.click();
+        }
+    });
 
     // create cards for div regularMenuContainer 
     createMenuCards = (menus, drinks) => {
@@ -199,6 +214,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 // create ordering form in popup
                 createCartForm(menu, drinks);
             });
+
+            // get the value of menuID in the url
+            const menuID = getParameters("menuID");
+
+            // if menuID is equal to menu.id
+            if (menu.id == menuID) {
+                // click the card automatically
+                card.click();
+            }
 
             // get the name, description, category and card itself for filtering
             return {

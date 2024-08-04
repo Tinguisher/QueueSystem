@@ -46,10 +46,7 @@ document.addEventListener('DOMContentLoaded', function(){
         sessiontext.textContent = "Sign in";
 
         // if there is click on logoutbutton
-        sessionbutton.addEventListener('click', (ev) => {
-            // prevent loading of website
-            ev.preventDefault();
-
+        sessionbutton.addEventListener('click', () => {
             // change the location to login
             window.location = '../pages/login.php';
         });
@@ -106,8 +103,9 @@ document.addEventListener('DOMContentLoaded', function(){
         slides.appendChild(slide);
 
         // if there is click in the slide image
-        slideImg.addEventListener('click', (ev) => {
-            console.log (menu.id);
+        slideImg.addEventListener('click', () => {
+            // go to popular menus and menu itself
+            window.location = `../pages/menu.php?popular=true&menuID=${menu.id}`
         });
     }
 
@@ -134,14 +132,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
         // if there is click in individual card
         card.addEventListener('click', () => {
-            menuOnClick(menu);
+            // go to popular menus and menu itself
+            window.location = `../pages/menu.php?popular=true&menuID=${menu.id}`
         });
-
-    }
-
-    // card on click
-    menuOnClick = (menu) => {
-        console.log(menu.id);
     }
 
     var counter = 1;
