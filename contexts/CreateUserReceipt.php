@@ -86,6 +86,10 @@ try{
 
     // commit all inserts if successful
     $mysqli -> commit();
+
+    // free data and close statement
+    $result -> free();
+    $stmt -> close();
     
     // pass the response if it is success
     $response = [
@@ -105,9 +109,7 @@ catch (Exception $e){
     ];
 }
 
-// free data and close statement and database
-$result -> free();
-$stmt -> close();
+// close the database
 $mysqli -> close();
 
 // output the response

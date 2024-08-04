@@ -22,7 +22,7 @@ $sql = "SELECT foods.id,
     GROUP BY foods.id
     ORDER BY popularity DESC
     LIMIT 8";
-    
+
 // try to get and catch if there is error
 try{
     // prepare the statement
@@ -37,11 +37,10 @@ try{
     // get only one from the executed statement
     $popularmenu = $result -> fetch_all( MYSQLI_ASSOC );
 
-    // free data and close statement and database
+    // free data and close statement 
     $result -> free();
     $stmt -> close();
-    $mysqli -> close();
-
+    
     // pass the menu to response
     $response = [
         'status' => "success",
@@ -58,6 +57,9 @@ catch (Exception $e){
         'message' => "Error No: ". $e->getCode() ." - ". $e->getMessage()    // get error code and message
     ];
 }
+
+// close the database
+$mysqli -> close();
 
 // output the response
 exit ( json_encode($response) );

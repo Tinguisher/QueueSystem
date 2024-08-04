@@ -43,6 +43,10 @@ function getUserCart() {
         // get all data from the executed statement
         $userCart = $result -> fetch_all( MYSQLI_ASSOC );
 
+        // free data and close statement
+        $result -> free();
+        $stmt -> close();
+
         // pass the user's cart to response
         $response = [
             'status' => "success",
@@ -62,9 +66,7 @@ function getUserCart() {
         ];
     }
 
-    // free data and close statement and database
-    $result -> free();
-    $stmt -> close();
+    // close the database
     $mysqli -> close();
 
     // return the variable response back to the GetCartProcess.php
@@ -73,9 +75,6 @@ function getUserCart() {
 
 // if it is guest or the user is not logged in, get session's cart
 function getGuestCart() {
-    // access database
-    $mysqli = require_once "./database.php";
-
     // if there are no carts from the guest
     if ( empty($_SESSION['carts']) ){
         // make a success response with no carts
@@ -88,6 +87,9 @@ function getGuestCart() {
         // return the variable response back to the GetCartProcess.php
         return $response;
     }
+
+    // access database
+    $mysqli = require_once "./database.php";
 
     // loop to get each data from the carts
     foreach ($_SESSION['carts'] as $index => $sessionCart) {

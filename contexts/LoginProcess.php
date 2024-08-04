@@ -48,10 +48,9 @@ try{
     // get only one from the executed statement
     $user = $result -> fetch_assoc();
 
-    // free data, close the statement and database
+    // free data, close the statement
     $result -> free();
     $stmt -> close();
-    $mysqli -> close();
 
     // if there is no existing user in database
     if (!$user){
@@ -87,15 +86,15 @@ try{
 
 // if there is error in query
 catch (Exception $e){
-    // close the database
-    $mysqli -> close();
-
     // make an error response
     $response = [
         'status' => "error",
         'message' => "Error No: ". $e->getCode() ." - ". $e->getMessage()    // get error code and message
     ];
 }
+
+// close the database
+$mysqli -> close();
 
 // output the response
 exit ( json_encode($response) );
