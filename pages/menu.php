@@ -415,19 +415,16 @@ if (isset($_SESSION['id'])) {
                 <div style="position: absolute; margin-top: 519px; width: 676px; height: 406px;border-radius: 0px 0px 25.8px 25.8px; background: #D9D9D9;">
                     <p class="addrin">Add Drinks</p>
                     <div id="menuDrinksContainer" style="margin-top: 104px;"> </div>
-
+                    <!-- Template for drinks -->
                     <template data-menu-drinks>
                         <label class="container" data-drink-label>
-                            <input type="radio" name="radio" value="1" data-drink-price required>
+                            <input type="radio" name="radio" data-drink-price required>
                             <span class="checkmark"></span>
                         </label>
-                        <p class="addpri" style="margin-top: 622px;">Free</p>
+                        <p class="addpri" style="margin-top: 622px;" data-drink-price-label></p>
                     </template>
                 </div>
                 <div>
-                    <p class="addpri" style="margin-top: 622px;">Free</p>
-                    <p class="addpri" style="margin-top: 675px;">Php 20.00</p>
-                    <p class="addpri" style="margin-top: 725px;">Php 40.00</p>
                     <button type="submit" class="crtbtn">Add to Cart</button>
                     <div class="productQuantity">
                         <button type="button" class="pqBox" data-food-cart-decrement>

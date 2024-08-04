@@ -269,18 +269,27 @@ document.addEventListener('DOMContentLoaded', function () {
             // get the template child that needs value
             const drinkRadio = drinkRow.querySelector('input[name="radio"]');
             const drinkLabel = drinkRow.querySelector('[data-drink-label]');
+            const drinkPriceLabel = drinkRow.querySelector('[data-drink-price-label]');
 
             // place the variables got from fetch to the drinks
             drinkRadio.value = drink.id;
             drinkRadio.dataset.drinkPrice = drink.price;
             drinkLabel.append(drink.name);
 
+            // if no drink then there is no text
+            if (drink.name == "No") drinkPriceLabel.textContent = "";
+
+            // if drink has no price, text is free
+            else if (drink.price == 0) drinkPriceLabel.textContent = "Free";
+
+            // print the price if not included from the top conditions
+            else drinkPriceLabel.textContent = `Php ${(drink.price).toLocaleString()}`;
+
             // get the div container for the drink
             const menuDrinksContainer = document.getElementById("menuDrinksContainer");
 
+            // output the drink in the container
             menuDrinksContainer.appendChild(drinkRow);
-
-
         });
 
         // get all the radio buttons made
@@ -291,7 +300,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // if there is change on any radioButton
             radioButton.addEventListener('change', () => {
                 // change the foodPrice
-                foodPrice.textContent = `Php ${Number(Number(menu.price * quantity.textContent) + Number(document.querySelector('input[name="radio"]:checked').dataset.drinkPrice)).toLocaleString()}`; // add comma to the menu.price;
+                foodPrice.textContent = `Php ${(Number(menu.price * quantity.textContent) + Number(document.querySelector('input[name="radio"]:checked').dataset.drinkPrice)).toLocaleString()}`; // add comma to the menu.price;
             });
         });
 
@@ -301,7 +310,7 @@ document.addEventListener('DOMContentLoaded', function () {
             quantity.textContent--;
 
             // change the foodPrice
-            foodPrice.textContent = (document.querySelector('input[name="radio"]:checked')) ? `Php ${Number(Number(menu.price * quantity.textContent) + Number(document.querySelector('input[name="radio"]:checked').dataset.drinkPrice)).toLocaleString()}` : `Php ${Number(menu.price * quantity.textContent).toLocaleString()}`; // add comma to the menu.price;
+            foodPrice.textContent = (document.querySelector('input[name="radio"]:checked')) ? `Php ${(Number(menu.price * quantity.textContent) + Number(document.querySelector('input[name="radio"]:checked').dataset.drinkPrice)).toLocaleString()}` : `Php ${(menu.price * quantity.textContent).toLocaleString()}`; // add comma to the menu.price;
         });
 
         // if "+" button is clicked, increment, but not if it is 99
@@ -310,7 +319,7 @@ document.addEventListener('DOMContentLoaded', function () {
             quantity.textContent++;
 
             // change the foodPrice
-            foodPrice.textContent = (document.querySelector('input[name="radio"]:checked')) ? `Php ${Number(Number(menu.price * quantity.textContent) + Number(document.querySelector('input[name="radio"]:checked').dataset.drinkPrice)).toLocaleString()}` : `Php ${Number(menu.price * quantity.textContent).toLocaleString()}`; // add comma to the menu.price;
+            foodPrice.textContent = (document.querySelector('input[name="radio"]:checked')) ? `Php ${(Number(menu.price * quantity.textContent) + Number(document.querySelector('input[name="radio"]:checked').dataset.drinkPrice)).toLocaleString()}` : `Php ${(menu.price * quantity.textContent).toLocaleString()}`; // add comma to the menu.price;
         });
 
         // if there is submit in form
