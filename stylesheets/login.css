@@ -212,11 +212,25 @@ body{
     transform: translateX(200%);
 }
 
-.button-signlogin:hover{
+.button-signinlogin{
+    position: absolute;
+    top: 470px;
+    /* margin-left: 95px; */
+    width: 80%;
+}
+
+.button-signuplogin:hover{
     background-color: #FFFDF1;
     border: 1px solid #094C3B;
     color: #094C3B;
 }
+
+.button-signinlogin:hover{
+    background-color: #FFFDF1;
+    border: 1px solid #094C3B;
+    color: #094C3B;
+}
+
 
 #register:hover{
     background-color: #FFFDF1;
@@ -286,4 +300,14 @@ td a:hover {color: #2ac09a;}
     font-family: Roboto;
     font-size: 23px;
     font-weight: 400;
+}
+
+.error{
+color: #f00d0d;
+}
+
+.logerror{
+    position: absolute;
+    color: #f00d0d;
+    top: 415px;
 }

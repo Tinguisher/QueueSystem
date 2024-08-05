@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (!verification) {
                         // create a p element and insert it to loginform
                         verification = document.createElement('p');
+                        verification.className = "logerror";
                         loginform.insertBefore(verification, loginform.children[8]);
                     }
 
@@ -109,6 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (!verification) {
                         // create a p element and insert it to signupform
                         verification = document.createElement('p');
+                        verification.className = "error";
                         signupform.insertBefore(verification, signupform.children[9]);
                     }
 
