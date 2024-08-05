@@ -14,10 +14,16 @@ function getUserCart() {
             food_categories.name AS categoryName,
             foods.name AS foodName,
             foods.description,
-            (foods.price * user_carts.quantity) AS price,
+            ((foods.price * user_carts.quantity) + drinks.price) AS price,
             user_carts.quantity
-        FROM `user_carts`, `foods`, `food_categories`
-        WHERE user_carts.foods_id = foods.id AND foods.food_categories_id = food_categories.id AND user_carts.users_id = ?
+        FROM `user_carts`,
+            `foods`,
+            `food_categories`,
+            `drinks`
+        WHERE user_carts.foods_id = foods.id
+            AND foods.food_categories_id = food_categories.id
+            AND user_carts.drinks_id = drinks.id
+            AND user_carts.users_id = ?
         ORDER BY user_carts.id;";
 
     // try to create and catch if there is error
@@ -36,6 +42,10 @@ function getUserCart() {
 
         // get all data from the executed statement
         $userCart = $result -> fetch_all( MYSQLI_ASSOC );
+
+        // free data and close statement
+        $result -> free();
+        $stmt -> close();
 
         // pass the user's cart to response
         $response = [
@@ -56,9 +66,7 @@ function getUserCart() {
         ];
     }
 
-    // free data and close statement and database
-    $result -> free();
-    $stmt -> close();
+    // close the database
     $mysqli -> close();
 
     // return the variable response back to the GetCartProcess.php
@@ -67,9 +75,6 @@ function getUserCart() {
 
 // if it is guest or the user is not logged in, get session's cart
 function getGuestCart() {
-    // access database
-    $mysqli = require_once "./database.php";
-
     // if there are no carts from the guest
     if ( empty($_SESSION['carts']) ){
         // make a success response with no carts
@@ -82,6 +87,9 @@ function getGuestCart() {
         // return the variable response back to the GetCartProcess.php
         return $response;
     }
+
+    // access database
+    $mysqli = require_once "./database.php";
 
     // loop to get each data from the carts
     foreach ($_SESSION['carts'] as $index => $sessionCart) {

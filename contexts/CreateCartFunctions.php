@@ -8,9 +8,10 @@ function addUserCart($data) {
     $user_id = $_SESSION['id'];
     $food_id = $data['input_food_id'];
     $quantity = $data['input_quantity'];
+    $drink_id = $data['input_drink_id'];
 
     // make a string sql to insert data to database
-    $sql = "INSERT INTO `user_carts`(`users_id`, `foods_id`, `quantity`) VALUES (? , ?, ?);";
+    $sql = "INSERT INTO `user_carts`(`users_id`, `foods_id`, `quantity`, `drinks_id`) VALUES (?, ?, ?, ?);";
 
     // try to create and catch if there is error
     try{
@@ -18,7 +19,7 @@ function addUserCart($data) {
         $stmt = $mysqli -> prepare ($sql);
 
         // bind the parameters to the statement
-        $stmt -> bind_param ('iii', $user_id, $food_id, $quantity);
+        $stmt -> bind_param ('iiii', $user_id, $food_id, $quantity, $drink_id);
 
         // execute the statement
         $stmt -> execute();
