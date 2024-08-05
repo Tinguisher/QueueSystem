@@ -98,8 +98,8 @@ $mysqli->close();
                     </button>
                 </div>
 
-                <div class="lowerbox">
-                    <div id="foodcard1">
+                <div class="lowerbox">      
+                    <div class="foodcard1"> <!-- FIX DIS SHEYT-->
                         <div class="cardpic">
                             <img src="../images/bacon.png">
                         </div>
@@ -109,7 +109,18 @@ $mysqli->close();
                             <h2>400 ₱</h2>
                         </div>
                     </div>
+                    <div class="foodcard1">
+                        <div class="cardpic">
+                            <img src="../images/bacon.png">
+                        </div>
+                        <div class="cardinfo"><!--FIX DIS-->
+                            <h3>Bacon Bliss Bur ger</h3>
+                            <p>Juicy beef patty with crispy pork bacon, fresh lettuce, onion, tomato, and a side of golden fries.</p>
+                            <h2>400 ₱</h2>
+                        </div>
+                    </div>
                 </div>
+                
             </div>
         </div>
     </div>

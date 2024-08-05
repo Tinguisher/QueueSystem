@@ -55,7 +55,7 @@ $mysqli->close();
             <div class="choosestation">
                 <div class="redchoose">Choose Station:</div>
                 <div class="choosecat">
-                    <div class="catpad">
+                    <div class="catpad"> <!-- Fix dis shyet-->
                         <input type="radio" name="category" id="all" value="" checked>
                         <label class="radlabel" for="all">All</label>
                     </div>
