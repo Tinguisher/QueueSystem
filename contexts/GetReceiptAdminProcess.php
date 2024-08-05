@@ -8,16 +8,21 @@ $mysqli = require_once "./database.php";
 // create a sql to get each receipts
 $sql = "SELECT receipts.id,
         CONCAT(users.firstname,' ', users.lastname) AS userName,
-        COUNT(food_orders.receipts_id) AS items,
-        DATE(receipts.orderDate) AS date
+        DATE(receipts.orderDate) AS date,
+        SUM(food_orders.quantity)  AS totalItems,
+		SUM(
+            CASE WHEN food_orders.status = 'Completed'
+                THEN (food_orders.quantity)
+                ELSE 0
+                END
+            ) AS itemsDone
     FROM receipts,
         food_orders,
         users
     WHERE receipts.id = food_orders.receipts_id
         AND receipts.users_id = users.id
-        AND food_orders.status = 'Completed'
     GROUP BY receipts.id
-    ORDER BY date DESC;";
+    ORDER BY receipts.id DESC;";
 
 // try to get and catch if there is error
 try{

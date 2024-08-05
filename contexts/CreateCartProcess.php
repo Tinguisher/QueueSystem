@@ -22,7 +22,7 @@ if (empty($data['input_food_id']) || empty($data['input_quantity'])) {
 }
 
 // include the functions to be used
-require_once './AddCartFunctions.php';
+require_once './CreateCartFunctions.php';
 
 // start the session to check if there is any
 session_start();

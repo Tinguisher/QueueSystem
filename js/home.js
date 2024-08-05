@@ -1,5 +1,5 @@
 // Load js if HTML is done
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function () {
 
     // get all id, class for global variable
     const sessionbutton = document.getElementById("sessionbutton");
@@ -13,9 +13,9 @@ document.addEventListener('DOMContentLoaded', function(){
         const list = document.getElementById("list");
         list.classList.toggle("show");
     };
-    
+
     // if the user is logged in
-    if (loggedin){
+    if (loggedin) {
         // change the text to logout
         sessiontext.textContent = "Logout";
 
@@ -25,18 +25,18 @@ document.addEventListener('DOMContentLoaded', function(){
             ev.preventDefault();
 
             // go to logout
-            fetch ('../contexts/logout.php')
-            .then (response => response.json())
+            fetch('../contexts/logout.php')
+                .then(response => response.json())
                 // get objects from fetch
-                .then (data => {
+                .then(data => {
                     // if the status is success
-                    if (data.status == "success"){
+                    if (data.status == "success") {
                         // reload the website
                         window.location.reload();
                     }
                 })
-            // error checker
-            .catch (error => console.error(error));
+                // error checker
+                .catch(error => console.error(error));
         });
     }
 
@@ -46,26 +46,23 @@ document.addEventListener('DOMContentLoaded', function(){
         sessiontext.textContent = "Sign in";
 
         // if there is click on logoutbutton
-        sessionbutton.addEventListener('click', (ev) => {
-            // prevent loading of website
-            ev.preventDefault();
-
+        sessionbutton.addEventListener('click', () => {
             // change the location to login
             window.location = '../pages/login.php';
         });
     }
 
     // get the menu for the popular
-    fetch ('../contexts/HomePopularMenu.php')
-    // get response as json
-    .then (response => response.json())
+    fetch('../contexts/GetPopularMenu.php')
+        // get response as json
+        .then(response => response.json())
         // get objects from fetch
-        .then (data => {
+        .then(data => {
             // clear the loadings
             popularmenu.innerHTML = "";
 
             // loop for each menu from server, menu is data.menu and index for current element
-            data.menu.forEach( (menu, index) => {
+            data.menu.forEach((menu, index) => {
                 // go to function to create image sliders
                 createSliders(menu, index);
 
@@ -73,14 +70,14 @@ document.addEventListener('DOMContentLoaded', function(){
                 createPopularMenuCards(menu);
             });
         })
-    // error checker
-    .catch ( error => {
-        // output the error in console
-        console.error(error) 
-        // output the errors from html
-        slides.innerHTML = error;
-        popularmenu.innerHTML = error;
-    });
+        // error checker
+        .catch(error => {
+            // output the error in console
+            console.error(error)
+            // output the errors from html
+            slides.innerHTML = error;
+            popularmenu.innerHTML = error;
+        });
 
     // create sliders function getting called from fetch
     createSliders = (menu, index) => {
@@ -101,13 +98,14 @@ document.addEventListener('DOMContentLoaded', function(){
         // place the values and edit div class
         slideDiv.classList.toggle("first", index == 0);
         slideImg.src = `../images/foodCategories/${menu.categoryName}/${menu.image}`;
-        
+
         // put the slide inside slides
         slides.appendChild(slide);
 
         // if there is click in the slide image
-        slideImg.addEventListener('click', (ev) => {
-            console.log (menu.id);
+        slideImg.addEventListener('click', () => {
+            // go to popular menus and menu itself
+            window.location = `../pages/menu.php?popular=true&menuID=${menu.id}`
         });
     }
 
@@ -134,24 +132,19 @@ document.addEventListener('DOMContentLoaded', function(){
 
         // if there is click in individual card
         card.addEventListener('click', () => {
-            menuOnClick(menu);
+            // go to popular menus and menu itself
+            window.location = `../pages/menu.php?popular=true&menuID=${menu.id}`
         });
-
-    }
-
-    // card on click
-    menuOnClick = (menu) => {
-        console.log(menu.id);
     }
 
     var counter = 1;
 
-    setInterval(function(){
+    setInterval(function () {
         document.getElementById('radio' + counter).checked = true;
         counter++;
-        if(counter > 4){
-        counter = 1;
+        if (counter > 4) {
+            counter = 1;
         }
-        
+
     }, 5000);
 });

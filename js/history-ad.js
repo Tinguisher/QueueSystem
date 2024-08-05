@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
             receiptID.textContent = receipt.id;
             userName.textContent = receipt.userName;
             date.textContent = receipt.date;
-            items.prepend(receipt.items);
+            items.prepend(`${receipt.itemsDone} / ${receipt.totalItems}`);
 
             // put each made row inside historyContainer
             historyContainer.appendChild(row);

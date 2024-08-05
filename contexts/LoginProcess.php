@@ -66,7 +66,7 @@ try{
     if (!password_verify($password, $user['password'])){
         $response = [
             'status' => "error",
-            'message' => "Incorrect password",
+            'message' => "Incorrect email or password",
         ];
         exit ( json_encode($response) );
     }
@@ -87,9 +87,6 @@ try{
 
 // if there is error in query
 catch (Exception $e){
-    // close the database
-    $mysqli -> close();
-
     // make an error response
     $response = [
         'status' => "error",

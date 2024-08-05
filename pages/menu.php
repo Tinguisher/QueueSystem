@@ -66,7 +66,7 @@ if (isset($_SESSION['id'])) {
                 <td style="width: 138px;"><a href="./home.php" target="_top">Home</a></td>
                 <td style="width: 133px;" id="menn"><a href="./menu.php" target="_top" style="color:#FF5622;"><b>Menu</b></a></td>
                 <td style="width: 155px;"><a href="aboutus.html" target="_top">About Us</a></td>
-                
+
             </tr>
         </table>
 
@@ -332,7 +332,7 @@ if (isset($_SESSION['id'])) {
     <template data-regular-menu-template>
         <div class="foodCard">
             <img style="position: absolute; width: 200px; height: 221px" data-food-image>
-            <input type="text" class="new" value="" readonly style="margin-top: 19px; margin-left: 214px;">
+            <div class="new" style="margin-top: 19px; margin-left: 214px;"> </div>
             <input type="text" class="menName" data-food-name readonly>
             <p class="men2" data-food-description></p>
             <input type="text" class="dollar" data-food-price readonly>
@@ -414,31 +414,17 @@ if (isset($_SESSION['id'])) {
                 <p class="prc" data-food-price></p>
                 <div style="position: absolute; margin-top: 519px; width: 676px; height: 406px;border-radius: 0px 0px 25.8px 25.8px; background: #D9D9D9;">
                     <p class="addrin">Add Drinks</p>
-                    <label class="container" style="margin-top: 104px;">
-                        <input type="radio" name="radio" value="Drink One" required>
-                        <span class="checkmark"></span>
-                        Drink One
-                    </label>
-                    <label class="container">
-                        <input type="radio" name="radio" value="Drink Two">
-                        <span class="checkmark"></span>
-                        Drink Two
-                    </label>
-                    <label class="container">
-                        <input type="radio" name="radio" value="Drink Three">
-                        <span class="checkmark"></span>
-                        Drink Three
-                    </label>
-                    <label class="container">
-                        <input type="radio" name="radio" value="No">
-                        <span class="checkmark"></span>
-                        No
-                    </label>
+                    <div id="menuDrinksContainer" style="margin-top: 104px;"> </div>
+                    <!-- Template for drinks -->
+                    <template data-menu-drinks>
+                        <label class="container" data-drink-label>
+                            <input type="radio" name="radio" data-drink-price required>
+                            <span class="checkmark"></span>
+                        </label>
+                        <p class="addpri" style="margin-top: 622px;" data-drink-price-label></p>
+                    </template>
                 </div>
                 <div>
-                    <p class="addpri" style="margin-top: 622px;">Free</p>
-                    <p class="addpri" style="margin-top: 675px;">Php 20.00</p>
-                    <p class="addpri" style="margin-top: 725px;">Php 40.00</p>
                     <button type="submit" class="crtbtn">Add to Cart</button>
                     <div class="productQuantity">
                         <button type="button" class="pqBox" data-food-cart-decrement>

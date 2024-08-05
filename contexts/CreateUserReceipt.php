@@ -14,7 +14,7 @@ $user_id = $_SESSION['id'];
 // try to create and catch if there is error
 try{
     // make a string for sql to create a receipt
-    $sql_receipts = "INSERT INTO `receipts`(`users_id`, `status`) VALUES (?, 'Pending');";
+    $sql_receipts = "INSERT INTO `receipts`(`users_id`) VALUES (?);";
 
     // create a starting point of database
     $mysqli -> begin_transaction();
@@ -86,6 +86,10 @@ try{
 
     // commit all inserts if successful
     $mysqli -> commit();
+
+    // free data and close statement
+    $result -> free();
+    $stmt -> close();
     
     // pass the response if it is success
     $response = [
@@ -105,9 +109,7 @@ catch (Exception $e){
     ];
 }
 
-// free data and close statement and database
-$result -> free();
-$stmt -> close();
+// close the database
 $mysqli -> close();
 
 // output the response
