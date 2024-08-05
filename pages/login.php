@@ -33,7 +33,7 @@ if ( isset($_SESSION['id']) ){
             <table style="margin-top: 38px; margin-left: 1118px; position: absolute;">
                 <tr>
                 <td style="width: 138px;"><a href="./home.php" target="_top">Home</a></td>
-                <td style="width: 133px;" id="menn"><a href="menu.html" target="_top">Menu</a></td>
+                <td style="width: 133px;" id="menn"><a href="./menu.php" target="_top">Menu</a></td>
                 <td style="width: 155px;"><a href="aboutus.html" target="_top">About Us</a></td>
                 </tr>
             </table>
@@ -51,7 +51,7 @@ if ( isset($_SESSION['id']) ){
                     <input type="email" name="input_email" placeholder="Email" required>
                     <input type="password" name="input_password" placeholder="Password" required>
                     <input type="password" name="input_confirmpassword" placeholder="Confirm Password" required>
-                    <button class="button-signlogin">Sign Up</button>
+                    <button class="button-signuplogin">Sign Up</button>
                 </form>
             </div>
             <div class="form-container sign-in">
@@ -62,8 +62,7 @@ if ( isset($_SESSION['id']) ){
                     <input type="email" name="input_email" id="email" placeholder="Email" required>
                     <label for="pass">Password</label>
                     <input type="password" name="input_password" id="pass" placeholder="Password" required>
-                    <!-- <p id="verification"></p> -->
-                    <br><br><button class="button-signlogin">Sign In</button>
+                    <button class="button-signinlogin">Sign In</button>
                 </form>
             </div>
             <div class="toggle-container">

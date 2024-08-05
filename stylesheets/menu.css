@@ -38,7 +38,7 @@ td a:hover {
     color: #FF5622;
 }
 
-#profilename{
+#profilename {
     position: absolute;
     margin-top: 48px;
     margin-left: 1446px;
@@ -427,7 +427,6 @@ li p {
 
 
 .menName {
-    width: 178px;
     height: 30px;
     margin-top: 46px;
     margin-left: 180px;
@@ -755,6 +754,9 @@ li p {
 
 .mentitle {
     position: absolute;
+    width: 361px;
+    height: 40px;
+    text-align: center;
     margin-top: 335px;
     margin-left: 158px;
     font-weight: 700;
@@ -778,7 +780,10 @@ li p {
 .prc {
     position: absolute;
     margin-top: 455px;
-    margin-left: 259.5px;
+    margin-left: 235px;
+    width: 200px;
+    height: 40px;
+    text-align: center;
     color: #000;
     font-family: "Roboto Slab";
     font-size: 30px;
