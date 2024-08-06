@@ -20,23 +20,9 @@ document.addEventListener('DOMContentLoaded', function () {
         sessiontext.textContent = "Logout";
 
         // if there is click on logoutbutton
-        sessionbutton.addEventListener('click', (ev) => {
-            // prevent loading of website
-            ev.preventDefault();
-
-            // go to logout
-            fetch('../contexts/logout.php')
-                .then(response => response.json())
-                // get objects from fetch
-                .then(data => {
-                    // if the status is success
-                    if (data.status == "success") {
-                        // reload the website
-                        window.location.reload();
-                    }
-                })
-                // error checker
-                .catch(error => console.error(error));
+        sessionbutton.addEventListener('click', () => {
+            // logout the user
+            logout();
         });
     }
 
@@ -48,8 +34,27 @@ document.addEventListener('DOMContentLoaded', function () {
         // if there is click on logoutbutton
         sessionbutton.addEventListener('click', () => {
             // change the location to login
-            window.location = '../pages/login.php';
+            window.location = '../pages/login.php?previousURL=home.php';
         });
+    }
+
+    // logout process
+    logout = () => {
+        // go to logout.php
+        fetch('../contexts/logout.php')
+            // get response as json
+            .then(response => response.json())
+
+            // get objects from fetch
+            .then(data => {
+                // if the status is success
+                if (data.status == "success") {
+                    // reload the website
+                    window.location.reload();
+                }
+            })
+            // error checker
+            .catch(error => console.error(error));
     }
 
     // get the menu for the popular
