@@ -55,7 +55,8 @@ function addGuestCart($data) {
     // create the cart
     $_SESSION['carts'][] = [
         'food_id' => $data['input_food_id'],
-        'quantity' => $data['input_quantity']
+        'quantity' => $data['input_quantity'],
+        'drink_id' => $data['input_drink_id']
     ];
     
     // make a success response
