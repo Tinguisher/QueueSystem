@@ -40,9 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
             // proceed to creating receipts
             createReceipt();
 
-            // ===========================================================
-            // window.location.href = './check.html';
-            // ===========================================================
+            // proceed to site of creating receipts
+            window.location.href = './check.php';
         });
     }
 
@@ -55,15 +54,15 @@ document.addEventListener('DOMContentLoaded', function () {
         payment.textContent = "Sign in to Review Payment";
 
         // if there is click on Sign in button
-        sessionbutton.addEventListener('click', (ev) => {
+        sessionbutton.addEventListener('click', () => {
             // change the location to login
-            window.location = '../pages/login.php';
+            window.location = '../pages/login.php?previousURL=menu.php';
         });
 
         // if there is click on payment
-        payment.addEventListener('click', (ev) => {
+        payment.addEventListener('click', () => {
             // change the location to login
-            window.location = '../pages/login.php';
+            window.location = '../pages/login.php?previousURL=check.php';
         });
     }
 
@@ -551,23 +550,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 const wrapper = document.querySelector(".wrapper");
 const carousel = document.querySelector(".carousel");

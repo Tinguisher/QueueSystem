@@ -49,8 +49,11 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(data => {
                 // if login is success
                 if (data.status == "success") {
+                    // transfer the cart from guest to user
+                    transferGuestToUserCart();
+
                     // redirect previous url and if none, go to home
-                    window.location = previousURL ? `../pages/${previousURL}` : `../pages/home.php`;
+                    // window.location = previousURL ? `../pages/${previousURL}` : `../pages/home.php`;
                 }
 
                 // if status is not success
@@ -103,8 +106,11 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(data => {
                 // if signup is success
                 if (data.status == "success") {
+                    // transfer the cart from guest to user
+                    transferGuestToUserCart();
+
                     // redirect previous url and if none, go to home
-                    window.location = previousURL ? `../pages/${previousURL}` : `../pages/home.php`;
+                    // window.location = previousURL ? `../pages/${previousURL}` : `../pages/home.php`;
                 }
 
                 // if status is not success
@@ -128,4 +134,27 @@ document.addEventListener('DOMContentLoaded', function () {
             // error checker
             .catch(error => console.error(error));
     })
+
+    // process of transfering the cart from guest to existing user
+    transferGuestToUserCart = () => {
+        // make a request to transfer the cart from guest to user
+        fetch('../contexts/UpdateCartGuestToUser.php')
+            // get response as json
+            .then(response => response.json())
+
+            // get objects from fetch
+            .then(data => {
+                // if the status is success
+                if (data.status == "success") {
+                    console.log(data);
+                }
+                else {
+
+                }
+            })
+
+            // error checker
+            .catch(error => console.error(error));
+
+    }
 });
