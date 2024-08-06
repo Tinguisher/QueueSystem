@@ -422,6 +422,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     // create a card for each user carts
                     createFoodCartCards(data.carts);
                 }
+                
+                // if there is error in fetching
+                else {
+                    foodCartContainer.innerHTML = data.message;
+                }
             })
             // error checker
             .catch(error => {
