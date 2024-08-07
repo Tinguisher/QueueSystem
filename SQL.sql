@@ -73,6 +73,7 @@ CREATE TABLE food_orders (
 	receipts_id int NOT NULL,
 	foods_id int NOT NULL,
 	quantity int NOT NULL,
+	discount int NOT NULL,
 	price double NOT NULL,
 	drinks_id int NOT NULL,
 	status varchar (30) NOT NULL,

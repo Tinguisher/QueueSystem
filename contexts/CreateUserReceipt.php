@@ -31,6 +31,7 @@ try{
     $sql_getUserCart = "SELECT foods.id,
         user_carts.quantity,
         user_carts.drinks_id,
+        foods.discount,
         (((foods.price - (foods.price * (0.01 * foods.discount))) * user_carts.quantity) + drinks.price) AS price
     FROM `user_carts`,
         `foods`,
@@ -72,13 +73,13 @@ try{
     // loop for each cart of the user
     foreach ($userCart as $cart) {
         // create sql for every food in the cart
-        $sql_foodOrders = "INSERT INTO `food_orders`(`receipts_id`, `foods_id`, `quantity`, `drinks_id`, `price`, `status`) VALUES (?, ?, ?, ?, ?, 'Pending');";
+        $sql_foodOrders = "INSERT INTO `food_orders`(`receipts_id`, `foods_id`, `quantity`, `discount`, `price`, `drinks_id`, `status`) VALUES (?, ?, ?, ?, ?, ?, 'Pending');";
 
         // prepare the statement
         $stmt = $mysqli -> prepare ($sql_foodOrders);
 
         // bind the parameters to the statement
-        $stmt -> bind_param ('iiiid', $receipt_id, $cart['id'], $cart['quantity'], $cart['drinks_id'], $cart['price']);
+        $stmt -> bind_param ('iiiidi', $receipt_id, $cart['id'], $cart['quantity'], $cart['discount'], $cart['price'], $cart['drinks_id']);
 
         // execute the statement
         $stmt -> execute();

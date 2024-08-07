@@ -103,11 +103,11 @@ $mysqli->close();
 		<template data-food-template>
 			<div class="foodinfo">
 				<img class="picture" data-food-image>
-				<p class="desc" data-food-name>Food name: Creamy Mushroom Burger</p><br><br><br><br>
+				<p class="desc" data-food-name></p><br><br><br><br>
 				<p class="desc" data-food-time>Time to cook: 20 Mins</p><br><br><br><br>
-				<p class="desc" data-food-price>Price: P 200.00</p><br><br><br><br>
-				<p class="desc" data-food-drink>Additional: Drink 1</p><br><br><br><br>
-				<p class="desc" data-food-discount>Discount: None</p><br><br><br><br>
+				<p class="desc" data-food-price></p><br><br><br><br>
+				<p class="desc" data-food-drink></p><br><br><br><br>
+				<p class="desc" data-food-discount></p><br><br><br><br>
 				<hr>
 			</div>
 		</template>	
