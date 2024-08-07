@@ -1,5 +1,8 @@
 // Load js if HTML is done
 document.addEventListener('DOMContentLoaded', function () {
+    // global variable for usage
+    const summaryContainer = document.getElementById("summaryContainer");
+
     // create new URLSearchParams to get values
     const urlParams = new URLSearchParams(window.location.search);
 
@@ -46,6 +49,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // process of creating a summary
     createSummary = (orders) => {
+        // clear the container before putting the fresh orders
+        summaryContainer.innerHTML = "";
+
         // create a loop create a template
         orders.forEach(order => {
             // get the element template from summary-ad.php
@@ -64,8 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
             foodDrink.textContent = `Additional: ${order.drinkName}`
             foodPrice.textContent = `Price: P ${Number(order.price).toLocaleString()}`; // add comma to the order.price
 
-            // get the container and put the card inside it
-            const summaryContainer = document.getElementById("summaryContainer");
+            // put the card inside summary container
             summaryContainer.appendChild(card);
         })
     }

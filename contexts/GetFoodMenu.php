@@ -11,6 +11,7 @@ $sql = "SELECT foods.id,
         food_categories.name AS categoryName,
         foods.name AS foodName,
         foods.description,
+        foods.discount,
         foods.price,
         COUNT(food_orders.foods_id) AS popularity
     FROM `foods`
@@ -19,7 +20,8 @@ $sql = "SELECT foods.id,
     LEFT JOIN receipts ON food_orders.receipts_id = receipts.id
         AND receipts.orderDate >= DATE_SUB(NOW(), INTERVAL 1 MONTH)
         AND receipts.orderDate <= NOW()
-    GROUP BY foods.id;";
+    GROUP BY foods.id
+    ORDER BY foodName;";
 
 // try to get and catch if there is error
 try{

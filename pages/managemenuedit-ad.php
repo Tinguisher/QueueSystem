@@ -8,16 +8,13 @@ $mysqli->close();
 ?>
 
 <html>
-
 <head>
     <link rel="stylesheet" href="../stylesheets/managemenuedit-ad.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Roboto Slab' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Rhodium Libre' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Averia Serif Libre' rel='stylesheet'>
-
 </head>
-
 <body>
     <div id="wholepage">
         <div class="pageadd">
@@ -98,152 +95,50 @@ $mysqli->close();
                 </button>
             </div>
 
-            <div class="lowerbox">
-                <div class="foodcard1" onclick="popupCart()"> <!-- FIX DIS SHEYT-->
-                    <div class="cardpic">
-                        <img src="../images/bacon.png">
-                    </div>
-                    <div class="cardinfo"><!--FIX DIS-->
-                        <h3>Bacon Bliss Burger</h3>
-                        <p>Juicy beef patty with crispy pork bacon, fresh lettuce, onion, tomato, and a side of golden fries.</p>
-                        <h2>₱ 400</h2>
-                    </div>
-                </div>
-                <div class="foodcard1" onclick="popupCart()"> <!-- FIX DIS SHEYT-->
-                    <div class="cardpic">
-                        <img src="../images/bacon.png">
-                    </div>
-                    <div class="cardinfo"><!--FIX DIS-->
-                        <h3>Bacon Bliss Burger</h3>
-                        <p>Juicy beef patty with crispy pork bacon, fresh lettuce, onion, tomato, and a side of golden fries.</p>
-                        <h2>₱ 400</h2>
-                    </div>
-                </div>
-                <div class="foodcard1" onclick="popupCart()"> <!-- FIX DIS SHEYT-->
-                    <div class="cardpic">
-                        <img src="../images/bacon.png">
-                    </div>
-                    <div class="cardinfo"><!--FIX DIS-->
-                        <h3>Bacon Bliss Burger</h3>
-                        <p>Juicy beef patty with crispy pork bacon, fresh lettuce, onion, tomato, and a side of golden fries.</p>
-                        <h2>₱ 400</h2>
-                    </div>
-                </div>
-                <div class="foodcard1" onclick="popupCart()"> <!-- FIX DIS SHEYT-->
-                    <div class="cardpic">
-                        <img src="../images/bacon.png">
-                    </div>
-                    <div class="cardinfo"><!--FIX DIS-->
-                        <h3>Bacon Bliss Burger</h3>
-                        <p>Juicy beef patty with crispy pork bacon, fresh lettuce, onion, tomato, and a side of golden fries.</p>
-                        <h2>₱ 400</h2>
-                    </div>
-                </div>
-                <div class="foodcard1" onclick="popupCart()"> <!-- FIX DIS SHEYT-->
-                    <div class="cardpic">
-                        <img src="../images/bacon.png">
-                    </div>
-                    <div class="cardinfo"><!--FIX DIS-->
-                        <h3>Bacon Bliss Burger</h3>
-                        <p>Juicy beef patty with crispy pork bacon, fresh lettuce, onion, tomato, and a side of golden fries.</p>
-                        <h2>₱ 400</h2>
-                    </div>
-                </div>
-                <div class="foodcard1" onclick="popupCart()"> <!-- FIX DIS SHEYT-->
-                    <div class="cardpic">
-                        <img src="../images/bacon.png">
-                    </div>
-                    <div class="cardinfo"><!--FIX DIS-->
-                        <h3>Bacon Bliss Burger</h3>
-                        <p>Juicy beef patty with crispy pork bacon, fresh lettuce, onion, tomato, and a side of golden fries.</p>
-                        <h2>₱ 400</h2>
-                    </div>
-                </div>
-                <div class="foodcard1" onclick="popupCart()"> <!-- FIX DIS SHEYT-->
-                    <div class="cardpic">
-                        <img src="../images/bacon.png">
-                    </div>
-                    <div class="cardinfo"><!--FIX DIS-->
-                        <h3>Bacon Bliss Burger</h3>
-                        <p>Juicy beef patty with crispy pork bacon, fresh lettuce, onion, tomato, and a side of golden fries.</p>
-                        <h2>₱ 400</h2>
-                    </div>
-                </div>
-                <div class="foodcard1" onclick="popupCart()"> <!-- FIX DIS SHEYT-->
-                    <div class="cardpic">
-                        <img src="../images/bacon.png">
-                    </div>
-                    <div class="cardinfo"><!--FIX DIS-->
-                        <h3>Bacon Bliss Burger</h3>
-                        <p>Juicy beef patty with crispy pork bacon, fresh lettuce, onion, tomato, and a side of golden fries.</p>
-                        <h2>₱ 400</h2>
-                    </div>
-                </div>
-                <div class="foodcard1" onclick="popupCart()"> <!-- FIX DIS SHEYT-->
-                    <div class="cardpic">
-                        <img src="../images/bacon.png">
-                    </div>
-                    <div class="cardinfo"><!--FIX DIS-->
-                        <h3>Bacon Bliss Burger</h3>
-                        <p>Juicy beef patty with crispy pork bacon, fresh lettuce, onion, tomato, and a side of golden fries.</p>
-                        <h2>₱ 400</h2>
-                    </div>
-                </div>
-                <div class="foodcard1" onclick="popupCart()"> <!-- FIX DIS SHEYT-->
-                    <div class="cardpic">
-                        <img src="../images/bacon.png">
-                    </div>
-                    <div class="cardinfo"><!--FIX DIS-->
-                        <h3>Bacon Bliss Burger</h3>
-                        <p>Juicy beef patty with crispy pork bacon, fresh lettuce, onion, tomato, and a side of golden fries.</p>
-                        <h2>₱ 400</h2>
-                    </div>
-                </div>
-
-                
-
+            <div id="menuContainer" class="lowerbox">
+                <h1>Loading...</h1>
             </div>
-        </div>  
+            <!-- This is the template for menus -->
+            <template data-menu-template>
+                <div class="foodcard1">
+                    <div class="cardpic">
+                        <img data-food-image>
+                    </div>
+                    <div class="cardinfo">
+                        <h3 data-food-name>Bacon Bliss Burger</h3>
+                        <p data-food-description>Juicy beef patty with crispy pork bacon, fresh lettuce, onion, tomato, and a side of golden fries.</p>
+                        <h2 data-food-price>₱ 400</h2>
+                    </div>
+                </div>
+            </template>
+        </div>
     </div>
 
-    <div id="papapapoppop">
-    <form>
-    <div class="editcard">
-        <div class="editcardpic">
-            <img src="../images/bacon.png">
-        </div>
-        <div class="editcardinfo">
-            <div onclick="popupCart()" class="exitedit">
-                <img src="../images/ex.svg">
-            </div><br>
-            <input class="foodname" type="text"  value="Bacon Bliss Burger"><br>
-            <textarea class="fooddesc"> Juicy beef patty with crispy pork bacon, fresh lettuce, onion, tomato, and a side of golden fries. </textarea><br>
-            <span class="peso">₱<input class="foodprice" type="text" value="400"></span>
-            <input class="disc" type="number" value="0"><span class="percent">%</span><br>
-            <input class="foodsub" type="submit">
-        </div>
+    <div id="papapapoppop"></div>
 
-    </div>
-    </form>
-    </div>  
+    <template data-menu-popout>
+        <form data-edit-menu-form>
+            <div class="editcard">
+                <div class="editcardpic">
+                    <img data-food-image>
+                </div>
+                <div class="editcardinfo">
+                    <div class="exitedit" data-edit-close-form>
+                        <img src="../images/ex.svg">
+                    </div><br>
+                    <input class="foodname" type="text" name="input_name" data-food-name><br>
+                    <textarea class="fooddesc" name="input_description" data-food-description> Juicy beef patty with crispy pork bacon, fresh lettuce, onion, tomato, and a side of golden fries. </textarea><br>
+                    <span class="peso">₱<input class="foodprice" type="text" name="input_price" data-food-price></span>
+                    <input class="disc" type="number" name="input_discount" data-food-discount><span class="percent">%</span><br>
+                    <input class="foodsub" type="submit">
+                </div>
+            </div>
+        </form>
+    </template>
 
-    <script src="../js/navbar-ad.js"></script>      
-    <script>
-        const papapapoppop = document.getElementById("papapapoppop");
-        // pop out when ordering
-        popupCart = () => {
 
-            // toggle hidden
-            if (papapapoppop.style.opacity == '1') {
-                papapapoppop.style.opacity = '0';
-                papapapoppop.style.visibility = 'hidden';
-                return;
-            }
-            // toggle visible
-            papapapoppop.style.opacity = '1';
-            papapapoppop.style.visibility = 'visible';
-        }
-    </script>
+    <script src="../js/navbar-ad.js"></script>
+    <script src="../js/managemenuedit-ad.js"></script>
 </body>
 
 </html>

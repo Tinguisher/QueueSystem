@@ -63,7 +63,7 @@ $category = $_POST['input_category'];
 
 // make a string for sql to be used
 $food_categories_id = "SELECT id FROM `food_categories` WHERE name = ?";
-$sql = "INSERT INTO `foods`(`name`, `description`, `price`, `image`, `food_categories_id`) VALUES (?, ?, ?, ?, (". $food_categories_id ."));";
+$sql = "INSERT INTO `foods`(`name`, `description`, `discount`, `price`, `image`, `food_categories_id`) VALUES (?, ?, 0, ?, ?, (". $food_categories_id ."));";
 
 // prepare the statement
 $stmt = $mysqli -> prepare ($sql);

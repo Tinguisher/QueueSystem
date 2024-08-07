@@ -288,7 +288,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const decrement = menuForm.querySelector("[data-food-cart-decrement]");
         const increment = menuForm.querySelector("[data-food-cart-increment]");
         const quantity = menuForm.querySelector("[data-food-cart-quantity]");
-        const cartForm = menuForm.querySelector("[data-cart-form");
+        const cartForm = menuForm.querySelector("[data-cart-form]");
 
         // if x button is clicked
         xbtn.addEventListener('click', () => {
@@ -372,9 +372,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // add the payload to the user's cart
             addToCart(payload);
-
         });
-
     }
 
     // add to the cart process

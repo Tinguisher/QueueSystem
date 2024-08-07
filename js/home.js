@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // get the menu for the popular
-    fetch('../contexts/GetHomeMenu.php')
+    fetch('../contexts/GetFoodMenu.php')
         // get response as json
         .then(response => response.json())
         // get objects from fetch
@@ -72,20 +72,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // get the data.menu as global variable for search
             menuArray = data.menu;
-
-            // get the array as sorted for searching and for popular
-            menuArray.sort((a, b) => b.popularity - a.popularity);
-
-            menuArray.forEach((menu, index) => {
-                // go to function to create image sliders
-                createSliders(menu, index);
-
-                // go to function to create popular menu cards
-                createPopularMenuCards(menu, index);
-            });
-
-            // sort by name to be used in the search functionality
-            menuArray.sort((a, b) => a.foodName.localeCompare(b.foodName));
 
             // loop the menuArray to show at search
             menuSearch = menuArray.map(menu => {
@@ -110,7 +96,19 @@ document.addEventListener('DOMContentLoaded', function () {
                     element: option
                 }
             });
+
+            // get the array as sorted for searching and for popular
+            menuArray.sort((a, b) => b.popularity - a.popularity);
+
+            menuArray.forEach((menu, index) => {
+                // go to function to create image sliders
+                createSliders(menu, index);
+
+                // go to function to create popular menu cards
+                createPopularMenuCards(menu, index);
+            });
         })
+        
         // error checker
         .catch(error => {
             // output the error in console
