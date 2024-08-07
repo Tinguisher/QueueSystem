@@ -48,8 +48,7 @@ try{
     // unset the session carts
     unset($_SESSION['carts']);
 
-    // free data and close statement
-    $result -> free();
+    // close statement
     $stmt -> close();
     
     // pass the response if it is success
