@@ -40,9 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
             // proceed to creating receipts
             createReceipt();
 
-            // ===========================================================
-            // window.location.href = './check.html';
-            // ===========================================================
+            // proceed to site of creating receipts
+            window.location.href = './check.php';
         });
     }
 
@@ -55,15 +54,15 @@ document.addEventListener('DOMContentLoaded', function () {
         payment.textContent = "Sign in to Review Payment";
 
         // if there is click on Sign in button
-        sessionbutton.addEventListener('click', (ev) => {
+        sessionbutton.addEventListener('click', () => {
             // change the location to login
-            window.location = '../pages/login.php';
+            window.location = '../pages/login.php?previousURL=menu.php';
         });
 
         // if there is click on payment
-        payment.addEventListener('click', (ev) => {
+        payment.addEventListener('click', () => {
             // change the location to login
-            window.location = '../pages/login.php';
+            window.location = '../pages/login.php?previousURL=check.php';
         });
     }
 
@@ -204,6 +203,12 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
+    // get the value of searchInputURL in the URL
+    const searchInputURL = getParameters("searchInputURL");
+
+    // put the values to the searching
+    filterInput.value = searchInputURL;
 
     // loop for every class that has all1
     filterButtons.forEach(filterButton => {
@@ -552,23 +557,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const wrapper = document.querySelector(".wrapper");
 const carousel = document.querySelector(".carousel");
 const firstCardWidth = carousel.querySelector(".card").offsetWidth;
@@ -674,17 +662,3 @@ minus.addEventListener("click", () => {
         num.innerText = a;
     }
 });
-
-function footerhehe(){
-    const footer = document.querySelector(".footer");
-    const body = document.querySelector("body");
-    footer.style.top = "2600px";
-    body.style.height = "2000px"
-}
-
-function footerhehehe(){
-    const footer = document.querySelector(".footer");
-    const body = document.querySelector("body");
-    footer.style.top = "4150px";
-    body.style.height = "4500px"
-}

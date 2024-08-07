@@ -188,10 +188,11 @@ li p {
   width: 1720px; 
   margin-top: 150px; 
   margin-left: 0px; 
-  border: 4px solid white; 
+  border: 0.4vh solid black; 
   background: #BD4141; 
   color: white; 
-  font-size: 32px; 
+  font-size: 32px;
+
   font-family: Rhodium Libre; 
   padding: 16.5px 37px;
 }

@@ -19,9 +19,7 @@ $sql = "SELECT foods.id,
     LEFT JOIN receipts ON food_orders.receipts_id = receipts.id
         AND receipts.orderDate >= DATE_SUB(NOW(), INTERVAL 1 MONTH)
         AND receipts.orderDate <= NOW()
-    GROUP BY foods.id
-    ORDER BY popularity DESC
-    LIMIT 8";
+    GROUP BY foods.id;";
 
 // try to get and catch if there is error
 try{
