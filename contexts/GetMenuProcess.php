@@ -12,7 +12,8 @@ $sql = "SELECT foods.id,
         foods.name AS foodName,
         foods.description,
         foods.discount,
-        (foods.price - (foods.price * (0.01 * foods.discount))) AS price,
+        foods.price AS originalPrice,
+        (foods.price - (foods.price * (0.01 * foods.discount))) AS discountedPrice,
         COUNT(food_orders.foods_id) AS popularity
     FROM `foods`
     LEFT JOIN food_categories ON foods.food_categories_id = food_categories.id

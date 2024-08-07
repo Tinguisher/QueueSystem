@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // get the menu for the popular
-    fetch('../contexts/GetFoodMenu.php')
+    fetch('../contexts/GetMenuProcess.php')
         // get response as json
         .then(response => response.json())
         // get objects from fetch
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function () {
         foodImage.src = `../images/foodCategories/${menu.categoryName}/${menu.image}`;
         foodName.value = menu.foodName;
         foodDescription.textContent = menu.description;
-        foodPrice.value = `Php ${Number(menu.price).toLocaleString()}`; // add comma to the menu.price
+        foodPrice.value = `Php ${Number(menu.discountedPrice).toLocaleString()}`; // add comma to the menu.discountedPrice
 
         // put the card inside popularmenu
         popularmenu.appendChild(card);
