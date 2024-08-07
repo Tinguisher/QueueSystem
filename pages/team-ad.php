@@ -54,6 +54,42 @@ $mysqli->close();
         <div class="innerbox">
             <div class="tablebox">
                 <div class="redbox"></div>
+                
+                <table class="teamtable">
+                    <thead>
+                        <tr>
+                            <th>Worker ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Date Joined</th>
+                            <th>Station</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>John</td>
+                            <td>Smith</td>
+                            <td>01/01/2024</td>
+                            <td>Burger</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>John</td>
+                            <td>Smith</td>
+                            <td>01/01/2024</td>
+                            <td>Burger</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>John</td>
+                            <td>Smith</td>
+                            <td>01/01/2024</td>
+                            <td>Burger</td>
+                        </tr>
+                    </tbody>
+                </table>
+
             </div>
             <div class="filterbox">
                 <div class="redbox"></div>
