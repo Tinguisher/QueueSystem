@@ -31,7 +31,7 @@ try{
     $sql_getUserCart = "SELECT foods.id,
         user_carts.quantity,
         user_carts.drinks_id,
-        (foods.price * user_carts.quantity) + drinks.price AS price
+        (((foods.price - (foods.price * (0.01 * foods.discount))) * user_carts.quantity) + drinks.price) AS price
     FROM `user_carts`,
         `foods`,
         `food_categories`,

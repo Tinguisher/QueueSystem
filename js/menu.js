@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
     //          CREATE A WEBSOCKET FOR THIS???              //
     // ==================================================== //
     // get all the menu
-    fetch('../contexts/GetMenuProcess.php')
+    fetch('../contexts/GetMenuDrinkProcess.php')
         // get response as json
         .then(response => response.json())
 
