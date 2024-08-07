@@ -23,6 +23,7 @@ CREATE TABLE foods (
     id int AUTO_INCREMENT NOT NULL,
     name varchar (50) NOT NULL,
     description varchar (255) NOT NULL,
+	discount int NOT NULL,
     price double NOT NULL,
 	image varchar (50) NOT NULL,
     food_categories_id INT (20) NOT NULL,

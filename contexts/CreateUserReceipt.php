@@ -28,12 +28,18 @@ try{
     $receipt_id = $mysqli->insert_id;
 
     // make a string for sql to get user's cart
-    $sql_getUserCart = "SELECT user_carts.id,
-        foods.id,
+    $sql_getUserCart = "SELECT foods.id,
         user_carts.quantity,
-        (foods.price * user_carts.quantity) AS price
-    FROM `user_carts`, `foods`, `food_categories`
-    WHERE user_carts.foods_id = foods.id AND foods.food_categories_id = food_categories.id AND user_carts.users_id = ?
+        user_carts.drinks_id,
+        (foods.price * user_carts.quantity) + drinks.price AS price
+    FROM `user_carts`,
+        `foods`,
+        `food_categories`,
+        `drinks`
+    WHERE user_carts.foods_id = foods.id
+        AND foods.food_categories_id = food_categories.id
+        AND drinks.id = user_carts.drinks_id
+        AND user_carts.users_id = ?
     ORDER BY user_carts.id;";
 
     // prepare the statement and get the values from database
@@ -66,13 +72,13 @@ try{
     // loop for each cart of the user
     foreach ($userCart as $cart) {
         // create sql for every food in the cart
-        $sql_foodOrders = "INSERT INTO `food_orders`(`receipts_id`, `foods_id`, `quantity`, `price`, `status`) VALUES (?, ?, ?, ?, 'Pending');";
+        $sql_foodOrders = "INSERT INTO `food_orders`(`receipts_id`, `foods_id`, `quantity`, `drinks_id`, `price`, `status`) VALUES (?, ?, ?, ?, ?, 'Pending');";
 
         // prepare the statement
         $stmt = $mysqli -> prepare ($sql_foodOrders);
 
         // bind the parameters to the statement
-        $stmt -> bind_param ('iiid', $receipt_id, $cart['id'], $cart['quantity'], $cart['price']);
+        $stmt -> bind_param ('iiiid', $receipt_id, $cart['id'], $cart['quantity'], $cart['drinks_id'], $cart['price']);
 
         // execute the statement
         $stmt -> execute();

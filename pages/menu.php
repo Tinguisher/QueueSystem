@@ -132,10 +132,10 @@ if (isset($_SESSION['id'])) {
 
     </div>
 
-    <div>
+    
         <p id="menu">Menu</p>
         <p id="special">Special Offers <span style="font-size: 27px;"><br>Lower price or better deals!!!</span></p>
-    </div>
+
 
     <div class="wrapper">
         <i id="left" class="fa-solid fa-angle-left"></i>
@@ -246,7 +246,6 @@ if (isset($_SESSION['id'])) {
         <i id="right" class="fa-solid fa-angle-right"></i>
     </div>
 
-    <div>
         <!--search box-->
         <div style="margin-top: 1025px; margin-left: 97px; position: absolute;">
             <input id="filterInput" type="text" placeholder="Search" style="width: 311px; height: 84px;">
@@ -323,11 +322,12 @@ if (isset($_SESSION['id'])) {
                 </div>
             </button>
         </div>
-    </div>
 
     <div style="position: absolute; margin-left: 61px; width: 1200px; margin-top: 1133px;" data-regular-menu-container>
         <h4>Loading Menu Cards...</h4>
     </div>
+
+    <div>
     <!-- Template for each food card -->
     <template data-regular-menu-template>
         <div class="foodCard">
@@ -342,7 +342,7 @@ if (isset($_SESSION['id'])) {
                 </svg>
             </a>
         </div>
-    </template>
+    </template></div>
 
     <div class="cart">
         <p id="items">Your Items</p>
@@ -378,31 +378,12 @@ if (isset($_SESSION['id'])) {
         </div>
     </div>
 
-    <div class="footer">
-
-        <p id="foottitle">SnapServe | <span style="font-size: 20px;font-family: Roboto Slab;">Precision In Every Bite</span></p>
-        <p class="sectitle" style=" margin-top:67px; margin-left: 744px;">Contact Us</p>
-        <p id="no">Number</p>
-        <p id="email">Email</p>
-        <p class="sectitle" style=" margin-top:67px; margin-left: 1155px;"> Company</p>
-        <a class="links" style="margin-top: 125px;  margin-left: 1155px; ">About Us</a>
-        <a class="links" style="margin-top: 177px;   margin-left: 1155px;">Become a SnapPrime</a>
-        <p class="sectitle" style=" margin-top:67px; margin-left: 1545px;">Links</p>
-        <a class="links" style="margin-top: 125px; margin-left: 1545px;">Menu</a>
-        <a class="links" style="margin-top: 169px; margin-left: 1545px;">Special Offers</a>
-
-        <div class="bot">
-            <p class="part" style="margin-top: 49.5px; margin-left: 82px;">© Copyrights by ARC System Solutions. All Rights Reserved.</p>z
-        </div>
-    </div>
-
     <!-- Here lies the add cart form -->
     <div id="papapapoppop" style="background: rgba(0, 0, 0, 0.40); width: 100%; height: 3033px; position: absolute; top: 0; left: 0; z-index: 9999; opacity: 0; visibility: hidden; transition: 0.5s ease;"></div>
-
     <!-- Template for popup -->
     <template data-menu-popout>
         <div>
-            <form style="position: absolute; margin-top: 1011px; margin-left: 622px; width: 676px; height: 925px; border-radius: 25.799px;background: #FFFDF1;" data-cart-form>
+            <form style="position: fixed; margin-top: 40px; margin-left: 622px; width: 676px; height: 925px; border-radius: 25.799px;background: #FFFDF1;" data-cart-form>
                 <a class="xbtn" data-cart-close-form>
                     <svg style="position: absolute; margin: 12px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M15.5844 14.479C15.657 14.5515 15.7146 14.6377 15.7539 14.7325C15.7932 14.8274 15.8134 14.929 15.8134 15.0317C15.8134 15.1343 15.7932 15.236 15.7539 15.3308C15.7146 15.4257 15.657 15.5118 15.5844 15.5844C15.5118 15.657 15.4257 15.7146 15.3308 15.7539C15.236 15.7932 15.1343 15.8134 15.0317 15.8134C14.929 15.8134 14.8274 15.7932 14.7325 15.7539C14.6377 15.7146 14.5515 15.657 14.479 15.5844L8.00043 9.10493L1.52192 15.5844C1.37532 15.731 1.1765 15.8134 0.969184 15.8134C0.761869 15.8134 0.563044 15.731 0.41645 15.5844C0.269856 15.4378 0.1875 15.239 0.1875 15.0317C0.1875 14.8244 0.269856 14.6255 0.41645 14.479L6.89594 8.00043L0.41645 1.52192C0.269856 1.37532 0.1875 1.1765 0.1875 0.969184C0.1875 0.761869 0.269856 0.563044 0.41645 0.41645C0.563044 0.269856 0.761869 0.1875 0.969184 0.1875C1.1765 0.1875 1.37532 0.269856 1.52192 0.41645L8.00043 6.89594L14.479 0.41645C14.6255 0.269856 14.8244 0.1875 15.0317 0.1875C15.239 0.1875 15.4378 0.269856 15.5844 0.41645C15.731 0.563044 15.8134 0.761869 15.8134 0.969184C15.8134 1.1765 15.731 1.37532 15.5844 1.52192L9.10493 8.00043L15.5844 14.479Z" fill="#FFFDF1" />
@@ -417,11 +398,11 @@ if (isset($_SESSION['id'])) {
                     <div id="menuDrinksContainer" style="margin-top: 104px;"> </div>
                     <!-- Template for drinks -->
                     <template data-menu-drinks>
+                        <p class="addpri" data-drink-price-label></p>
                         <label class="container" data-drink-label>
                             <input type="radio" name="radio" data-drink-price required>
                             <span class="checkmark"></span>
                         </label>
-                        <p class="addpri" style="margin-top: 622px;" data-drink-price-label></p>
                     </template>
                 </div>
                 <div>
@@ -438,7 +419,27 @@ if (isset($_SESSION['id'])) {
                 </div>
             </form>
         </div>
+
+
     </template>
+   
+    <!-- <div class="footer">
+
+        <p id="foottitle">SnapServe | <span style="font-size: 20px;font-family: Roboto Slab;">Precision In Every Bite</span></p>
+        <p class="sectitle" style=" margin-top:67px; margin-left: 744px;">Contact Us</p>
+        <p id="no">Number</p>
+        <p id="email">Email</p>
+        <p class="sectitle" style=" margin-top:67px; margin-left: 1155px;"> Company</p>
+        <a class="links" style="margin-top: 125px;  margin-left: 1155px; ">About Us</a>
+        <a class="links" style="margin-top: 177px;   margin-left: 1155px;">Become a SnapPrime</a>
+        <p class="sectitle" style=" margin-top:67px; margin-left: 1545px;">Links</p>
+        <a class="links" style="margin-top: 125px; margin-left: 1545px;">Menu</a>
+        <a class="links" style="margin-top: 169px; margin-left: 1545px;">Special Offers</a>
+
+            <div class="bot">
+                <p class="part" style="margin-top: 49.5px; margin-left: 82px;">© Copyrights by ARC System Solutions. All Rights Reserved.</p>z
+            </div>
+    </div> -->
 
     <script>
         // convert to json to read the boolean, pass if logged in or not

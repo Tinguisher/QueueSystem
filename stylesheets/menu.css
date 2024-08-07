@@ -6,15 +6,17 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+
 }
 
 body {
     background: #FFFDF1;
     width: 192px;
-    height: 3033px;
+    height: 3000px;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    overflow-y: auto;
 }
 
 a {
@@ -38,10 +40,10 @@ td a:hover {
     color: #FF5622;
 }
 
-#profilename{
+#profilename {
     position: absolute;
     margin-top: 48px;
-    margin-left: 1446px;
+    margin-left: 1400px;
     color: #000;
     font-family: Roboto;
     font-size: 25px;
@@ -427,7 +429,6 @@ li p {
 
 
 .menName {
-    width: 178px;
     height: 30px;
     margin-top: 46px;
     margin-left: 180px;
@@ -621,8 +622,8 @@ li p {
 }
 
 .footer {
-    position: absolute;
-    margin-top: 2531px;
+    position: relative;
+    top: 4150px;
     width: 1920px;
     height: 502px;
     background-color: #D9D6BF;
@@ -755,6 +756,9 @@ li p {
 
 .mentitle {
     position: absolute;
+    width: 361px;
+    height: 40px;
+    text-align: center;
     margin-top: 335px;
     margin-left: 158px;
     font-weight: 700;
@@ -778,7 +782,10 @@ li p {
 .prc {
     position: absolute;
     margin-top: 455px;
-    margin-left: 259.5px;
+    margin-left: 235px;
+    width: 200px;
+    height: 40px;
+    text-align: center;
     color: #000;
     font-family: "Roboto Slab";
     font-size: 30px;

@@ -40,9 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
             // proceed to creating receipts
             createReceipt();
 
-            // ===========================================================
-            // window.location.href = './check.html';
-            // ===========================================================
+            // proceed to site of creating receipts
+            window.location.href = './check.php';
         });
     }
 
@@ -55,15 +54,15 @@ document.addEventListener('DOMContentLoaded', function () {
         payment.textContent = "Sign in to Review Payment";
 
         // if there is click on Sign in button
-        sessionbutton.addEventListener('click', (ev) => {
+        sessionbutton.addEventListener('click', () => {
             // change the location to login
-            window.location = '../pages/login.php';
+            window.location = '../pages/login.php?previousURL=menu.php';
         });
 
         // if there is click on payment
-        payment.addEventListener('click', (ev) => {
+        payment.addEventListener('click', () => {
             // change the location to login
-            window.location = '../pages/login.php';
+            window.location = '../pages/login.php?previousURL=check.php';
         });
     }
 
@@ -205,6 +204,12 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // get the value of searchInputURL in the URL
+    const searchInputURL = getParameters("searchInputURL");
+
+    // put the values to the searching
+    filterInput.value = searchInputURL;
+
     // loop for every class that has all1
     filterButtons.forEach(filterButton => {
         // if there is click on filterButtons
@@ -283,7 +288,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const decrement = menuForm.querySelector("[data-food-cart-decrement]");
         const increment = menuForm.querySelector("[data-food-cart-increment]");
         const quantity = menuForm.querySelector("[data-food-cart-quantity]");
-        const cartForm = menuForm.querySelector("[data-cart-form");
+        const cartForm = menuForm.querySelector("[data-cart-form]");
 
         // if x button is clicked
         xbtn.addEventListener('click', () => {
@@ -367,9 +372,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // add the payload to the user's cart
             addToCart(payload);
-
         });
-
     }
 
     // add to the cart process
@@ -421,6 +424,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     // create a card for each user carts
                     createFoodCartCards(data.carts);
+                }
+                
+                // if there is error in fetching
+                else {
+                    foodCartContainer.innerHTML = data.message;
                 }
             })
             // error checker
@@ -546,23 +554,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 const wrapper = document.querySelector(".wrapper");
 const carousel = document.querySelector(".carousel");

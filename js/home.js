@@ -2,11 +2,15 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     // get all id, class for global variable
+    const searchInput = document.getElementById("searchInput");
+    const searchSubmit = document.getElementById("searchSubmit");
     const sessionbutton = document.getElementById("sessionbutton");
     const sessiontext = document.getElementById("sessiontext");
     const dropdownBtnText = document.getElementById("drop-text");
     const popularmenu = document.getElementById("popularmenu");
     const slides = document.getElementById("slides");
+    var menuArray = [];
+    var menuSearch = [];
 
     // if dropdown is clicked
     dropdownBtnText.onclick = function () {
@@ -20,23 +24,9 @@ document.addEventListener('DOMContentLoaded', function () {
         sessiontext.textContent = "Logout";
 
         // if there is click on logoutbutton
-        sessionbutton.addEventListener('click', (ev) => {
-            // prevent loading of website
-            ev.preventDefault();
-
-            // go to logout
-            fetch('../contexts/logout.php')
-                .then(response => response.json())
-                // get objects from fetch
-                .then(data => {
-                    // if the status is success
-                    if (data.status == "success") {
-                        // reload the website
-                        window.location.reload();
-                    }
-                })
-                // error checker
-                .catch(error => console.error(error));
+        sessionbutton.addEventListener('click', () => {
+            // logout the user
+            logout();
         });
     }
 
@@ -52,24 +42,73 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // logout process
+    logout = () => {
+        // go to logout.php
+        fetch('../contexts/logout.php')
+            // get response as json
+            .then(response => response.json())
+
+            // get objects from fetch
+            .then(data => {
+                // if the status is success
+                if (data.status == "success") {
+                    // reload the website
+                    window.location.reload();
+                }
+            })
+            // error checker
+            .catch(error => console.error(error));
+    }
+
     // get the menu for the popular
-    fetch('../contexts/GetPopularMenu.php')
+    fetch('../contexts/GetFoodMenu.php')
         // get response as json
         .then(response => response.json())
         // get objects from fetch
         .then(data => {
-            // clear the loadings
+            // clear the popularmenu container
             popularmenu.innerHTML = "";
 
-            // loop for each menu from server, menu is data.menu and index for current element
-            data.menu.forEach((menu, index) => {
+            // get the data.menu as global variable for search
+            menuArray = data.menu;
+
+            // loop the menuArray to show at search
+            menuSearch = menuArray.map(menu => {
+                // get the dropdownsearch container
+                const dropdownSearch = document.getElementById("dropdownSearch");
+                
+                // create a p element with menu name contexts
+                const option = document.createElement('p');
+                option.textContent = menu.foodName;
+                option.style.display = "none";
+
+                // if there is click in option
+                option.addEventListener('click', () => {
+                    window.location = `./menu.php?menuID=${menu.id}`
+                });
+                // put the option from search to the div
+                dropdownSearch.appendChild(option);
+
+                // return the food element and name for filtering
+                return {
+                    foodName: menu.foodName,
+                    element: option
+                }
+            });
+
+            // get the array as sorted for searching and for popular
+            menuArray.sort((a, b) => b.popularity - a.popularity);
+
+            menuArray.forEach((menu, index) => {
                 // go to function to create image sliders
                 createSliders(menu, index);
 
                 // go to function to create popular menu cards
-                createPopularMenuCards(menu);
+                createPopularMenuCards(menu, index);
             });
         })
+        
         // error checker
         .catch(error => {
             // output the error in console
@@ -79,9 +118,29 @@ document.addEventListener('DOMContentLoaded', function () {
             popularmenu.innerHTML = error;
         });
 
+    // if there is an input of the search bar
+    searchInput.addEventListener('input', () => {
+        // loop the menu that will be used to search
+        menuSearch.forEach (menu => {
+            // check if foodName option should be visible or not
+            const optionVisibility = searchInput.value ? menu.foodName.toLowerCase().includes(searchInput.value.toLowerCase()) : false;
+
+            // if it is visible, block. If not then none
+            menu.element.style.display = optionVisibility ? "block" : "none";
+        });
+    });
+
+    // if the user proceed to submit
+    searchSubmit.addEventListener('submit', (ev) => {
+        // stop the website from reloading
+        ev.preventDefault();
+
+        // pass as url to the menu for searching
+        window.location = `./menu.php?searchInputURL=${searchInput.value}`
+    })
+    
     // create sliders function getting called from fetch
     createSliders = (menu, index) => {
-
         // go back to forEach if looped more than 4 times
         if (index > 3) {
             return;
@@ -110,7 +169,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // create Popular Menu Cards called after getting from fetch
-    createPopularMenuCards = (menu) => {
+    createPopularMenuCards = (menu, index) => {
+        // go back to forEach if looped more than 8 times
+        if (index > 7) {
+            return;
+        }
+
         // get the element template from home.php
         const popularMenuTemplate = document.querySelector("[data-popular-menu-template]");
         const card = popularMenuTemplate.content.cloneNode(true).children[0];

@@ -138,7 +138,7 @@ $mysqli->close();
                                         </svg>
                                     </button>
                                     <div class="dropdown-content">
-                                        <a href="../pages/summary.html">Summary</a>
+                                        <a>Summary</a>
                                     </div>
                                 </div>
                             </td>
@@ -162,7 +162,7 @@ $mysqli->close();
                                         </svg>
                                     </button>
                                     <div class="dropdown-content">
-                                        <a href="../pages/summary.html">Summary</a>
+                                        <a data-summary-button>Summary</a>
                                     </div>
                                 </div>
                             </td>

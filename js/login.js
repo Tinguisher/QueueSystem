@@ -17,6 +17,10 @@ document.addEventListener('DOMContentLoaded', function () {
         container.classList.remove("active");
     });
 
+    // Process on getting the parameters in the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const previousURL = urlParams.get("previousURL");
+
     // if login sign in is clicked
     loginform.addEventListener('submit', (ev) => {
         // prevent website from loading
@@ -43,9 +47,13 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             // get objects from fetch
             .then(data => {
-                // redirect to dashboard if success
+                // if login is success
                 if (data.status == "success") {
-                    window.location = '../pages/home.php';
+                    // transfer the cart from guest to user
+                    transferGuestToUserCart();
+
+                    // redirect previous url and if none, go to home
+                    window.location = previousURL ? `../pages/${previousURL}` : `../pages/home.php`;
                 }
 
                 // if status is not success
@@ -57,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (!verification) {
                         // create a p element and insert it to loginform
                         verification = document.createElement('p');
+                        verification.className = "logerror";
                         loginform.insertBefore(verification, loginform.children[8]);
                     }
 
@@ -95,9 +104,13 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             // get objects from fetch
             .then(data => {
-                // redirect to dashboard if success
+                // if signup is success
                 if (data.status == "success") {
-                    window.location = '../pages/home.php';
+                    // transfer the cart from guest to user
+                    transferGuestToUserCart();
+
+                    // redirect previous url and if none, go to home
+                    window.location = previousURL ? `../pages/${previousURL}` : `../pages/home.php`;
                 }
 
                 // if status is not success
@@ -109,6 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (!verification) {
                         // create a p element and insert it to signupform
                         verification = document.createElement('p');
+                        verification.className = "error";
                         signupform.insertBefore(verification, signupform.children[9]);
                     }
 
@@ -120,4 +134,26 @@ document.addEventListener('DOMContentLoaded', function () {
             // error checker
             .catch(error => console.error(error));
     })
+
+    // process of transfering the cart from guest to existing user
+    transferGuestToUserCart = () => {
+        // make a request to transfer the cart from guest to user
+        fetch('../contexts/UpdateCartGuestToUser.php')
+            // get response as json
+            .then(response => response.json())
+
+            // get objects from fetch
+            .then(data => {
+                // if the status is success
+                if (data.status == "success") {
+                    console.log(data);
+                }
+                else {
+
+                }
+            })
+
+            // error checker
+            .catch(error => console.error(error));
+    }
 });
