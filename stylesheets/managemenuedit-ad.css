@@ -473,6 +473,24 @@ li a:hover {
 
 }
 
+.disc{
+    width: 78.3vh;
+    height: 7.1vh;
+    font-size: 6.242vh;
+    font-family: Roboto Slab;
+    color: #BD4141;
+    font-weight: bold;
+
+}
+
+.percent{
+    font-size: 6.242vh;
+    font-family: Roboto Slab;
+    color: #BD4141;
+    font-weight: bold;
+
+}
+
 .foodsub{
     font-family: Roboto Slab;
     font-size: 3vh;

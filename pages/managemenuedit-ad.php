@@ -219,6 +219,7 @@ $mysqli->close();
             <input class="foodname" type="text"  value="Bacon Bliss Burger"><br>
             <textarea class="fooddesc"> Juicy beef patty with crispy pork bacon, fresh lettuce, onion, tomato, and a side of golden fries. </textarea><br>
             <span class="peso">₱<input class="foodprice" type="text" value="400"></span>
+            <input class="disc" type="number" value="0"><span class="percent">%</span><br>
             <input class="foodsub" type="submit">
         </div>
 
