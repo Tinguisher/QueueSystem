@@ -204,6 +204,12 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // get the value of searchInputURL in the URL
+    const searchInputURL = getParameters("searchInputURL");
+
+    // put the values to the searching
+    filterInput.value = searchInputURL;
+
     // loop for every class that has all1
     filterButtons.forEach(filterButton => {
         // if there is click on filterButtons
@@ -656,17 +662,3 @@ minus.addEventListener("click", () => {
         num.innerText = a;
     }
 });
-
-function footerhehe(){
-    const footer = document.querySelector(".footer");
-    const body = document.querySelector("body");
-    footer.style.top = "2600px";
-    body.style.height = "2000px"
-}
-
-function footerhehehe(){
-    const footer = document.querySelector(".footer");
-    const body = document.querySelector("body");
-    footer.style.top = "4150px";
-    body.style.height = "4500px"
-}
