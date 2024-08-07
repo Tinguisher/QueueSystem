@@ -126,10 +126,10 @@ $mysqli->close();
                     <div class="exitedit" data-edit-close-form>
                         <img src="../images/ex.svg">
                     </div><br>
-                    <input class="foodname" type="text" name="input_name" data-food-name><br>
-                    <textarea class="fooddesc" name="input_description" data-food-description> Juicy beef patty with crispy pork bacon, fresh lettuce, onion, tomato, and a side of golden fries. </textarea><br>
-                    <span class="peso">₱<input class="foodprice" type="text" name="input_price" data-food-price></span>
-                    <input class="disc" type="number" name="input_discount" data-food-discount><span class="percent">%</span><br>
+                    <input class="foodname" type="text" name="input_name" data-food-name required><br>
+                    <textarea class="fooddesc" name="input_description" data-food-description required></textarea><br>
+                    <span class="peso">₱<input class="foodprice" type="text" name="input_price" data-food-price required></span>
+                    <input class="disc" type="number" name="input_discount" data-food-discount required><span class="percent">%</span><br>
                     <input class="foodsub" type="submit">
                 </div>
             </div>
