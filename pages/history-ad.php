@@ -31,6 +31,7 @@ $mysqli->close();
         <table class="navTable" style="margin-top: 33px; margin-left: 495px; position: absolute;">
             <tr>
                 <td style="width: 180px;"><a href="./home-ad.php" target="_top">Home</a></td>
+                <td style="width: 180px;"><a href="./team-ad.php" target="_top">Team</a></td>
                 <td style="width: 215px;"><a href="./queueorder-ad.php" target="_top">Queue Order</a></td>
                 <td style="width: 236px;"><a href="./managemenu-ad.php" target="_top">Manage Menu</a></td>
                 <td style="width: 160px;"><a href="./history-ad.php" target="_top" style="color: #BD4141;"><b>History</b></a>
@@ -119,7 +120,7 @@ $mysqli->close();
                             <th>Date</th>
                             <th class="tdsideR">Items</th>
                         </tr>
-                    </thead>
+                    </thead> 
             
                     <tbody data-history-container>
                         <tr class="spaceUnder">
@@ -137,7 +138,7 @@ $mysqli->close();
                                         </svg>
                                     </button>
                                     <div class="dropdown-content">
-                                        <a href="#">Summary</a>
+                                        <a href="../pages/summary.html">Summary</a>
                                     </div>
                                 </div>
                             </td>
@@ -161,7 +162,7 @@ $mysqli->close();
                                         </svg>
                                     </button>
                                     <div class="dropdown-content">
-                                        <a href="#">Summary</a>
+                                        <a href="../pages/summary.html">Summary</a>
                                     </div>
                                 </div>
                             </td>
