@@ -101,17 +101,16 @@ $mysqli->close();
 		</div>
 
 		<template data-food-template>
-			<div>
-				<img class="picture" style="margin-top: 390px;" data-food-image>
-				<p class="desc" style="margin-top: 390px;" data-food-name>Food name: Creamy Mushroom Burger</p>
-				<p class="desc" style="margin-top: 433px;" data-food-time>Time to cook: 20 Mins</p>
-				<p class="desc" style="margin-top: 478px;" data-food-price>Price: P 200.00</p>
-				<p class="desc" style="margin-top: 523px;" data-food-drink>Additional: Drink 1</p>
-				<p class="desc" style="margin-top: 568px;" data-food-discount>Discount: None</p>
-				<p style="width: 1451px; height: 1px; background-color: gray; position: absolute; margin-top: 672px; margin-left: 237px;">
-				</p>
+			<div class="foodinfo">
+				<img class="picture" data-food-image>
+				<p class="desc" data-food-name>Food name: Creamy Mushroom Burger</p><br><br><br><br>
+				<p class="desc" data-food-time>Time to cook: 20 Mins</p><br><br><br><br>
+				<p class="desc" data-food-price>Price: P 200.00</p><br><br><br><br>
+				<p class="desc" data-food-drink>Additional: Drink 1</p><br><br><br><br>
+				<p class="desc" data-food-discount>Discount: None</p><br><br><br><br>
+				<hr>
 			</div>
-		</template>
+		</template>	
 	</div>
 	<script defer src="../js/summary-ad.js"></script>
 </body>
