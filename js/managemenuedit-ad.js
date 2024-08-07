@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // get the global variables needed
     const menuContainer = document.getElementById("menuContainer");
     const papapapoppop = document.getElementById("papapapoppop");
+    const filterButtons = document.querySelectorAll(".buttonbox");
     var menuArray = [];
 
     getMenu = () => {
@@ -32,6 +33,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // get the menu
     getMenu();
+
+    // loop for every class that has buttonbox
+    filterButtons.forEach(filterButton => {
+        // if there is click on filterButtons
+        filterButton.addEventListener('click', () => {
+            // loop for each menu
+            menuArray.forEach(menu => {
+                // check if the card should be visible or not by its category
+                const cardVisibility = (menu.foodCategory == filterButton.value) ? true : false;
+
+                // if card visibility true, then display:"" and if not then display:"none"
+                menu.element.style.display = cardVisibility ? "" : "none";
+            });
+        });
+    });
 
     createMenuCards = (menus) => {
         // loop to create the template
@@ -113,6 +129,9 @@ document.addEventListener('DOMContentLoaded', function () {
             // append the id into menuFormData
             menuFormData.append("foodID", menu.id);
 
+            // replace the value of comma and parse into float
+            menuFormData.append("input_price", parseFloat(foodPrice.value.replace(/,/g, '')));
+
             // create object for each data in menuFormData
             const payload = Object.fromEntries(menuFormData);
 
@@ -149,6 +168,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     // get the fresh menu
                     getMenu();
                 }
+
                 // if data is not success
                 else {
                     // output the error in console

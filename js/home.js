@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // if there is click on logoutbutton
         sessionbutton.addEventListener('click', () => {
             // change the location to login
-            window.location = '../pages/login.php?previousURL=home.php';
+            window.location = '../pages/login.php';
         });
     }
 
