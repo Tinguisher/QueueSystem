@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     transferGuestToUserCart();
 
                     // redirect previous url and if none, go to home
-                    // window.location = previousURL ? `../pages/${previousURL}` : `../pages/home.php`;
+                    window.location = previousURL ? `../pages/${previousURL}` : `../pages/home.php`;
                 }
 
                 // if status is not success
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     transferGuestToUserCart();
 
                     // redirect previous url and if none, go to home
-                    // window.location = previousURL ? `../pages/${previousURL}` : `../pages/home.php`;
+                    window.location = previousURL ? `../pages/${previousURL}` : `../pages/home.php`;
                 }
 
                 // if status is not success
@@ -155,6 +155,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // error checker
             .catch(error => console.error(error));
-
     }
 });
