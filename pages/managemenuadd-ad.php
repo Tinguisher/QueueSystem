@@ -1,6 +1,6 @@
 <?php
 // check if session is admin
-include '../contexts/AdminSession.php';
+include '../contexts/SessionAdmin.php';
 
 // create sql to get food categories
 $sql = "SELECT * FROM `food_categories`";

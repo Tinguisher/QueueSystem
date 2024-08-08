@@ -14,7 +14,10 @@ $mysqli = require_once "../contexts/database.php";
 // try to get user information in database and catch if there is error
 try{
     // make a string for sql to be used
-    $sql = "SELECT CONCAT(users.firstname,' ', users.lastname) AS name FROM `users` WHERE id = ? AND authtype = ?";
+    $sql = "SELECT CONCAT(firstname,' ', lastname) AS name
+        FROM `users`
+        WHERE id = ?
+            AND authtype = ?";
 
     // prepare the statement
     $stmt = $mysqli->prepare($sql);
@@ -50,6 +53,12 @@ catch (Exception $e){
 if (!$user) {
     // close the database
     $mysqli->close();
+
+    // destroy each data in session
+    session_unset();
+
+    // destroy the sessions made
+    session_destroy();
 
     // go to not found
     header('Location: ./NotFound.html');

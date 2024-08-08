@@ -1,41 +1,6 @@
 <?php
-// make a session variable
-session_start();
-
-// if there is session
-if (isset($_SESSION['id'])) {
-    // access database
-    $mysqli = require_once "../contexts/database.php";
-
-    // make a string for sql to be used
-    $sql = "SELECT * FROM `users` WHERE id = ?";
-
-    // prepare the statement
-    $stmt = $mysqli->prepare($sql);
-
-    // bind the parameters to the statement
-    $stmt->bind_param('s', $_SESSION['id']);
-
-    // execute the statement
-    $stmt->execute();
-
-    // get the result from the statement
-    $result = $stmt->get_result();
-
-    // get only one from the executed statement
-    $user = $result->fetch_assoc();
-
-    // get the full name
-    $name = $user['firstname'] . " " . $user['lastname'];
-
-    // free data and close statement and database
-    $result->free();
-    $stmt->close();
-    $mysqli->close();
-}
-
-
-
+// check if there is session
+include '../contexts/SessionUser.php';
 ?>
 
 <!DOCTYPE html>
@@ -74,7 +39,7 @@ if (isset($_SESSION['id'])) {
             </tr>
         </table>
 
-        <p id="profilename"><?= $name ?? "Guest"; ?></p>
+        <p id="profilename"><?= $user['name'] ?? "Guest"; ?></p>
 
         <a href="./menu.php" class="navcrcl" style="margin-top: 37.5px; margin-left: 1746px;">
             <svg style="margin-top: 10px; margin-left:10px" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
@@ -178,10 +143,10 @@ if (isset($_SESSION['id'])) {
         <div id="promoContainer">
             <h1>Loading Promos</h1>
         </div>
-        
+
         <!-- Template for the food promos -->
         <template>
-            <button id="piz1" onclick="location.href='./menu.php'"><img src="../images/piz1.png" alt="">
+            <button id="piz1" onclick="location.href='./menu.php'"><img src="../images/piz1.png">
                 <p id="ali">Seafood Halo-Halo<br>Seafood <br>10% OFF
                     <svg style="position: absolute; margin-top:2px; margin-left:27px;" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                         <path d="M4 16H16V18H4V16ZM2 11H12V13H2V11Z" fill="#FF5622" />
@@ -192,9 +157,17 @@ if (isset($_SESSION['id'])) {
             </button>
         </template>
 
+        <button id="piz1" onclick="location.href='./menu.php'"><img src="../images/piz1.png">
+            <p id="ali">Seafood Halo-Halo<br>Seafood <br>10% OFF
+                <svg style="position: absolute; margin-top:2px; margin-left:27px;" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <path d="M4 16H16V18H4V16ZM2 11H12V13H2V11Z" fill="#FF5622" />
+                    <path d="M29.9193 16.606L26.9193 9.606C26.8422 9.42616 26.7141 9.27288 26.5507 9.16516C26.3874 9.05745 26.196 9.00002 26.0003 9H23.0003V7C23.0003 6.73478 22.895 6.48043 22.7074 6.29289C22.5199 6.10536 22.2656 6 22.0003 6H6.00033V8H21.0003V20.556C20.5449 20.8209 20.1464 21.1732 19.8275 21.5926C19.5087 22.0121 19.2758 22.4903 19.1423 23H12.8583C12.6149 22.0573 12.0361 21.2358 11.2303 20.6894C10.4245 20.143 9.44715 19.9092 8.48133 20.0319C7.51552 20.1546 6.6276 20.6253 5.98401 21.3558C5.34042 22.0863 4.98535 23.0264 4.98535 24C4.98535 24.9736 5.34042 25.9137 5.98401 26.6442C6.6276 27.3747 7.51552 27.8454 8.48133 27.9681C9.44715 28.0908 10.4245 27.857 11.2303 27.3106C12.0361 26.7642 12.6149 25.9427 12.8583 25H19.1423C19.3599 25.8582 19.8574 26.6194 20.5561 27.1632C21.2549 27.7069 22.115 28.0021 23.0003 28.0021C23.8857 28.0021 24.7458 27.7069 25.4446 27.1632C26.1433 26.6194 26.6408 25.8582 26.8583 25H29.0003C29.2656 25 29.5199 24.8946 29.7074 24.7071C29.895 24.5196 30.0003 24.2652 30.0003 24V17C30.0003 16.8645 29.9727 16.7305 29.9193 16.606ZM9.00033 26C8.60477 26 8.21809 25.8827 7.88919 25.6629C7.5603 25.4432 7.30395 25.1308 7.15258 24.7654C7.0012 24.3999 6.96159 23.9978 7.03876 23.6098C7.11593 23.2219 7.30642 22.8655 7.58612 22.5858C7.86583 22.3061 8.22219 22.1156 8.61015 22.0384C8.99812 21.9613 9.40025 22.0009 9.7657 22.1522C10.1312 22.3036 10.4435 22.56 10.6633 22.8889C10.883 23.2178 11.0003 23.6044 11.0003 24C11.0003 24.5304 10.7896 25.0391 10.4145 25.4142C10.0395 25.7893 9.53077 26 9.00033 26ZM23.0003 11H25.3403L27.4843 16H23.0003V11ZM23.0003 26C22.6048 26 22.2181 25.8827 21.8892 25.6629C21.5603 25.4432 21.304 25.1308 21.1526 24.7654C21.0012 24.3999 20.9616 23.9978 21.0388 23.6098C21.1159 23.2219 21.3064 22.8655 21.5861 22.5858C21.8658 22.3061 22.2222 22.1156 22.6102 22.0384C22.9981 21.9613 23.4002 22.0009 23.7657 22.1522C24.1312 22.3036 24.4435 22.56 24.6633 22.8889C24.883 23.2178 25.0003 23.6044 25.0003 24C25.0003 24.5304 24.7896 25.0391 24.4145 25.4142C24.0395 25.7893 23.5308 26 23.0003 26ZM28.0003 23H26.8583C26.6381 22.1434 26.1398 21.3842 25.4416 20.8413C24.7434 20.2983 23.8848 20.0025 23.0003 20V18H28.0003V23Z" fill="#FF5622" />
+                </svg>
+            </p>
+            <p id="free" style="margin-top: 92px;margin-left: 187px;">FREE</p>
+        </button>
 
-
-        <button id="piz2" onclick="location.href='./menu.php'"><img src="../images/piz2.png" alt="">
+        <button id="piz2" onclick="location.href='./menu.php'"><img src="../images/piz2.png">
             <p id="ali">Black Pepper Chicken<br>Chicken <br>5% OFF
                 <svg style="position: absolute; margin-top:2px; margin-left:27px;" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                     <path d="M4 16H16V18H4V16ZM2 11H12V13H2V11Z" fill="#FF5622" />
@@ -204,7 +177,7 @@ if (isset($_SESSION['id'])) {
             <p id="free" style="margin-top: 92px;margin-left: 175px;">FREE</p>
         </button>
 
-        <button id="piz3" onclick="location.href='./menu.php'"><img src="../images/piz3.png" alt="">
+        <button id="piz3" onclick="location.href='./menu.php'"><img src="../images/piz3.png">
             <p id="ali">Red Wine Braised Beef<br>Beef <br>20% OFF
                 <svg style="position: absolute; margin-top:2px; margin-left:27px;" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                     <path d="M4 16H16V18H4V16ZM2 11H12V13H2V11Z" fill="#FF5622" />
@@ -214,7 +187,7 @@ if (isset($_SESSION['id'])) {
             <p id="free" style="margin-top: 92px;margin-left: 187px;">FREE</p>
         </button>
 
-        <button id="piz4" onclick="location.href='./menu.php'"><img src="../images/piz4.png" alt="">
+        <button id="piz4" onclick="location.href='./menu.php'"><img src="../images/piz4.png">
             <p id="ali">Creamy Mushroom Burger<br>Burger <br>15% OFF <svg style="position: absolute; margin-top:2px; margin-left:27px;" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                     <path d="M4 16H16V18H4V16ZM2 11H12V13H2V11Z" fill="#FF5622" />
                     <path d="M29.9193 16.606L26.9193 9.606C26.8422 9.42616 26.7141 9.27288 26.5507 9.16516C26.3874 9.05745 26.196 9.00002 26.0003 9H23.0003V7C23.0003 6.73478 22.895 6.48043 22.7074 6.29289C22.5199 6.10536 22.2656 6 22.0003 6H6.00033V8H21.0003V20.556C20.5449 20.8209 20.1464 21.1732 19.8275 21.5926C19.5087 22.0121 19.2758 22.4903 19.1423 23H12.8583C12.6149 22.0573 12.0361 21.2358 11.2303 20.6894C10.4245 20.143 9.44715 19.9092 8.48133 20.0319C7.51552 20.1546 6.6276 20.6253 5.98401 21.3558C5.34042 22.0863 4.98535 23.0264 4.98535 24C4.98535 24.9736 5.34042 25.9137 5.98401 26.6442C6.6276 27.3747 7.51552 27.8454 8.48133 27.9681C9.44715 28.0908 10.4245 27.857 11.2303 27.3106C12.0361 26.7642 12.6149 25.9427 12.8583 25H19.1423C19.3599 25.8582 19.8574 26.6194 20.5561 27.1632C21.2549 27.7069 22.115 28.0021 23.0003 28.0021C23.8857 28.0021 24.7458 27.7069 25.4446 27.1632C26.1433 26.6194 26.6408 25.8582 26.8583 25H29.0003C29.2656 25 29.5199 24.8946 29.7074 24.7071C29.895 24.5196 30.0003 24.2652 30.0003 24V17C30.0003 16.8645 29.9727 16.7305 29.9193 16.606ZM9.00033 26C8.60477 26 8.21809 25.8827 7.88919 25.6629C7.5603 25.4432 7.30395 25.1308 7.15258 24.7654C7.0012 24.3999 6.96159 23.9978 7.03876 23.6098C7.11593 23.2219 7.30642 22.8655 7.58612 22.5858C7.86583 22.3061 8.22219 22.1156 8.61015 22.0384C8.99812 21.9613 9.40025 22.0009 9.7657 22.1522C10.1312 22.3036 10.4435 22.56 10.6633 22.8889C10.883 23.2178 11.0003 23.6044 11.0003 24C11.0003 24.5304 10.7896 25.0391 10.4145 25.4142C10.0395 25.7893 9.53077 26 9.00033 26ZM23.0003 11H25.3403L27.4843 16H23.0003V11ZM23.0003 26C22.6048 26 22.2181 25.8827 21.8892 25.6629C21.5603 25.4432 21.304 25.1308 21.1526 24.7654C21.0012 24.3999 20.9616 23.9978 21.0388 23.6098C21.1159 23.2219 21.3064 22.8655 21.5861 22.5858C21.8658 22.3061 22.2222 22.1156 22.6102 22.0384C22.9981 21.9613 23.4002 22.0009 23.7657 22.1522C24.1312 22.3036 24.4435 22.56 24.6633 22.8889C24.883 23.2178 25.0003 23.6044 25.0003 24C25.0003 24.5304 24.7896 25.0391 24.4145 25.4142C24.0395 25.7893 23.5308 26 23.0003 26ZM28.0003 23H26.8583C26.6381 22.1434 26.1398 21.3842 25.4416 20.8413C24.7434 20.2983 23.8848 20.0025 23.0003 20V18H28.0003V23Z" fill="#FF5622" />

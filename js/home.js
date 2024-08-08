@@ -100,9 +100,13 @@ document.addEventListener('DOMContentLoaded', function () {
             // get the array as sorted for searching and for popular
             menuArray.sort((a, b) => b.popularity - a.popularity);
 
+            // loop to creating picture sliders, promos, and popularity
             menuArray.forEach((menu, index) => {
                 // go to function to create image sliders
                 createSliders(menu, index);
+
+                // go to function to create promos of the day
+                createPromoCards(menu);
 
                 // go to function to create popular menu cards
                 createPopularMenuCards(menu, index);
@@ -142,9 +146,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // create sliders function getting called from fetch
     createSliders = (menu, index) => {
         // go back to forEach if looped more than 4 times
-        if (index > 3) {
-            return;
-        }
+        if (index > 3) return;
 
         // get the element template from home.php
         const slideTemplate = document.querySelector("[data-slide-template]");
@@ -168,13 +170,27 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    var promoNumber = 0;
+    createPromoCards = (menu) => {
+        // if there are 4 or more promo made, return
+        if (promoNumber >= 4) return;
+
+
+        
+        console.log("tite");
+
+        promoNumber++;
+
+        
+
+
+    }
+
     // create Popular Menu Cards called after getting from fetch
     createPopularMenuCards = (menu, index) => {
         // go back to forEach if looped more than 8 times
-        if (index > 7) {
-            return;
-        }
-
+        if (index > 7) return;
+        
         // get the element template from home.php
         const popularMenuTemplate = document.querySelector("[data-popular-menu-template]");
         const card = popularMenuTemplate.content.cloneNode(true).children[0];
