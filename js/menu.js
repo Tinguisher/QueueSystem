@@ -490,7 +490,7 @@ document.addEventListener('DOMContentLoaded', function () {
     createFoodCartCards = (carts) => {
         // create a subTotal variable
         let addedSubTotal = 0;
-        let calculatedDeliveryFee = 50;
+        let calculatedDeliveryFee = 20;
 
         // loop for every cart by the user
         carts.forEach(cart => {

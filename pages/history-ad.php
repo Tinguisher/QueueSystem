@@ -151,7 +151,7 @@ $mysqli->close();
                             <td class="tdsideL" data-receipt-id></td>
                             <td data-user-name></td>
                             <td data-cook-time></td>
-                            <td data-price></td>
+                            <td data-total-price></td>
                             <td data-date></td>
                             <td class="tdsideR">
                                 <div class="dropdown" data-items>

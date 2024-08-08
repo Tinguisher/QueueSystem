@@ -60,6 +60,7 @@ CREATE TABLE user_carts (
 CREATE TABLE receipts (
     id int AUTO_INCREMENT NOT NULL,
     users_id int NOT NULL,
+	totalPrice double NOT NULL,
 	orderDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	FOREIGN KEY (users_id) REFERENCES users(id)
     ON DELETE CASCADE
