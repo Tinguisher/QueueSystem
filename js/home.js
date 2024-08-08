@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const sessionbutton = document.getElementById("sessionbutton");
     const sessiontext = document.getElementById("sessiontext");
     const dropdownBtnText = document.getElementById("drop-text");
+    const promoContainer = document.getElementById("promoContainer");
     const popularmenu = document.getElementById("popularmenu");
     const slides = document.getElementById("slides");
     var menuArray = [];
@@ -67,8 +68,9 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.json())
         // get objects from fetch
         .then(data => {
-            // clear the popularmenu container
+            // clear the containers
             popularmenu.innerHTML = "";
+            promoContainer.innerHTML = "";
 
             // get the data.menu as global variable for search
             menuArray = data.menu;
@@ -175,15 +177,36 @@ document.addEventListener('DOMContentLoaded', function () {
         // if there are 4 or more promo made, return
         if (promoNumber >= 4) return;
 
+        // if there is no discount, return
+        if (menu.discount <= 0) return;
 
-        
-        console.log("tite");
+        // get the element template from home.php
+        const foodPromoTemplate = document.querySelector("[data-food-promo-template]");
+        const card = foodPromoTemplate.content.cloneNode(true).children[0];
 
+        // get the template children
+        const foodImage = card.querySelector("[data-food-image]");
+        const foodDetails = card.querySelector("[data-food-details]");
+
+        // place the values inside the template
+        const categoryName = document.createTextNode(menu.categoryName);
+        const discountPercent = document.createTextNode(`${menu.discount}% OFF`);
+        foodImage.src = `../images/foodCategories/${menu.categoryName}/${menu.image}`;
+        foodDetails.prepend(menu.foodName);
+        foodDetails.insertBefore(categoryName, foodDetails.children[1]);
+        foodDetails.insertBefore(discountPercent, foodDetails.children[2]);
+
+        // put the card inside the promo container
+        promoContainer.appendChild(card);
+
+        // if there is click in promo card
+        card.addEventListener('click', () => {
+            // go to menu itself
+            window.location = `../pages/menu.php?menuID=${menu.id}`
+        });
+
+        // increment the promo number for create limit to only 4
         promoNumber++;
-
-        
-
-
     }
 
     // create Popular Menu Cards called after getting from fetch
