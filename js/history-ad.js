@@ -18,33 +18,44 @@ document.addEventListener('DOMContentLoaded', function () {
         const list = document.getElementById("list");
         list.classList.toggle("show");
     };
+    // process of getting data
+    function fetchData() {
+        // get all of the receipts
+        fetch('../contexts/GetReceiptAdminProcess.php')
+            // get response as json
+            .then(response => response.json())
 
-    // get all of the receipts
-    fetch('../contexts/GetReceiptAdminProcess.php')
-        // get response as json
-        .then(response => response.json())
+            // get objects from fetch
+            .then(data => {
+                // create a row for each row fetched from database
+                createReceiptRows(data.receipts);
 
-        // get objects from fetch
-        .then(data => {
-            // create a row for each row fetched from database
-            createReceiptRows(data.receipts);
-        })
+                // get the data every second
+                setTimeout(fetchData, 1000);
+            })
 
-        // error checker
-        .catch(error => {
-            // output the error in console
-            console.error(error);
+            // error checker
+            .catch(error => {
+                // output the error in console
+                console.error(error);
 
-            // output the errors to html
-            historyContainer.innerHTML = error;
-        });
+                // output the errors to html
+                historyContainer.innerHTML = error;
+
+                // get the data every second
+                setTimeout(fetchData, 1000);
+            });
+    }
+
+    // get the data
+    fetchData();
 
     // if there is click in profile drop down
     profileDropDown.addEventListener('click', () => {
         // change the window location to profile ad.php
         window.location = '../pages/profile-ad.php'
     });
-    
+
     // if there is click on logoutbutton
     logoutButton.addEventListener('click', () => {
         // go to logout.php
