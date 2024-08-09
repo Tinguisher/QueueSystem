@@ -44,5 +44,4 @@ document.addEventListener('DOMContentLoaded', function () {
             // error checker
             .catch(error => console.error(error));
     });
-
 });
