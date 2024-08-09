@@ -33,7 +33,7 @@ try{
     WHERE food_orders.status IN ('Pending', 'In Progress')
     GROUP BY receipts.id
     ORDER BY receipts.id ASC
-    LIMIT 5;";
+    LIMIT 4;";
 
     // prepare the statement
     $stmt = $mysqli -> prepare ($sql_get_current_orders);
