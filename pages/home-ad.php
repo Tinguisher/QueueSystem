@@ -1,6 +1,49 @@
 <?php
 // check if session is admin
 include '../contexts/SessionAdmin.php';
+// try to get and catch if there is error
+try{
+    // get the current number of orders today
+    $sql_get_quota = "SELECT COUNT(DISTINCT receipts.id) AS number
+    FROM `receipts`
+    LEFT JOIN food_orders ON receipts.id = food_orders.receipts_id
+    WHERE receipts.id IN (
+        SELECT receipts.id
+        FROM food_orders, `receipts`
+        WHERE receipts.id = food_orders.receipts_id
+            AND food_orders.status = 'completed'
+            AND DATE(receipts.orderDate) = CURDATE()
+        )
+        AND receipts.id NOT IN (
+            SELECT receipts.id
+            FROM food_orders, `receipts`
+            WHERE receipts.id = food_orders.receipts_id
+                AND food_orders.status <> 'completed'
+                AND DATE(receipts.orderDate) = CURDATE()
+        );";
+
+    // prepare the statement
+    $stmt = $mysqli -> prepare ($sql_get_quota);
+
+    // execute the statement
+    $stmt -> execute();
+
+    // get the result from the statement
+    $result = $stmt -> get_result();
+
+    // get only one from the executed statement
+    $quota = $result -> fetch_assoc();
+
+    // free data and close statement
+    $result -> free();
+    $stmt -> close();
+}
+
+// if there is error in query
+catch (Exception $e){
+    // make an error response
+    echo "Error No: ". $e->getCode() ." - ". $e->getMessage();    // get error code and message
+}
 
 // close the database
 $mysqli->close();
@@ -67,7 +110,7 @@ $mysqli->close();
                 <div class="urgentlefttop">
                     <div class="ongoingdeliveries">
                         <!--Ongoing deliveriestoP will take the number of "Ongoing deliveries"-->
-                        <div class="ongoingdeliveriestop">12</div>
+                        <div class="ongoingdeliveriestop"></div>
                         <div class="ongoingdeliveriesbottom">Ongoing Deliveries</div>
                     </div>
                     <div class="dailyquota">
@@ -93,7 +136,7 @@ $mysqli->close();
                         </div>
                         <!-- Circular Progress Bar End -->
                         <div class="dailytxt">
-                            <div class="dailynum">50/100</div>
+                            <div class="dailynum"><?= $quota['number']; ?>/100</div>
                             <div class="dailyword">Daily Quota</div>
                         </div>
                     </div>
