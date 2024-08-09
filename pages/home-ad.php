@@ -1,6 +1,6 @@
 <?php
 // check if session is admin
-include '../contexts/AdminSession.php';
+include '../contexts/SessionAdmin.php';
 
 // close the database
 $mysqli->close();
@@ -99,14 +99,14 @@ $mysqli->close();
                     </div>
                 </div>
                 <div class="urgentleftbottom">
-                    <div class="currentvip">
+                    <!-- <div class="currentvip">
                         <div class="vip"><span class="currenttext"> Current</span><span class="viptext"> VIP</span><span class="vipordertext"> Orders:</span></div><br>
                         <div class="viporderlist">
                             <div class="viporderID"><span class="vipinfoheader">Order ID</span><br>ID<br>ID<br>ID<br>ID<br>ID<br>ID</div>
                             <div class="vipstatus"><span class="vipinfoheader">Status</span><br>Ongoing<br>Ongoing<br>Ongoing<br>Pending<br>Pending<br>Pending</div>
                             <div class="vipetd"><span class="vipinfoheader">ETD</span><br>10mins<br>12 mins<br>15 mins<br>TBD<br>TBD<br>TBD</div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="urgentright">

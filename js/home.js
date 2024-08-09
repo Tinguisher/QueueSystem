@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const sessionbutton = document.getElementById("sessionbutton");
     const sessiontext = document.getElementById("sessiontext");
     const dropdownBtnText = document.getElementById("drop-text");
+    const promoContainer = document.getElementById("promoContainer");
     const popularmenu = document.getElementById("popularmenu");
     const slides = document.getElementById("slides");
     var menuArray = [];
@@ -38,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // if there is click on logoutbutton
         sessionbutton.addEventListener('click', () => {
             // change the location to login
-            window.location = '../pages/login.php?previousURL=home.php';
+            window.location = '../pages/login.php';
         });
     }
 
@@ -62,30 +63,17 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // get the menu for the popular
-    fetch('../contexts/GetHomeMenu.php')
+    fetch('../contexts/GetMenuProcess.php')
         // get response as json
         .then(response => response.json())
         // get objects from fetch
         .then(data => {
-            // clear the popularmenu container
+            // clear the containers
             popularmenu.innerHTML = "";
+            promoContainer.innerHTML = "";
 
             // get the data.menu as global variable for search
             menuArray = data.menu;
-
-            // get the array as sorted for searching and for popular
-            menuArray.sort((a, b) => b.popularity - a.popularity);
-
-            menuArray.forEach((menu, index) => {
-                // go to function to create image sliders
-                createSliders(menu, index);
-
-                // go to function to create popular menu cards
-                createPopularMenuCards(menu, index);
-            });
-
-            // sort by name to be used in the search functionality
-            menuArray.sort((a, b) => a.foodName.localeCompare(b.foodName));
 
             // loop the menuArray to show at search
             menuSearch = menuArray.map(menu => {
@@ -96,11 +84,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 const option = document.createElement('p');
                 option.textContent = menu.foodName;
                 option.style.display = "none";
-
+                option.className = "searchleft";
+                dropdownSearch.style = "display:none";
+                
                 // if there is click in option
                 option.addEventListener('click', () => {
                     window.location = `./menu.php?menuID=${menu.id}`
                 });
+                
                 // put the option from search to the div
                 dropdownSearch.appendChild(option);
 
@@ -110,7 +101,23 @@ document.addEventListener('DOMContentLoaded', function () {
                     element: option
                 }
             });
+
+            // get the array as sorted for searching and for popular
+            menuArray.sort((a, b) => b.popularity - a.popularity);
+
+            // loop to creating picture sliders, promos, and popularity
+            menuArray.forEach((menu, index) => {
+                // go to function to create image sliders
+                createSliders(menu, index);
+
+                // go to function to create promos of the day
+                createPromoCards(menu);
+
+                // go to function to create popular menu cards
+                createPopularMenuCards(menu, index);
+            });
         })
+        
         // error checker
         .catch(error => {
             // output the error in console
@@ -129,6 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // if it is visible, block. If not then none
             menu.element.style.display = optionVisibility ? "block" : "none";
+            searchInput.value ? dropdownSearch.style.display = "block": dropdownSearch.style.display = "none";
         });
     });
 
@@ -144,9 +152,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // create sliders function getting called from fetch
     createSliders = (menu, index) => {
         // go back to forEach if looped more than 4 times
-        if (index > 3) {
-            return;
-        }
+        if (index > 3) return;
 
         // get the element template from home.php
         const slideTemplate = document.querySelector("[data-slide-template]");
@@ -170,13 +176,48 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    var promoNumber = 0;
+    createPromoCards = (menu) => {
+        // if there are 4 or more promo made, return
+        if (promoNumber >= 4) return;
+
+        // if there is no discount, return
+        if (menu.discount <= 0) return;
+
+        // get the element template from home.php
+        const foodPromoTemplate = document.querySelector("[data-food-promo-template]");
+        const card = foodPromoTemplate.content.cloneNode(true).children[0];
+
+        // get the template children
+        const foodImage = card.querySelector("[data-food-image]");
+        const foodDetails = card.querySelector("[data-food-details]");
+
+        // place the values inside the template
+        const categoryName = document.createTextNode(menu.categoryName);
+        const discountPercent = document.createTextNode(`${menu.discount}% OFF`);
+        foodImage.src = `../images/foodCategories/${menu.categoryName}/${menu.image}`;
+        foodDetails.prepend(menu.foodName);
+        foodDetails.insertBefore(categoryName, foodDetails.children[1]);
+        foodDetails.insertBefore(discountPercent, foodDetails.children[2]);
+
+        // put the card inside the promo container
+        promoContainer.appendChild(card);
+
+        // if there is click in promo card
+        card.addEventListener('click', () => {
+            // go to menu itself
+            window.location = `../pages/menu.php?menuID=${menu.id}`
+        });
+
+        // increment the promo number for create limit to only 4
+        promoNumber++;
+    }
+
     // create Popular Menu Cards called after getting from fetch
     createPopularMenuCards = (menu, index) => {
         // go back to forEach if looped more than 8 times
-        if (index > 7) {
-            return;
-        }
-
+        if (index > 7) return;
+        
         // get the element template from home.php
         const popularMenuTemplate = document.querySelector("[data-popular-menu-template]");
         const card = popularMenuTemplate.content.cloneNode(true).children[0];
@@ -191,7 +232,7 @@ document.addEventListener('DOMContentLoaded', function () {
         foodImage.src = `../images/foodCategories/${menu.categoryName}/${menu.image}`;
         foodName.value = menu.foodName;
         foodDescription.textContent = menu.description;
-        foodPrice.value = `Php ${Number(menu.price).toLocaleString()}`; // add comma to the menu.price
+        foodPrice.value = `Php ${Number(menu.discountedPrice).toLocaleString()}`; // add comma to the menu.discountedPrice
 
         // put the card inside popularmenu
         popularmenu.appendChild(card);

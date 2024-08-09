@@ -129,14 +129,23 @@ document.addEventListener('DOMContentLoaded', function () {
             // get the template child that data can be inserted
             const receiptID = row.querySelector("[data-receipt-id]");
             const userName = row.querySelector("[data-user-name]");
+            const totalPrice = row.querySelector("[data-total-price]");
             const date = row.querySelector("[data-date]");
             const items = row.querySelector("[data-items]");
+            const summaryButton = row.querySelector("[data-summary-button]");
 
             // place the data got from the fetch
             receiptID.textContent = receipt.id;
             userName.textContent = receipt.userName;
+            totalPrice.textContent = `${receipt.totalPrice} P`;
             date.textContent = receipt.date;
             items.prepend(`${receipt.itemsDone} / ${receipt.totalItems}`);
+
+            // if there is click in the summary button from the row
+            summaryButton.addEventListener('click', () => {
+                // go to the summary with the URL parameters of its id
+                window.location = `./summary-ad.php?receiptID=${receipt.id}`
+            });
 
             // put each made row inside historyContainer
             historyContainer.appendChild(row);

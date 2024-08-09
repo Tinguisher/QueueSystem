@@ -1,6 +1,6 @@
 <?php
 // check if session is admin
-include '../contexts/AdminSession.php';
+include '../contexts/SessionAdmin.php';
 
 // close the database
 $mysqli->close();

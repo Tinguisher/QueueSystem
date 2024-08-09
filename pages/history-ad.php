@@ -1,6 +1,6 @@
 <?php
 // check if session is admin
-include '../contexts/AdminSession.php';
+include '../contexts/SessionAdmin.php';
 
 // close the database
 $mysqli->close();
@@ -138,7 +138,7 @@ $mysqli->close();
                                         </svg>
                                     </button>
                                     <div class="dropdown-content">
-                                        <a href="../pages/summary.html">Summary</a>
+                                        <a>Summary</a>
                                     </div>
                                 </div>
                             </td>
@@ -151,7 +151,7 @@ $mysqli->close();
                             <td class="tdsideL" data-receipt-id></td>
                             <td data-user-name></td>
                             <td data-cook-time></td>
-                            <td data-price></td>
+                            <td data-total-price></td>
                             <td data-date></td>
                             <td class="tdsideR">
                                 <div class="dropdown" data-items>
@@ -162,7 +162,7 @@ $mysqli->close();
                                         </svg>
                                     </button>
                                     <div class="dropdown-content">
-                                        <a href="../pages/summary.html">Summary</a>
+                                        <a data-summary-button>Summary</a>
                                     </div>
                                 </div>
                             </td>
