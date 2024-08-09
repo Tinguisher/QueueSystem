@@ -3,7 +3,7 @@
 include '../contexts/SessionAdmin.php';
 
 // try to get and catch if there is error
-try{
+try {
     // get the current number of orders today
     $sql_get_quota = "SELECT COUNT(DISTINCT receipts.id) AS number
     FROM `receipts`
@@ -24,26 +24,26 @@ try{
         );";
 
     // prepare the statement
-    $stmt = $mysqli -> prepare ($sql_get_quota);
+    $stmt = $mysqli->prepare($sql_get_quota);
 
     // execute the statement
-    $stmt -> execute();
+    $stmt->execute();
 
     // get the result from the statement
-    $result = $stmt -> get_result();
+    $result = $stmt->get_result();
 
     // get only one from the executed statement
-    $quota = $result -> fetch_assoc();
+    $quota = $result->fetch_assoc();
 
     // free data and close statement
-    $result -> free();
-    $stmt -> close();
+    $result->free();
+    $stmt->close();
 }
 
 // if there is error in query
-catch (Exception $e){
+catch (Exception $e) {
     // make an error response
-    echo "Error No: ". $e->getCode() ." - ". $e->getMessage();    // get error code and message
+    echo "Error No: " . $e->getCode() . " - " . $e->getMessage();    // get error code and message
 }
 
 // close the database
@@ -59,7 +59,7 @@ $mysqli->close();
         @keyframes anim {
             100% {
                 /* if quota is greatere than 100, make it 0 and if not, calculate */
-                stroke-dashoffset: <?php echo ($quota['number'] >= 100) ? 0 : 440 - ($quota['number'] * 4.4)?>;
+                stroke-dashoffset: <?php echo ($quota['number'] >= 100) ? 0 : 440 - ($quota['number'] * 4.4) ?>;
             }
         }
     </style>
@@ -177,6 +177,22 @@ $mysqli->close();
         </div>
     </div>
     <script src="../js/navbar-ad.js"></script>
+    <script>
+        let number = document.getElementById('number');
+        let counter = 0;
+        let duration = 2000;
+        let endPercentage = <?php echo $quota['number'] ?>; //percentage ng nakalagay sa id=
+        let intervalTime = duration / endPercentage;
+
+        let interval = setInterval(() => {
+            if (counter >= endPercentage) {
+                clearInterval(interval);
+            } else {
+                counter += 1;
+                number.innerHTML = `${counter}%`;
+            }
+        }, intervalTime);
+    </script>
 </body>
 
 </html>
