@@ -123,14 +123,14 @@ else {
 					</svg>
 					<p>Become a SnapPrime</p>
 				</li> -->
-				<li class="dropdown-list-item">
+				<li id="profileButton" class="dropdown-list-item">
 					<svg class="icons" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
 						<path d="M5 22.5C5 21.1739 5.52678 19.9021 6.46447 18.9645C7.40215 18.0268 8.67392 17.5 10 17.5H20C21.3261 17.5 22.5979 18.0268 23.5355 18.9645C24.4732 19.9021 25 21.1739 25 22.5C25 23.163 24.7366 23.7989 24.2678 24.2678C23.7989 24.7366 23.163 25 22.5 25H7.5C6.83696 25 6.20107 24.7366 5.73223 24.2678C5.26339 23.7989 5 23.163 5 22.5Z" stroke="#FFF" stroke-width="2" stroke-linejoin="round" />
 						<path d="M15 12.5C17.0711 12.5 18.75 10.8211 18.75 8.75C18.75 6.67893 17.0711 5 15 5C12.9289 5 11.25 6.67893 11.25 8.75C11.25 10.8211 12.9289 12.5 15 12.5Z" stroke="#FFF" stroke-width="2" />
 					</svg>
 					<p>Profile</p>
 				</li>
-				<li class="dropdown-list-item">
+				<li id="orderHistory" class="dropdown-list-item">
 					<svg class="icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 						<path d="M3 2H5V4H7V6H5V20H19V6H17V4H19V2H21V22H3V2ZM15 4V2H17V4H15ZM13 4H15V6H13V4ZM11 4V2H13V4H11ZM9 4H11V6H9V4ZM9 4V2H7V4H9ZM17 8H7V10H17V8ZM7 12H17V14H7V12ZM17 18V16H13V18H17Z" fill="#FFF" />
 					</svg>
@@ -151,7 +151,7 @@ else {
 	</div>
 
 
-	<div>
+	<form id="checkout">
 		<div class="deladd">
 			<div style="position: absolute; margin-top: 31px; margin-left: 28px;">
 				<svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 55 55" fill="none">
@@ -166,10 +166,10 @@ else {
 				</svg>
 			</div>
 			<p class="verad">Delivery Address</p>
-			<input type="text" name="" placeholder="Address" class="iadd" style="margin-top: 154px;">
-			<input type="text" name="" placeholder="House/Appartment number" class="iadd" style="margin-top: 231px;">
-			<input type="text" name="" placeholder="Street" class="iadd" style="margin-top: 308px;">
-			<input type="text" name="" placeholder="Barangay" class="iadd" style="margin-top: 385px;">
+			<input type="text" name="" placeholder="Address" class="iadd" style="margin-top: 154px;" required>
+			<input type="text" name="" placeholder="House/Appartment number" class="iadd" style="margin-top: 231px;" required>
+			<input type="text" name="" placeholder="Street" class="iadd" style="margin-top: 308px;" required>
+			<input type="text" name="" placeholder="Barangay" class="iadd" style="margin-top: 385px;" required>
 			<button class="sub">Submit</button>
 		</div>
 
@@ -177,68 +177,50 @@ else {
 			<p id="yodr">Your Order</p>
 			<table class="yourorder">
 				<thead>
-                    <tr>
-                    	<th>Food Name</th>
-                        <th>Qty</th>
-                        <th>Price</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="foodnm">Crispy Seafood Tempura</td>
-                        <td>2</td>
-                        <td>300</td>
-                        <td>600</td>
-                    </tr>
 					<tr>
-                        <td class="foodnm">Black Pepper Chicken</td>
-                        <td>1</td>
-                        <td>400</td>
-                        <td>400</td>
-                    </tr>
-					<tr>
-                        <td class="foodnm">Red Wine Braised Beef</td>
-                        <td>1</td>
-                        <td>600</td>
-                        <td>600</td>
-                    </tr>
-                </tbody>
-			</table>
+						<th>Food Name</th>
+						<th>Qty</th>
+						<th>Total</th>
+					</tr>
+				</thead>
 
-			
-			<!-- <p class="qty">Qty &emsp; &emsp; Price &emsp; &emsp;Total</p>
-			<p class="foodname" style="margin-top: 128px;">Crispy Seafood Tempura</p>
-			<p id="qty1" style="margin-top: 128px;">x2 &emsp; &emsp; ₱ 300 &emsp; &emsp; ₱ 600 </p>
-			<p class="foodname" style="margin-top: 179px;">Black Pepper Chicken</p>
-			<p id="qty1" style="margin-top: 179px;">x1 &emsp; &emsp; ₱ 400 &emsp; &emsp; ₱ 400 </p>
-			<p class="foodname" style="margin-top: 230px;">Red Wine Braised Beef</p>
-			<p id="qty1" style="margin-top: 230px;">x1 &emsp; &emsp; ₱ 600 &emsp; &emsp; ₱ 600 </p> -->
+				<!-- container for user orders -->
+				<tbody data-user-order-container>
+					<tr>
+						<td class="foodnm">Loading...</td>
+						<td>Loading...</td>
+						<td>Loading...</td>
+					</tr>
+				</tbody>
+
+				<!-- Template for user orders -->
+				<template data-user-order-template>
+					<tr>
+						<td class="foodnm" data-food-name></td>
+						<td data-food-quantity></td>
+						<td data-food-price></td>
+					</tr>
+				</template>
+			</table>
 
 			<div class="line">
 				<table class="yourorder2">
 					<tbody>
 						<tr>
 							<td class="foodnm2">Subtotal</td>
-							<td>₱ 1,600</td>
+							<td id="subTotal"></td>
 						</tr>
 						<tr>
 							<td class="foodnm2">Subdelivery</td>
-							<td>₱ 20</td>
+							<td id="deliveryFee"></td>
 						</tr>
 						<tr>
 							<td class="foodnm2">Total</td>
-							<td>₱ 1,620</td>
+							<td id="totalPrice"></td>
 						</tr>
 					</tbody>
 				</table>
-				<!-- <p id="subtotal">Subtotal</p>
-				<p id="subprc">₱ 1,600</p>
-				<p id="delivery">Standard Delivery</p>
-				<p id="stndlvr">₱ 20</p>
-				<p id="ttl">TOTAL</p>
-				<p id="ttlprc">₱ 1,620</p> -->
-				<button class="btnorder" onclick="location.href='mycart.html'">Order and Proceed to Checkoout</button>
+				<button class="btnorder">Order and Proceed to Checkoout</button>
 			</div>
 		</div>
 
@@ -250,7 +232,7 @@ else {
 			<input type="text" name="" placeholder="Mobile Number" class="mobile">
 			<button class="savebtn">Save</button>
 		</div> -->
-	</div>
+	</form>
 
 	<div class="footer">
 		<p id="foottitle">SnapServe | <span style="font-size: 20px;font-family: Roboto Slab;">Precision In Every

@@ -52,9 +52,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // if there is click on payment
         payment.addEventListener('click', () => {
-            // proceed to creating receipts
-            createReceipt();
-
             // proceed to site of creating receipts
             window.location.href = './check.php';
         });
@@ -107,28 +104,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     // reload the website
                     window.location.reload();
                 }
-            })
-            // error checker
-            .catch(error => console.error(error));
-    }
-
-    // process of creating Receipt after clicking payment
-    createReceipt = () => {
-        // go to CreateUserReceipt.php
-        fetch('../contexts/CreateUserReceipt.php')
-            // get response as json
-            .then(response => response.json())
-
-            // get objects from fetch
-            .then(data => {
-                // get the fresh user's cart
-                getUserCart();
-
-                // if update quantity is not success
-                if (data.status == "error") {
-                    console.error(data.message);
-                }
-
             })
             // error checker
             .catch(error => console.error(error));
