@@ -2,14 +2,53 @@
 document.addEventListener('DOMContentLoaded', function () {
     // global variable for usage
     const dropdownBtnText = document.getElementById("drop-text");
+    const sessionbutton = document.getElementById("sessionbutton");
     const summaryContainer = document.getElementById("summaryContainer");
     const orderHistory = document.getElementById("orderHistory");
+    const sessiontext = document.getElementById("sessiontext");
 
     // if dropdown is clicked
     dropdownBtnText.onclick = function () {
         const list = document.getElementById("list");
         list.classList.toggle("show");
     };
+
+    // if the user is logged in
+    if (loggedin) {
+        // change the text to logout
+        sessiontext.textContent = "Logout";
+
+        // if there is click on logoutbutton
+        sessionbutton.addEventListener('click', () => {
+            // logout the user
+            logout();
+        });
+    }
+
+    // if there is no logged in
+    else {
+        // redirect to the home.php
+        window.location = '../pages/home.php';
+    }
+
+    // logout process
+    logout = () => {
+        // go to logout.php
+        fetch('../contexts/logout.php')
+            // get response as json
+            .then(response => response.json())
+
+            // get objects from fetch
+            .then(data => {
+                // if the status is success
+                if (data.status == "success") {
+                    // reload the website
+                    window.location = '../pages/home.php';
+                }
+            })
+            // error checker
+            .catch(error => console.error(error));
+    }
 
     // if there is click in orderhistory
     orderHistory.addEventListener('click', () => {

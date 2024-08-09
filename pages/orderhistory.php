@@ -1,10 +1,58 @@
 <?php
-// check if session is admin
-include '../contexts/SessionAdmin.php';
+// make a session variable
+session_start();
 
-// close the database
-$mysqli->close();
+// if there is session
+if (isset($_SESSION['id']) || isset($_SESSION['authtype'])) {
+	// access database
+	$mysqli = require_once "../contexts/database.php";
 
+	// make a string for sql to be used
+	$sql = "SELECT CONCAT(firstname,' ', lastname) AS name
+        FROM `users`
+        WHERE id = ?
+            AND authtype = ?";
+
+	// prepare the statement
+	$stmt = $mysqli->prepare($sql);
+
+	// bind the parameters to the statement
+	$stmt->bind_param('is', $_SESSION['id'], $_SESSION['authtype']);
+
+	// execute the statement
+	$stmt->execute();
+
+	// get the result from the statement
+	$result = $stmt->get_result();
+
+	// get only one from the executed statement
+	$user = $result->fetch_assoc();
+
+	// if there is no user found
+	if (!$user) {
+		// destroy each data in session
+		session_unset();
+
+		// destroy the sessions made
+		session_destroy();
+
+		// go to home
+		header('Location: ./home.php');
+		exit();
+	}
+
+	// free data and close statement and database
+	$result->free();
+	$stmt->close();
+	$mysqli->close();
+}
+
+// if there is no session logged in
+else {
+	// go to home
+	header('Location: ./home.php');
+	exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -74,13 +122,12 @@ $mysqli->close();
 					</svg>
 					<p>Order History</p>
 				</li>
-				<a href="loginfrfr.html" target="_top">
-					<li onclick="() => {window.location.replace ='/loginfrfr.html'}" class="dropdown-list-item"> <svg id="icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-							<path d="M5 21C4.45 21 3.97933 20.8043 3.588 20.413C3.19667 20.0217 3.00067 19.5507 3 19V5C3 4.45 3.196 3.97933 3.588 3.588C3.98 3.19667 4.45067 3.00067 5 3H12V5H5V19H12V21H5ZM16 17L14.625 15.55L17.175 13H9V11H17.175L14.625 8.45L16 7L21 12L16 17Z" fill="#FFF" />
-						</svg>
-						<p>Logout</p>
-					</li>
-				</a>
+				<li id="sessionbutton" class="dropdown-list-item">
+                    <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 21C4.45 21 3.97933 20.8043 3.588 20.413C3.19667 20.0217 3.00067 19.5507 3 19V5C3 4.45 3.196 3.97933 3.588 3.588C3.98 3.19667 4.45067 3.00067 5 3H12V5H5V19H12V21H5ZM16 17L14.625 15.55L17.175 13H9V11H17.175L14.625 8.45L16 7L21 12L16 17Z" fill="#FFF" />
+                    </svg>
+                    <p id="sessiontext">Loading...</p>
+                </li>
 			</ul>
 		</div>
 
@@ -105,6 +152,10 @@ $mysqli->close();
 			</div>
 		</template>	
 	</div>
+	<script>
+        // convert to json to read the boolean, pass if logged in or not
+        var loggedin = <?php echo json_encode(isset($_SESSION['id'])); ?>;
+    </script>
 	<script defer src="../js/orderhistory.js"></script>
 </body>
 
