@@ -10,30 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
         list.classList.toggle("show");
     };
 
-    // if the user is logged in
-    if (loggedin) {
-        // change the text to logout
-        sessiontext.textContent = "Logout";
-
-        // if there is click on logoutbutton
-        sessionbutton.addEventListener('click', () => {
-            // logout the user
-            logout();
-        });
-    }
-
-    // if there is no logged in
-    else {
-        // change the text to sign in
-        sessiontext.textContent = "Sign in";
-
-        // if there is click on logoutbutton
-        sessionbutton.addEventListener('click', () => {
-            // change the location to login
-            window.location = '../pages/login.php?previousURL=aboutUs.php';
-        });
-    }
-
     // logout process
     logout = () => {
         // go to logout.php
