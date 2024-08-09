@@ -54,7 +54,7 @@ $mysqli->close();
         <div class="innerbox">
             <div class="tablebox">
                 <div class="redbox"></div>
-                
+
                 <table class="teamtable">
                     <thead>
                         <tr>
@@ -65,29 +65,28 @@ $mysqli->close();
                             <th>Station</th>
                         </tr>
                     </thead>
-                    <tbody>
+
+                    <!-- container for team -->
+                    <tbody data-team-container>
                         <tr>
-                            <td>1</td>
-                            <td>John</td>
-                            <td>Smith</td>
-                            <td>01/01/2024</td>
-                            <td>Burger</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>John</td>
-                            <td>Smith</td>
-                            <td>01/01/2024</td>
-                            <td>Burger</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>John</td>
-                            <td>Smith</td>
-                            <td>01/01/2024</td>
-                            <td>Burger</td>
+                            <td>Loading...</td>
+                            <td>Loading...</td>
+                            <td>Loading...</td>
+                            <td>Loading...</td>
+                            <td>Loading...</td>
                         </tr>
                     </tbody>
+
+                    <!-- Template for current orders -->
+                    <template data-team-template>
+                        <tr>
+                            <td data-user-id>Loading...</td>
+                            <td data-first-name>Loading...</td>
+                            <td data-last-name>Loading...</td>
+                            <td data-join-date>Loading...</td>
+                            <td data-station>Loading...</td>
+                        </tr>
+                    </template>
                 </table>
 
             </div>
@@ -97,6 +96,7 @@ $mysqli->close();
         </div>
     </div>
     <script src="../js/navbar-ad.js"></script>
+    <script src="../js/team-ad.js"></script>
 </body>
 
 </html>
