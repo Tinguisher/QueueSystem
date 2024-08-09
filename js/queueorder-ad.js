@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var queueArray = [];
 
     // process to get the queue in database
-    getQueue = () => {
+    function fetchData (){
         // get the queues from the database
         fetch('../contexts/GetQueueOrderProcess.php')
             // get response as json
@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // go to filtering
                 filtering();
+
+                // get the data every second
+                setTimeout(fetchData, 1000);
             })
 
             // error checker
@@ -28,11 +31,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // output the errors to html
                 QueueOrderContainer.innerHTML = error;
+
+                // get the data every second
+                setTimeout(fetchData, 1000);
             });
     }
 
     // call the method to get the queues in databases
-    getQueue();
+    fetchData();
 
     // loop for every named as category
     filterButtons.forEach(filterButton => {
@@ -130,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // get objects from fetch
             .then(data => {
                 // get the fresh user's cart
-                getQueue();
+                fetchData();
 
                 // if update status is not success
                 if (data.status != "success") {

@@ -4,26 +4,38 @@ document.addEventListener('DOMContentLoaded', function () {
     const ongoingdeliveriestop = document.querySelector(".ongoingdeliveriestop");
     const currentOrderContainer = document.querySelector("[data-current-order-container]");
 
-    // get the the orders for the admin to be shown
-    fetch('../contexts/GetHomeAdminOrderProcess.php')
-        // get response as json
-        .then(response => response.json())
-        // get objects from fetch
-        .then(data => {
-            console.log(data);
-            ongoingdeliveriestop.innerHTML = data.ongoingCount;
+    // process of getting data
+    function fetchData() {
+        // get the the orders for the admin to be shown
+        fetch('../contexts/GetHomeAdminOrderProcess.php')
+            // get response as json
+            .then(response => response.json())
+            // get objects from fetch
+            .then(data => {
+                // set the innerhtml for ongoing count
+                ongoingdeliveriestop.innerHTML = data.ongoingCount;
 
-            // create row for the current orders
-            createCurrentOrders(data.currentOrders);
-        })
+                // create row for the current orders
+                createCurrentOrders(data.currentOrders);
 
-        // error checker
-        .catch(error => {
-            // output the error in console and container
-            console.error(error);
-            currentOrderContainer = error;
-        });
-    
+                // get the data every second
+                setTimeout(fetchData, 1000);
+            })
+
+            // error checker
+            .catch(error => {
+                // output the error in console and container
+                console.error(error);
+                currentOrderContainer = error;
+
+                // get the data every second
+                setTimeout(fetchData, 1000);
+            });
+    }
+
+    // get the data
+    fetchData();
+
     // process of creating current orders
     createCurrentOrders = (currentOrders) => {
         // clear the container of current orders
@@ -47,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // put each made row inside currentOrderContainer
             currentOrderContainer.appendChild(row);
-            
+
         });
     }
 });
