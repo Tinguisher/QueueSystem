@@ -255,13 +255,16 @@ li a:hover {
 
 .buttonbox:hover div svg path {
     fill: #FFFFFF;
+    stroke: #FFFDF1;
 
 }
 
 .buttonboxid:hover div svg path {
     fill: #FFFFFF;
     stroke: #FFFFFF;
+
 }
+
 
 .buttonbox:hover,
 .btn:focus,
