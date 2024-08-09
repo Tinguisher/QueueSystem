@@ -112,7 +112,7 @@ $mysqli->close();
 			</div>
 		</template>	
 	</div>
-	<!-- <script defer src="../js/summary-ad.js"></script> -->
+	<script defer src="../js/orderhistory.js"></script>
 </body>
 
 </html>
