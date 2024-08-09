@@ -143,14 +143,7 @@ $mysqli->close();
                     </div>
                 </div>
                 <div class="urgentleftbottom">
-                    <!-- <div class="currentvip">
-                        <div class="vip"><span class="currenttext"> Current</span><span class="viptext"> VIP</span><span class="vipordertext"> Orders:</span></div><br>
-                        <div class="viporderlist">
-                            <div class="viporderID"><span class="vipinfoheader">Order ID</span><br>ID<br>ID<br>ID<br>ID<br>ID<br>ID</div>
-                            <div class="vipstatus"><span class="vipinfoheader">Status</span><br>Ongoing<br>Ongoing<br>Ongoing<br>Pending<br>Pending<br>Pending</div>
-                            <div class="vipetd"><span class="vipinfoheader">ETD</span><br>10mins<br>12 mins<br>15 mins<br>TBD<br>TBD<br>TBD</div>
-                        </div>
-                    </div> -->
+                    <img src="../images/leftbot_pic.png">
                 </div>
             </div>
             <div class="urgentright">
@@ -167,9 +160,35 @@ $mysqli->close();
                     <div class="currentnorm">
                         <div class="norm"> Current Orders:</div><br>
                         <div class="normorderlist">
-                            <div class="normorderID"><span class="norminfoheader">Order ID</span><br>ID<br>ID<br>ID<br>ID<br>ID<br>ID</div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Status</th>
+                                        <th>Items</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Ongoing</td>
+                                        <td>8</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Ongoing</td>
+                                        <td>8</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Ongoing</td>
+                                        <td>8</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- <div class="normorderID"><span class="norminfoheader">Order ID</span><br>ID<br>ID<br>ID<br>ID<br>ID<br>ID</div>
                             <div class="normstatus"><span class="norminfoheader">Status</span><br>Ongoing<br>Ongoing<br>Ongoing<br>Pending<br>Pending<br>Pending</div>
-                            <div class="normetd"><span class="infoheader">ETD</span><br>10mins<br>12 mins<br>15 mins<br>TBD<br>TBD<br>TBD</div>
+                            <div class="normetd"><span class="infoheader">ETD</span><br>10mins<br>12 mins<br>15 mins<br>TBD<br>TBD<br>TBD</div> -->
                         </div>
                     </div>
                 </div>

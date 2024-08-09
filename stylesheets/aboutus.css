@@ -25,14 +25,14 @@ td {
 }
 
 td a:hover {
-	color: #CCAD00;
+	color: #FF5622;
 }
 
 #navcrcl {
 	width: 50px;
 	height: 50px;
 	border-radius: 25px;
-	background-color: #F3D94A;
+	background-color: #FF5622;
 	position: absolute;
 }
 
@@ -73,11 +73,12 @@ input:focus {
 	margin-left: 60px;
 	position: absolute;
 	border: 4px solid #000;
-	background: #F3D94A;
+	background: #FF5622;
 	color: black;
 	font-size: 32px;
 	font-family: Rhodium Libre;
 	padding: 16.5px 37px;
+	z-index: -1;
 }
 
 .aboutSnap {
@@ -93,6 +94,7 @@ input:focus {
 	font-weight: 400;
 	text-align: center;
 	justify-content: center;
+	z-index: -1;
 }
 
 #abouttext {
@@ -107,6 +109,7 @@ input:focus {
 	font-weight: 400;
 	text-align: center;
 	justify-content: center;
+	
 }
 
 #search {
@@ -115,6 +118,14 @@ input:focus {
 	top: 17px;
 	left: 460px;
 	position: absolute;
+}
+
+#dropdownSearch{
+    background-color: #FFFDF1;
+    border: 1px solid  black;
+    z-index: 99;
+    font-family: Roboto Slab;
+
 }
 
 /*DROP DOWN PROFILE*/
@@ -130,9 +141,9 @@ input:focus {
 	width: 72px;
 	height: 50px;
 	border-radius: 25px;
-	background-color: #F3D94A;
+	background-color: #FF5622;
 	position: absolute;
-
+	color: #FFFDF1;
 }
 
 .dropdown-list {
@@ -144,8 +155,9 @@ input:focus {
 	border-radius: 15px;
 	max-height: 0;
 	overflow: hidden;
-	background-color: #F3D94A;
+	background-color: #FF5622;
 	transition: max-height 0.5s;
+	color: #FFFDF1;
 	z-index: 1;
 	border: 2px solid #FFFDF1;
 }
@@ -166,13 +178,12 @@ input:focus {
 	box-sizing: border-box;
 	list-style-type: none;
 	font-family: "Montserrat", sans-serif;
-	color: #000000;
+	color: #FFFDF1;
 	margin-left: -15px;
 }
 
 .dropdown-list-item:hover {
 	margin-left: 0.5rem;
-	color: #000000;
 }
 
 #list.show {
