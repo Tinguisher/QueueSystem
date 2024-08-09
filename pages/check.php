@@ -2,19 +2,16 @@
 // make a session variable
 session_start();
 
-// if the session id is not set and auth type is not admin, go to not found
-if (!isset($_SESSION['id']) || !isset($_SESSION['authtype'])) {
-	header('Location: ./NotFound.html');
-	exit();
-}
+// if there is session
+if (isset($_SESSION['id']) || isset($_SESSION['authtype'])) {
+	// access database
+	$mysqli = require_once "../contexts/database.php";
 
-// access database
-$mysqli = require_once "../contexts/database.php";
-
-// try to get user information in database and catch if there is error
-try {
 	// make a string for sql to be used
-	$sql = "SELECT CONCAT(users.firstname,' ', users.lastname) AS name FROM `users` WHERE id = ? AND authtype = ?";
+	$sql = "SELECT CONCAT(firstname,' ', lastname) AS name
+        FROM `users`
+        WHERE id = ?
+            AND authtype = ?";
 
 	// prepare the statement
 	$stmt = $mysqli->prepare($sql);
@@ -31,31 +28,31 @@ try {
 	// get only one from the executed statement
 	$user = $result->fetch_assoc();
 
-	// free data and close statement
+	// if there is no user found
+	if (!$user) {
+		// destroy each data in session
+		session_unset();
+
+		// destroy the sessions made
+		session_destroy();
+
+		// go to home
+		header('Location: ./home.php');
+		exit();
+	}
+
+	// free data and close statement and database
 	$result->free();
 	$stmt->close();
+	$mysqli->close();
 }
 
-// if there is error in query
-catch (Exception $e) {
-	// close the database
-	$mysqli->close();
-
-	// go to not found
-	header('Location: ./NotFound.html');
+// if there is no session logged in
+else {
+	// go to home
+	header('Location: ./home.php');
 	exit();
 }
-
-// if there is no user found, go to not found
-if (!$user) {
-	// close the database
-	$mysqli->close();
-
-	// go to not found
-	header('Location: ./NotFound.html');
-	exit();
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -226,6 +223,11 @@ if (!$user) {
 	</div>
 
 	</div>
+
+	<script>
+		// convert to json to read the boolean, pass if logged in or not
+		var loggedin = <?php echo json_encode(isset($_SESSION['id'])); ?>;
+	</script>
 	<script defer src="../js/check.js"></script>
 </body>
 
