@@ -2,6 +2,50 @@
 // check if session is admin
 include '../contexts/SessionAdmin.php';
 
+// try to get and catch if there is error
+try {
+    // get the current number of orders today
+    $sql_get_quota = "SELECT COUNT(DISTINCT receipts.id) AS number
+    FROM `receipts`
+    LEFT JOIN food_orders ON receipts.id = food_orders.receipts_id
+    WHERE receipts.id IN (
+        SELECT receipts.id
+        FROM food_orders, `receipts`
+        WHERE receipts.id = food_orders.receipts_id
+            AND food_orders.status = 'completed'
+            AND DATE(receipts.orderDate) = CURDATE()
+        )
+        AND receipts.id NOT IN (
+            SELECT receipts.id
+            FROM food_orders, `receipts`
+            WHERE receipts.id = food_orders.receipts_id
+                AND food_orders.status <> 'completed'
+                AND DATE(receipts.orderDate) = CURDATE()
+        );";
+
+    // prepare the statement
+    $stmt = $mysqli->prepare($sql_get_quota);
+
+    // execute the statement
+    $stmt->execute();
+
+    // get the result from the statement
+    $result = $stmt->get_result();
+
+    // get only one from the executed statement
+    $quota = $result->fetch_assoc();
+
+    // free data and close statement
+    $result->free();
+    $stmt->close();
+}
+
+// if there is error in query
+catch (Exception $e) {
+    // make an error response
+    echo "Error No: " . $e->getCode() . " - " . $e->getMessage();    // get error code and message
+}
+
 // close the database
 $mysqli->close();
 
@@ -14,8 +58,8 @@ $mysqli->close();
     <style>
         @keyframes anim {
             100% {
-                /* 440 divide by half since 50% */
-                stroke-dashoffset: 220;
+                /* if quota is greatere than 100, make it 0 and if not, calculate */
+                stroke-dashoffset: <?php echo ($quota['number'] >= 100) ? 0 : 440 - ($quota['number'] * 4.4) ?>;
             }
         }
     </style>
@@ -67,7 +111,7 @@ $mysqli->close();
                 <div class="urgentlefttop">
                     <div class="ongoingdeliveries">
                         <!--Ongoing deliveriestoP will take the number of "Ongoing deliveries"-->
-                        <div class="ongoingdeliveriestop">12</div>
+                        <div class="ongoingdeliveriestop"></div>
                         <div class="ongoingdeliveriesbottom">Ongoing Deliveries</div>
                     </div>
                     <div class="dailyquota">
@@ -93,7 +137,7 @@ $mysqli->close();
                         </div>
                         <!-- Circular Progress Bar End -->
                         <div class="dailytxt">
-                            <div class="dailynum">50/100</div>
+                            <div class="dailynum"><?= $quota['number']; ?>/100</div>
                             <div class="dailyword">Daily Quota</div>
                         </div>
                     </div>
@@ -133,6 +177,22 @@ $mysqli->close();
         </div>
     </div>
     <script src="../js/navbar-ad.js"></script>
+    <script>
+        let number = document.getElementById('number');
+        let counter = 0;
+        let duration = 2000;
+        let endPercentage = <?php echo $quota['number'] ?>; //percentage ng nakalagay sa id=
+        let intervalTime = duration / endPercentage;
+
+        let interval = setInterval(() => {
+            if (counter >= endPercentage) {
+                clearInterval(interval);
+            } else {
+                counter += 1;
+                number.innerHTML = `${counter}%`;
+            }
+        }, intervalTime);
+    </script>
 </body>
 
 </html>
