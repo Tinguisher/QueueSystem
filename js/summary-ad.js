@@ -63,12 +63,14 @@ document.addEventListener('DOMContentLoaded', function () {
             const foodName = card.querySelector("[data-food-name]");
             const foodDrink = card.querySelector("[data-food-drink]");
             const foodPrice = card.querySelector("[data-food-price]");
+            const foodDiscount = card.querySelector("[data-food-discount]");
 
             // place the variables got from fetch to the card
             foodImage.src = `../images/foodCategories/${order.categoryName}/${order.image}`;
             foodName.textContent = `Food name: ${order.foodName}`;
-            foodDrink.textContent = `Additional: ${order.drinkName}`
-            foodPrice.textContent = `Price: P ${Number(order.price).toLocaleString()}`; // add comma to the order.price
+            foodDrink.textContent = `Additional: ${(order.drinkName == "No") ? "None" : order.drinkName}`;
+            foodPrice.textContent = `Price: P ${Number(order.price).toLocaleString()}`;                     // add comma to the order.price
+            foodDiscount.textContent = `Discount: ${(order.discount == 0) ? "None" : `${order.discount} %`}`;
 
             // put the card inside summary container
             summaryContainer.appendChild(card);

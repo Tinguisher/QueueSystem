@@ -14,7 +14,7 @@ function getUserCart() {
             food_categories.name AS categoryName,
             foods.name AS foodName,
             foods.description,
-            ((foods.price * user_carts.quantity) + drinks.price) AS price,
+            (((foods.price - (foods.price * (0.01 * foods.discount))) * user_carts.quantity) + drinks.price) AS discountedPrice,
             user_carts.quantity
         FROM `user_carts`,
             `foods`,
@@ -104,7 +104,7 @@ function getGuestCart() {
                 food_categories.name AS categoryName,
                 foods.name AS foodName,
                 foods.description,
-                ((foods.price * ?) + drinks.price) AS price
+                (((foods.price - (foods.price * (0.01 * foods.discount))) * ?) + drinks.price) AS discountedPrice
             FROM `foods`,
                 `food_categories`,
                 `drinks`

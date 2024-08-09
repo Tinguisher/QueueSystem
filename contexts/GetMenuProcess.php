@@ -5,15 +5,15 @@ header('Content-Type: application/json; charset=utf-8');
 // access database
 $mysqli = require_once "./database.php";
 
-// try to create and catch if there is error
-try{
-    // make a string to get menu
-    $sql_menu = "SELECT foods.id,
+// make a string to get the popular menus
+$sql = "SELECT foods.id,
         foods.image,
         food_categories.name AS categoryName,
         foods.name AS foodName,
         foods.description,
-        foods.price,
+        foods.discount,
+        foods.price AS originalPrice,
+        (foods.price - (foods.price * (0.01 * foods.discount))) AS discountedPrice,
         COUNT(food_orders.foods_id) AS popularity
     FROM `foods`
     LEFT JOIN food_categories ON foods.food_categories_id = food_categories.id
@@ -21,10 +21,13 @@ try{
     LEFT JOIN receipts ON food_orders.receipts_id = receipts.id
         AND receipts.orderDate >= DATE_SUB(NOW(), INTERVAL 1 MONTH)
         AND receipts.orderDate <= NOW()
-    GROUP BY foods.id;";
+    GROUP BY foods.id
+    ORDER BY foodName;";
 
+// try to get and catch if there is error
+try{
     // prepare the statement
-    $stmt = $mysqli -> prepare ($sql_menu);
+    $stmt = $mysqli -> prepare ($sql);
 
     // execute the statement
     $stmt -> execute();
@@ -32,36 +35,21 @@ try{
     // get the result from the statement
     $result = $stmt -> get_result();
 
-    // get all values from the executed statement
-    $menu = $result -> fetch_all( MYSQLI_ASSOC );
+    // get only one from the executed statement
+    $popularmenu = $result -> fetch_all( MYSQLI_ASSOC );
 
-    // make a string to get drinks
-    $sql_drinks = "SELECT * FROM `drinks`";
-
-    // prepare the statement
-    $stmt = $mysqli -> prepare ($sql_drinks);
-
-    // execute the statement
-    $stmt -> execute();
-
-    // get the result from the statement
-    $result = $stmt -> get_result();
-
-    // get all values from the executed statement
-    $drink = $result -> fetch_all( MYSQLI_ASSOC );
-
-    // free data and close statement
+    // free data and close statement 
     $result -> free();
     $stmt -> close();
-
+    
     // pass the menu to response
     $response = [
         'status' => "success",
-        'message' => "Passed All of the Menu with Drink",
-        'menu' => $menu,
-        'drink' => $drink
+        'message' => "Passed the Popular Menu",
+        'menu' => $popularmenu
     ];
 }
+
 // if there is error in query
 catch (Exception $e){
     // make an error response

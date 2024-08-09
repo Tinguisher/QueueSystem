@@ -60,6 +60,7 @@ CREATE TABLE user_carts (
 CREATE TABLE receipts (
     id int AUTO_INCREMENT NOT NULL,
     users_id int NOT NULL,
+	totalPrice double NOT NULL,
 	orderDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	FOREIGN KEY (users_id) REFERENCES users(id)
     ON DELETE CASCADE
@@ -73,6 +74,7 @@ CREATE TABLE food_orders (
 	receipts_id int NOT NULL,
 	foods_id int NOT NULL,
 	quantity int NOT NULL,
+	discount int NOT NULL,
 	price double NOT NULL,
 	drinks_id int NOT NULL,
 	status varchar (30) NOT NULL,

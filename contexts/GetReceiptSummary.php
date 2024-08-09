@@ -12,6 +12,7 @@ try{
         food_categories.name AS categoryName,
         foods.image,
         food_orders.price,
+        food_orders.discount,
         drinks.name as drinkName
     FROM `receipts`,
         `food_orders`,

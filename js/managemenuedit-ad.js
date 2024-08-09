@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     getMenu = () => {
         // get the menu for the popular
-        fetch('../contexts/GetFoodMenu.php')
+        fetch('../contexts/GetMenuProcess.php')
             // get response as json
             .then(response => response.json())
 
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
             foodImage.src = `../images/foodCategories/${menu.categoryName}/${menu.image}`;
             foodName.textContent = menu.foodName;
             foodDescription.textContent = menu.description;
-            foodPrice.textContent = `₱ ${Number(menu.price).toLocaleString()}`; // add comma to the menu.price
+            foodPrice.textContent = `₱ ${Number(menu.discountedPrice).toLocaleString()}`; // add comma to the menu.discountedPrice
 
             // create on click listener for each card
             card.addEventListener('click', () => {
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
         foodImage.src = `../images/foodCategories/${menu.categoryName}/${menu.image}`;
         foodName.value = menu.foodName;
         foodDescription.value = menu.description;
-        foodPrice.value = (menu.price).toLocaleString(); // add comma to the menu.price
+        foodPrice.value = (menu.originalPrice).toLocaleString(); // add comma to the menu.originalPrice
         foodDiscount.value = menu.discount;
 
         // get the clickable button and form

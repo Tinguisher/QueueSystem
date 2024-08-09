@@ -31,7 +31,8 @@ try{
     $sql_getUserCart = "SELECT foods.id,
         user_carts.quantity,
         user_carts.drinks_id,
-        (foods.price * user_carts.quantity) + drinks.price AS price
+        foods.discount,
+        (((foods.price - (foods.price * (0.01 * foods.discount))) * user_carts.quantity) + drinks.price) AS price
     FROM `user_carts`,
         `foods`,
         `food_categories`,
@@ -69,20 +70,42 @@ try{
         exit ( json_encode($response) );
     }
 
+    // make a variable total price for receipt
+    $totalPrice = 0;
+
     // loop for each cart of the user
     foreach ($userCart as $cart) {
         // create sql for every food in the cart
-        $sql_foodOrders = "INSERT INTO `food_orders`(`receipts_id`, `foods_id`, `quantity`, `drinks_id`, `price`, `status`) VALUES (?, ?, ?, ?, ?, 'Pending');";
+        $sql_foodOrders = "INSERT INTO `food_orders`(`receipts_id`, `foods_id`, `quantity`, `discount`, `price`, `drinks_id`, `status`) VALUES (?, ?, ?, ?, ?, ?, 'Pending');";
 
         // prepare the statement
         $stmt = $mysqli -> prepare ($sql_foodOrders);
 
         // bind the parameters to the statement
-        $stmt -> bind_param ('iiiid', $receipt_id, $cart['id'], $cart['quantity'], $cart['drinks_id'], $cart['price']);
+        $stmt -> bind_param ('iiiidi', $receipt_id, $cart['id'], $cart['quantity'], $cart['discount'], $cart['price'], $cart['drinks_id']);
 
         // execute the statement
         $stmt -> execute();
+
+        // get each price for total price receipt
+        $totalPrice = $totalPrice + $cart['price'];
     }
+
+    // get the delivery fee
+    $totalPrice = $totalPrice + 20;
+
+    $sql_updateReceipt = "UPDATE `receipts`
+        SET `totalPrice` = ?
+        WHERE id = ?;";
+
+    // prepare the statement
+    $stmt = $mysqli -> prepare ($sql_updateReceipt);
+    
+    // bind the parameters to the statement
+    $stmt -> bind_param ('di', $totalPrice, $receipt_id);
+
+    // execute the statement
+    $stmt -> execute();
 
     // make a string for sql to delete user's cart
     $sql_deleteUserCart = "DELETE FROM `user_carts` WHERE users_id = ?";

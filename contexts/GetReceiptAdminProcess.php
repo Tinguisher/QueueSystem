@@ -8,6 +8,7 @@ $mysqli = require_once "./database.php";
 // create a sql to get each receipts
 $sql = "SELECT receipts.id,
         CONCAT(users.firstname,' ', users.lastname) AS userName,
+        receipts.totalPrice,
         DATE(receipts.orderDate) AS date,
         SUM(food_orders.quantity)  AS totalItems,
 		SUM(
