@@ -294,6 +294,35 @@ li p {
 	font-weight: 400;
 }
 
+.yourorder{
+	position: absolute;
+	left: 6.5vh;
+	top: 10vh;
+	border: none;
+
+}
+
+.yourorder  th, td, tr{
+	font-family: Roboto Slab;
+	border: none;
+
+}
+
+.yourorder2 td, tr, th{
+	font-family: Roboto Slab;
+	border: none;
+
+}
+
+.yourorder .foodnm{
+	padding-right: 50vh;
+
+}
+
+.yourorder2 .foodnm2{
+	padding-right: 66vh;
+}
+
 .qty {
 	position: absolute;
 	margin-top: 83px;
