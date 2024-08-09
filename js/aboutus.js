@@ -3,12 +3,51 @@ document.addEventListener('DOMContentLoaded', function () {
     // get all id, class for global variable
     const searchInput = document.getElementById("searchInput");
     const dropdownBtnText = document.getElementById("drop-text");
+    const sessionbutton = document.getElementById("sessionbutton");
+    const sessiontext = document.getElementById("sessiontext");
+    const orderHistory = document.getElementById("orderHistory");
 
     // if dropdown is clicked
     dropdownBtnText.onclick = function () {
         const list = document.getElementById("list");
         list.classList.toggle("show");
     };
+
+    // if the user is logged in
+    if (loggedin) {
+        // change the text to logout
+        sessiontext.textContent = "Logout";
+
+        // if there is click on logoutbutton
+        sessionbutton.addEventListener('click', () => {
+            // logout the user
+            logout();
+        });
+
+        // if there is click in orderhistory
+        orderHistory.addEventListener('click', () => {
+            // change the location to orderhistory
+            window.location = '../pages/orderhistory.php';
+        });
+    }
+
+    // if there is no logged in
+    else {
+        // change the text to sign in
+        sessiontext.textContent = "Sign in";
+
+        // if there is click on logoutbutton
+        sessionbutton.addEventListener('click', () => {
+            // change the location to login
+            window.location = '../pages/login.php?previousURL=aboutUs.php';
+        });
+
+        // if there is click in orderhistory
+        orderHistory.addEventListener('click', () => {
+            // change the location to login
+            window.location = '../pages/login.php?previousURL=orderhistory.php';
+        });
+    }
 
     // logout process
     logout = () => {
@@ -81,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // if it is visible, block. If not then none
             menu.element.style.display = optionVisibility ? "block" : "none";
-            searchInput.value ? dropdownSearch.style.display = "block": dropdownSearch.style.display = "none";
+            searchInput.value ? dropdownSearch.style.display = "block" : dropdownSearch.style.display = "none";
         });
     });
 });

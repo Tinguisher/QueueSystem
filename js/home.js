@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // if there is click in orderhistory
         orderHistory.addEventListener('click', () => {
             // change the location to login
-            window.location = '../pages/login.php';
+            window.location = '../pages/login.php?previousURL=orderhistory.php';
         });
     }
 
