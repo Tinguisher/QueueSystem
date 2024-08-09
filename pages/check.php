@@ -175,33 +175,81 @@ else {
 
 		<div class="urorder">
 			<p id="yodr">Your Order</p>
-			<p class="qty">Qty &emsp; &emsp; Price &emsp; &emsp;Total</p>
+			<table class="yourorder">
+				<thead>
+                    <tr>
+                    	<th>Food Name</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="foodnm">Crispy Seafood Tempura</td>
+                        <td>2</td>
+                        <td>300</td>
+                        <td>600</td>
+                    </tr>
+					<tr>
+                        <td class="foodnm">Black Pepper Chicken</td>
+                        <td>1</td>
+                        <td>400</td>
+                        <td>400</td>
+                    </tr>
+					<tr>
+                        <td class="foodnm">Red Wine Braised Beef</td>
+                        <td>1</td>
+                        <td>600</td>
+                        <td>600</td>
+                    </tr>
+                </tbody>
+			</table>
+
+			
+			<!-- <p class="qty">Qty &emsp; &emsp; Price &emsp; &emsp;Total</p>
 			<p class="foodname" style="margin-top: 128px;">Crispy Seafood Tempura</p>
 			<p id="qty1" style="margin-top: 128px;">x2 &emsp; &emsp; ₱ 300 &emsp; &emsp; ₱ 600 </p>
 			<p class="foodname" style="margin-top: 179px;">Black Pepper Chicken</p>
 			<p id="qty1" style="margin-top: 179px;">x1 &emsp; &emsp; ₱ 400 &emsp; &emsp; ₱ 400 </p>
 			<p class="foodname" style="margin-top: 230px;">Red Wine Braised Beef</p>
-			<p id="qty1" style="margin-top: 230px;">x1 &emsp; &emsp; ₱ 600 &emsp; &emsp; ₱ 600 </p>
+			<p id="qty1" style="margin-top: 230px;">x1 &emsp; &emsp; ₱ 600 &emsp; &emsp; ₱ 600 </p> -->
 
 			<div class="line">
-				<p id="subtotal">Subtotal</p>
+				<table class="yourorder2">
+					<tbody>
+						<tr>
+							<td class="foodnm2">Subtotal</td>
+							<td>₱ 1,600</td>
+						</tr>
+						<tr>
+							<td class="foodnm2">Subdelivery</td>
+							<td>₱ 20</td>
+						</tr>
+						<tr>
+							<td class="foodnm2">Total</td>
+							<td>₱ 1,620</td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- <p id="subtotal">Subtotal</p>
 				<p id="subprc">₱ 1,600</p>
 				<p id="delivery">Standard Delivery</p>
 				<p id="stndlvr">₱ 20</p>
 				<p id="ttl">TOTAL</p>
-				<p id="ttlprc">₱ 1,620</p>
+				<p id="ttlprc">₱ 1,620</p> -->
 				<button class="btnorder" onclick="location.href='mycart.html'">Order and Proceed to Checkoout</button>
 			</div>
 		</div>
 
-		<div class="person">
+		<!-- <div class="person">
 			<p id="prsninfo">Personal Information</p>
 			<input type="text" name="" placeholder="Email" class="email">
 			<input type="text" name="" placeholder="First Name" class="fname">
 			<input type="text" name="" placeholder="Last Name" class="lname">
 			<input type="text" name="" placeholder="Mobile Number" class="mobile">
 			<button class="savebtn">Save</button>
-		</div>
+		</div> -->
 	</div>
 
 	<div class="footer">
