@@ -195,6 +195,7 @@ li a:hover {
 }
 
 .queueorder-line a {
+    color: #FFFDF1;
     width: 41vh;
     height: auto;
     margin-left: 4.5vh;

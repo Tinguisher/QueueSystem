@@ -10,6 +10,9 @@ $mysqli->close();
 <html>
 
 <head>
+    <title>SnapServe | Admin Queueorder</title>
+    <link rel="icon" type="image/png" href="../images/bacon.png">
+
     <link rel="stylesheet" href="../stylesheets/queueorder-ad.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Roboto Slab' rel='stylesheet'>

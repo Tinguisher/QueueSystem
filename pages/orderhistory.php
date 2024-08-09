@@ -60,20 +60,22 @@ else {
 
 <head>
 	<meta charset="utf-8" />
-	<title>Snap Serve</title>
+	<title>SnapServe | Order History</title>
 	<link rel="stylesheet" href="../stylesheets/orderhistory.css">
 	<link href='https://fonts.googleapis.com/css?family=Averia Serif Libre' rel='stylesheet'>
 	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 	<link href='https://fonts.googleapis.com/css?family=Rhodium Libre' rel='stylesheet'>
 	<link href='https://fonts.googleapis.com/css?family=Roboto Slab' rel='stylesheet'>
+
+	<link rel="icon" type="image/png" href="../images/bacon.png">
 </head>
 
 <body>
 
 
 	<div style="margin-left: 60px; margin-top: 30px; width: 1800px; height: 126px; border-top: 4px solid #000; border-bottom: 4px solid #000; position: absolute">
-		<h1 style="font-family: 'Averia Serif Libre'; font-size: 49px; position: absolute; margin-top: 33px;">Snap Serve
+		<h1 style="font-family: 'Averia Serif Libre'; font-size: 49px; position: absolute; margin-top: 33px;">SnapServe
 		</h1>
 
 		<table class="navTable" style="margin-top: 33px; margin-left: 680px; position: absolute;">

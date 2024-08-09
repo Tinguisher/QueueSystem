@@ -60,12 +60,14 @@ else {
 <html>
 
 <head>
+    <title>SnapServe | Profile</title>
     <link rel="stylesheet" href="../stylesheets/profile.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Roboto Slab' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Rhodium Libre' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Averia Serif Libre' rel='stylesheet'>
 
+    <link rel="icon" type="image/png" href="../images/bacon.png">
 </head>
 
 <body>

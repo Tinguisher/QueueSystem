@@ -44,7 +44,7 @@ if (isset($_SESSION['id'])) {
 
 <head>
     <meta charset="utf-8">
-    <title>Snap Serve</title>
+    <title>SnapServe | Menu</title>
     <link rel="stylesheet" href="../stylesheets/menu.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Fontawesome Link for Icons -->
@@ -53,6 +53,8 @@ if (isset($_SESSION['id'])) {
     <link href='https://fonts.googleapis.com/css?family=Averia Serif Libre' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Rhodium Libre' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Roboto Slab' rel='stylesheet'>
+
+    <link rel="icon" type="image/png" href="../images/bacon.png">
 </head>
 
 <body>

@@ -190,19 +190,20 @@ li a:hover {
     font-size: 3.2vh;
     background-color: #BD4141;
     white-space: nowrap;
+    color: #FFFDF1;
 }
 
 .mm-line:hover {
-    color: #FFFDF1;
+    color: #000000;
 
 }
 
 .managemenu-line a {
+    color: #FFFDF1;
     width: 24vh;
     height: auto;
     margin-left: 4.5vh;
     text-decoration: none;
-    color: black;
 }
 
 .innerupperbox {

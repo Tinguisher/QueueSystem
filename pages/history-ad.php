@@ -12,7 +12,8 @@ $mysqli->close();
 
 <head>
     <meta charset="utf-8" />
-    <title>Snap Serve</title>
+    <title>SnapServe | Admin History</title>
+    <link rel="icon" type="image/png" href="../images/bacon.png">
     <link rel="stylesheet" href="../stylesheets/history-ad.css">
     <link href='https://fonts.googleapis.com/css?family=Averia Serif Libre' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
@@ -25,10 +26,10 @@ $mysqli->close();
 
 
     <div style="margin-left: 60px; margin-top: 30px; width: 1800px; height: 126px; border-top: 4px solid #000; border-bottom: 4px solid #000; position: absolute">
-        <h1 style="font-family: 'Averia Serif Libre'; font-size: 49px; position: absolute; margin-top: 33px;">Snap Serve
+        <h1 style="font-family: 'Averia Serif Libre'; font-size: 49px; position: absolute; margin-top: 33px;">SnapServe
         </h1>
 
-        <table class="navTable" style="margin-top: 33px; margin-left: 495px; position: absolute;">
+        <table class="navTable" style="margin-top: 33px; margin-left: 390px; position: absolute;">
             <tr>
                 <td style="width: 180px;"><a href="./home-ad.php" target="_top">Home</a></td>
                 <td style="width: 180px;"><a href="./team-ad.php" target="_top">Team</a></td>
