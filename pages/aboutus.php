@@ -24,10 +24,10 @@ include '../contexts/SessionUser.php';
 
 		<!--search box-->
 		<form id="searchSubmit" style="margin-top: 38px; margin-left: 350px; position: absolute;">
-            <input type="text" id="searchInput" placeholder="Search">
-            <div id="dropdownSearch"></div>
-            <button id="search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </form>
+			<input type="text" id="searchInput" placeholder="Search">
+			<div id="dropdownSearch"></div>
+			<button id="search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+		</form>
 		<!--Home menu about-->
 		<table style="margin-top: 33px; margin-left: 931px; position: absolute;">
 			<tr>
@@ -84,7 +84,7 @@ include '../contexts/SessionUser.php';
 					</svg>
 					<p>Profile</p>
 				</li>
-				<li class="dropdown-list-item"><svg id="icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+				<li id="orderHistory" class="dropdown-list-item"><svg id="icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 						<path d="M3 2H5V4H7V6H5V20H19V6H17V4H19V2H21V22H3V2ZM15 4V2H17V4H15ZM13 4H15V6H13V4ZM11 4V2H13V4H11ZM9 4H11V6H9V4ZM9 4V2H7V4H9ZM17 8H7V10H17V8ZM7 12H17V14H7V12ZM17 18V16H13V18H17Z" fill=black>
 					</svg>
 					<p>Order History</p>
@@ -115,8 +115,47 @@ include '../contexts/SessionUser.php';
 		</div>
 	</div>
 	<script>
-		// convert to json to read the boolean, pass if logged in or not
-		var loggedin = <?php echo json_encode(isset($_SESSION['id'])); ?>;
+		// Load js if HTML is done
+		document.addEventListener('DOMContentLoaded', function() {
+			// convert to json to read the boolean, pass if logged in or not
+			var loggedin = <?php echo json_encode(isset($_SESSION['id'])); ?>;
+
+			// if the user is logged in
+			if (loggedin) {
+				// change the text to logout
+				sessiontext.textContent = "Logout";
+
+				// if there is click on logoutbutton
+				sessionbutton.addEventListener('click', () => {
+					// logout the user
+					logout();
+				});
+
+				// if there is click in orderhistory
+				orderHistory.addEventListener('click', () => {
+					// change the location to orderhistory
+					window.location = '../pages/orderhistory.php?userID=<?= $_SESSION['id'] ?? ""; ?>';
+				});
+			}
+
+			// if there is no logged in
+			else {
+				// change the text to sign in
+				sessiontext.textContent = "Sign in";
+
+				// if there is click on logoutbutton
+				sessionbutton.addEventListener('click', () => {
+					// change the location to login
+					window.location = '../pages/login.php?previousURL=aboutUs.php';
+				});
+
+				// if there is click in orderhistory
+				orderHistory.addEventListener('click', () => {
+					// change the location to login
+					window.location = '../pages/login.php?previousURL=aboutUs.php';
+				});
+			}
+		});
 	</script>
 	<script src="../js/aboutus.js"> </script>
 </body>
