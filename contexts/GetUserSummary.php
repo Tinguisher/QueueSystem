@@ -5,6 +5,9 @@ header('Content-Type: application/json; charset=utf-8');
 // access database
 $mysqli = require_once "./database.php";
 
+// get the id in the session
+session_start();
+
 // try to create and catch if there is error
 try{
     // create a sql to get the receipt
@@ -13,23 +16,27 @@ try{
         foods.image,
         food_orders.price,
         food_orders.discount,
-        drinks.name as drinkName
+        drinks.name as drinkName,
+        receipts.orderDate
     FROM `receipts`,
+        `users`,
         `food_orders`,
         `foods`,
         `food_categories`,
         `drinks`
     WHERE receipts.id = food_orders.receipts_id
+        AND receipts.users_id = users.id
         AND food_orders.foods_id = foods.id
         AND foods.food_categories_id = food_categories.id
         AND food_orders.drinks_id = drinks.id
-        AND receipts.id = ?;";
+        AND users.id = ?
+    ORDER BY receipts.id DESC;";
 
     // prepare the statement
     $stmt = $mysqli -> prepare ($sql);
 
     // bind the parameters to the statement
-    $stmt -> bind_param ('i', $_GET['receiptID']);
+    $stmt -> bind_param ('i', $_SESSION['id']);
 
     // execute the statement
     $stmt -> execute();
@@ -54,7 +61,6 @@ try{
 
 // if there is error in query
 catch (Exception $e){
-    
     // make an error response
     $response = [
         'status' => "error",

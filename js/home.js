@@ -1,12 +1,16 @@
 // Load js if HTML is done
 document.addEventListener('DOMContentLoaded', function () {
+
     // get all id, class for global variable
     const searchInput = document.getElementById("searchInput");
     const searchSubmit = document.getElementById("searchSubmit");
+    const sessionbutton = document.getElementById("sessionbutton");
+    const sessiontext = document.getElementById("sessiontext");
     const dropdownBtnText = document.getElementById("drop-text");
     const promoContainer = document.getElementById("promoContainer");
     const popularmenu = document.getElementById("popularmenu");
     const slides = document.getElementById("slides");
+    const orderHistory = document.getElementById("orderHistory");
     var menuArray = [];
     var menuSearch = [];
 
@@ -15,6 +19,42 @@ document.addEventListener('DOMContentLoaded', function () {
         const list = document.getElementById("list");
         list.classList.toggle("show");
     };
+
+    // if the user is logged in
+    if (loggedin) {
+        // change the text to logout
+        sessiontext.textContent = "Logout";
+
+        // if there is click on logoutbutton
+        sessionbutton.addEventListener('click', () => {
+            // logout the user
+            logout();
+        });
+
+        // if there is click in orderhistory
+        orderHistory.addEventListener('click', () => {
+            // change the location to orderhistory
+            window.location = '../pages/orderhistory.php';
+        });
+    }
+
+    // if there is no logged in
+    else {
+        // change the text to sign in
+        sessiontext.textContent = "Sign in";
+
+        // if there is click on logoutbutton
+        sessionbutton.addEventListener('click', () => {
+            // change the location to login
+            window.location = '../pages/login.php';
+        });
+
+        // if there is click in orderhistory
+        orderHistory.addEventListener('click', () => {
+            // change the location to login
+            window.location = '../pages/login.php';
+        });
+    }
 
     // logout process
     logout = () => {

@@ -2,12 +2,16 @@
 document.addEventListener('DOMContentLoaded', function () {
     // get all id, class for global variable
     const dropdownBtnText = document.getElementById("drop-text");
+    const sessionbutton = document.getElementById("sessionbutton");
+    const sessiontext = document.getElementById("sessiontext");
     const regularMenuContainer = document.querySelector("[data-regular-menu-container]");
     const carousel = document.querySelector(".carousel");
     const papapapoppop = document.getElementById('papapapoppop');
     const filterInput = document.getElementById("filterInput");
     const filterButtons = document.querySelectorAll('.all1');
     const foodCartContainer = document.querySelector("[data-user-cart-container]");
+    const payment = document.getElementById("payment");
+    const orderHistory = document.getElementById("orderHistory");
     var menuArray = [];
     var drinkArray = [];
     var firstLoad = true;
@@ -18,6 +22,63 @@ document.addEventListener('DOMContentLoaded', function () {
         const list = document.getElementById("list");
         list.classList.toggle("show");
     };
+
+    // if the user is logged in
+    if (loggedin) {
+        // change the text to logout
+        sessiontext.textContent = "Logout";
+
+        // change the payment text as Review Payment and Address
+        payment.textContent = "Review Payment and Address";
+
+        // if there is click on logoutbutton
+        sessionbutton.addEventListener('click', () => {
+            // logout the user
+            logout();
+        });
+
+        // if there is click in orderhistory
+        orderHistory.addEventListener('click', () => {
+            // change the location to orderhistory
+            window.location = '../pages/orderhistory.php';
+        });
+
+        // if there is click on payment
+        payment.addEventListener('click', () => {
+            // proceed to creating receipts
+            createReceipt();
+
+            // proceed to site of creating receipts
+            window.location.href = './check.php';
+        });
+    }
+
+    // if there is no logged in
+    else {
+        // change the text to sign in
+        sessiontext.textContent = "Sign in";
+
+        // change the payment text as Sign in to Review Payment
+        payment.textContent = "Sign in to Review Payment";
+
+        // if there is click on Sign in button
+        sessionbutton.addEventListener('click', () => {
+            // change the location to login
+            window.location = '../pages/login.php?previousURL=menu.php';
+        });
+        
+        // if there is click in orderhistory
+        orderHistory.addEventListener('click', () => {
+            // change the location to login
+            window.location = '../pages/login.php?previousURL=menu.php';
+        });
+
+        // if there is click on payment
+        payment.addEventListener('click', () => {
+            // change the location to login
+            window.location = '../pages/login.php?previousURL=check.php';
+        });
+    }
 
     // logout process
     logout = () => {
