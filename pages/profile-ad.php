@@ -3,7 +3,7 @@
 session_start();
 
 // if the session id is not set and auth type is not admin, go to not found
-if ( !isset($_SESSION['id']) || $_SESSION['authtype'] != "admin" ) {
+if (!isset($_SESSION['id']) || $_SESSION['authtype'] != "admin") {
     header('Location: ./NotFound.html');
     exit();
 }
@@ -12,7 +12,7 @@ if ( !isset($_SESSION['id']) || $_SESSION['authtype'] != "admin" ) {
 $mysqli = require_once "../contexts/database.php";
 
 // try to get user information in database and catch if there is error
-try{
+try {
     // make a string to get user
     $sql = "SELECT *
         FROM `users`
@@ -40,7 +40,7 @@ try{
 }
 
 // if there is error in query
-catch (Exception $e){
+catch (Exception $e) {
     // close the database
     $mysqli->close();
 
@@ -106,8 +106,8 @@ $mysqli->close();
                         </div>
                     </div>
                     <div id="myDropdown" class="dropdown-content">
-                        <a href="#profile">Profile</a>
-                        <a href="#logout">Logout</a>
+                        <a href="./profile-ad.php">Profile</a>
+                        <a id="sessionbutton">Logout</a>
                     </div>
                 </button>
             </div>

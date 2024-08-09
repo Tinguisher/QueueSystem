@@ -115,47 +115,8 @@ include '../contexts/SessionUser.php';
 		</div>
 	</div>
 	<script>
-		// Load js if HTML is done
-		document.addEventListener('DOMContentLoaded', function() {
-			// convert to json to read the boolean, pass if logged in or not
-			var loggedin = <?php echo json_encode(isset($_SESSION['id'])); ?>;
-
-			// if the user is logged in
-			if (loggedin) {
-				// change the text to logout
-				sessiontext.textContent = "Logout";
-
-				// if there is click on logoutbutton
-				sessionbutton.addEventListener('click', () => {
-					// logout the user
-					logout();
-				});
-
-				// if there is click in orderhistory
-				orderHistory.addEventListener('click', () => {
-					// change the location to orderhistory
-					window.location = '../pages/orderhistory.php?userID=<?= $_SESSION['id'] ?? ""; ?>';
-				});
-			}
-
-			// if there is no logged in
-			else {
-				// change the text to sign in
-				sessiontext.textContent = "Sign in";
-
-				// if there is click on logoutbutton
-				sessionbutton.addEventListener('click', () => {
-					// change the location to login
-					window.location = '../pages/login.php?previousURL=aboutUs.php';
-				});
-
-				// if there is click in orderhistory
-				orderHistory.addEventListener('click', () => {
-					// change the location to login
-					window.location = '../pages/login.php?previousURL=aboutUs.php';
-				});
-			}
-		});
+		// convert to json to read the boolean, pass if logged in or not
+		var loggedin = <?php echo json_encode(isset($_SESSION['id'])); ?>;
 	</script>
 	<script src="../js/aboutus.js"> </script>
 </body>

@@ -99,7 +99,7 @@ $mysqli->close();
                         </div>
                         <div id="myDropdown" class="dropdown-content">
                             <a href="./profile-ad.php">Profile</a>
-                            <a href="#logout">Logout</a>
+                            <a id="sessionbutton">Logout</a>
                         </div>
                     </button>
                 </div>
@@ -168,27 +168,35 @@ $mysqli->close();
                                         <th>Items</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <!-- container for current orders -->
+                                <tbody data-current-order-container>
                                     <tr>
-                                        <td>1</td>
-                                        <td>Ongoing</td>
-                                        <td>8</td>
+                                        <td>Loading...</td>
+                                        <td>Loading...</td>
+                                        <td>Loading...</td>
                                     </tr>
                                     <tr>
-                                        <td>1</td>
-                                        <td>Ongoing</td>
-                                        <td>8</td>
+                                        <td>Loading...</td>
+                                        <td>Loading...</td>
+                                        <td>Loading...</td>
                                     </tr>
                                     <tr>
-                                        <td>1</td>
-                                        <td>Ongoing</td>
-                                        <td>8</td>
+                                        <td>Loading...</td>
+                                        <td>Loading...</td>
+                                        <td>Loading...</td>
                                     </tr>
                                 </tbody>
+
+                                <!-- Template for current orders -->
+                                <template data-current-order-template>
+                                    <tr>
+                                        <td data-receipt-id></td>
+                                        <td data-status></td>
+                                        <td data-items></td>
+                                    </tr>
+                                </template>
+
                             </table>
-                            <!-- <div class="normorderID"><span class="norminfoheader">Order ID</span><br>ID<br>ID<br>ID<br>ID<br>ID<br>ID</div>
-                            <div class="normstatus"><span class="norminfoheader">Status</span><br>Ongoing<br>Ongoing<br>Ongoing<br>Pending<br>Pending<br>Pending</div>
-                            <div class="normetd"><span class="infoheader">ETD</span><br>10mins<br>12 mins<br>15 mins<br>TBD<br>TBD<br>TBD</div> -->
                         </div>
                     </div>
                 </div>
@@ -206,6 +214,7 @@ $mysqli->close();
         let interval = setInterval(() => {
             if (counter >= endPercentage) {
                 clearInterval(interval);
+                number.innerHTML = `${counter}%`;
             } else {
                 counter += 1;
                 number.innerHTML = `${counter}%`;
