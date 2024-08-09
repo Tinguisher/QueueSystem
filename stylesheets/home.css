@@ -17,8 +17,8 @@ a {
 table,
 tr,
 td {
-    border-left: 3px solid #094C3B;
-    border-right: 3px solid #094C3B;
+    border-left: 3px solid #D9D3D3;
+    border-right: 3px solid #D9D3D3;
     border-collapse: collapse;
     text-align: center;
     padding: 15px 0px;
@@ -205,7 +205,7 @@ input:focus {
 #profilename {
     position: absolute;
     margin-top: 48px;
-    margin-left: 1385px;
+    margin-left: 1440px;
     color: #000;
     font-family: Roboto;
     font-size: 25px;

@@ -76,12 +76,11 @@ else {
 		<h1 style="font-family: 'Averia Serif Libre'; font-size: 49px; position: absolute; margin-top: 33px;">Snap Serve
 		</h1>
 
-		<table class="navTable" style="margin-top: 33px; margin-left: 495px; position: absolute;">
+		<table class="navTable" style="margin-top: 33px; margin-left: 680px; position: absolute;">
 			<tr>
-				<td style="width: 180px;"><a href="./home-ad.php" target="_top">Home</a></td>
-				<td style="width: 215px;"><a href="./queueorder-ad.php" target="_top">Queue Order</a></td>
-				<td style="width: 236px;"><a href="./managemenu-ad.php" target="_top">Manage Menu</a></td>
-				<td style="width: 160px;"><a href="./history-ad.php" target="_top">History</a>
+				<td style="width: 138px;"><a href="./home.php" target="_top">Home</a></td>
+				<td style="width: 133px;"><a href="./menu.php" target="_top">Menu</a></td>
+				<td style="width: 155px;"><a href="./aboutus.php" target="_top">About Us</a></td>
 				</td>
 			</tr>
 		</table>

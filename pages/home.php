@@ -23,7 +23,7 @@ include '../contexts/SessionUser.php';
 
 <body>
     <div style="margin-left: 60px; margin-top: 30px; width: 1800px; height: 126px; border-top: 4px solid #000; border-bottom: 4px solid #000; position: absolute">
-        <h1 style="font-family: 'Averia Serif Libre'; font-size: 49px; position: absolute; margin-top: 33px;">Snap Serve</h1>
+        <h1 style="font-family: 'Averia Serif Libre'; font-size: 49px; position: absolute; margin-top: 33px;">SnapServe</h1>
 
         <form id="searchSubmit" style="margin-top: 38px; margin-left: 350px; position: absolute;">
             <input type="text" id="searchInput" placeholder="Search">
