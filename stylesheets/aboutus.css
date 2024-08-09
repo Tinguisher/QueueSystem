@@ -184,3 +184,16 @@ li p {
 	margin-top: -27px;
 	margin-left: 40px;
 }
+
+.searchleft{
+    margin-left: 4vh;
+
+}
+
+#dropdownSearch{
+    background-color: #FFFDF1;
+    border: 1px solid  black;
+    z-index: 99;
+    font-family: Roboto Slab;
+
+}

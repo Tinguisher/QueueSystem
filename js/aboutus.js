@@ -71,11 +71,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 const option = document.createElement('p');
                 option.textContent = menu.foodName;
                 option.style.display = "none";
+                option.className = "searchleft";
+                dropdownSearch.style = "display:none";
 
                 // if there is click in option
                 option.addEventListener('click', () => {
                     window.location = `./menu.php?menuID=${menu.id}`
                 });
+
                 // put the option from search to the div
                 dropdownSearch.appendChild(option);
 
@@ -102,6 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // if it is visible, block. If not then none
             menu.element.style.display = optionVisibility ? "block" : "none";
+            searchInput.value ? dropdownSearch.style.display = "block": dropdownSearch.style.display = "none";
         });
     });
 });

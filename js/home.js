@@ -91,6 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 option.addEventListener('click', () => {
                     window.location = `./menu.php?menuID=${menu.id}`
                 });
+                
                 // put the option from search to the div
                 dropdownSearch.appendChild(option);
 
