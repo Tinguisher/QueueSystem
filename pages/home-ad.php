@@ -99,7 +99,7 @@ $mysqli->close();
                         </div>
                         <div id="myDropdown" class="dropdown-content">
                             <a href="./profile-ad.php">Profile</a>
-                            <a href="#logout">Logout</a>
+                            <a id="sessionbutton">Logout</a>
                         </div>
                     </button>
                 </div>

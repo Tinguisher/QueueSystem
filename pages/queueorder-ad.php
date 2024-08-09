@@ -43,8 +43,8 @@ $mysqli->close();
                         </div>
                     </div>
                     <div id="myDropdown" class="dropdown-content">
-                        <a href="../pages/profile-ad.html">Profile</a>
-                        <a href="#logout">Logout</a>
+                        <a href="../pages/profile-ad.php">Profile</a>
+                        <a id="sessionbutton">Logout</a>
                     </div>
                 </button>
             </div>

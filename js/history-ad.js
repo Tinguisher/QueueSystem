@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     // get all id, class for global variable
     const dropdownBtnText = document.getElementById("drop-text");
+    const profileDropDown = document.getElementById("profileDropDown");
     const logoutButton = document.getElementById("logoutButton");
     const historyContainer = document.querySelector("[data-history-container]");
     const filterInput = document.getElementById("filterInput");
@@ -37,6 +38,12 @@ document.addEventListener('DOMContentLoaded', function () {
             // output the errors to html
             historyContainer.innerHTML = error;
         });
+
+    // if there is click in profile drop down
+    profileDropDown.addEventListener('click', () => {
+        // change the window location to profile ad.php
+        window.location = '../pages/profile-ad.php'
+    });
     
     // if there is click on logoutbutton
     logoutButton.addEventListener('click', () => {

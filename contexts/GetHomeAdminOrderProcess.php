@@ -26,7 +26,8 @@ try{
 
     // get the current orders
     $sql_get_current_orders = "SELECT receipts.id,
-        MIN(food_orders.status) AS status
+        MIN(food_orders.status) AS status,
+        SUM(food_orders.quantity)  AS totalItems
     FROM `receipts`
     LEFT JOIN food_orders ON receipts.id = food_orders.receipts_id
     WHERE food_orders.status IN ('Pending', 'In Progress')
