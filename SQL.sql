@@ -7,6 +7,7 @@ CREATE TABLE users(
 	authtype varchar (30) NOT NULL,
 	firstname varchar (30) NOT NULL,
 	lastname varchar (30) NOT NULL,
+	joinDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	CONSTRAINT PK_users
 	PRIMARY KEY (id)
 );
