@@ -186,9 +186,6 @@ $mysqli->close();
                                     </tr>
                                 </tbody>
                             </table>
-                            <!-- <div class="normorderID"><span class="norminfoheader">Order ID</span><br>ID<br>ID<br>ID<br>ID<br>ID<br>ID</div>
-                            <div class="normstatus"><span class="norminfoheader">Status</span><br>Ongoing<br>Ongoing<br>Ongoing<br>Pending<br>Pending<br>Pending</div>
-                            <div class="normetd"><span class="infoheader">ETD</span><br>10mins<br>12 mins<br>15 mins<br>TBD<br>TBD<br>TBD</div> -->
                         </div>
                     </div>
                 </div>
@@ -206,6 +203,7 @@ $mysqli->close();
         let interval = setInterval(() => {
             if (counter >= endPercentage) {
                 clearInterval(interval);
+                number.innerHTML = `${counter}%`;
             } else {
                 counter += 1;
                 number.innerHTML = `${counter}%`;
