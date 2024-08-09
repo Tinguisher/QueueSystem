@@ -1,9 +1,9 @@
 // Load js if HTML is done
 document.addEventListener('DOMContentLoaded', function () {
-
     // get all id, class for global variable
     const searchInput = document.getElementById("searchInput");
     const searchSubmit = document.getElementById("searchSubmit");
+    const profileButton = document.getElementById("profileButton");
     const sessionbutton = document.getElementById("sessionbutton");
     const sessiontext = document.getElementById("sessiontext");
     const dropdownBtnText = document.getElementById("drop-text");
@@ -31,6 +31,12 @@ document.addEventListener('DOMContentLoaded', function () {
             logout();
         });
 
+        // if there is click in profile button
+        profileButton.addEventListener('click', () => {
+            // change the location to profile.php
+            window.location = '../pages/profile.php';
+        });
+
         // if there is click in orderhistory
         orderHistory.addEventListener('click', () => {
             // change the location to orderhistory
@@ -47,6 +53,12 @@ document.addEventListener('DOMContentLoaded', function () {
         sessionbutton.addEventListener('click', () => {
             // change the location to login
             window.location = '../pages/login.php';
+        });
+
+        // if there is click in profile button
+        profileButton.addEventListener('click', () => {
+            // change the location to profile.php
+            window.location = '../pages/login.php?previousURL=profile.php';
         });
 
         // if there is click in orderhistory
