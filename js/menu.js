@@ -1,17 +1,21 @@
 // Load js if HTML is done
 document.addEventListener('DOMContentLoaded', function () {
-
     // get all id, class for global variable
     const dropdownBtnText = document.getElementById("drop-text");
+    const profileButton = document.getElementById("profileButton");
     const sessionbutton = document.getElementById("sessionbutton");
     const sessiontext = document.getElementById("sessiontext");
     const regularMenuContainer = document.querySelector("[data-regular-menu-container]");
+    const carousel = document.querySelector(".carousel");
     const papapapoppop = document.getElementById('papapapoppop');
     const filterInput = document.getElementById("filterInput");
     const filterButtons = document.querySelectorAll('.all1');
     const foodCartContainer = document.querySelector("[data-user-cart-container]");
     const payment = document.getElementById("payment");
+    const orderHistory = document.getElementById("orderHistory");
     var menuArray = [];
+    var drinkArray = [];
+    var firstLoad = true;
     var filterButtonValue = "";
 
     // if dropdown is clicked
@@ -34,14 +38,22 @@ document.addEventListener('DOMContentLoaded', function () {
             logout();
         });
 
+        // if there is click in profile button
+        profileButton.addEventListener('click', () => {
+            // change the location to profile.php
+            window.location = '../pages/profile.php';
+        });
+
+        // if there is click in orderhistory
+        orderHistory.addEventListener('click', () => {
+            // change the location to orderhistory
+            window.location = '../pages/orderhistory.php';
+        });
+
         // if there is click on payment
         payment.addEventListener('click', () => {
-            // proceed to creating receipts
-            createReceipt();
-
-            // ===========================================================
-            // window.location.href = './check.html';
-            // ===========================================================
+            // proceed to site of creating receipts
+            window.location.href = './check.php';
         });
     }
 
@@ -54,15 +66,27 @@ document.addEventListener('DOMContentLoaded', function () {
         payment.textContent = "Sign in to Review Payment";
 
         // if there is click on Sign in button
-        sessionbutton.addEventListener('click', (ev) => {
+        sessionbutton.addEventListener('click', () => {
             // change the location to login
-            window.location = '../pages/login.php';
+            window.location = '../pages/login.php?previousURL=menu.php';
+        });
+
+        // if there is click in profile button
+        profileButton.addEventListener('click', () => {
+            // change the location to profile.php
+            window.location = '../pages/login.php?previousURL=profile.php';
+        });
+        
+        // if there is click in orderhistory
+        orderHistory.addEventListener('click', () => {
+            // change the location to login
+            window.location = '../pages/login.php?previousURL=orderhistory.php';
         });
 
         // if there is click on payment
-        payment.addEventListener('click', (ev) => {
+        payment.addEventListener('click', () => {
             // change the location to login
-            window.location = '../pages/login.php';
+            window.location = '../pages/login.php?previousURL=check.php';
         });
     }
 
@@ -85,94 +109,66 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(error => console.error(error));
     }
 
-    // process of creating Receipt after clicking payment
-    createReceipt = () => {
-        // go to CreateUserReceipt.php
-        fetch('../contexts/CreateUserReceipt.php')
-            // get response as json
-            .then(response => response.json())
-
-            // get objects from fetch
-            .then(data => {
-                // get the fresh user's cart
-                getUserCart();
-
-                // if update quantity is not success
-                if (data.status == "error") {
-                    console.error(data.message);
-                }
-
-            })
-            // error checker
-            .catch(error => console.error(error));
-    }
-
     // ==================================================== //
     //          CREATE A WEBSOCKET FOR THIS???              //
     // ==================================================== //
     // get all the menu
-    fetch('../contexts/GetMenuProcess.php')
+    fetch('../contexts/GetMenuDrinkProcess.php')
         // get response as json
         .then(response => response.json())
 
         // get objects from fetch
         .then(data => {
-            // create a card for each menus fetched from database
-            createMenuCards(data.menu);
+            // set as global variable to be used many times
+            menuArray = data.menu;
+            drinkArray = data.drink;
 
             // go to filtering
             filtering();
+
+            // go to create special offers
+            createSpecialOffersCards();
         })
 
         // error checker
         .catch(error => {
             // output the error in console
             console.error(error);
+
             // output the errors to html
             regularMenuContainer.innerHTML = error;
+            carousel.innerHTML = error;
         });
 
-    // if there is input or change in filter
-    filterInput.addEventListener('input', () => {
-        // go to filtering
-        filtering();
-    });
-
-    // loop for every class that has all1
-    filterButtons.forEach(filterButton => {
-        // if there is click on filterButtons
-        filterButton.addEventListener('click', () => {
-            // make the filter universal for filtering
-            filterButtonValue = filterButton.value;
-
-            // go to filtering
-            filtering();
-        });
-    });
-
-    filtering = () => {
-        // convert the filter to lowercase
-        const filterInputValue = filterInput.value.toLowerCase();
-
-        // make the card visible or not
-        menuArray.forEach(menu => {
-            // check if card should be visible or not from the filter
-            const cardVisibility = (
-                menu.foodName.toLowerCase().includes(filterInputValue) ||
-                menu.foodDescription.toLowerCase().includes(filterInputValue)
-            ) && menu.foodCategory.includes(filterButtonValue);
-            // display: inline-block if visible and display: none if not visible
-            menu.element.style.display = cardVisibility ? "inline-block" : "none";
-        });
+    // Process on getting the parameters in the URL
+    getParameters = (name) => {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
     }
 
     // create cards for div regularMenuContainer 
-    createMenuCards = (menus) => {
+    createMenuCards = () => {
         // clear the values from regularMenuContainer
         regularMenuContainer.innerHTML = "";
 
         // get the menus for filtering
-        menuArray = menus.map(menu => {
+        menuArray.forEach((menu, index) => {
+            // convert the filter to lowercase
+            const filterInputValue = filterInput.value.toLowerCase();
+
+            // check if card should be visible or not from the filter
+            const cardVisibility = (filterButtonValue == "Popular") ? ((
+                menu.foodName.toLowerCase().includes(filterInputValue) ||
+                menu.description.toLowerCase().includes(filterInputValue)
+            ) && index < 8)
+                : (
+                    menu.foodName.toLowerCase().includes(filterInputValue) ||
+                    menu.description.toLowerCase().includes(filterInputValue)
+                ) && menu.categoryName.includes(filterButtonValue);
+            
+            // if card must not be visible, return
+            if (!cardVisibility) return;
+
             // get the element template from menu.php
             const regularMenuTemplate = document.querySelector("[data-regular-menu-template]");
             const card = regularMenuTemplate.content.cloneNode(true).children[0];
@@ -187,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function () {
             foodImage.src = `../images/foodCategories/${menu.categoryName}/${menu.image}`;
             foodName.value = menu.foodName;
             foodDescription.textContent = menu.description;
-            foodPrice.value = `Php ${Number(menu.price).toLocaleString()}`; // add comma to the menu.price
+            foodPrice.value = `Php ${Number(menu.discountedPrice).toLocaleString()}`; // add comma to the menu.discountedPrice
 
             // put each made card inside regularMenuContainer
             regularMenuContainer.appendChild(card);
@@ -201,15 +197,100 @@ document.addEventListener('DOMContentLoaded', function () {
                 createCartForm(menu);
             });
 
-            // get the name, description, category and card itself for filtering
-            return {
-                foodName: menu.foodName,
-                foodDescription: menu.description,
-                foodCategory: menu.categoryName,
-                element: card
-            };
+            // get the value of menuID in the url
+            const menuID = getParameters("menuID");
+
+            // if menuID is equal to menu.id
+            if (menu.id == menuID && firstLoad == true) {
+                // click the card automatically
+                card.click();
+
+                // set the first load as false to avoid repeating opening of the menu
+                firstLoad = false;
+            }
         });
     }
+
+    // process of creating special offers cards
+    createSpecialOffersCards = () => {
+        // clear the carousel container
+        carousel.innerHTML = "";
+
+        // get loop the menus for creating special offers card
+        menuArray.forEach(menu => {
+            // do not create if there is no discount
+            if (menu.discount <= 0) return;
+
+            // get the element template from menu.php
+            const specialOfferTemplate = document.querySelector("[data-special-offer-template]");
+            const card = specialOfferTemplate.content.cloneNode(true).children[0];
+
+            // get the template child that needs value to be displayed
+            const foodImage = card.querySelector("[data-food-image]");
+            const foodName = card.querySelector("[data-food-name]");
+            const foodPrice = card.querySelector("[data-food-price]");
+            
+            // place the variables got from fetch to the card
+            foodImage.src = `../images/foodCategories/${menu.categoryName}/${menu.image}`;
+            foodName.textContent = menu.foodName;
+            foodPrice.textContent = `Php ${Number(menu.discountedPrice).toLocaleString()}`; // add comma to the menu.discountedPrice
+
+            // put the card inside the carousel container
+            carousel.appendChild(card);
+
+            // create on click listener for each card
+            card.addEventListener('click', () => {
+                // popup the cart for ordering
+                popupCart();
+
+                // create ordering form in popup
+                createCartForm(menu);
+            });
+        });
+    }
+
+
+    // get the value of searchInputURL in the URL
+    const searchInputURL = getParameters("searchInputURL");
+
+    // put the values to the searching
+    filterInput.value = searchInputURL;
+
+    // loop for every class that has all1
+    filterButtons.forEach(filterButton => {
+        // if there is click on filterButtons
+        filterButton.addEventListener('click', () => {
+            // make the filter universal for filtering
+            filterButtonValue = filterButton.value;
+
+            // go to filtering
+            filtering();
+        });
+
+        // get the value of popular in the url
+        const popular = getParameters("popular");
+
+        // if there is popular in url and the filterbutton value is popular
+        if (filterButton.value == "Popular" && popular == "true") {
+            // click the filterbutton automatically
+            filterButtonValue = "Popular";
+        }
+    });
+
+    // filtering process
+    filtering = () => {
+        // if the filter category is popular, sort by popularity, else sort by foodName
+        filterButtonValue == "Popular" ? menuArray.sort((a, b) => b.popularity - a.popularity) : menuArray.sort((a, b) => a.foodName.localeCompare(b.foodName));
+
+        // create cards for the menu
+        createMenuCards();
+    }
+
+    // if there is input or change in filter
+    filterInput.addEventListener('input', () => {
+        // go to filtering
+        filtering();
+    });
 
     // pop out when ordering
     popupCart = () => {
@@ -243,7 +324,7 @@ document.addEventListener('DOMContentLoaded', function () {
         foodImage.src = `../images/foodCategories/${menu.categoryName}/${menu.image}`;
         foodName.textContent = menu.foodName;
         foodDescription.textContent = menu.description;
-        foodPrice.textContent = `Php ${Number(menu.price).toLocaleString()}`; // add comma to the cart.price
+        foodPrice.textContent = `Php ${Number(menu.discountedPrice).toLocaleString()}`; // add comma to the menu.discountedPrice
 
         // put each made card inside regularMenuContainer
         papapapoppop.appendChild(menuForm);
@@ -253,7 +334,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const decrement = menuForm.querySelector("[data-food-cart-decrement]");
         const increment = menuForm.querySelector("[data-food-cart-increment]");
         const quantity = menuForm.querySelector("[data-food-cart-quantity]");
-        const cartForm = menuForm.querySelector("[data-cart-form");
+        const cartForm = menuForm.querySelector("[data-cart-form]");
 
         // if x button is clicked
         xbtn.addEventListener('click', () => {
@@ -261,18 +342,66 @@ document.addEventListener('DOMContentLoaded', function () {
             popupCart();
         });
 
+        // create drinks for each menu popout
+        drinkArray.forEach(drink => {
+            // get the element template from menu.php
+            const menuDrinks = document.querySelector("[data-menu-drinks]");
+            const drinkRow = menuDrinks.content.cloneNode(true);
+
+            // get the template child that needs value
+            const drinkRadio = drinkRow.querySelector('input[name="radio"]');
+            const drinkLabel = drinkRow.querySelector('[data-drink-label]');
+            const drinkPriceLabel = drinkRow.querySelector('[data-drink-price-label]');
+
+            // place the variables got from fetch to the drinks
+            drinkRadio.value = drink.id;
+            drinkRadio.dataset.drinkPrice = drink.price;
+            drinkLabel.append(drink.name);
+
+            // if no drink then there is no text
+            if (drink.name == "No") drinkPriceLabel.textContent = "";
+
+            // if drink has no price, text is free
+            else if (drink.price == 0) drinkPriceLabel.textContent = "Free";
+
+            // print the price if not included from the top conditions
+            else drinkPriceLabel.textContent = `Php ${(drink.price).toLocaleString()}`;
+
+            // get the div container for the drink
+            const menuDrinksContainer = document.getElementById("menuDrinksContainer");
+
+            // output the drink in the container
+            menuDrinksContainer.appendChild(drinkRow);
+        });
+
+        // get all the radio buttons made
+        const drinkRadioButtons = document.querySelectorAll('input[name="radio"]');
+
+        // for every buttons made
+        drinkRadioButtons.forEach(radioButton => {
+            // if there is change on any radioButton
+            radioButton.addEventListener('change', () => {
+                // change the foodPrice
+                foodPrice.textContent = `Php ${(Number(menu.discountedPrice * quantity.textContent) + Number(document.querySelector('input[name="radio"]:checked').dataset.drinkPrice)).toLocaleString()}`; // add comma to the menu.discountedPrice;
+            });
+        });
+
         // if "-" button is clicked, decrement, but not if it is 0
         decrement.addEventListener('click', () => {
             if (quantity.textContent < 2) return;
             quantity.textContent--;
-            foodPrice.textContent = `Php ${Number(menu.price * quantity.textContent).toLocaleString()}`; // add comma to the menu.price
+
+            // change the foodPrice
+            foodPrice.textContent = (document.querySelector('input[name="radio"]:checked')) ? `Php ${(Number(menu.discountedPrice * quantity.textContent) + Number(document.querySelector('input[name="radio"]:checked').dataset.drinkPrice)).toLocaleString()}` : `Php ${(menu.discountedPrice * quantity.textContent).toLocaleString()}`; // add comma to the menu.discountedPrice;
         });
 
         // if "+" button is clicked, increment, but not if it is 99
         increment.addEventListener('click', () => {
             if (quantity.textContent > 98) return;
             quantity.textContent++;
-            foodPrice.textContent = `Php ${Number(menu.price * quantity.textContent).toLocaleString()}`; // add comma to the menu.price
+
+            // change the foodPrice
+            foodPrice.textContent = (document.querySelector('input[name="radio"]:checked')) ? `Php ${(Number(menu.discountedPrice * quantity.textContent) + Number(document.querySelector('input[name="radio"]:checked').dataset.drinkPrice)).toLocaleString()}` : `Php ${(menu.discountedPrice * quantity.textContent).toLocaleString()}`; // add comma to the menu.discountedPrice;
         });
 
         // if there is submit in form
@@ -284,20 +413,18 @@ document.addEventListener('DOMContentLoaded', function () {
             const payload = {
                 input_food_id: menu.id,
                 input_quantity: Number(quantity.textContent),
-                // console.log(document.querySelector('input[name="radio"]:checked').value);
+                input_drink_id: Number(document.querySelector('input[name="radio"]:checked').value)
             };
 
             // add the payload to the user's cart
             addToCart(payload);
-
         });
-
     }
 
     // add to the cart process
     addToCart = (payload) => {
         // make a fetch to process when adding a cart
-        fetch('../contexts/AddCartProcess.php', {
+        fetch('../contexts/CreateCartProcess.php', {
             method: "POST",
             headers: {
                 // state as a json type
@@ -344,6 +471,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     // create a card for each user carts
                     createFoodCartCards(data.carts);
                 }
+
+                // if there is error in fetching
+                else {
+                    foodCartContainer.innerHTML = data.message;
+                }
             })
             // error checker
             .catch(error => {
@@ -359,7 +491,7 @@ document.addEventListener('DOMContentLoaded', function () {
     createFoodCartCards = (carts) => {
         // create a subTotal variable
         let addedSubTotal = 0;
-        let calculatedDeliveryFee = 50;
+        let calculatedDeliveryFee = 20;
 
         // loop for every cart by the user
         carts.forEach(cart => {
@@ -380,7 +512,7 @@ document.addEventListener('DOMContentLoaded', function () {
             foodImage.src = `../images/foodCategories/${cart.categoryName}/${cart.image}`;
             foodName.textContent = cart.foodName;
             foodDescription.textContent = cart.description;
-            foodPrice.textContent = `Php ${Number(cart.price).toLocaleString()}`;   // add comma to the cart.price
+            foodPrice.textContent = `Php ${Number(cart.discountedPrice).toLocaleString()}`;   // add comma to the cart.discountedPrice
             quantity.textContent = cart.quantity;
 
             // if "-" button is clicked, decrement
@@ -414,7 +546,7 @@ document.addEventListener('DOMContentLoaded', function () {
             foodCartContainer.appendChild(card);
 
             // get the cart price for subtotal
-            addedSubTotal = addedSubTotal + cart.price;
+            addedSubTotal = addedSubTotal + cart.discountedPrice;
         });
 
         // get html element to display totals
@@ -468,23 +600,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 const wrapper = document.querySelector(".wrapper");
 const carousel = document.querySelector(".carousel");

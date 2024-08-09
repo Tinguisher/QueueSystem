@@ -1,6 +1,6 @@
 <?php
 // check if session is admin
-include '../contexts/AdminSession.php';
+include '../contexts/SessionAdmin.php';
 
 // close the database
 $mysqli->close();
@@ -44,7 +44,7 @@ $mysqli->close();
                     </div>
                     <div id="myDropdown" class="dropdown-content">
                         <a href="./profile-ad.php">Profile</a>
-                        <a href="#logout">Logout</a>
+                        <a id="sessionbutton">Logout</a>
                     </div>
                 </button>
             </div>
@@ -54,6 +54,41 @@ $mysqli->close();
         <div class="innerbox">
             <div class="tablebox">
                 <div class="redbox"></div>
+
+                <table class="teamtable">
+                    <thead>
+                        <tr>
+                            <th>Worker ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Date Joined</th>
+                            <th>Station</th>
+                        </tr>
+                    </thead>
+
+                    <!-- container for team -->
+                    <tbody data-team-container>
+                        <tr>
+                            <td>Loading...</td>
+                            <td>Loading...</td>
+                            <td>Loading...</td>
+                            <td>Loading...</td>
+                            <td>Loading...</td>
+                        </tr>
+                    </tbody>
+
+                    <!-- Template for current orders -->
+                    <template data-team-template>
+                        <tr>
+                            <td data-user-id>Loading...</td>
+                            <td data-first-name>Loading...</td>
+                            <td data-last-name>Loading...</td>
+                            <td data-join-date>Loading...</td>
+                            <td data-station>Loading...</td>
+                        </tr>
+                    </template>
+                </table>
+
             </div>
             <div class="filterbox">
                 <div class="redbox"></div>
@@ -61,6 +96,7 @@ $mysqli->close();
         </div>
     </div>
     <script src="../js/navbar-ad.js"></script>
+    <script src="../js/team-ad.js"></script>
 </body>
 
 </html>

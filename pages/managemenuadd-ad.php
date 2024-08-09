@@ -1,6 +1,6 @@
 <?php
 // check if session is admin
-include '../contexts/AdminSession.php';
+include '../contexts/SessionAdmin.php';
 
 // create sql to get food categories
 $sql = "SELECT * FROM `food_categories`";
@@ -46,6 +46,10 @@ $mysqli->close();
 <html>
 
 <head>
+
+    <title>SnapServe | Admin Manage Add</title>
+    <link rel="icon" type="image/png" href="../images/bacon.png">
+
     <link rel="stylesheet" href="../stylesheets/managemenuadd-ad.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Roboto Slab' rel='stylesheet'>

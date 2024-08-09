@@ -1,6 +1,6 @@
 <?php
 // check if session is admin
-include '../contexts/AdminSession.php';
+include '../contexts/SessionAdmin.php';
 
 // close the database
 $mysqli->close();
@@ -10,6 +10,9 @@ $mysqli->close();
 <html>
 
 <head>
+    <title>SnapServe | Admin Queueorder</title>
+    <link rel="icon" type="image/png" href="../images/bacon.png">
+
     <link rel="stylesheet" href="../stylesheets/queueorder-ad.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Roboto Slab' rel='stylesheet'>
@@ -43,8 +46,8 @@ $mysqli->close();
                         </div>
                     </div>
                     <div id="myDropdown" class="dropdown-content">
-                        <a href="../pages/profile-ad.html">Profile</a>
-                        <a href="#logout">Logout</a>
+                        <a href="../pages/profile-ad.php">Profile</a>
+                        <a id="sessionbutton">Logout</a>
                     </div>
                 </button>
             </div>
@@ -55,7 +58,7 @@ $mysqli->close();
             <div class="choosestation">
                 <div class="redchoose">Choose Station:</div>
                 <div class="choosecat">
-                    <div class="catpad">
+                    <div class="catpad"> <!-- Fix dis shyet-->
                         <input type="radio" name="category" id="all" value="" checked>
                         <label class="radlabel" for="all">All</label>
                     </div>

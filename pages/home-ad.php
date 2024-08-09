@@ -1,6 +1,50 @@
 <?php
 // check if session is admin
-include '../contexts/AdminSession.php';
+include '../contexts/SessionAdmin.php';
+
+// try to get and catch if there is error
+try {
+    // get the current number of orders today
+    $sql_get_quota = "SELECT COUNT(DISTINCT receipts.id) AS number
+    FROM `receipts`
+    LEFT JOIN food_orders ON receipts.id = food_orders.receipts_id
+    WHERE receipts.id IN (
+        SELECT receipts.id
+        FROM food_orders, `receipts`
+        WHERE receipts.id = food_orders.receipts_id
+            AND food_orders.status = 'completed'
+            AND DATE(receipts.orderDate) = CURDATE()
+        )
+        AND receipts.id NOT IN (
+            SELECT receipts.id
+            FROM food_orders, `receipts`
+            WHERE receipts.id = food_orders.receipts_id
+                AND food_orders.status <> 'completed'
+                AND DATE(receipts.orderDate) = CURDATE()
+        );";
+
+    // prepare the statement
+    $stmt = $mysqli->prepare($sql_get_quota);
+
+    // execute the statement
+    $stmt->execute();
+
+    // get the result from the statement
+    $result = $stmt->get_result();
+
+    // get only one from the executed statement
+    $quota = $result->fetch_assoc();
+
+    // free data and close statement
+    $result->free();
+    $stmt->close();
+}
+
+// if there is error in query
+catch (Exception $e) {
+    // make an error response
+    echo "Error No: " . $e->getCode() . " - " . $e->getMessage();    // get error code and message
+}
 
 // close the database
 $mysqli->close();
@@ -14,11 +58,14 @@ $mysqli->close();
     <style>
         @keyframes anim {
             100% {
-                /* 440 divide by half since 50% */
-                stroke-dashoffset: 220;
+                /* if quota is greatere than 100, make it 0 and if not, calculate */
+                stroke-dashoffset: <?php echo ($quota['number'] >= 100) ? 0 : 440 - ($quota['number'] * 4.4) ?>;
             }
         }
     </style>
+
+    <title>SnapServe | Admin Home</title>
+    <link rel="icon" type="image/png" href="../images/bacon.png">
 
     <link rel="stylesheet" href="../stylesheets/home-ad.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
@@ -55,7 +102,7 @@ $mysqli->close();
                         </div>
                         <div id="myDropdown" class="dropdown-content">
                             <a href="./profile-ad.php">Profile</a>
-                            <a href="#logout">Logout</a>
+                            <a id="sessionbutton">Logout</a>
                         </div>
                     </button>
                 </div>
@@ -67,7 +114,7 @@ $mysqli->close();
                 <div class="urgentlefttop">
                     <div class="ongoingdeliveries">
                         <!--Ongoing deliveriestoP will take the number of "Ongoing deliveries"-->
-                        <div class="ongoingdeliveriestop">12</div>
+                        <div class="ongoingdeliveriestop"></div>
                         <div class="ongoingdeliveriesbottom">Ongoing Deliveries</div>
                     </div>
                     <div class="dailyquota">
@@ -93,20 +140,13 @@ $mysqli->close();
                         </div>
                         <!-- Circular Progress Bar End -->
                         <div class="dailytxt">
-                            <div class="dailynum">50/100</div>
+                            <div class="dailynum"><?= $quota['number']; ?>/100</div>
                             <div class="dailyword">Daily Quota</div>
                         </div>
                     </div>
                 </div>
                 <div class="urgentleftbottom">
-                    <div class="currentvip">
-                        <div class="vip"><span class="currenttext"> Current</span><span class="viptext"> VIP</span><span class="vipordertext"> Orders:</span></div><br>
-                        <div class="viporderlist">
-                            <div class="viporderID"><span class="vipinfoheader">Order ID</span><br>ID<br>ID<br>ID<br>ID<br>ID<br>ID</div>
-                            <div class="vipstatus"><span class="vipinfoheader">Status</span><br>Ongoing<br>Ongoing<br>Ongoing<br>Pending<br>Pending<br>Pending</div>
-                            <div class="vipetd"><span class="vipinfoheader">ETD</span><br>10mins<br>12 mins<br>15 mins<br>TBD<br>TBD<br>TBD</div>
-                        </div>
-                    </div>
+                    <img src="../images/leftbot_pic.png">
                 </div>
             </div>
             <div class="urgentright">
@@ -115,7 +155,7 @@ $mysqli->close();
                         <div class="dashtext">DASHBOARD</div>
                         <div class="dashgreet">
                             <span class="hello">Hello </span>
-                            <span class="name"><?= $name ?></span>
+                            <span class="name"><?= $user['name'] ?></span>
                         </div>
                     </div>
                 </div>
@@ -123,9 +163,43 @@ $mysqli->close();
                     <div class="currentnorm">
                         <div class="norm"> Current Orders:</div><br>
                         <div class="normorderlist">
-                            <div class="normorderID"><span class="norminfoheader">Order ID</span><br>ID<br>ID<br>ID<br>ID<br>ID<br>ID</div>
-                            <div class="normstatus"><span class="norminfoheader">Status</span><br>Ongoing<br>Ongoing<br>Ongoing<br>Pending<br>Pending<br>Pending</div>
-                            <div class="normetd"><span class="infoheader">ETD</span><br>10mins<br>12 mins<br>15 mins<br>TBD<br>TBD<br>TBD</div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Status</th>
+                                        <th>Items</th>
+                                    </tr>
+                                </thead>
+                                <!-- container for current orders -->
+                                <tbody data-current-order-container>
+                                    <tr>
+                                        <td>Loading...</td>
+                                        <td>Loading...</td>
+                                        <td>Loading...</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Loading...</td>
+                                        <td>Loading...</td>
+                                        <td>Loading...</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Loading...</td>
+                                        <td>Loading...</td>
+                                        <td>Loading...</td>
+                                    </tr>
+                                </tbody>
+
+                                <!-- Template for current orders -->
+                                <template data-current-order-template>
+                                    <tr>
+                                        <td data-receipt-id></td>
+                                        <td data-status></td>
+                                        <td data-items></td>
+                                    </tr>
+                                </template>
+
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -133,6 +207,23 @@ $mysqli->close();
         </div>
     </div>
     <script src="../js/navbar-ad.js"></script>
+    <script>
+        let number = document.getElementById('number');
+        let counter = 0;
+        let duration = 2000;
+        let endPercentage = <?php echo $quota['number'] ?>; //percentage ng nakalagay sa id=
+        let intervalTime = duration / endPercentage;
+
+        let interval = setInterval(() => {
+            if (counter >= endPercentage) {
+                clearInterval(interval);
+                number.innerHTML = `${counter}%`;
+            } else {
+                counter += 1;
+                number.innerHTML = `${counter}%`;
+            }
+        }, intervalTime);
+    </script>
 </body>
 
 </html>

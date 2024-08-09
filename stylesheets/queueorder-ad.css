@@ -120,11 +120,12 @@ li a:hover {
 .dropdown-content {
     display: none;
     position: relative;
-    left: -8vh;
+    left: -28vh;
     background-color: #BD4141;
-    min-width: 12vh;
+    min-width: 32.4vh;
     overflow: auto;
     border-radius: 1vh;
+    border: 0.2vh solid #FFFDF1;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
@@ -140,7 +141,9 @@ li a:hover {
 }
 
 .dropdown-content a:hover {
-    background-color: #8C2828;
+    margin-left: 0.5rem;
+    color: white;
+    transition: 0.3s;
 }
 
 .show {
@@ -192,6 +195,7 @@ li a:hover {
 }
 
 .queueorder-line a {
+    color: #FFFDF1;
     width: 41vh;
     height: auto;
     margin-left: 4.5vh;
@@ -252,7 +256,6 @@ li a:hover {
 .radlabel {
     font-size: 2.5vh;
     font-family: Roboto Slab;
-
 }
 
 .tablebox {
@@ -283,17 +286,30 @@ table {
 
 }
 
+.tablecontent thead{
+    position: sticky;
+    top: 0px;
+    width: 1724px;
+    z-index: 1;
+
+}
+
 td,
 th {
-    text-align: left;
-    padding: 0.8vh;
-    font-size: 2.5vh;
+    border-top: 0.2vh solid #000;
+    border-bottom: 0.2vh solid #000;
+    width: 28.7vh;
     font-family: Roboto Slab;
 
 }
 
 tr {
-    border: 1px solid black;
-    border-radius: 1vh;
-
+    background-color: #FFFDF1;
+    top: 0px;
+    width: 1724px; 
+    height: 72px;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.25);
+    text-align: center;
 }

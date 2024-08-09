@@ -1,4 +1,4 @@
-body{
+body {
     background: #FFFDF1;
     width: 1920px;
     height: 3655px;
@@ -6,24 +6,29 @@ body{
     padding: 0;
     overflow-x: hidden;
 }
-a{
+
+a {
     font-family: 'Roboto';
     font-size: 25px;
     text-decoration: none;
     color: black;
 }
 
-table, tr, td {
-    border-left: 3px solid #094C3B;
-    border-right: 3px solid #094C3B;
+table,
+tr,
+td {
+    border-left: 3px solid #D9D3D3;
+    border-right: 3px solid #D9D3D3;
     border-collapse: collapse;
     text-align: center;
     padding: 15px 0px;
 }
 
-td a:hover {color: #FF5622;}
+td a:hover {
+    color: #FF5622;
+}
 
-.navcrcl{
+.navcrcl {
     width: 50px;
     height: 50px;
     border-radius: 25px;
@@ -31,12 +36,12 @@ td a:hover {color: #FF5622;}
     position: absolute;
 }
 
-form{
+form {
     border-radius: 25px;
     position: absolute;
 }
 
-input{
+input {
     width: 419px;
     height: 49px;
     display: block;
@@ -47,57 +52,62 @@ input{
     padding-left: 40px;
     padding-right: 45px;
 }
-input:focus{
+
+input:focus {
     outline: none;
 }
 
-#home{
-    width: 1718px; 
-    margin-top: 201px; 
-    margin-left: 60px; 
-    position: absolute; 
-    border: 4px solid #000; 
-    background: #FF5622; 
-    color: white; 
-    font-size: 32px; 
-    font-family: Rhodium Libre; 
+#home {
+    width: 1718px;
+    margin-top: 201px;
+    margin-left: 60px;
+    position: absolute;
+    border: 4px solid #000;
+    background: #FF5622;
+    color: white;
+    font-size: 32px;
+    font-family: Rhodium Libre;
     padding: 16.5px 37px;
+    z-index: -1;
 }
 
-#lorem{
-    margin-left: 293px; 
-    margin-top: 325px; 
-    width: 580px; 
-    height: 103px; 
-    position: absolute; 
-    color: #000; 
-    font-family: Roboto Slab; 
-    font-size: 90px; 
+#lorem {
+    margin-left: 293px;
+    margin-top: 325px;
+    width: 580px;
+    height: 103px;
+    position: absolute;
+    color: #000;
+    font-family: Roboto Slab;
+    font-size: 90px;
     font-weight: 700;
+    z-index: -1;
 }
 
-#dolor{
-    position: absolute; 
-    margin-top: 446px; 
-    margin-left: 108px; 
-    color: #000; 
-    font-family: Roboto Slab; 
-    font-size: 90px; 
+#dolor {
+    position: absolute;
+    margin-top: 446px;
+    margin-left: 108px;
+    color: #000;
+    font-family: Roboto Slab;
+    font-size: 90px;
     font-weight: 700;
+    z-index: -1;
 }
 
-#aliquam{
-    position: absolute; 
-    margin-top: 845px; 
-    margin-left: 108px; 
-    color: #000; 
-    font-family: Roboto Slab; 
-    font-size: 25px; 
-    font-style: normal; 
+#aliquam {
+    position: absolute;
+    margin-top: 845px;
+    margin-left: 108px;
+    color: #000;
+    font-family: Roboto Slab;
+    font-size: 25px;
+    font-style: normal;
     font-weight: 400;
+    z-index: -1;
 }
 
-#promo{
+#promo {
     margin-left: 630px;
     margin-top: 592px;
     text-align: center;
@@ -110,9 +120,10 @@ input:focus{
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    z-index: -1;
 }
 
-#dish{
+#dish {
     position: absolute;
     margin-top: 695px;
     margin-left: 715px;
@@ -126,7 +137,7 @@ input:focus{
     line-height: normal;
 }
 
-#free{
+.free {
     position: absolute;
     color: #FF5622;
     font-family: "Roboto Slab";
@@ -136,7 +147,41 @@ input:focus{
     line-height: normal;
 }
 
-#piz1{
+.foodpromo {
+    /* position: absolute; */
+    margin-top: 792px;
+    margin-left: 4.4vh;
+    width: 350px;
+    height: 233px;
+    border: 0px;
+    background: none;
+    cursor: pointer;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
+}
+
+.searchleft{
+    margin-left: 4vh;
+
+}
+
+#dropdownSearch{
+    background-color: #FFFDF1;
+    border: 1px solid  black;
+    z-index: 99;
+    font-family: Roboto Slab;
+
+}
+
+.foodpromo:hover {
+    background-color: #FFFDF1;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+#piz1 {
     position: absolute;
     margin-top: 792px;
     margin-left: 185px;
@@ -145,29 +190,29 @@ input:focus{
     border: 0px;
     background: none;
     cursor: pointer;
-	-webkit-transition-duration: 0.3s;
-	transition-duration: 0.3s;
-	-webkit-transition-property: box-shadow, transform;
-	transition-property: box-shadow, transform;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
 }
 
-#piz1:hover{
+#piz1:hover {
     background-color: #FFFDF1;
-	-webkit-transform: scale(1.1);
-	transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
 }
 
-#profilename{
-  position: absolute;
-  margin-top: 48px;
-  margin-left: 1385px;
-  color: #000;
-  font-family: Roboto;
-  font-size: 25px;
-  font-weight: 400;
+#profilename {
+    position: absolute;
+    margin-top: 48px;
+    margin-left: 1440px;
+    color: #000;
+    font-family: Roboto;
+    font-size: 25px;
+    font-weight: 400;
 }
 
-#piz2{
+#piz2 {
     position: absolute;
     margin-top: 792px;
     margin-left: 584px;
@@ -176,20 +221,20 @@ input:focus{
     border: 0px;
     background: none;
     cursor: pointer;
-	-webkit-transition-duration: 0.3s;
-	transition-duration: 0.3s;
-	-webkit-transition-property: box-shadow, transform;
-	transition-property: box-shadow, transform;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
 }
 
-#piz2:hover{
+#piz2:hover {
     background-color: #FFFDF1;
-	-webkit-transform: scale(1.1);
-	transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 
-#piz3{
+#piz3 {
     position: absolute;
     margin-top: 792px;
     margin-left: 983px;
@@ -198,19 +243,19 @@ input:focus{
     border: 0px;
     background: none;
     cursor: pointer;
-	-webkit-transition-duration: 0.3s;
-	transition-duration: 0.3s;
-	-webkit-transition-property: box-shadow, transform;
-	transition-property: box-shadow, transform;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
 }
 
-#piz3:hover{
+#piz3:hover {
     background-color: #FFFDF1;
-	-webkit-transform: scale(1.1);
-	transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
 }
 
-#piz4{
+#piz4 {
     position: absolute;
     margin-top: 792px;
     margin-left: 1382px;
@@ -219,19 +264,19 @@ input:focus{
     border: 0px;
     background: none;
     cursor: pointer;
-	-webkit-transition-duration: 0.3s;
-	transition-duration: 0.3s;
-	-webkit-transition-property: box-shadow, transform;
-	transition-property: box-shadow, transform;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
 }
 
-#piz4:hover{
+#piz4:hover {
     background-color: #FFFDF1;
-	-webkit-transform: scale(1.1);
-	transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
 }
 
-#per{
+#per {
     position: absolute;
     margin-top: 94px;
     color: #000;
@@ -254,18 +299,18 @@ button {
     cursor: pointer;
 }
 
-#ali{
+.ali {
     position: absolute;
-    margin-left: 20px; 
+    margin-left: 20px;
     width: 342px;
-    color: #000; 
-    font-family:Roboto Slab; 
-    font-size: 25px; 
-    font-weight: 400; 
-    text-align: left; 
+    color: #000;
+    font-family: Roboto Slab;
+    font-size: 25px;
+    font-weight: 400;
+    text-align: left;
 }
 
-#see{
+#see {
     position: absolute;
     margin-top: 1198px;
     margin-left: 134px;
@@ -301,11 +346,12 @@ button {
     outline: none;
     position: relative;
     cursor: pointer;
-  
+
     --background-color: #FFFDF1;
     --border-size: 2px;
     --accent-color: #FF5622;
-  }
+}
+
 .btn.btn-background-slide::before {
     content: '';
     position: absolute;
@@ -315,34 +361,34 @@ button {
     right: 0;
     z-index: -1;
     background-color: var(--accent-color);
-  
+
     transition: transform 300ms ease-in-out;
     transform: scaleX(0);
     transform-origin: left;
-  }
-  
-  .btn.btn-background-slide:hover::before,
-  .btn.btn-background-slide:focus::before {
+}
+
+.btn.btn-background-slide:hover::before,
+.btn.btn-background-slide:focus::before {
     transform: scaleX(1);
-  }
-  
-  .btn.btn-background-slide {
+}
+
+.btn.btn-background-slide {
     transition: color 500ms ease-in-out;
     z-index: 1;
-  }
-  
-  
-  .btn.btn-background-slide:hover,
-  .btn.btn-background-slide:focus {
-    color: white;
-  }
+}
 
-#gray{
+
+.btn.btn-background-slide:hover,
+.btn.btn-background-slide:focus {
+    color: white;
+}
+
+#gray {
     position: absolute;
     margin-top: 61px;
 }
 
-#foods{
+#foods {
     margin-top: 123px;
     margin-left: 780px;
     position: absolute;
@@ -355,7 +401,7 @@ button {
     line-height: normal;
 }
 
-#pop{
+#pop {
     position: absolute;
     margin-top: 166px;
     margin-left: 722px;
@@ -368,7 +414,7 @@ button {
     line-height: normal;
 }
 
-#dishes{
+#dishes {
     margin-top: 279px;
     margin-left: 721px;
     position: absolute;
@@ -381,29 +427,29 @@ button {
     line-height: normal;
 }
 
-.all1{
+.all1 {
     position: absolute;
-	font-family: "Roboto Slab";
-	font-size: 25px;
-	font-weight: 700;
-	background: white;
-	width: 171px;
-	height: 84px;
-	text-align: center;
-	color: #FF5622;
-	border-radius: 0px;
+    font-family: "Roboto Slab";
+    font-size: 25px;
+    font-weight: 700;
+    background: white;
+    width: 171px;
+    height: 84px;
+    text-align: center;
+    color: #FF5622;
+    border-radius: 0px;
     border: 0;
-	cursor: pointer;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	-webkit-transition-duration: 0.3s;
-	transition-duration: 0.3s;
-	-webkit-transition-property: box-shadow, transform;
-	transition-property: box-shadow, transform;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
 }
 
 .all1:hover div svg path {
     fill: #FFFFFF;
-   
+
 }
 
 #burger:hover div svg path {
@@ -413,12 +459,14 @@ button {
 
 
 
-.all1:hover, .btn:focus, .btn:active{
+.all1:hover,
+.btn:focus,
+.btn:active {
     background-color: #FF5622;
     color: #FFFDF1;
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-	-webkit-transform: scale(1.1);
-	transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 .menName {
@@ -428,7 +476,8 @@ button {
     font-size: 33.464px;
     background: transparent;
     position: absolute;
-    font-family: "Roboto Slab"; 
+    font-family: "Roboto Slab";
+    cursor: pointer;
 }
 
 /* .menucard{
@@ -447,7 +496,7 @@ button {
   transition-property: box-shadow, transform;
 } */
 
-.men1{
+.men1 {
     color: #000;
     font-family: "Roboto Slab";
     border-radius: 13px;
@@ -456,20 +505,20 @@ button {
     width: 687px;
     height: 251px;
     cursor: pointer;
-	  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	  -webkit-transition-duration: 0.3s;
-	  transition-duration: 0.3s;
-	  -webkit-transition-property: box-shadow, transform;
-	  transition-property: box-shadow, transform;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
 }
 
-.men1:hover{
+.men1:hover {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-	  -webkit-transform: scale(1.1);
-	  transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
 }
 
-.men2{
+.men2 {
     position: absolute;
     width: 400px;
     margin-top: 98.72px;
@@ -477,7 +526,8 @@ button {
     color: #000;
     font-size: 21px;
 }
-.dollar{
+
+.dollar {
     position: absolute;
     margin-top: 174px;
     margin-left: 235px;
@@ -486,10 +536,10 @@ button {
     font-size: 40px;
     font-weight: 700;
     background: transparent;
-    
+    cursor: pointer;
 }
 
-#new{
+#new {
     position: absolute;
     width: 83px;
     height: 30px;
@@ -499,11 +549,11 @@ button {
     font-size: 20px;
     font-weight: 400;
     border-radius: 10px;
-    background: #FF5622;  
-    padding: 0;    
+    background: #FF5622;
+    padding: 0;
 }
 
-#show{
+#show {
     position: absolute;
     margin-top: 450px;
     margin-left: 818px;
@@ -520,22 +570,22 @@ button {
     font-weight: 400;
     line-height: normal;
     cursor: pointer;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	-webkit-transition-duration: 0.3s;
-	transition-duration: 0.3s;
-	-webkit-transition-property: box-shadow, transform;
-	transition-property: box-shadow, transform;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
 }
 
-#show:hover{
+#show:hover {
     background-color: #FF5622;
     color: #FFFDF1;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-	-webkit-transform: scale(1.1);
-	transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
 }
 
-#fellow{
+#fellow {
     position: absolute;
     margin-top: 2005px;
     margin-left: 758px;
@@ -547,7 +597,7 @@ button {
     line-height: normal;
 }
 
-#rev{
+#rev {
     position: absolute;
     margin-top: 2048px;
     margin-left: 633px;
@@ -559,7 +609,8 @@ button {
     font-weight: 700;
     line-height: normal;
 }
-#bel{
+
+#bel {
     position: absolute;
     margin-top: 2161px;
     margin-left: 724px;
@@ -573,12 +624,12 @@ button {
     line-height: normal;
 }
 
-#logo{
-    margin-top: 325px; 
+#logo {
+    margin-top: 325px;
     margin-left: 137px;
 }
 
-.slider{
+.slider {
     position: absolute;
     margin-top: 353px;
     margin-left: 1011px;
@@ -586,124 +637,124 @@ button {
     height: 615px;
     border-radius: 10px;
     overflow: hidden;
-  }
-  
-  #slides{
+}
+
+#slides {
     width: 500%;
     height: 500px;
     display: flex;
-  }
-  
-  #slides input{
+}
+
+#slides input {
     display: none;
-  }
-  
-  .slide{
+}
+
+.slide {
     width: 20%;
     transition: 2s;
-  }
-  
-  .slide img{
+}
+
+.slide img {
     width: 849px;
     height: 615px;
-  }
-  
-  
-  #navigation-manual{
+}
+
+
+#navigation-manual {
     position: absolute;
     width: 800px;
     bottom: 33px;
     margin-left: 50px;
     display: flex;
     justify-content: center;
-  }
-  
-  .manual-btn{
+}
+
+.manual-btn {
     border: 2px solid #867F7F;
     padding: 5px;
     border-radius: 10px;
     cursor: pointer;
     transition: 1s;
-  }
-  
-  .manual-btn:not(:last-child){
+}
+
+.manual-btn:not(:last-child) {
     margin-right: 40px;
-  }
-  
-  .manual-btn:hover{
+}
+
+.manual-btn:hover {
     background: #867F7F;
-  }
-  
-  #radio1:checked ~ .first{
+}
+
+#radio1:checked~.first {
     margin-left: 0;
-  }
-  
-  #radio2:checked ~ .first{
+}
+
+#radio2:checked~.first {
     margin-left: -20%;
-  }
-  
-  #radio3:checked ~ .first{
+}
+
+#radio3:checked~.first {
     margin-left: -40%;
-  }
-  
-  #radio4:checked ~ .first{
+}
+
+#radio4:checked~.first {
     margin-left: -60%;
-  }
-  
-  #navigation-auto{
+}
+
+#navigation-auto {
     position: absolute;
     display: flex;
     width: 800px;
     justify-content: center;
     margin-top: 567px;
     margin-left: 50px;
-  }
-  
-  #navigation-auto div{
+}
+
+#navigation-auto div {
     border: 2px solid #867F7F;
     padding: 5px;
     border-radius: 10px;
     transition: 1s;
-  }
-  
-  #navigation-auto div:not(:last-child){
-    margin-right: 40px;
-  }
-  
-  #radio1:checked ~ #navigation-auto .auto-btn1{
-    background: #FFFFFF;
-  }
-  
-  #radio2:checked ~ #navigation-auto .auto-btn2{
-    background: #FFFFFF;
-  }
-  
-  #radio3:checked ~ #navigation-auto .auto-btn3{
-    background: #FFFFFF;
-  }
-  
-  #radio4:checked ~ #navigation-auto .auto-btn4{
-    background: #FFFFFF;
-  }
+}
 
-  .dropdown{
+#navigation-auto div:not(:last-child) {
+    margin-right: 40px;
+}
+
+#radio1:checked~#navigation-auto .auto-btn1 {
+    background: #FFFFFF;
+}
+
+#radio2:checked~#navigation-auto .auto-btn2 {
+    background: #FFFFFF;
+}
+
+#radio3:checked~#navigation-auto .auto-btn3 {
+    background: #FFFFFF;
+}
+
+#radio4:checked~#navigation-auto .auto-btn4 {
+    background: #FFFFFF;
+}
+
+.dropdown {
     position: absolute;
     width: 280px;
     border-radius: 50px;
     cursor: pointer;
-    
-  }
-  
-  .dropdown-text {
-      width: 72px;
-      height: 50px;
-      border-radius: 25px;
-      background-color: #FF5622;
-      position: absolute;
-  
-  }
 
-  .dropdown-list {
+}
+
+.dropdown-text {
+    width: 72px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: #FF5622;
+    position: absolute;
+
+}
+
+.dropdown-list {
     display: block;
     position: absolute;
     top: 40px;
@@ -716,14 +767,14 @@ button {
     transition: max-height 0.5s;
     z-index: 1;
     border: 2px solid #FFFDF1;
-  }
-  
-  .icons{
+}
+
+.icons {
     width: 30px;
     height: 30px;
-  }
-  
-  .dropdown-list-item {
+}
+
+.dropdown-list-item {
     font-size: 18px;
     font-weight: 500;
     border-radius: 15px;
@@ -735,20 +786,19 @@ button {
     font-family: "Montserrat", sans-serif;
     color: #FFF;
     margin-left: -15px;
-  }
-  
-  .dropdown-list-item:hover {
+}
+
+.dropdown-list-item:hover {
     margin-left: 0.5rem;
     color: #FFF;
-  }
-  
-  #list.show {
-    max-height: 300px;
-  }
-  
-  li p {
-    position: absolute;
-    margin-top: -27px;  
-    margin-left: 40px;
-  }
+}
 
+#list.show {
+    max-height: 300px;
+}
+
+li p {
+    position: absolute;
+    margin-top: -27px;
+    margin-left: 40px;
+}

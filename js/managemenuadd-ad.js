@@ -1,6 +1,5 @@
 // Load js if HTML is done
 document.addEventListener('DOMContentLoaded', function () {
-
     // get the form
     const addMenuForm = document.getElementById("addMenuForm");
 
@@ -12,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // get the value from the form
         const addmenu = new FormData(addMenuForm);
 
-        fetch ('../contexts/AddMenuProcess.php', {
+        fetch ('../contexts/CreateMenuProcess.php', {
             method: "POST",
             body: addmenu
         })

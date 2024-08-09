@@ -92,7 +92,6 @@ li a:hover {
     height: 5vh;
     border-radius: 2vh;
     background-color: #BD4141;
-    background-color: #FFFDF1;
     border: none;
     cursor: pointer;
 
@@ -112,13 +111,21 @@ li a:hover {
 .dropdown-content {
     display: none;
     position: relative;
-    left: -8vh;
+    left: -28vh;
     background-color: #BD4141;
-    min-width: 12vh;
+    min-width: 32.4vh;
     overflow: auto;
     border-radius: 1vh;
+    border: 0.2vh solid #FFFDF1;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
+}
+
+.dropdown-content a:hover{
+    margin-left: 0.5rem;
+    color: white;
+    transition: 0.3s;
+
 }
 
 .dropdown-content a {
@@ -129,10 +136,7 @@ li a:hover {
     text-align: left;
     font-family: Roboto Slab;
     display: block;
-}
-
-.dropdown-content a:hover {
-    background-color: #8C2828;
+    padding-left: 5vh;
 }
 
 .show {
@@ -182,6 +186,7 @@ li a:hover {
 }
 
 .home-line a {
+    color: #FFFDF1;
     width: 41vh;
     height: auto;
     margin-left: 4.5vh;
@@ -282,102 +287,9 @@ li a:hover {
     justify-content: center;
 }
 
-.currentvip {
-    display: flex;
-    flex-direction: column;
-    border: 0.4vh solid #BD4141;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    border-radius: 2.0vh;
-    box-shadow: 0.6vh 0.6vh 0.5vh rgba(0, 0, 0, 0.25);
-}
+.urgentleftbottom img{
+    border-radius: 2vh;
 
-.vip {
-    width: 98%;
-    height: 20%;
-    padding-left: 8%;
-    align-items: center;
-    justify-content: center;
-
-}
-
-.currenttext {
-    color: black;
-    font-size: 6.4vh;
-    font-family: Roboto Slab;
-    font-weight: 700;
-    word-wrap: break-word;
-}
-
-.viptext {
-    color: #FF0000;
-    font-size: 6.4vh;
-    font-family: Roboto Slab;
-    font-weight: 700;
-    word-wrap: break-word;
-
-}
-
-.vipordertext {
-    color: black;
-    font-size: 6.4vh;
-    font-family: Roboto Slab;
-    font-weight: 700;
-    word-wrap: break-word;
-
-}
-
-.viporderlist {
-    display: flex;
-    flex-direction: row;
-    width: 98%;
-    height: 70%;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.vipinfoheader {
-    font-weight: bolder;
-}
-
-.viporderID {
-    width: 33%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    color: black;
-    font-size: 3.0vh;
-    font-family: Roboto Slab;
-    font-weight: 400;
-    word-wrap: break-word;
-
-}
-
-.vipstatus {
-    width: 34%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    color: black;
-    font-size: 3.0vh;
-    font-family: Roboto Slab;
-    font-weight: 400;
-    word-wrap: break-word;
-}
-
-.vipetd {
-    width: 33%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    color: black;
-    font-size: 3.0vh;
-    font-family: Roboto Slab;
-    font-weight: 400;
-    word-wrap: break-word;
 }
 
 .urgentright {
@@ -463,32 +375,72 @@ li a:hover {
 
 .norm {
     width: 98%;
-    height: 20%;
+    height: 10%;
     padding-left: 8%;
     margin: 0;
     align-items: center;
     justify-content: start;
     color: black;
-    font-size: 6.4vh;
+    font-size: 4vh;
     font-family: Roboto Slab;
     font-weight: 700;
+    padding-left: 3vh;
 }
 
 .normorderlist {
     display: flex;
     flex-direction: row;
     width: 98%;
-    height: 70%;
+    height: 90%;
     align-items: center;
     justify-content: center;
     text-align: center;
+    margin-top: 0;
+    padding-top: 0;
 }
 
 .norminfoheader {
     font-weight: bolder;
 }
 
-.normorderID {
+table {
+    width: 100%;
+    border-collapse: collapse;
+
+}
+
+.tablecontent thead{
+    position: sticky;
+    top: 0px;
+    width: 1724px;
+    z-index: 1;
+
+}
+
+td,
+th {
+    font-size: 3.2vh;
+    width: 28.7vh;
+    font-family: Roboto Slab;
+
+}
+
+th{
+    font-weight: bold;
+
+}
+
+tr {
+    background-color: #FFFDF1;
+    top: 0px;
+    width: 1724px; 
+    height: 65px;
+    border-radius: 15px;
+    position: relative;
+    text-align: center;
+}
+
+/* .normorderID {
     width: 33%;
     height: 100%;
     align-items: center;
@@ -523,7 +475,7 @@ li a:hover {
     font-family: Roboto Slab;
     font-weight: 400;
     word-wrap: break-word;
-}
+} */
 
 /*Circular Progress Bar Start*/
 * {

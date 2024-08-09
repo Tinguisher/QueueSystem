@@ -14,10 +14,16 @@ function getUserCart() {
             food_categories.name AS categoryName,
             foods.name AS foodName,
             foods.description,
-            (foods.price * user_carts.quantity) AS price,
+            (((foods.price - (foods.price * (0.01 * foods.discount))) * user_carts.quantity) + drinks.price) AS discountedPrice,
             user_carts.quantity
-        FROM `user_carts`, `foods`, `food_categories`
-        WHERE user_carts.foods_id = foods.id AND foods.food_categories_id = food_categories.id AND user_carts.users_id = ?
+        FROM `user_carts`,
+            `foods`,
+            `food_categories`,
+            `drinks`
+        WHERE user_carts.foods_id = foods.id
+            AND foods.food_categories_id = food_categories.id
+            AND user_carts.drinks_id = drinks.id
+            AND user_carts.users_id = ?
         ORDER BY user_carts.id;";
 
     // try to create and catch if there is error
@@ -36,6 +42,10 @@ function getUserCart() {
 
         // get all data from the executed statement
         $userCart = $result -> fetch_all( MYSQLI_ASSOC );
+
+        // free data and close statement
+        $result -> free();
+        $stmt -> close();
 
         // pass the user's cart to response
         $response = [
@@ -56,9 +66,7 @@ function getUserCart() {
         ];
     }
 
-    // free data and close statement and database
-    $result -> free();
-    $stmt -> close();
+    // close the database
     $mysqli -> close();
 
     // return the variable response back to the GetCartProcess.php
@@ -67,21 +75,24 @@ function getUserCart() {
 
 // if it is guest or the user is not logged in, get session's cart
 function getGuestCart() {
-    // access database
-    $mysqli = require_once "./database.php";
-
     // if there are no carts from the guest
     if ( empty($_SESSION['carts']) ){
+        // unset the session carts
+        unset($_SESSION['carts']);
+
         // make a success response with no carts
         $response = [
             'status' => "success",
             'message' => "There are still no order carts from the guest",
-            'carts' => []
+            'carts' => [],
         ];
 
         // return the variable response back to the GetCartProcess.php
         return $response;
     }
+
+    // access database
+    $mysqli = require_once "./database.php";
 
     // loop to get each data from the carts
     foreach ($_SESSION['carts'] as $index => $sessionCart) {
@@ -93,15 +104,19 @@ function getGuestCart() {
                 food_categories.name AS categoryName,
                 foods.name AS foodName,
                 foods.description,
-                (foods.price * ?) AS price
-            FROM `foods`, `food_categories`
-            WHERE foods.food_categories_id = food_categories.id AND foods.id = ?;";
+                (((foods.price - (foods.price * (0.01 * foods.discount))) * ?) + drinks.price) AS discountedPrice
+            FROM `foods`,
+                `food_categories`,
+                `drinks`
+            WHERE foods.food_categories_id = food_categories.id
+                AND foods.id = ?
+                AND drinks.id = ?;";
 
             // prepare the statement
             $stmt = $mysqli -> prepare ($sql);
 
             // bind the parameters to the statement
-            $stmt -> bind_param ('ii', $sessionCart['quantity'], $sessionCart['food_id']);
+            $stmt -> bind_param ('iii', $sessionCart['quantity'], $sessionCart['food_id'], $sessionCart['drink_id']);
 
             // execute the statement
             $stmt -> execute();
@@ -116,9 +131,8 @@ function getGuestCart() {
             $result -> free();
             $stmt -> close();
 
-            // get all the remaining values from the session that is not available in database
+            // get all the remaining values from the session needed in the front end
             $guestCart['carts'][$index]['id'] = $index;
-            $guestCart['carts'][$index]['food_id'] = $sessionCart['food_id'];
             $guestCart['carts'][$index]['quantity'] = $sessionCart['quantity'];
         }
 

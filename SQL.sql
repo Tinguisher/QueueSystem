@@ -7,6 +7,7 @@ CREATE TABLE users(
 	authtype varchar (30) NOT NULL,
 	firstname varchar (30) NOT NULL,
 	lastname varchar (30) NOT NULL,
+	joinDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	CONSTRAINT PK_users
 	PRIMARY KEY (id)
 );
@@ -23,6 +24,7 @@ CREATE TABLE foods (
     id int AUTO_INCREMENT NOT NULL,
     name varchar (50) NOT NULL,
     description varchar (255) NOT NULL,
+	discount int NOT NULL,
     price double NOT NULL,
 	image varchar (50) NOT NULL,
     food_categories_id INT (20) NOT NULL,
@@ -33,14 +35,23 @@ CREATE TABLE foods (
     PRIMARY KEY (id)
 );
 
--- addsOnID for drinks???
+CREATE TABLE drinks (
+    id int AUTO_INCREMENT NOT NULL,
+    name varchar (50) NOT NULL,
+	price double NOT NULL,
+    CONSTRAINT PK_drinks
+    PRIMARY KEY (id)
+);
+
 CREATE TABLE user_carts (
     id int AUTO_INCREMENT NOT NULL,
 	users_id int NOT NULL,
 	foods_id int NOT NULL,
 	quantity int NOT NULL,
+	drinks_id int NOT NULL,
 	FOREIGN KEY (users_id) REFERENCES users(id),
-	FOREIGN KEY (foods_id) REFERENCES foods(id)
+	FOREIGN KEY (foods_id) REFERENCES foods(id),
+	FOREIGN KEY (drinks_id) REFERENCES drinks(id)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
     CONSTRAINT PK_user_carts
@@ -50,7 +61,7 @@ CREATE TABLE user_carts (
 CREATE TABLE receipts (
     id int AUTO_INCREMENT NOT NULL,
     users_id int NOT NULL,
-	status varchar (30) NOT NULL,
+	totalPrice double NOT NULL,
 	orderDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	FOREIGN KEY (users_id) REFERENCES users(id)
     ON DELETE CASCADE
@@ -59,16 +70,18 @@ CREATE TABLE receipts (
     PRIMARY KEY (id)
 );
 
--- addsOnID for drinks???
 CREATE TABLE food_orders (
     id int AUTO_INCREMENT NOT NULL,
 	receipts_id int NOT NULL,
 	foods_id int NOT NULL,
 	quantity int NOT NULL,
+	discount int NOT NULL,
 	price double NOT NULL,
+	drinks_id int NOT NULL,
 	status varchar (30) NOT NULL,
 	FOREIGN KEY (receipts_id) REFERENCES receipts(id),
-	FOREIGN KEY (foods_id) REFERENCES foods(id)
+	FOREIGN KEY (foods_id) REFERENCES foods(id),
+	FOREIGN KEY (drinks_id) REFERENCES drinks(id)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
     CONSTRAINT PK_food_orders
