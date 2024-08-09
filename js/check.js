@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
         createReceipt();
 
         // go to see the user's cart
-        window.location = '../pages/mycart.html';
+        window.location = '../pages/orderhistory.php';
     });
 
     // process of creating Receipt after clicking payment

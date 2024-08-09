@@ -100,7 +100,7 @@ $mysqli->close();
                         <tr class="spaceUnder">
                             <th class="tdsideL">Order ID</th>
                             <th>Name</th>
-                            <th>Time to Cook</th>
+                            <!-- <th>Time to Cook</th> -->
                             <th>Total</th>
                             <th>Date</th>
                             <th class="tdsideR">Items</th>
@@ -111,7 +111,7 @@ $mysqli->close();
                         <tr class="spaceUnder">
                             <td class="tdsideL">Loading...</td>
                             <td>Loading...</td>
-                            <td>Loading...</td>
+                            <!-- <td>Loading...</td> -->
                             <td>Loading...</td>
                             <td>Loading...</td>
                             <td class="tdsideR">
@@ -135,7 +135,7 @@ $mysqli->close();
                         <tr class="spaceUnder">
                             <td class="tdsideL" data-receipt-id></td>
                             <td data-user-name></td>
-                            <td data-cook-time></td>
+                            <!-- <td data-cook-time></td> -->
                             <td data-total-price></td>
                             <td data-date></td>
                             <td class="tdsideR">
