@@ -21,7 +21,8 @@ if ( isset($_SESSION['id']) ){
         <link rel="stylesheet" href="../stylesheets/login.css">
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
         
-        <title>Snap Serve</title>
+        <title>SnapServe | Welcome!</title>
+        <link rel="icon" type="image/png" href="../images/bacon.png">
     </head>
     <body>
         <div>

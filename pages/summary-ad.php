@@ -12,7 +12,8 @@ $mysqli->close();
 
 <head>
 	<meta charset="utf-8" />
-	<title>Snap Serve</title>
+	<title>SnapServe | Addmin Summary</title>
+    <link rel="icon" type="image/png" href="../images/bacon.png">
 	<link rel="stylesheet" href="../stylesheets/summary.css">
 	<link href='https://fonts.googleapis.com/css?family=Averia Serif Libre' rel='stylesheet'>
 	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>

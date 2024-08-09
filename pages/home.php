@@ -8,7 +8,7 @@ include '../contexts/SessionUser.php';
 
 <head>
     <meta charset="utf-8" />
-    <title>Snap Serve</title>
+    <title>SnapServe | Home</title>
     <link rel="stylesheet" href="../stylesheets/home.css">
     <link href='https://fonts.googleapis.com/css?family=Averia Serif Libre' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>

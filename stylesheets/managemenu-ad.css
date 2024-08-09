@@ -192,6 +192,7 @@ li a:hover {
 }
 
 .managemenu-line a {
+    color: #FFFDF1;
     width: 41vh;
     height: auto;
     margin-left: 4.5vh;
