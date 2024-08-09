@@ -1,6 +1,7 @@
 <?php
 // check if session is admin
 include '../contexts/SessionAdmin.php';
+
 // try to get and catch if there is error
 try{
     // get the current number of orders today
@@ -57,8 +58,8 @@ $mysqli->close();
     <style>
         @keyframes anim {
             100% {
-                /* 440 divide by half since 50% */
-                stroke-dashoffset: 220;
+                /* if quota is greatere than 100, make it 0 and if not, calculate */
+                stroke-dashoffset: <?php echo ($quota['number'] >= 100) ? 0 : 440 - ($quota['number'] * 4.4)?>;
             }
         }
     </style>
