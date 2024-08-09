@@ -168,23 +168,34 @@ $mysqli->close();
                                         <th>Items</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <!-- container for current orders -->
+                                <tbody data-current-order-container>
                                     <tr>
-                                        <td>1</td>
-                                        <td>Ongoing</td>
-                                        <td>8</td>
+                                        <td>Loading...</td>
+                                        <td>Loading...</td>
+                                        <td>Loading...</td>
                                     </tr>
                                     <tr>
-                                        <td>1</td>
-                                        <td>Ongoing</td>
-                                        <td>8</td>
+                                        <td>Loading...</td>
+                                        <td>Loading...</td>
+                                        <td>Loading...</td>
                                     </tr>
                                     <tr>
-                                        <td>1</td>
-                                        <td>Ongoing</td>
-                                        <td>8</td>
+                                        <td>Loading...</td>
+                                        <td>Loading...</td>
+                                        <td>Loading...</td>
                                     </tr>
                                 </tbody>
+
+                                <!-- Template for current orders -->
+                                <template data-current-order-template>
+                                    <tr>
+                                        <td data-receipt-id></td>
+                                        <td data-status></td>
+                                        <td data-items></td>
+                                    </tr>
+                                </template>
+
                             </table>
                         </div>
                     </div>

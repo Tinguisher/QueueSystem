@@ -32,7 +32,8 @@ try{
     LEFT JOIN food_orders ON receipts.id = food_orders.receipts_id
     WHERE food_orders.status IN ('Pending', 'In Progress')
     GROUP BY receipts.id
-    ORDER BY receipts.id ASC;";
+    ORDER BY receipts.id ASC
+    LIMIT 5;";
 
     // prepare the statement
     $stmt = $mysqli -> prepare ($sql_get_current_orders);
