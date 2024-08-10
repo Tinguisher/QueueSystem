@@ -407,7 +407,7 @@ li p {
 
 .all1:hover div svg path {
     fill: #FFFFFF;
-
+    stroke: white;
 }
 
 .burger:hover div svg path {

@@ -81,9 +81,9 @@ else {
 
 		<table style="margin-top: 33px; margin-left: 660px; position: absolute;">
 			<tr>
-				<td style="width: 138px;"><a href="./home.php" target="_top">Home</a></td>
-				<td style="width: 133px;" id="menn"><a href="./menu.php" target="_top" style="color: #FF5622;"><b>Menu</b></a></td>
-				<td style="width: 155px;"><a href="./aboutus.php" target="_top">About Us</a></td>
+				<td style="width: 150px; text-align: center;"><a href="./home.php" target="_top">Home</a></td>
+				<td style="width: 133px;text-align: center;" id="menn"><a href="./menu.php" target="_top" style="color: #FF5622;"><b>Menu</b></a></td>
+				<td style="width: 155px;text-align: center;"><a href="./aboutus.php" target="_top">About Us</a></td>
 			</tr>
 		</table>
 
@@ -197,7 +197,7 @@ else {
 				<template data-user-order-template>
 					<tr>
 						<td class="foodnm" data-food-name></td>
-						<td data-food-quantity></td>
+						<td style="padding: 20px;" data-food-quantity></td>
 						<td data-food-price></td>
 					</tr>
 				</template>

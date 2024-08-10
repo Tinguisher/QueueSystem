@@ -299,28 +299,40 @@ li p {
 	left: 6.5vh;
 	top: 10vh;
 	border: none;
+	border-collapse: collapse;
 
 }
 
 .yourorder  th, td, tr{
 	font-family: Roboto Slab;
 	border: none;
+	border-collapse: collapse;
+	text-align: start;
+	
 
+}
+
+.yourorder2{
+	border-color: white;
 }
 
 .yourorder2 td, tr, th{
 	font-family: Roboto Slab;
 	border: none;
+	border-collapse: collapse;
 
 }
 
 .yourorder .foodnm{
 	padding-right: 50vh;
+	border-collapse: collapse;
 
 }
 
 .yourorder2 .foodnm2{
-	padding-right: 66vh;
+	padding-right: 60vh;
+	border-collapse: collapse;
+	
 }
 
 .qty {
@@ -421,7 +433,7 @@ li p {
 
 .btnorder {
 	position: absolute;
-	margin-top: 244px;
+	margin-top: 35.5px;
 	margin-left: 40px;
 	color: #000;
 	font-family: "Roboto Slab";
